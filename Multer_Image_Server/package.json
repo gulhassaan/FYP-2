@@ -1,0 +1,23 @@
+{
+  "name": "server-upload",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node -r esm .",
+    "dev": "nodemon -r esm"
+  },
+  "keywords": [],
+  "author": "Narendra Maurya",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "consola": "^2.15.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "lodash": "^4.17.20",
+    "multer": "^1.4.2"
+  }
+}
