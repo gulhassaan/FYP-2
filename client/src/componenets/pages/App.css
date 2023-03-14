@@ -16,7 +16,7 @@
                 color: #555 !important;
                 cursor: pointer !important;
                 display: inline-block !important;
-                font-family: Open Sans, sans-serif !important;
+                font-family: Montserrat !important;
                 font-size: 14px !important;
                 font-weight: 600 !important;
                 letter-spacing: .4px !important;
@@ -69,7 +69,7 @@
                 color: #555 !important;
                 cursor: pointer !important;
                 display: inline-block !important;
-                font-family: Open Sans, sans-serif !important;
+                font-family: Montserrat !important;
                 font-size: 14px !important;
                 font-weight: 600 !important;
                 letter-spacing: .4px !important;
@@ -686,7 +686,6 @@ select {
   color: #F78104;
   cursor: pointer;
   font-size: 1em;
-  font-family: 'Open Sans', sans-serif;
 }
 
 select::-ms-expand {
@@ -926,11 +925,11 @@ footer {
 }
 .Navbar > .nav-items > .aa {
   color: #FFFFFF;
-
+  font-family: 'Montserrat';
   border-radius: 10px;
   font-size: 16px;
- padding: 10px;
-  text-decoration: none;
+  padding: 10px;
+  text-decoration: white;
   margin: 15px;
   position: relative;
   opacity: 0.9;
@@ -971,7 +970,7 @@ footer {
   color: #FFFFFF;
   
   font-size: 16px;
- 
+ font-family: Montserrat;
   text-decoration: none;
   margin: 15px;
   position: relative;
@@ -1136,7 +1135,10 @@ footer {
   width: 100%;
 
 }
-
+*{
+  font-family: "Montserrat";
+  font-weight: 300;
+}
 .card-body {
   background-color: #F78104;
 }
