@@ -255,6 +255,7 @@ const form = useRef();
     }
   }, [])
   return (
+    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
     <div>
       <Navbar />
 
@@ -274,6 +275,7 @@ const form = useRef();
                   <img className="pass-icon" src={user1}></img>
                   </label>
                   <input
+                  style={{ backgroundColor: '#FFFFFF' }}
                     type="name"
                     name="name"
                     id="name"
@@ -291,6 +293,7 @@ const form = useRef();
                   <img className="pass-icon" src={email1}></img>
                   </label>
                   <input
+                  style={{ backgroundColor: '#FFFFFF' }}
                     type=""
                     name="email"
                     id="email"
@@ -299,6 +302,7 @@ const form = useRef();
                 
                   ></input>
                   <input
+                  style={{ backgroundColor: '#FFFFFF' }}
                       type="hidden"
                       name="otpg"
                       id="otpg"
@@ -316,6 +320,7 @@ const form = useRef();
                     <img className="pass-icon" src={pin}></img>
                   </label>
                   <input
+                  style={{ backgroundColor: '#FFFFFF' }}
                     type="pin"
                     name="pin"
                     id="signup-pin"
@@ -333,6 +338,7 @@ const form = useRef();
                   <img className="pass-icon" src={phone1}></img>
                   </label>
                   <input
+                  style={{ backgroundColor: '#FFFFFF' }}
                     type="tel"
                     name="phone"
                     id="phone"
@@ -354,6 +360,7 @@ const form = useRef();
                   <img className="pass-icon" src={password1}></img>
                   </label>
                   <input
+                  style={{ backgroundColor: '#FFFFFF' }}
                     type="password"
                     name="passwrod"
                     id="password"
@@ -372,6 +379,7 @@ const form = useRef();
                   <img className="pass-icon" src={password1}></img>
                   </label>
                   <input
+                  style={{ backgroundColor: '#FFFFFF' }}
                     type="password"
                     name="cpasswrod"
                     id="cpassword"
@@ -402,6 +410,7 @@ const form = useRef();
           </div>
         </div>
       </section>
+    </div>
     </div>
   );
 }

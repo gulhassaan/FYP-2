@@ -117,11 +117,11 @@ const ProductDetail = () => {
     }
   }, [])
   return (
-    <div style={{ backgroundColor: "rgba(0, 95, 96, 1)" }}>
+    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
       <Navbar />
       <main>
-        <Container sx={{ py: 3 }} style={{ backgroundColor: "rgba(0, 95, 96, 0.8)" }}>
-          <Grid container spacing={1} marginTop={5} style={{ backgroundColor: "#F78104", height: "550px", borderRadius: "20px", color: "rgba(0, 95, 96, 2)" }}>
+        <Container sx={{ py: 3 }} >
+          <Grid container spacing={1} marginTop={5} style={{ backgroundColor: "#FFFFFF", height: "550px", borderRadius: "20px", color: "rgba(0, 95, 96, 2)", boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)" }}>
             <Grid item xs={12} sm={7}>
               <Grid container padding={1}>
                 <Grid item xs={12} height={350} width="inherit" borderRadius={3}>
@@ -157,8 +157,8 @@ const ProductDetail = () => {
                   Price: Rs.{product.Cost}/-
                 </Typography></Grid>
                 <CardActions sx={{ marginTop: "20px" }}>
-                  <Button variant="contained" onClick={() => { GO(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#F78104" }}>Contact Seller</Button>
-                  <Button variant="contained" onClick={() => { Report(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#F78104" }}>Report</Button>
+                  <Button variant="contained" onClick={() => { GO(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Contact Seller</Button>
+                  <Button variant="contained" onClick={() => { Report(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Report</Button>
             
                 </CardActions>
                 <CardActions sx={{ marginTop: "20px" }}>

@@ -92,9 +92,10 @@ console.log("AD ID IS : ",AdID)
   }, [])
   //console.log(Ads);
   return (
+
     <div>
       <Navbar />
-      <div style={{ backgroundColor: "rgba(0, 95, 96, 0.8)" }}>
+      <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
 
         <main>
           <Container sx={{ py: 8 }}>
@@ -103,7 +104,7 @@ console.log("AD ID IS : ",AdID)
               {Ads.map((card) => (
                 <Grid class="myad-card" item key={card} xs={12} sm={6} md={3}>
                   <Card
-                    style={{ backgroundColor: "#F78104", height: "480px", borderRadius: "20px", width: "350px" }}
+                    style={{ backgroundColor: "#FFFFFF", height: "480px", borderRadius: "20px", width: "350px", boxShadow: "4px 4px 4px 4px rgba(0, 0, 0, 0.25)" }}
                     sx={{
                       maxWidth: 480,
                       maxHeight: 450
@@ -140,7 +141,7 @@ console.log("AD ID IS : ",AdID)
                       </Typography>
                     </CardContent>
                     <Box alignItems={"center"} >
-                      <CardActions sx={{ marginLeft: 1 }}>
+                      <CardActions sx={{ marginLeft: 0 }}>
                         <Button class="myad-btn"  onClick={() => { delete_Ad(card.Ad_id) }}>Delete</Button>
                         <Button class="myad-btn"  onClick={() => { update1(card.Ad_id) }}>Update</Button>
                         <Button class="myad-btn"  onClick={() => { getUser(card.Ad_id) }}>Receive</Button>

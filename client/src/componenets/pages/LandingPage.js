@@ -152,7 +152,7 @@ export const LandingPage = () => {
   }, [])
   return (
 
-    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)", FontFamily: "Arial" }}>
+    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
       <Navbar />
       <main>
       <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"50PX" }}>

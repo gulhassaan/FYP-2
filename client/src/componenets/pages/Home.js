@@ -168,37 +168,40 @@ export const Home = () => {
   }, [])
   return (
 
-    <div style={{ backgroundColor: "rgba(0, 95, 96, 0.8)" }}>
+    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
       <Navbar />
       <main>
-      <input
-      style={{"margin-top": "40px","width":"50px","marginLeft":"280px"}}
-        autoComplete="off"
-        placeholder='Search'
-        type="text"
-        className="customform w-50"
-        list="item-list"
-        onChange={searching}
-      ></input>
-        <FormControl sx={{ m: 1, minWidth: 180,marginLeft:60}} size="small">
-          <InputLabel id="demo-select-small">Filters</InputLabel>
-          <Select
-            labelId="demo-select-small"
-            id="demo-select-small"
+      <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"50PX" }}>
+  <input
+    style={{ width: '50%', marginRight: '1rem', backgroundColor: '#FFFFFF' }}
+    autoComplete='off'
+    placeholder='Search'
+    type='text'
+    className='customform w-50'
+    list='item-list'
+    onChange={searching}
+  />
 
-            value={Filter}
-            label="Filters"
-            onChange={Selectfilter}
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={"High TO Low"}>High TO Low</MenuItem>
-            <MenuItem value={"Low To High"}>Low To High</MenuItem>
-            <MenuItem value={"Latest"}>Latest</MenuItem>
-            <MenuItem value={"Oldest"}>Oldtest</MenuItem>
-          </Select>
-        </FormControl>
+  <FormControl sx={{ minWidth: 180 }} size='small'>
+    <InputLabel id='demo-select-small'>Filters</InputLabel>
+    <Select
+      labelId='demo-select-small'
+      id='demo-select-small'
+      value={Filter}
+      label='Filters'
+      onChange={Selectfilter}
+    >
+      <MenuItem value=''>
+        <em>None</em>
+      </MenuItem>
+      <MenuItem value={'High TO Low'}>High to Low</MenuItem>
+      <MenuItem value={'Low To High'}>Low to High</MenuItem>
+      <MenuItem value={'Latest'}>Latest</MenuItem>
+      <MenuItem value={'Oldest'}>Oldest</MenuItem>
+    </Select>
+  </FormControl>
+</div>
+        
 
 
 
@@ -208,7 +211,7 @@ export const Home = () => {
             {listOfAds.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={3}>
                 <Card
-                  style={{ backgroundColor: "#F78104", height: "400px", borderRadius: "20px" }}
+                  style={{ backgroundColor: "#FFFFFF", height: "380px", borderRadius: "20px", boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)" }}
                   raised
                   sx={{
                     maxWidth: 280,
