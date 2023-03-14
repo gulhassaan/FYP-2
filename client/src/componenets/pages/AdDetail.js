@@ -22,7 +22,8 @@ const ProductDetail = () => {
   const [room, setRoom] = useState("");
   const navigate = useNavigate();
   const [report, setReport] = useState(1);
-  const[price,setPrice] = useState(0);
+  const [price, setPrice] = useState(0);
+  const [usd, setusd] = useState(0);
   useEffect(() => {
     setuser(localStorage.getItem("user"));
     setRoom(localStorage.getItem('room'));
@@ -37,10 +38,29 @@ const ProductDetail = () => {
       setImages(temp[0].Images)
       setMainImage(temp[0].Images[0])
       setProduct(temp[0])
-      console.log("THE PRICE IS : ",price);
+
     });
 
+    console.log("price is : ", price)
+    var myHeaders = new Headers();
+    myHeaders.append("apikey", "rw0nYmOlRCyiLK0xnxwMNnBrk6iLYJK3");
+
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow',
+      headers: myHeaders
+    };
+
+    fetch(`https://api.apilayer.com/fixer/convert?to=usd&from=pkr&amount=${price}`, requestOptions)
+      .then(response => response.text())
+      .then(result => setusd(result))
+      .catch(error => console.log('error', error));
+
+
+      
   }, []);
+
+  console.log("THis is :", usd)
 
   // const getUser = (AdID) => {
   //   setuser(localStorage.getItem("user"));
@@ -159,52 +179,52 @@ const ProductDetail = () => {
                 <CardActions sx={{ marginTop: "20px" }}>
                   <Button variant="contained" onClick={() => { GO(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#F78104" }}>Contact Seller</Button>
                   <Button variant="contained" onClick={() => { Report(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#F78104" }}>Report</Button>
-            
+
                 </CardActions>
                 <CardActions sx={{ marginTop: "20px" }}>
-                <form action="https://www.escrow-sandbox.com/checkout" method="post">
-                <input type="hidden" name="type" value="domain_name" />
-                <input type="hidden" name="non_initiator_email" value="arslanm1517@gmail.com" />
-                <input type="hidden" name="non_initiator_id" value="1295393" />
-                <input type="hidden" name="non_initiator_role" value="seller" />
-                <input type="hidden" name="title" value="Buy Now" />
-                <input type="hidden" name="currency" value="USD" />
-                <input type="hidden" name="domain" value="gamingstan.com" />
-                <input  name="price" required value={price} type="hidden"/>
-                <input type="hidden" name="concierge" value="false" /><input type="hidden" name="with_content" value="false" /><input type="hidden" name="inspection_period" value="1" /><input type="hidden" name="fee_payer" value="split" /><input type="hidden" name="return_url" value="" /><input type="hidden" name="button_types" value="both" />
-                <input type="hidden" name="auto_accept" value="" /><input type="hidden" name="auto_reject" value="" />
-                <input type="hidden" name="item_key" value="undefined" />
-                <Button class="EscrowButtonSecondary" type="submit" style={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#F78104" }}>Buy It Now</Button>
-                <img src="https://t.escrow-sandbox.com/1px.gif?name=bin&price&title=Buy%20Now&user_id=1295393" style={{display:"none"}} />
-              </form>
-              <form action="https://www.escrow-sandbox.com/offer" method="post">
-                <input type="hidden" name="type" value="domain_name" />
-                <input type="hidden" name="non_initiator_email" value="arslanm1517@gmail.com" /><input
-                  type="hidden" name="non_initiator_id" value="1295393" /><input type="hidden" name="non_initiator_role"
-                    value="seller" /><input type="hidden" name="title" value="Buy Now" /><input type="hidden" name="currency"
-                      value="USD" /><input type="hidden" name="domain" value="gamingstan.com" /><input type="hidden" name="price"
-                        value="5" /><input type="hidden" name="concierge" value="false" /><input type="hidden" name="with_content"
-                          value="false" />
-                <input type="hidden" name="inspection_period" value="1" /><input type="hidden" name="fee_payer"
-                  value="split" /><input type="hidden" name="return_url" value="" /><input type="hidden" name="button_types"
-                    value="both" /><input type="hidden" name="auto_accept" value="" /><input type="hidden" name="auto_reject"
-                      value="" /><input type="hidden" name="item_key" value="6060a3b0-c2a2-11ed-9ec3-cda813b5bb3c" />
-      
-                <Button class="EscrowButtonSecondary" type="submit" style={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#F78104" }}>Make An Offer</Button>
-                <img src="https://t.escrow-sandbox.com/1px.gif?name=bin&price=5&title=Buy%20Now&user_id=1295393" sx={{display: "none"}}/>
-              </form>
-              </CardActions>
+                  <form action="https://www.escrow-sandbox.com/checkout" method="post">
+                    <input type="hidden" name="type" value="domain_name" />
+                    <input type="hidden" name="non_initiator_email" value="arslanm1517@gmail.com" />
+                    <input type="hidden" name="non_initiator_id" value="1295393" />
+                    <input type="hidden" name="non_initiator_role" value="seller" />
+                    <input type="hidden" name="title" value="Buy Now" />
+                    <input type="hidden" name="currency" value="USD" />
+                    <input type="hidden" name="domain" value="gamingstan.com" />
+                    <input name="price" required value={price} type="hidden" />
+                    <input type="hidden" name="concierge" value="false" /><input type="hidden" name="with_content" value="false" /><input type="hidden" name="inspection_period" value="1" /><input type="hidden" name="fee_payer" value="split" /><input type="hidden" name="return_url" value="" /><input type="hidden" name="button_types" value="both" />
+                    <input type="hidden" name="auto_accept" value="" /><input type="hidden" name="auto_reject" value="" />
+                    <input type="hidden" name="item_key" value="undefined" />
+                    <Button class="EscrowButtonSecondary" type="submit" style={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#F78104" }}>Buy It Now</Button>
+                    <img src="https://t.escrow-sandbox.com/1px.gif?name=bin&price&title=Buy%20Now&user_id=1295393" style={{ display: "none" }} />
+                  </form>
+                  <form action="https://www.escrow-sandbox.com/offer" method="post">
+                    <input type="hidden" name="type" value="domain_name" />
+                    <input type="hidden" name="non_initiator_email" value="arslanm1517@gmail.com" /><input
+                      type="hidden" name="non_initiator_id" value="1295393" /><input type="hidden" name="non_initiator_role"
+                        value="seller" /><input type="hidden" name="title" value="Buy Now" /><input type="hidden" name="currency"
+                          value="USD" /><input type="hidden" name="domain" value="gamingstan.com" /><input type="hidden" name="price"
+                            value="5" /><input type="hidden" name="concierge" value="false" /><input type="hidden" name="with_content"
+                              value="false" />
+                    <input type="hidden" name="inspection_period" value="1" /><input type="hidden" name="fee_payer"
+                      value="split" /><input type="hidden" name="return_url" value="" /><input type="hidden" name="button_types"
+                        value="both" /><input type="hidden" name="auto_accept" value="" /><input type="hidden" name="auto_reject"
+                          value="" /><input type="hidden" name="item_key" value="6060a3b0-c2a2-11ed-9ec3-cda813b5bb3c" />
+
+                    <Button class="EscrowButtonSecondary" type="submit" style={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#F78104" }}>Make An Offer</Button>
+                    <img src="https://t.escrow-sandbox.com/1px.gif?name=bin&price=5&title=Buy%20Now&user_id=1295393" sx={{ display: "none" }} />
+                  </form>
+                </CardActions>
               </Grid>
             </Grid>
           </Grid>
-          
+
         </Container>
 
-          </main>
+      </main>
 
-         
+
     </div>
-    
+
   );
 };
 
