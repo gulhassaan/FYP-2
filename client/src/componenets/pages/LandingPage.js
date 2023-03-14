@@ -152,7 +152,7 @@ navigate('/login')
   }, [])
   return (
 
-    <div style={{backgroundColor:"rgba(0, 95, 96, 0.8)"}}>
+    <div style={{backgroundColor:"rgba(0, 0, 0, 0)"}}>
 <Navbar/>
     <main>
     <input
@@ -192,7 +192,7 @@ navigate('/login')
         {listOfAds.map((card) => (
           <Grid item key={card} xs={12} sm={6} md={3}>
             <Card
-            style={{backgroundColor:"#F78104",height:"450px",borderRadius:"20px"}}
+            style={{backgroundColor:"#FFFFFF",height:"450px",borderRadius:"20px"}}
             sx={{
               maxWidth: 280,
               margin: "0 auto",
