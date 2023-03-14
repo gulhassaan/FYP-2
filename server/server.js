@@ -411,11 +411,6 @@ app.get("/Search_Users/:S_User", (req, res) => {
 
 app.put("/Report_AD/:AdID",(req,res)=>{
     const AdID = req.params.AdID
-    const Report = req.params.Report;
-    console.log("THSI IS ID " ,AdID)
-    console.log("THSI IS R " ,Report)
-
-
     db.query("UPDATE users u  INNER JOIN  ads a ON u.email = a.email  SET u.Report =?  where a.Ad_id = ?",[1,AdID],(err,result)=>{
         if (err) throw err;
             else if (result.length == 0) {

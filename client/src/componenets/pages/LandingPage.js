@@ -17,7 +17,10 @@
 // //     </div>
 // //   );
 // // }
-
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -39,6 +42,8 @@ export const LandingPage = () => {
   const [listOfAds, setListOfAds] = useState([]);
   const [page, setpage] = useState(0);
   const [img, setimg] = useState([]);
+  const [Search, setSearch] = useState("");
+  const [Filter, setFilter] = useState("");
   useEffect(() => {
     axios.get(`http://localhost:3006/Get_AD`).then((response) => {
       console.log("THis is Response Data : ",response.data)
@@ -57,6 +62,88 @@ export const LandingPage = () => {
 navigate('/login')
   }
   
+  const searching = (e) => {
+    var S_AD = e.target.value;
+    setSearch(e.target.value)
+    console.log("THIS is search  : ", e.target.value)
+    if (S_AD.length != 0) {
+      axios.get(`http://localhost:3006/Search_Ad/${S_AD}`).then((response) => {
+        var data = response.data;
+        data.forEach(element => {
+
+          element.Images = JSON.parse(element.Images)
+
+        });
+        setListOfAds(data)
+      })
+    }
+    else {
+      axios.get(`http://localhost:3006/Get_AD`).then((response) => {
+        var data = response.data;
+        data.forEach(element => {
+
+          element.Images = JSON.parse(element.Images)
+
+        });
+        setListOfAds(data)
+      })
+    }
+  }
+
+  const Selectfilter = (e) => {
+    var filter = e.target.value;
+    setFilter(e.target.value)
+    if (filter == "High TO Low") {
+
+      console.log(Filter)
+      axios.get(`http://localhost:3006/filterHtoL`).then((response) => {
+        var data = response.data;
+        data.forEach(element => {
+
+          element.Images = JSON.parse(element.Images)
+
+        });
+        setListOfAds(data)
+      })
+
+    } else if (filter == "Low To High") {
+
+      axios.get(`http://localhost:3006/filterLtoH`).then((response) => {
+        var data = response.data;
+        data.forEach(element => {
+
+          element.Images = JSON.parse(element.Images)
+
+        });
+        setListOfAds(data)
+      })
+
+
+    }
+    else if (filter == "Latest") {
+      axios.get(`http://localhost:3006/filterLatest`).then((response) => {
+        var data = response.data;
+        data.forEach(element => {
+
+          element.Images = JSON.parse(element.Images)
+
+        });
+        setListOfAds(data)
+      })
+    }
+    else if (filter == "Oldest") {
+      axios.get(`http://localhost:3006/filterOldest`).then((response) => {
+        var data = response.data;
+        data.forEach(element => {
+
+          element.Images = JSON.parse(element.Images)
+
+        });
+        setListOfAds(data)
+      })
+    }
+
+  }
   useEffect(() => {
     if(localStorage.getItem('email_token'))
     {
@@ -68,6 +155,37 @@ navigate('/login')
     <div style={{backgroundColor:"rgba(0, 95, 96, 0.8)"}}>
 <Navbar/>
     <main>
+    <input
+      style={{"margin-top": "40px","width":"50px","marginLeft":"280px"}}
+        autoComplete="off"
+        placeholder='Search'
+        type="text"
+        className="customform w-50"
+        list="item-list"
+        onChange={searching}
+      ></input>
+        <FormControl sx={{ m: 1, minWidth: 180,marginLeft:60}} size="small">
+          <InputLabel id="demo-select-small">Filters</InputLabel>
+          <Select
+            labelId="demo-select-small"
+            id="demo-select-small"
+
+            value={Filter}
+            label="Filters"
+            onChange={Selectfilter}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={"High TO Low"}>High TO Low</MenuItem>
+            <MenuItem value={"Low To High"}>Low To High</MenuItem>
+            <MenuItem value={"Latest"}>Latest</MenuItem>
+            <MenuItem value={"Oldest"}>Oldtest</MenuItem>
+          </Select>
+        </FormControl>
+
+
+
     <Container  sx={{ py: 8 }}>
     
       <Grid container spacing={4}>
