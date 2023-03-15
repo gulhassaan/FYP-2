@@ -134,11 +134,11 @@ const ProductDetail = () => {
   const Report = (AdID) => {
     console.log(AdID)
     console.log(report)
-    axios.put(`http://localhost:3006/Report_AD/${AdID}`, { Report: report }).then((response) => {
+    axios.put(`http://localhost:3006/Report_AD/${AdID}`).then((response) => {
       console.log(response.data);
      
     })
-
+navigate("/home");
   }
 
   console.log(images);
@@ -176,7 +176,7 @@ const ProductDetail = () => {
             <Grid item xs={12} sm={5}>
               <Grid container height={'initial'} style={{ marginLeft: "10px" }}>
                 <Grid item xs={12}>
-                  <Typography gutterBottom variant="h2" style={{ fontweight: "bold" }} component="div">
+                  <Typography gutterBottom variant="h4" style={{ fontweight: "bold" }} component="div">
                     {product.title}
                   </Typography>
                 </Grid>
@@ -192,7 +192,7 @@ const ProductDetail = () => {
                   <Button variant="contained" onClick={() => { Report(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Report</Button>
             
                 </CardActions>
-                <CardActions sx={{ marginTop: "20px" }}>
+                <CardActions sx={{ marginTop: "5px" }}>
                   <form action="https://www.escrow-sandbox.com/checkout" method="post">
                     <input type="hidden" name="type" value="domain_name" />
                     <input type="hidden" name="non_initiator_email" value="arslanm1517@gmail.com" />
@@ -205,7 +205,7 @@ const ProductDetail = () => {
                     <input type="hidden" name="concierge" value="false" /><input type="hidden" name="with_content" value="false" /><input type="hidden" name="inspection_period" value="1" /><input type="hidden" name="fee_payer" value="split" /><input type="hidden" name="return_url" value="" /><input type="hidden" name="button_types" value="both" />
                     <input type="hidden" name="auto_accept" value="" /><input type="hidden" name="auto_reject" value="" />
                     <input type="hidden" name="item_key" value="undefined" />
-                    <Button class="EscrowButtonSecondary" type="submit" style={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#F78104" }}>Buy It Now</Button>
+                    <Button  type="submit" sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Buy It Now</Button>
                     <img src="https://t.escrow-sandbox.com/1px.gif?name=bin&price&title=Buy%20Now&user_id=1295393" style={{ display: "none" }} />
                   </form>
                   <form action="https://www.escrow-sandbox.com/offer" method="post">
@@ -221,7 +221,7 @@ const ProductDetail = () => {
                         value="both" /><input type="hidden" name="auto_accept" value="" /><input type="hidden" name="auto_reject"
                           value="" /><input type="hidden" name="item_key" value="6060a3b0-c2a2-11ed-9ec3-cda813b5bb3c" />
 
-                    <Button class="EscrowButtonSecondary" type="submit" style={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#F78104" }}>Make An Offer</Button>
+                    <Button type="submit" sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Make An Offer</Button>
                     <img src="https://t.escrow-sandbox.com/1px.gif?name=bin&price=5&title=Buy%20Now&user_id=1295393" sx={{ display: "none" }} />
                   </form>
                 </CardActions>

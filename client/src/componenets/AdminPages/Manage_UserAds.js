@@ -29,7 +29,7 @@ const Manage_UserAds = () => {
   
   const [listOfAds, setListOfAds] = useState([]);
   const [page, setpage] = useState(0);
-  const [Search, setSearch] = useState("");
+  const [search, setSearch] = useState("");
   const [Filter, setFilter] = useState("");
   const [img, setimg] = useState([]);
   useEffect(() => {
@@ -48,33 +48,33 @@ const Manage_UserAds = () => {
   }, []);
   
 
-  const searching = (e) => {
-    var S_AD = e.target.value;
-    setSearch(e.target.value)
-    console.log("THIS is search  : ", e.target.value)
-    if (S_AD.length != 0) {
-      axios.get(`http://localhost:3006/Search_Ad/${S_AD}`).then((response) => {
-        var data = response.data;
-        data.forEach(element => {
+  // const searching = (e) => {
+  //   var S_AD = e.target.value;
+  //   setSearch(e.target.value)
+  //   console.log("THIS is search  : ", e.target.value)
+  //   if (S_AD.length != 0) {
+  //     axios.get(`http://localhost:3006/Search_Ad/${S_AD}`).then((response) => {
+  //       var data = response.data;
+  //       data.forEach(element => {
 
-          element.Images = JSON.parse(element.Images)
+  //         element.Images = JSON.parse(element.Images)
 
-        });
-        setListOfAds(data)
-      })
-    }
-    else {
-      axios.get(`http://localhost:3006/Get_AD`).then((response) => {
-        var data = response.data;
-        data.forEach(element => {
+  //       });
+  //       setListOfAds(data)
+  //     })
+  //   }
+  //   else {
+  //     axios.get(`http://localhost:3006/Get_AD`).then((response) => {
+  //       var data = response.data;
+  //       data.forEach(element => {
 
-          element.Images = JSON.parse(element.Images)
+  //         element.Images = JSON.parse(element.Images)
 
-        });
-        setListOfAds(data)
-      })
-    }
-  }
+  //       });
+  //       setListOfAds(data)
+  //     })
+  //   }
+  // }
 
   const Selectfilter = (e) => {
     var filter = e.target.value;
@@ -126,41 +126,42 @@ const Manage_UserAds = () => {
     <div style={{ backgroundColor: "rgba(0, 95, 96, 0.8)" }}>
     <Navbar />
       <main>
-      
+      <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"50PX" }}>
       <input
-      style={{"margin-top": "40px","width":"50px","marginLeft":"280px"}}
-        autoComplete="off"
-        type="text"
+        style={{ width: '50%', marginRight: '0.5rem', backgroundColor: '#FFFFFF',color:"rgba(0, 95, 96, 0.8)" }}
+        autoComplete='off'
         placeholder='Search'
-        className="customform w-50"
-        list="item-list"
-        onChange={searching}
-      ></input>
-        <FormControl sx={{ m: 1, minWidth: 180,marginLeft:60}} size="small">
-          <InputLabel id="demo-select-small">Filters</InputLabel>
-          <Select
-            labelId="demo-select-small"
-            id="demo-select-small"
-
-            value={Filter}
-            label="Filters"
-            onChange={Selectfilter}
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={"All ADs"}>All ADs</MenuItem>
-            <MenuItem value={"Reported ADs"}>Reported ADs</MenuItem>
-          
-          </Select>
-        </FormControl>
-
-
-
+        type='text'
+        className='customform w-50'
+        list='item-list'
+        onChange={(e)=>{setSearch(e.target.value)}}
+      />
+    
+      <FormControl style={{ minWidth: 150 ,borderRadius:"20px"}} size='small'>
+        <InputLabel id='demo-select-small' style={{color:"rgba(0, 95, 96, 0.8)"}}>Filters</InputLabel>
+        <Select
+          labelId='demo-select-small'
+          id='demo-select-small'
+          value={Filter}
+          label='Filters'
+          onChange={Selectfilter}
+          style={{borderRadius:"20px",height:"45px",color:"rgba(0, 95, 96, 0.8)"}}
+  
+        >
+          <MenuItem value=''  style={{borderRadius:"20px",color:"rgba(0, 95, 96, 0.8)"}}>
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value={"All ADs"}  style={{borderRadius:"20px",color:"rgba(0, 95, 96, 0.8)"}}>All ADs</MenuItem>
+          <MenuItem  value={"Reported ADs"}  style={{borderRadius:"20px",color:"rgba(0, 95, 96, 0.8)"}}>Reported ADs</MenuItem>
+         </Select>
+      </FormControl>
+    </div>
         <Container sx={{ py: 8 }}>
 
           <Grid container spacing={4}>
-            {listOfAds.map((card) => (
+            {listOfAds.filter((card)=>{
+              return search.toLowerCase()===''?card:(card.title.toLowerCase().includes(search) ||card.adCategory.toLowerCase().includes(search)); 
+            }).map((card) => (
               <Grid item key={card} xs={12} sm={6} md={3}>
                 <Card
                   style={{ backgroundColor: "#F78104", height: "400px", borderRadius: "20px" }}
