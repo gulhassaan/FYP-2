@@ -89,6 +89,7 @@ function Managead() {
 
 
   return (
+    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
     <div>
       <Navbar />
       <div>
@@ -99,7 +100,7 @@ function Managead() {
             <h1>Manage Ad Featuring Packages</h1>
           </div>
           <div>
-            <button className="manage-btn" onClick={navi} style={{ "background-color": "#008083" }}>
+            <button className="manage-btn" onClick={navi} style={{ "background-color": "#FFFFFF" }}>
               <img className='pass-icon' src={add} />
               Add Packages
             </button>
@@ -169,6 +170,7 @@ function Managead() {
 
         </div>
       </div>
+    </div>
     </div>
   )
 }

@@ -132,6 +132,19 @@
   background-color: #008083;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
+.adminforgot-btn
+{
+  border: 2px solid #008083;
+  color: #FFFFFF;
+  border-radius: 30px;
+  text-align: center;
+  margin-top: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: -20px;
+  background-color: #008083;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
 .Forgot {
 
   text-align: center;
@@ -254,10 +267,10 @@ margin-right: -120px;
   justify-content: center;
   height: 380px;
   width: 150%;
-  box-shadow: 11px 12px 13px 12px rgb(8, 8, 8);
+  box-shadow: 8px 8px 8px 8px rgb(8, 8, 8);
   padding-top: 20px;
   border-radius: 20px;
-  background-color: #F78104;
+  background-color: #FFFFFF;
 
 }
 ::-webkit-input-placeholder {
@@ -940,9 +953,9 @@ footer {
   
 }
 .admin-logout-btn{
-  color: #F78104;
+  color: #FFFFFF;
   font-size: 16px;
-  border: 2px solid #F78104;
+  border: 2px solid #0D8485;
   border-radius: 30px;
  padding: 10px 30px;
   text-decoration: none;
@@ -1202,13 +1215,13 @@ footer {
   background-color: #FFFFFF;
 }
 .page-heading {
-  background-color: rgba(0, 95, 96, 0.8);
+  
   height: 100vh;
 
 }
 
 .pageheading {
-  color: #F78104;
+  color: #008083;
   text-align: center;
   padding: 35px;
 }

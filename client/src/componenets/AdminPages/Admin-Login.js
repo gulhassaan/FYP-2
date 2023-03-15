@@ -119,6 +119,7 @@ else{
     }
   }, [])
   return (
+    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
     <div>
 
       <section className="sign-in">
@@ -140,6 +141,7 @@ else{
                   </label>
 
                   <input
+                  style={{ backgroundColor: '#FFFFFF' }}
                     type="email"
                     name="email"
                     id="email"
@@ -161,6 +163,7 @@ else{
                     <img className="pass-icon" src={pas}></img>
                   </label>
                   <input
+                  style={{ backgroundColor: '#FFFFFF' }}
                     type="password"
                     name="passwrod"
                     id="password"
@@ -185,7 +188,7 @@ else{
                 </div>
 
                
-            <button className="forgot-btn" type="submit" onClick={login}>Log In</button>
+            <button className="adminforgot-btn" type="submit" onClick={login}>Log In</button>
 
 
               </form>
@@ -199,7 +202,7 @@ else{
         </div>
       </section>
     </div>
-
+</div>
   )
 } 
 export default AdminLogin;
