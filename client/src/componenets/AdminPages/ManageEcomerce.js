@@ -153,7 +153,7 @@ function Managead() {
                 }).map((card) => (
                   <Grid item key={card} xs={12} sm={6} md={3}>
                     <Card
-                      style={{ backgroundColor: "#F78104", height: "380px", borderRadius: "20px" }}
+                      style={{ backgroundColor: "#FFFFFF", height: "380px", borderRadius: "20px" }}
                       raised
                       sx={{
                         maxWidth: 280,
@@ -186,9 +186,9 @@ function Managead() {
                         <br></br>
                       </CardContent>
                       {
-                        check==1 ?<div> <Button class="pkg-btn" style={{'margin-left': '15px', color: 'orange' }} onClick={() => { delete_Product(card.ID) }}>Delete</Button>
-                        <Button class="pkg-btn" style={{ 'margin-left': '10px', color: 'orange' }} onClick={() => { UpdateProduct(card.ID) }}>Update</Button></div>
-                        :<Button class="pkg-btn" style={{ 'margin-left': '15px', color: 'orange' }} onClick={() => { Active_Product(card.ID) }}>Activate</Button>
+                        check==1 ?<div> <Button class="pkg-btn" style={{'margin-left': '15px', color: '#FFFFFF' }} onClick={() => { delete_Product(card.ID) }}>Delete</Button>
+                        <Button class="pkg-btn" style={{ 'margin-left': '10px', color: "#FFFFFF" }} onClick={() => { UpdateProduct(card.ID) }}>Update</Button></div>
+                        :<Button class="pkg-btn" style={{ 'margin-left': '15px', color: '#FFFFFF' }} onClick={() => { Active_Product(card.ID) }}>Activate</Button>
                         }
                </Card>
                   </Grid>
