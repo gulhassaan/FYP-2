@@ -37,8 +37,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { color } from '@mui/system';
 import Navbar from './Navbar';
-import "@fontsource/montserrat";
-import { Link, useNavigate } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 export const LandingPage = () => {
   const [listOfAds, setListOfAds] = useState([]);
   const [page, setpage] = useState(0);
@@ -47,22 +46,22 @@ export const LandingPage = () => {
   const [Filter, setFilter] = useState("");
   useEffect(() => {
     axios.get(`http://localhost:3006/Get_AD`).then((response) => {
-      console.log("THis is Response Data : ", response.data)
+      console.log("THis is Response Data : ",response.data)
       var temp = response.data;
       temp.forEach(element => {
 
         element.Images = JSON.parse(element.Images)
-
+      
       });
       setListOfAds(temp);
-      console.log("After parse : ", temp)
+      console.log("After parse : ",temp)
     });
   }, []);
   const navigate = useNavigate();
   const moreinfo = () => {
-    navigate('/login')
+navigate('/login')
   }
-
+  
   const searching = (e) => {
     var S_AD = e.target.value;
     setSearch(e.target.value)
@@ -146,106 +145,105 @@ export const LandingPage = () => {
 
   }
   useEffect(() => {
-    if (localStorage.getItem('email_token')) {
+    if(localStorage.getItem('email_token'))
+    {
       navigate('/home')
     }
   }, [])
   return (
 
-    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)", FontFamily: "Arial" }}>
-      <Navbar />
-      <main>
-      <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"50PX" }}>
-  <input
-    style={{ width: '50%', marginRight: '1rem', backgroundColor: '#FFFFFF' }}
-    autoComplete='off'
-    placeholder='Search'
-    type='text'
-    className='customform w-50'
-    list='item-list'
-    onChange={searching}
-  />
+    <div style={{backgroundColor:"rgba(0, 0, 0, 0)"}}>
+<Navbar/>
+    <main>
+    <input
+      style={{"margin-top": "40px","width":"50px","marginLeft":"280px"}}
+        autoComplete="off"
+        placeholder='Search'
+        type="text"
+        className="customform w-50"
+        list="item-list"
+        onChange={searching}
+      ></input>
+        <FormControl sx={{ m: 1, minWidth: 180,marginLeft:60}} size="small">
+          <InputLabel id="demo-select-small">Filters</InputLabel>
+          <Select
+            labelId="demo-select-small"
+            id="demo-select-small"
 
-  <FormControl sx={{ minWidth: 180 }} size='small'>
-    <InputLabel id='demo-select-small'>Filters</InputLabel>
-    <Select
-      labelId='demo-select-small'
-      id='demo-select-small'
-      value={Filter}
-      label='Filters'
-      onChange={Selectfilter}
-    >
-      <MenuItem value=''>
-        <em>None</em>
-      </MenuItem>
-      <MenuItem value={'High TO Low'}>High to Low</MenuItem>
-      <MenuItem value={'Low To High'}>Low to High</MenuItem>
-      <MenuItem value={'Latest'}>Latest</MenuItem>
-      <MenuItem value={'Oldest'}>Oldest</MenuItem>
-    </Select>
-  </FormControl>
-</div>
+            value={Filter}
+            label="Filters"
+            onChange={Selectfilter}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={"High TO Low"}>High TO Low</MenuItem>
+            <MenuItem value={"Low To High"}>Low To High</MenuItem>
+            <MenuItem value={"Latest"}>Latest</MenuItem>
+            <MenuItem value={"Oldest"}>Oldtest</MenuItem>
+          </Select>
+        </FormControl>
 
 
 
-        <Container sx={{ py: 8 }}>
+    <Container  sx={{ py: 8 }}>
+    
+      <Grid container spacing={4}>
+        {listOfAds.map((card) => (
+          <Grid item key={card} xs={12} sm={6} md={3}>
+            <Card
+            style={{backgroundColor:"#FFFFFF",height:"450px",borderRadius:"20px"}}
+            sx={{
+              maxWidth: 280,
+              margin: "0 auto",
+              padding: "0.1em",
+              maxHeight:450
+            }}
+            >
+              <CardMedia
+                component="img"
+            
+                height={200}
+                image={card.Images[0]}
+                alt="random"
+                sx={{ padding: "1em 1em 0 1em" }}
+              />
+              <CardContent sx={{ flexGrow: 1 }}  >
+                <Typography gutterBottom variant="h6" component="h6" sx={{ fontWeight: 'bold' }} style={{color:"rgba(0, 95, 96, 0.8)"}}>
+                  {card.title}
+                </Typography>
 
-          <Grid container spacing={4}>
-            {listOfAds.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={3}>
-                <Card
-                  style={{ backgroundColor: "#FFFFFF", height: "380px", borderRadius: "20px", boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)" }}
-                  sx={{
-                    maxWidth: 280,
-                    margin: "0 auto",
-                    padding: "0.1em",
-                    maxHeight: 450
-                  }}
-                >
-                  <CardMedia
-                    component="img"
+                <Typography variant="p">
+                 {card.Description}
+                </Typography>
+<br></br>
+                <Typography variant="p" style={{topmargin:"5px",color:"rgba(0, 95, 96, 0.8)"}}>
+                {card.Location}
+               </Typography>
+               <br></br>
+                <Typography variant="p" style={{color:"rgba(0, 95, 96, 0.8)"}}>
+                {card.date}
+               </Typography>
+               <br></br>
+               <Typography variant="p" sx={{ fontWeight: 'bold' }} style={{color:"rgba(0, 95, 96, 0.8)"}}>
+                 Rs.{card.Cost}/-
+                </Typography>
+              </CardContent>
+              <Box alignItems={"center"} >
+                      <CardActions sx={{ marginLeft: 8}}>
+                        <Button class="forgot-btn" onClick={moreinfo}>More Info</Button>
 
-                    height={200}
-                    image={card.Images[0]}
-                    alt="random"
-                    sx={{ padding: "1em 1em 0 1em" }}
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}  >
-                    <Typography gutterBottom variant="h6" component="h6" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)" }}>
-                      {card.title}
-                    </Typography>
-
-                    <Typography variant="p">
-                      {card.Description}
-                    </Typography>
-                    <br></br>
-                    <Typography variant="p" style={{ topmargin: "5px", color: "rgba(0, 95, 96, 0.8)" }}>
-                      {card.Location}
-                    </Typography>
-                    <br></br>
-                    <Typography variant="p" style={{ color: "rgba(0, 95, 96, 0.8)" }}>
-                      {card.date}
-                    </Typography>
-                    <br></br>
-                    <Typography variant="p" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)" }}>
-                      Rs.{card.Cost}/-
-                    </Typography>
-                  </CardContent>
-                  <Box alignItems={"center"} >
-                    <CardActions sx={{ marginLeft: 8 }}>
-                      <Button class="forgot-btn" onClick={moreinfo}>More Info</Button>
-
-                    </CardActions>
-                  </Box>
-                </Card>
-              </Grid>
-            ))}
+                      </CardActions>
+                    </Box>
+            </Card>
           </Grid>
-          <Stack spacing={2} alignItems={"center"}>
-            <Pagination count={10} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
-          </Stack>
-        </Container>
-      </main>
+        ))}
+      </Grid>
+        <Stack spacing={2} alignItems={"center"}>
+<Pagination count={10} sx={{marginTop:7}} variant="outlined" color="secondary" onChange={(e,v)=>setpage(v-1)} />
+</Stack>
+    </Container>
+  </main>
 
 
 
