@@ -10,7 +10,7 @@ app.use(cors());
 const db = mysql.createConnection({
     user: "root",
     host: "localhost",
-    password: "password",
+    password: "root1234",
     database: "gamingstan"
 });
 
@@ -411,7 +411,8 @@ app.get("/Search_Users/:S_User", (req, res) => {
 
 app.put("/Report_AD/:AdID",(req,res)=>{
     const AdID = req.params.AdID
-    db.query("UPDATE users u  INNER JOIN  ads a ON u.email = a.email  SET u.Report =?  where a.Ad_id = ?",[1,AdID],(err,result)=>{
+    const temp =1;
+    db.query(`UPDATE users u JOIN  ads a ON u.email = a.email  SET a.Report =${temp}  where a.Ad_id = ${AdID}`,(err,result)=>{
         if (err) throw err;
             else if (result.length == 0) {
                 console.log("User Not Reported")

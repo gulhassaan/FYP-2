@@ -29,7 +29,7 @@ const ManageUsers = () => {
 
   const [listOfUsers, setListOfUsers] = useState([]);
   const [page, setpage] = useState(0);
-  const [Search, setSearch] = useState("");
+  const [search, setSearch] = useState("");
   const [Filter, setFilter] = useState("");
   const [img, setimg] = useState([]);
   const [check, setcheck] = useState();
@@ -46,23 +46,23 @@ const ManageUsers = () => {
   }, []);
 
 
-  const searching = (e) => {
-    var S_User = e.target.value;
-    setSearch(e.target.value)
+  // const searching = (e) => {
+  //   var S_User = e.target.value;
+  //   setSearch(e.target.value)
 
-    if (S_User.length != 0) {
-      axios.get(`http://localhost:3006/Search_Users/${S_User}`).then((response) => {
-        var data = response.data;
-        setListOfUsers(data)
-      })
-    }
-    else {
-      axios.get(`http://localhost:3006/Get_User`).then((response) => {
-        var data = response.data;
-        setListOfUsers(data)
-      })
-    }
-  }
+  //   if (S_User.length != 0) {
+  //     axios.get(`http://localhost:3006/Search_Users/${S_User}`).then((response) => {
+  //       var data = response.data;
+  //       setListOfUsers(data)
+  //     })
+  //   }
+  //   else {
+  //     axios.get(`http://localhost:3006/Get_User`).then((response) => {
+  //       var data = response.data;
+  //       setListOfUsers(data)
+  //     })
+  //   }
+  // }
 
   const Selectfilter = (e) => {
     var filter = e.target.value;
@@ -121,42 +121,44 @@ const ManageUsers = () => {
     <div style={{ backgroundColor: "rgba(0, 95, 96, 0.8)" }}>
       <Navbar />
       <main>
-        <div style={{ "display": "inline" }}>
-          <input
-            style={{ "margin-top": "40px", "width": "50px", "marginLeft": "280px" }}
-            autoComplete="off"
-            type="text"
-            placeholder='Search'
-            className="customform w-50"
-            list="item-list"
-            onChange={searching}
-          ></input>
-          <FormControl sx={{ m: 1, minWidth: 180, marginLeft: 60 }} size="small">
-            <InputLabel id="demo-select-small">Filters</InputLabel>
-            <Select
-              labelId="demo-select-small"
-              id="demo-select-small"
-
-              value={Filter}
-              label="Filters"
-              onChange={Selectfilter}
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={"All Users"}>All Users</MenuItem>
-              <MenuItem value={"Reported Users"}>Reported Users</MenuItem>
-              <MenuItem value={"Blocked Users"}>Blocked Users</MenuItem>
-            </Select>
-          </FormControl>
-        </div>
-
-
+      <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"50PX" }}>
+      <input
+        style={{ width: '50%', marginRight: '0.5rem', backgroundColor: '#FFFFFF',color:"rgba(0, 95, 96, 0.8)" }}
+        autoComplete='off'
+        placeholder='Search'
+        type='text'
+        className='customform w-50'
+        list='item-list'
+        onChange={(e)=>{setSearch(e.target.value)}}
+      />
+    
+      <FormControl style={{ minWidth: 150 ,borderRadius:"20px"}} size='small'>
+        <InputLabel id='demo-select-small' style={{color:"rgba(0, 95, 96, 0.8)"}}>Filters</InputLabel>
+        <Select
+          labelId='demo-select-small'
+          id='demo-select-small'
+          value={Filter}
+          label='Filters'
+          onChange={Selectfilter}
+          style={{borderRadius:"20px",height:"45px",color:"rgba(0, 95, 96, 0.8)"}}
+  
+        >
+          <MenuItem value=''  style={{borderRadius:"20px",color:"rgba(0, 95, 96, 0.8)"}}>
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value={"All Users"}  style={{borderRadius:"20px",color:"rgba(0, 95, 96, 0.8)"}}>All ADs</MenuItem>
+          <MenuItem value={"Reported Users"} style={{borderRadius:"20px",color:"rgba(0, 95, 96, 0.8)"}}>Reported ADs</MenuItem>  
+          <MenuItem value={"Blocked Users"}  style={{borderRadius:"20px",color:"rgba(0, 95, 96, 0.8)"}}>Blocked Users</MenuItem>
+         </Select>
+      </FormControl>
+    </div>
         <main>
           <Container sx={{ py: 8, marginTop: 2 }}>
 
             <Grid container spacing={4}>
-              {listOfUsers.map((card) => (
+              {listOfUsers.filter((card)=>{
+                return search.toLowerCase()===''?card:(card.Name.toLowerCase().includes(search) ||card.email.toLowerCase().includes(search)); 
+              }).map((card) => (
                 <Grid class="package-card" item key={card} xs={12} sm={6} md={3}>
                   <Card
 
