@@ -24,6 +24,7 @@ const ProductDetail = () => {
   const [report, setReport] = useState(1);
   const [price, setPrice] = useState(0);
   const [usd, setusd] = useState(0);
+  const [amount, setamount] = useState(0);
   useEffect(() => {
     setuser(localStorage.getItem("user"));
     setRoom(localStorage.getItem('room'));
@@ -41,6 +42,8 @@ const ProductDetail = () => {
 
     });
 
+    
+    console.log("helo");
     console.log("price is : ", price)
     var myHeaders = new Headers();
     myHeaders.append("apikey", "rw0nYmOlRCyiLK0xnxwMNnBrk6iLYJK3");
@@ -52,16 +55,22 @@ const ProductDetail = () => {
     };
 
     fetch(`https://api.apilayer.com/fixer/convert?to=usd&from=pkr&amount=${price}`, requestOptions)
-      .then(response => response.text())
+      .then(response => response.json())
       .then(result => setusd(result))
       .catch(error => console.log('error', error));
 
 
-      
+    console.log("THis is the :", usd["result"])
+    
+    setamount(usd["result"])
+    console.log("PRICE IN USD IS : ",amount);
+
   }, []);
 
-  console.log("THis is :", usd)
 
+  const conversion = () => {
+   
+  }
   // const getUser = (AdID) => {
   //   setuser(localStorage.getItem("user"));
   //   setRoom(localStorage.getItem('room'));
@@ -83,6 +92,9 @@ const ProductDetail = () => {
   //   }
   // })
   // }
+ 
+
+  
 
   const GO = (id) => {
     setuser(localStorage.getItem("user"));
@@ -124,9 +136,8 @@ const ProductDetail = () => {
     console.log(report)
     axios.put(`http://localhost:3006/Report_AD/${AdID}`, { Report: report }).then((response) => {
       console.log(response.data);
-      navigate("/home")
+     
     })
-
 
   }
 
@@ -137,11 +148,11 @@ const ProductDetail = () => {
     }
   }, [])
   return (
-    <div style={{ backgroundColor: "rgba(0, 95, 96, 1)" }}>
+    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
       <Navbar />
       <main>
-        <Container sx={{ py: 3 }} style={{ backgroundColor: "rgba(0, 95, 96, 0.8)" }}>
-          <Grid container spacing={1} marginTop={5} style={{ backgroundColor: "#F78104", height: "550px", borderRadius: "20px", color: "rgba(0, 95, 96, 2)" }}>
+        <Container sx={{ py: 3 }} >
+          <Grid container spacing={1} marginTop={5} style={{ backgroundColor: "#FFFFFF", height: "550px", borderRadius: "20px", color: "rgba(0, 95, 96, 2)", boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)" }}>
             <Grid item xs={12} sm={7}>
               <Grid container padding={1}>
                 <Grid item xs={12} height={350} width="inherit" borderRadius={3}>
@@ -177,9 +188,9 @@ const ProductDetail = () => {
                   Price: Rs.{product.Cost}/-
                 </Typography></Grid>
                 <CardActions sx={{ marginTop: "20px" }}>
-                  <Button variant="contained" onClick={() => { GO(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#F78104" }}>Contact Seller</Button>
-                  <Button variant="contained" onClick={() => { Report(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#F78104" }}>Report</Button>
-
+                  <Button variant="contained" onClick={() => { GO(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Contact Seller</Button>
+                  <Button variant="contained" onClick={() => { Report(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Report</Button>
+            
                 </CardActions>
                 <CardActions sx={{ marginTop: "20px" }}>
                   <form action="https://www.escrow-sandbox.com/checkout" method="post">
@@ -190,7 +201,7 @@ const ProductDetail = () => {
                     <input type="hidden" name="title" value="Buy Now" />
                     <input type="hidden" name="currency" value="USD" />
                     <input type="hidden" name="domain" value="gamingstan.com" />
-                    <input name="price" required value={price} type="hidden" />
+                    <input name="price" required value={amount} type="hidden" />
                     <input type="hidden" name="concierge" value="false" /><input type="hidden" name="with_content" value="false" /><input type="hidden" name="inspection_period" value="1" /><input type="hidden" name="fee_payer" value="split" /><input type="hidden" name="return_url" value="" /><input type="hidden" name="button_types" value="both" />
                     <input type="hidden" name="auto_accept" value="" /><input type="hidden" name="auto_reject" value="" />
                     <input type="hidden" name="item_key" value="undefined" />

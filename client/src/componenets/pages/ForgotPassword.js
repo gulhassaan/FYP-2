@@ -97,6 +97,7 @@ function ForgotPassword() {
       }
     }, [])
     return (
+      <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
       <div>
         <Navbar />
         <section className="Forgot">
@@ -122,6 +123,7 @@ function ForgotPassword() {
                       <img className="pass-icon" src={ema}></img>
                     </label>
                     <input
+                    style={{ backgroundColor: '#FFFFFF' }}
                       type="email"
                       name="email"
                       id="email"
@@ -131,6 +133,7 @@ function ForgotPassword() {
 
                     ></input>
                     <input
+                    style={{ backgroundColor: '#FFFFFF' }}
                       type="hidden"
                       name="otpg"
                       id="otpg"
@@ -150,6 +153,7 @@ function ForgotPassword() {
                       <img className="pass-icon" src={pin}></img>
                     </label>
                     <input
+                    style={{ backgroundColor: '#FFFFFF' }}
                       type="pin"
                       name="pin"
                       id="pin"
@@ -163,6 +167,7 @@ function ForgotPassword() {
                     checkotp?<span style={{color:"red",marginRight:"65px"}}>Invalid OTP</span>:""
                   }
                   <input
+                  style={{ backgroundColor: '#FFFFFF' }}
                     type="hidden"
                     name="generatedOtp"
                     defaultValue={otp_generated}
@@ -179,6 +184,7 @@ function ForgotPassword() {
             </div>
           </div>
         </section>
+      </div>
       </div>
     );
   }

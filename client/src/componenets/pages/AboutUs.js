@@ -21,9 +21,7 @@ function AboutUs() {
     <div className="about-form">
     
       <div className="signin-form">
-      <a >
-                    <img className="aboutbackarrow-icon" src={arrow} alt=""></img>
-                </a>
+      
         <h2 className="form-title">About Us</h2>
         <form
           className=""

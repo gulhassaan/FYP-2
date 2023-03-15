@@ -582,6 +582,7 @@ const DesHandle=(e)=>{
                    
                     <h6>Type</h6>
                     <select
+                    style={{ backgroundColor: '#FFFFFF' }}
                       name=""
                       id="category-btn"
                       className="customform w-100"
@@ -600,6 +601,7 @@ const DesHandle=(e)=>{
 
                       {Type == "Account" ? (
                         <input
+                        style={{ backgroundColor: '#FFFFFF' }}
                           type="text"
                           id="game_list"
                           className="customform w-100"
@@ -609,6 +611,7 @@ const DesHandle=(e)=>{
                         ></input>
                       ) : (
                         <input
+                        style={{ backgroundColor: '#FFFFFF' }}
                           type="text"
                           id="hardware_list"
                           className="customform w-100"
@@ -626,6 +629,7 @@ const DesHandle=(e)=>{
                     <div className="autocomplete w-50 p-1">
                       <h6>Your Ad's Location</h6>
                       <input
+                      style={{ backgroundColor: '#FFFFFF' }}
                         autoComplete="off"
                         type="text"
                         className="customform w-100"
@@ -646,6 +650,7 @@ const DesHandle=(e)=>{
                     <div className="w-50 p-1">
                       <h6>Ad Title</h6>
                       <input
+                      style={{ backgroundColor: '#FFFFFF' }}
                         value={title}
                         onChange={titleHandle}
                         name=""
@@ -662,6 +667,7 @@ const DesHandle=(e)=>{
                     <div className="w-50 p-1">
                       <h6>Set Price</h6>
                       <input
+                      style={{ backgroundColor: '#FFFFFF' }}
                         value={price}
                         onChange={priceHandle}
                         type="text"
@@ -682,6 +688,7 @@ const DesHandle=(e)=>{
                     </div>
                     <h6>Ad Description</h6>
                     <textarea
+                    style={{ backgroundColor: '#FFFFFF' }}
                       name=""
                       id=""
                       className="customform1 w-100"

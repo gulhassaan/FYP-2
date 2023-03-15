@@ -124,6 +124,7 @@ else{
     }
   }, [])
   return (
+    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
     <div>
       <Navbar />
 
@@ -146,6 +147,7 @@ else{
                   </label>
 
                   <input
+                  style={{ backgroundColor: '#FFFFFF' }}
                     type="email"
                     name="email"
                     id="email"
@@ -167,6 +169,7 @@ else{
                     <img className="pass-icon" src={pas}></img>
                   </label>
                   <input
+                  style={{ backgroundColor: '#FFFFFF' }}
                     type="password"
                     name="passwrod"
                     id="password"
@@ -212,6 +215,7 @@ else{
           </div>
         </div>
       </section>
+    </div>
     </div>
 
   )
