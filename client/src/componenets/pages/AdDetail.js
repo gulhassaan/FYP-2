@@ -22,12 +22,15 @@ const ProductDetail = () => {
   const [room, setRoom] = useState("");
   const navigate = useNavigate();
   const [report, setReport] = useState(1);
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState(1000);
   const [usd, setusd] = useState(0);
   const [amount, setamount] = useState(0);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
+    setPrice(1000)
     setuser(localStorage.getItem("user"));
     setRoom(localStorage.getItem('room'));
+    setLoading(true)
     axios.get(`http://localhost:3006/Get_Up_Ad/${AdD}`).then((response) => {
       var temp = response.data;
       temp.forEach(element => {
@@ -39,38 +42,56 @@ const ProductDetail = () => {
       setImages(temp[0].Images)
       setMainImage(temp[0].Images[0])
       setProduct(temp[0])
+      setLoading(false);
+      console.log("got data")
 
     });
 
-    
-    console.log("helo");
-    console.log("price is : ", price)
-    var myHeaders = new Headers();
-    myHeaders.append("apikey", "rw0nYmOlRCyiLK0xnxwMNnBrk6iLYJK3");
-
-    var requestOptions = {
-      method: 'GET',
-      redirect: 'follow',
-      headers: myHeaders
-    };
-
-    fetch(`https://api.apilayer.com/fixer/convert?to=usd&from=pkr&amount=${price}`, requestOptions)
-      .then(response => response.json())
-      .then(result => setusd(result))
-      .catch(error => console.log('error', error));
+    console.log("after axios")
 
 
-    console.log("THis is the :", usd["result"])
-    
-    setamount(usd["result"])
-    console.log("PRICE IN USD IS : ",amount);
 
   }, []);
 
+  useEffect(() => {
 
-  const conversion = () => {
-   
-  }
+    if (!loading) {
+      console.log("after get data")
+
+      console.log("price is : ", price)
+      var myHeaders = new Headers();
+      myHeaders.append("apikey", "c1F2fsIXBMc9OXXhnfNSUiWzNKsBoKGo");
+
+      var requestOptions = {
+        method: 'GET',
+        redirect: 'follow',
+        headers: myHeaders
+      };
+
+      fetch(`https://api.apilayer.com/fixer/convert?to=usd&from=pkr&amount=${price}`, requestOptions)
+        .then(response =>
+           response.json()
+          )
+        .then(result => {
+          console.log("result",result.result)
+          // setusd(result)
+          // console.log("THis is the :", usd["result"])
+          setamount(result.result)
+          console.log("PRICE IN USD IS : ", amount);
+        })
+        .catch(error => console.log('error', error));
+
+
+      // axios.get(`https://api.apilayer.com/fixer/convert?to=usd&from=pkr&amount=${price}`,requestOptions).then((response) => {
+      //   var temp = response.data;
+      //   console.log("hello" + temp)
+
+
+      // });
+
+
+    }
+  }, [loading])
   // const getUser = (AdID) => {
   //   setuser(localStorage.getItem("user"));
   //   setRoom(localStorage.getItem('room'));
@@ -92,9 +113,9 @@ const ProductDetail = () => {
   //   }
   // })
   // }
- 
 
-  
+
+
 
   const GO = (id) => {
     setuser(localStorage.getItem("user"));
@@ -136,9 +157,10 @@ const ProductDetail = () => {
     console.log(report)
     axios.put(`http://localhost:3006/Report_AD/${AdID}`).then((response) => {
       console.log(response.data);
-     
+
     })
-navigate("/home");
+
+    navigate("/home");
   }
 
   console.log(images);
@@ -190,7 +212,7 @@ navigate("/home");
                 <CardActions sx={{ marginTop: "20px" }}>
                   <Button variant="contained" onClick={() => { GO(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Contact Seller</Button>
                   <Button variant="contained" onClick={() => { Report(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Report</Button>
-            
+
                 </CardActions>
                 <CardActions sx={{ marginTop: "5px" }}>
                   <form action="https://www.escrow-sandbox.com/checkout" method="post">
@@ -205,7 +227,7 @@ navigate("/home");
                     <input type="hidden" name="concierge" value="false" /><input type="hidden" name="with_content" value="false" /><input type="hidden" name="inspection_period" value="1" /><input type="hidden" name="fee_payer" value="split" /><input type="hidden" name="return_url" value="" /><input type="hidden" name="button_types" value="both" />
                     <input type="hidden" name="auto_accept" value="" /><input type="hidden" name="auto_reject" value="" />
                     <input type="hidden" name="item_key" value="undefined" />
-                    <Button  type="submit" sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Buy It Now</Button>
+                    <Button type="submit" sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Buy It Now</Button>
                     <img src="https://t.escrow-sandbox.com/1px.gif?name=bin&price&title=Buy%20Now&user_id=1295393" style={{ display: "none" }} />
                   </form>
                   <form action="https://www.escrow-sandbox.com/offer" method="post">
