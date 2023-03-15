@@ -374,7 +374,7 @@ border-radius: 80px;
   border-radius: 15px;
   padding: 9px 30px;
   margin: 5px 8px;
-  background-color: #F78104;
+  background-color: #FFFFFF;
   border: 2px solid #008083;
 box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 80px;
@@ -487,10 +487,11 @@ border-radius: 80px;
 }
 .updatepkg-btn{
   border: 2px solid #008083;
-  color: #F78104;
+  color: #FFFFFF;
   border-radius: 30px;
-  padding: 9px 25px;
-  margin: 17px;
+  padding: 9px 35px;
+  margin: 27px;
+  margin-left: 60px;
   background-color: #008083;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -501,6 +502,7 @@ border-radius: 80px;
   padding: 9px 25px;
   margin-top: 20px;
   margin-bottom: 20px;
+  padding-left: 30px;
   margin-left: -30px;
   background-color: #008083;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -517,7 +519,17 @@ border-radius: 80px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .package-card{
-  padding: 9px 30px;
+
+  box-shadow: 8px 8px 8px 8px rgb(0, 0, 0, 0.25);
+  background-color: #FFFFFF;
+  border-radius: 20px;
+}
+.manageusers-card{
+  margin-left: 70px;
+  margin-bottom: 50px;
+  box-shadow: 8px 8px 8px rgb(0, 0, 0, 0.25);
+  background-color: #FFFFFF;
+  border-radius: 20px;
 }
 .myad-card{
   padding: 9px 10px;
@@ -1180,7 +1192,7 @@ footer {
   box-shadow: 7px 9px 12px 5px rgb(8, 8, 8);
   padding-top: 35px;
   border-radius: 20px;
-  background-color: #F78104;
+  background-color: #FFFFFF;
 }
 
 .text-err {
@@ -1236,23 +1248,35 @@ footer {
   margin-left: 60px;
   margin-bottom: 10px;
   margin-top: 50px;
-  color: #F78104;
-
+  
 }
-
+.select:hover::after {
+  background-color: #008083;
+  color: #FFFFFF;
+}
 .manage-btn {
   border-radius: 20px;
-  text-decoration: none;
-  background-color: transparent;
-  color: #F78104;
-  border-color: #F78104;
+  
+  color: #FFFFFF;
+  border-color: 3px solid #008083;
   font-size: larger;
-  width: 20%;
+  width: 15%;
   margin-top: 20px;
-  margin-left: 20px;
+  margin-left: 50px;
   transform: translate(50%, 35%);
 }
-
+.addproduct-btn{
+  border-radius: 20px;
+  background-color: #008083;
+  color: #FFFFFF;
+  border-color: 3px solid #008083;
+  font-size: larger;
+  width: 15%;
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.25);
+  margin-top: 20px;
+  margin-left: 50px;
+  transform: translate(50%, 35%);
+}
 /* Utilities */
 .custom-form {
   background-color: #F78104;
@@ -1268,13 +1292,30 @@ footer {
   font-size: 6px;
 }
 #city_list{
-  
+  background-color: #FFFFFF;
 }
+#hardware_list{
+  background-color: #FFFFFF;
+}
+#game_list{
+  background-color: #FFFFFF;
+}
+
 .customform{
-  background-color: #F78104;
   color: #008083;
   border-radius: 80px;
   width: 100%;
+  display: block;
+  max-width: 90%;
+  outline: 2px solid #008083;
+  background-color: #FFFFFF;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.cat{
+  color: #008083;
+  border-radius: 80px;
+  width: 100%;
+  background-color: #FFFFFF;
   display: block;
   max-width: 90%;
   outline: 2px solid #008083;

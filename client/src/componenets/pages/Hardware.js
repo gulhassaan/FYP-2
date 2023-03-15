@@ -564,8 +564,8 @@ const DesHandle=(e)=>{
                       className="customform w-100"
                       onClick={setcat}
                     >
-                      <option value="Account">Account</option>
-                      <option value="Hardware">Hardware</option>
+                      <option value="Account" style={{ backgroundColor: '#FFFFFF' }}>Account</option>
+                      <option value="Hardware" style={{ backgroundColor: '#FFFFFF' }}>Hardware</option>
                     </select>
                   </div>
                   <hr></hr>
@@ -579,7 +579,7 @@ const DesHandle=(e)=>{
                         style={{ backgroundColor: '#FFFFFF' }}
                           type="text"
                           id="game_list"
-                          className="customform w-100"
+                          className="cat w-100"
                           placeholder="Select Game"
                         onChange={setacc}
                         ></input>
@@ -588,7 +588,7 @@ const DesHandle=(e)=>{
                         style={{ backgroundColor: '#FFFFFF' }}
                           type="text"
                           id="hardware_list"
-                          className="customform w-100"
+                          className="cat w-100"
                           placeholder="Select Hardware"
                           onChange={sethard}
                         ></input>
@@ -673,7 +673,7 @@ const DesHandle=(e)=>{
                   </div>
 
                   <div className="d-flex mt-3 justify-content-between">
-                    <MultiUploader/ >
+                    <MultiUploader/>
                     {errI ? <span style={{ color: "red" }}>Images Is Required</span> : ""}
                   </div>
                

@@ -100,14 +100,14 @@ function Managead() {
             <h1>Manage Ad Featuring Packages</h1>
           </div>
           <div>
-            <button className="manage-btn" onClick={navi} style={{ "background-color": "#FFFFFF" }}>
+          <button className="manage-btn" onClick={navi} style={{ "background-color": "#008083", "borderColor": "#008083", "boxShadow": "4px 4px 4px rgba(0, 0, 0, 0.25)" }}>
               <img className='pass-icon' src={add} />
               Add Packages
             </button>
           </div>
           <div className='head'>
-            <button style={{ "background-color": "#008083", "color": "#F78104", "borderRadius": "10px", "borderColor": "#F78104", "marginRight": "10px" }} onClick={() => { CurrentPkg() }}>Current Packages</button>
-            <button style={{ "background-color": "#008083", "color": "#F78104", "borderRadius": "10px", "borderColor": "#F78104", "marginRight": "10px" }} onClick={() => { PreviousPkg() }}>Previous Packages</button>
+          <button style={{ "background-color": "#008083", "color": "#FFFFFF", "borderRadius": "10px", "borderColor": "#008083", "marginRight": "10px", "boxShadow": "4px 4px 4px rgba(0, 0, 0, 0.25)" }} onClick={() => { CurrentPkg() }}>Current Packages</button>
+            <button style={{ "background-color": "#008083", "color": "#FFFFFF", "borderRadius": "10px", "borderColor": "#008083", "marginRight": "10px", "boxShadow": "4px 4px 4px rgba(0, 0, 0, 0.25)" }} onClick={() => { PreviousPkg() }}>Previous Packages</button>
           </div>
 
           <main>
@@ -118,7 +118,7 @@ function Managead() {
                   <Grid class="package-card" item key={card} xs={12} sm={6} md={3}>
                     <Card
 
-                      style={{ backgroundColor: "#F78104", height: "260px", width: "300px", borderRadius: "20px" }}
+style={{ backgroundColor: "#FFFFFF", height: "260px", width: "300px", borderRadius: "20px" }}
                       sx={{
                         height: "100%",
                         display: "flex",
@@ -146,9 +146,9 @@ function Managead() {
                       <Box alignItems={"center"} >
                         <CardActions sx={{ marginLeft: 9 }}>
                           {
-                          check==1 ?<div> <Button class="pkg-btn" style={{ color: 'orange' }} onClick={() => { delete_AdPac(card.AdF_id) }}>Delete</Button>
-                          <Button class="pkg-btn" style={{ 'margin-left': '10px', color: 'orange' }} onClick={() => { update(card.AdF_id) }}>Update</Button></div>
-                          :<Button class="pkg-btn" style={{ 'margin-left': '15px', color: 'orange' }} onClick={() => { Active_AdPac(card.AdF_id) }}>Activate</Button>
+                          check==1 ?<div> <Button class="pkg-btn" style={{ color: 'white' }} onClick={() => { delete_AdPac(card.AdF_id) }}>Delete</Button>
+                          <Button class="pkg-btn" style={{ 'margin-left': '10px', color: 'white' }} onClick={() => { update(card.AdF_id) }}>Update</Button></div>
+                          :<Button class="pkg-btn" style={{ 'margin-left': '15px', color: 'white' }} onClick={() => { Active_AdPac(card.AdF_id) }}>Activate</Button>
                           }
                           
                         </CardActions>

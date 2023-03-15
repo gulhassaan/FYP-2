@@ -135,14 +135,14 @@ function Managead() {
                                 <h1>Manage Ad Ecomerce Store</h1>
                             </div>
                             <div>
-                                <button className="manage-btn" onClick={navi} style={{ "background-color": "#FFFFFF" }}>
+                                <button className="addproduct-btn" onClick={navi} >
                                     <img className='pass-icon' src={add} />
                                     Add Product
                                 </button>
                             </div>
                             <div className='head'>
-                                <button style={{ "background-color": "#008083", "color": "#F78104", "borderRadius": "10px", "borderColor": "#F78104", "marginRight": "10px" }} onClick={() => { CurrentPkg() }}>Current Product</button>
-                                <button style={{ "background-color": "#008083", "color": "#F78104", "borderRadius": "10px", "borderColor": "#F78104", "marginRight": "10px" }} onClick={() => { PreviousPkg() }}>Previous Product</button>
+                                <button style={{ "background-color": "#008083", "color": "#FFFFFF", "borderRadius": "10px", "borderColor": "#008083", "marginRight": "10px", "box-shadow": "8px 8px 8px rgba(0, 0, 0, 0.25)" }} onClick={() => { CurrentPkg() }}>Available Products</button>
+                                <button style={{ "background-color": "#008083", "color": "#FFFFFF", "borderRadius": "10px", "borderColor": "#008083", "marginRight": "10px", "box-shadow": "8px 8px 8px rgba(0, 0, 0, 0.25)" }} onClick={() => { PreviousPkg() }}>Unavailable Products</button>
                             </div>
 
             <Container sx={{ py: 8 }}>

@@ -118,7 +118,7 @@ const ManageUsers = () => {
 
   return (
 
-    <div style={{ backgroundColor: "rgba(0, 95, 96, 0.8)" }}>
+    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
       <Navbar />
       <main>
       <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"50PX" }}>
@@ -133,7 +133,7 @@ const ManageUsers = () => {
       />
     
       <FormControl style={{ minWidth: 150 ,borderRadius:"20px"}} size='small'>
-        <InputLabel id='demo-select-small' style={{color:"rgba(0, 95, 96, 0.8)"}}>Filters</InputLabel>
+      <InputLabel id='demo-select-small' style={{color:"#000000"}}>Filters</InputLabel>
         <Select
           labelId='demo-select-small'
           id='demo-select-small'
@@ -143,12 +143,12 @@ const ManageUsers = () => {
           style={{borderRadius:"20px",height:"45px",color:"rgba(0, 95, 96, 0.8)"}}
   
         >
-          <MenuItem value=''  style={{borderRadius:"20px",color:"rgba(0, 95, 96, 0.8)"}}>
+          <MenuItem value=''  style={{borderRadius:"20px",color:"#000000"}}>
             <em>None</em>
           </MenuItem>
-          <MenuItem value={"All Users"}  style={{borderRadius:"20px",color:"rgba(0, 95, 96, 0.8)"}}>All ADs</MenuItem>
-          <MenuItem value={"Reported Users"} style={{borderRadius:"20px",color:"rgba(0, 95, 96, 0.8)"}}>Reported ADs</MenuItem>  
-          <MenuItem value={"Blocked Users"}  style={{borderRadius:"20px",color:"rgba(0, 95, 96, 0.8)"}}>Blocked Users</MenuItem>
+          <MenuItem value={"All Users"}  style={{borderRadius:"20px",color:"#000000"}}>All ADs</MenuItem>
+          <MenuItem value={"Reported Users"} style={{borderRadius:"20px",color:"#000000)"}}>Reported ADs</MenuItem>  
+          <MenuItem value={"Blocked Users"}  style={{borderRadius:"20px",color:"#000000"}}>Blocked Users</MenuItem>
          </Select>
       </FormControl>
     </div>
@@ -159,10 +159,10 @@ const ManageUsers = () => {
               {listOfUsers.filter((card)=>{
                 return search.toLowerCase()===''?card:(card.Name.toLowerCase().includes(search) ||card.email.toLowerCase().includes(search)); 
               }).map((card) => (
-                <Grid class="package-card" item key={card} xs={12} sm={6} md={3}>
+                <Grid class="manageusers-card" item key={card} xs={12} sm={6} md={3}>
                   <Card
 
-                    style={{ backgroundColor: "#F78104", height: "260px", width: "300px", borderRadius: "20px" }}
+                    style={{ backgroundColor: "#FFFFFF", height: "260px", width: "300px", borderRadius: "20px" }}
                     sx={{
                       height: "100%",
                       display: "flex",
@@ -190,8 +190,8 @@ const ManageUsers = () => {
                     <Box alignItems={"center"} >
                       <CardActions sx={{ marginLeft: 9 }}>
                         {check == 1 ?
-                          <Button class="pkg-btn" style={{ color: 'orange','margin-left': '25px' }} onClick={() => { BlockUser(card.email) }}>Block</Button>
-                          : <Button class="pkg-btn" style={{ 'margin-left': '12px', color: 'orange' }} onClick={() => { UnblockUser(card.email) }}>UnBlock</Button>
+                          <Button class="pkg-btn" style={{ color: 'white','margin-left': '25px' }} onClick={() => { BlockUser(card.email) }}>Block</Button>
+                          : <Button class="pkg-btn" style={{ 'margin-left': '12px', color: 'white' }} onClick={() => { UnblockUser(card.email) }}>Unblock</Button>
                         }
                       </CardActions>
                     </Box>

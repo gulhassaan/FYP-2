@@ -214,7 +214,7 @@ export const Home = () => {
             }).map((card) => (
               <Grid item key={card} xs={12} sm={6} md={3}>
                 <Card
-                  style={{ backgroundColor: "rgb(228, 232, 240)", height: "330px", borderRadius: "20px", boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)" }}
+                  style={{ backgroundColor: "#FFFFFF", height: "330px", borderRadius: "20px", boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)" }}
                   raised
                   sx={{
                     maxWidth: 280,

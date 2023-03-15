@@ -131,6 +131,7 @@ const [errP, seterrP] = useState(false)
                 <img className='pass-icon' src={add}></img>
               </label>
               <input
+              style={{ backgroundColor: '#FFFFFF' }}
                 type="title"
                 name="password"
                 id="password"
@@ -150,6 +151,7 @@ const [errP, seterrP] = useState(false)
                     <img className="pass-icon" src={det}></img>
                   </label>
                   <input
+                  style={{ backgroundColor: '#FFFFFF' }}
                     type="Description"
                     name="pin"
                     id="pin"
@@ -168,6 +170,7 @@ const [errP, seterrP] = useState(false)
                     <img className="pass-icon" src={pri}></img>
                   </label>
                   <input
+                  style={{ backgroundColor: '#FFFFFF' }}
                     type="pin"
                     name="pin"
                     id="pin"

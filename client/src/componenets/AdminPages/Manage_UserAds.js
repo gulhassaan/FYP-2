@@ -123,7 +123,7 @@ const Manage_UserAds = () => {
   }
   return (
 
-    <div style={{ backgroundColor: "rgba(0, 95, 96, 0.8)" }}>
+    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
     <Navbar />
       <main>
       <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"50PX" }}>
@@ -145,14 +145,14 @@ const Manage_UserAds = () => {
           value={Filter}
           label='Filters'
           onChange={Selectfilter}
-          style={{borderRadius:"20px",height:"45px",color:"rgba(0, 95, 96, 0.8)"}}
+          style={{borderRadius:"20px",height:"45px",color:"#000000"}}
   
         >
-          <MenuItem value=''  style={{borderRadius:"20px",color:"rgba(0, 95, 96, 0.8)"}}>
+           <MenuItem value=''  style={{borderRadius:"20px",color:"#000000)"}}>
             <em>None</em>
           </MenuItem>
-          <MenuItem value={"All ADs"}  style={{borderRadius:"20px",color:"rgba(0, 95, 96, 0.8)"}}>All ADs</MenuItem>
-          <MenuItem  value={"Reported ADs"}  style={{borderRadius:"20px",color:"rgba(0, 95, 96, 0.8)"}}>Reported ADs</MenuItem>
+          <MenuItem value={"All ADs"}  style={{borderRadius:"20px",color:"#000000"}}>All ADs</MenuItem>
+          <MenuItem  value={"Reported ADs"}  style={{borderRadius:"20px",color:"#000000"}}>Reported ADs</MenuItem>
          </Select>
       </FormControl>
     </div>
@@ -164,7 +164,7 @@ const Manage_UserAds = () => {
             }).map((card) => (
               <Grid item key={card} xs={12} sm={6} md={3}>
                 <Card
-                  style={{ backgroundColor: "#F78104", height: "400px", borderRadius: "20px" }}
+                  style={{ backgroundColor: "#FFFFFF", height: "400px", borderRadius: "20px" }}
                   raised
                   sx={{
                     maxWidth: 280,
@@ -197,7 +197,7 @@ const Manage_UserAds = () => {
                     <br></br>
                   </CardContent>
   
-                  <Button class="pkg-btn" style={{ 'margin-left': '60px', color: 'orange' }} onClick={()=>{Del_Ads(card.Ad_id)}}>Delete</Button>
+                  <Button class="pkg-btn" style={{ 'margin-left': '80px', color: 'white' }} onClick={()=>{Del_Ads(card.Ad_id)}}>Delete</Button>
            
                 </Card>
               </Grid>

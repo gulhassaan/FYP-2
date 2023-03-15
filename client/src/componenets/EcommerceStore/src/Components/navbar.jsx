@@ -9,12 +9,7 @@ export const Navbar = () => {
       <div className='logo'>
         <GameController size={32} />
       </div>
-      <div className='links'>
-        <Link to='/'>Shop</Link>
-        <Link to='/cart'>
-          <ShoppingCart size={32} />
-        </Link>
-      </div>
+
     </div>
   );
 };

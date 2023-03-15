@@ -94,6 +94,7 @@ function Addpackage() {
 
 
   return (
+    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
     <div>
     <Navbar/>
     
@@ -117,6 +118,7 @@ function Addpackage() {
                   <img className='pass-icon' src={add}></img>
                 </label>
                 <input
+                style={{ backgroundColor: '#FFFFFF' }}
                   type="name"
                   name="password"
                   id="password"
@@ -134,6 +136,7 @@ function Addpackage() {
                   <img className="pass-icon" src={det}></img>
                 </label>
                 <input
+                style={{ backgroundColor: '#FFFFFF' }}
                   type="pin"
                   name="pin"
                   id="pin"
@@ -152,6 +155,7 @@ function Addpackage() {
                   <img className="pass-icon" src={pri}></img>
                 </label>
                 <input
+                style={{ backgroundColor: '#FFFFFF' }}
                 value={price}
                   type="pin"
                   name="pin"
@@ -178,6 +182,7 @@ function Addpackage() {
         </div>
       </div>
     </section>
+    </div>
     </div>
   )
 }
