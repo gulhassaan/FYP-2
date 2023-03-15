@@ -85,6 +85,25 @@ app.post("/publish", async (req, res) => {
     res.json("Success");
 })
 
+//FOR Add Product 
+app.post("/Productpublish", async (req, res) => {
+
+    const Name = req.body.Name;
+    const Description = req.body.Description;
+    const Price = req.body.Price;
+    const Images = req.body.Images;
+    const Quantity=req.body.Quantity
+
+    console.log("PUB :  ", Images)
+    db.query(
+        "INSERT INTO product (Name,Description,Price,Images,Quantity) VALUES (?,?,?,?,?)",
+        [Name, Description, Price, Images,Quantity],
+        (err, result) => {
+            console.log(err);
+        }
+    );
+    res.json("Success");
+})
 //FOR USER Login
 app.post("/login", (req, res) => {
 
@@ -174,6 +193,99 @@ app.get("/Get_AdPackages", (req, res) => {
     })
 })
 
+//Get All Products
+app.get("/Get_Product", (req, res) => {
+    console.log("im a server")
+    db.query(`SELECT * FROM product Where Status=1`, (err, result) => {
+        res.send(result);
+
+    })
+})
+
+//For Delete Product
+app.put("/del_Product/:id", (req, res) => {
+    const ID = req.params.id;
+    console.log(ID)
+    db.query(`UPDATE product SET Status=0 WHERE ID = '${ID}'`, (err, result) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.send(result)
+        }
+    })
+})
+
+//Get prevous Products
+app.get("/Get_PreProduct", (req, res) => {
+   
+    db.query(`SELECT * FROM product Where Status=0`, (err, result) => {
+        res.send(result);
+
+    })
+})
+
+
+//For Active Product
+app.put("/Active_Product/:id", (req, res) => {
+    const ID = req.params.id;
+    db.query(`UPDATE product SET Status=1 WHERE ID = '${ID}'`, (err, result) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.send(result)
+        }
+    })
+})
+
+
+//For getting specific Product for updation
+app.get("/get_product_edit/:ProID", (req, res) => {
+    const id = req.params.ProID;
+    console.log("Serverr : ", id)
+    db.query(`SELECT * FROM product WHERE ID = '${id}' AND Status=1`, (err, result) => {
+        res.send(result);
+
+    })
+})
+
+
+//For Updating Product
+app.put("/update_Product/:ProID", (req, res) => {
+    const ID = req.params.ProID;
+    const Name = req.body.Name;
+    const Description = req.body.Description;
+    const Price = req.body.Price;
+    const Images = req.body.Images;
+const Quantity = req.body.Quantity;
+    console.log("SERVER SIDE : ", Images)
+
+
+
+    db.query(
+        "UPDATE product SET Name = ?,Description = ?,Price = ?,Images=?,Quantity=? WHERE ID = ?",
+        [Name, Description, Price, Images, Quantity, ID],
+        (err, result) => {
+            if (err) throw err;
+            else if (result.length == 0) {
+                console.log("Product Not Updated")
+                // res.status=404
+                // res.send({found:false})
+                return res.status(404).send({ found: false })
+            }
+            else {
+                res.send({ found: true })
+                console.log("Product Updated Successfully")
+            }
+        }
+    );
+
+
+
+})
+
+
 //Get prevous Ad Packages
 app.get("/Get_PreAdPackages", (req, res) => {
     console.log("im a server")
@@ -182,6 +294,8 @@ app.get("/Get_PreAdPackages", (req, res) => {
 
     })
 })
+
+
 //For Delete Package
 app.put("/del_AdPackage/:id", (req, res) => {
     const AdFID = req.params.id;

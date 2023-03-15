@@ -11,7 +11,7 @@ const Navbar2 = () => {
         <a href="/managead"> <b>Home</b> </a>
         <a href="/manageusersads"><b>Ads</b> </a>
         <a href="/manageusers"><b>User</b> </a>
-        <a href="/managead"><b>E-commerce Store</b> </a>
+        <a href="/managestore"><b>E-commerce Store</b> </a>
         <a href="/managead"><b>Ad Featuring Package</b> </a>
 </div>
 <a className="admin-logout-btn" onClick={() => {

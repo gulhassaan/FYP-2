@@ -26,11 +26,16 @@ import AdDetail from "./componenets/pages/AdDetail"
 import AppC from "./componenets/chatsys/AppC"
 import Manage_UserAds from "./componenets/AdminPages/Manage_UserAds";
 import ManageUsers from "./componenets/AdminPages/ManageUsers";
+import Ecomerce from "./componenets/EcommerceStore/src/App";
+import ManageEcomerce from "./componenets/AdminPages/ManageEcomerce";
+import AddProduct from "./componenets/AdminPages/AddProduct";
+import UpdateProduct from "./componenets/AdminPages/UpdateProduct";
 //Context APIs
 const EmailContext = createContext();
 const ImagesContext = createContext();
 const AdContext = createContext();
 const AdFContext = createContext();
+const ProContext = createContext();
 const AdDContext = createContext()
 function App() {
   //global states
@@ -38,6 +43,7 @@ function App() {
   const [Email, setEMAIL] = useState("");
   const [AdID, setAdID] = useState("");
   const [AdFID, setAdFID] = useState("");
+  const [ProID, setProID] = useState("");
   const [AdD, setAdD]=useState('');
   return (
     <EmailContext.Provider value={{ Email, setEMAIL }}>
@@ -45,7 +51,7 @@ function App() {
         <AdFContext.Provider value={{ AdFID, setAdFID }}>
           <ImagesContext.Provider value={{ Images, setImages }}>
           <AdDContext.Provider value={{AdD,setAdD}}>
-   
+   <ProContext.Provider value={{ProID,setProID}}>
             <div className="page-containerr">
               <div className="content-wrap">
                 {/**/}
@@ -59,10 +65,13 @@ function App() {
                     <Route path="/landingpage" element={<LandingPage/>}></Route>
                     <Route path="/login" element={<Login />}></Route>
                     <Route path="/addetail" element={<AdDetail />}></Route>
-
+                    <Route path="/ecomerce" element={<Ecomerce />}></Route>
+                    <Route path="/addproduct" element={<AddProduct />}></Route>
                     <Route path="/signup" element={<Signup />}></Route>
+                    <Route path="/updateproduct" element={<UpdateProduct />}></Route>
 <Route path="/service" element={<AboutUs />}></Route>
                     <Route path="/updatead" element={<UpdateAd />}></Route>
+                    <Route path="/managestore" element={<ManageEcomerce />}></Route>
                     <Route
                       path="/forgotpassword"
                       element={<ForgotPassword />}
@@ -96,6 +105,7 @@ function App() {
                 <Footer />
               </div>
             </div>
+            </ProContext.Provider>
             </AdDContext.Provider>
    
           </ImagesContext.Provider>
@@ -110,7 +120,7 @@ export { EmailContext };
 export { AdContext };
 export { ImagesContext };
 export { AdFContext };
-
+export { ProContext };
 export {AdDContext};
 
 
