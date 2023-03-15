@@ -11,6 +11,7 @@ import { NavLink } from "react-router-dom";
 import AddImage from "../images/Add-Image.png";
 import arrow from "../images/arrow.png";
 import Navbar from "./NavbarNotSell";
+import "@fontsource/montserrat";
 
 import { MultiUploader } from "../../Uploader/Uploader";
 

@@ -8,7 +8,7 @@ import "../pages/App.css";
 import "../pages/test.css";
 import arrow from "../images/arrow.png";
 
-
+import Navbar from './Navbar2';
 import { MultiUploader } from "../../Uploader/Uploader";
 
 export default function AddProduct() {
@@ -158,6 +158,7 @@ export default function AddProduct() {
     }, [])
     return (
         <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
+            <Navbar />
             <div className="back">
 
                 <section className="sell-main">
@@ -167,7 +168,7 @@ export default function AddProduct() {
                                 {/* New Design */}
                                 <div className="">
                                     <div className="d-flex align-items-center w-full justify-content-between p-1">
-                                        <a href="/home">
+                                        <a href="/managestore">
                                             <img className="pass-icon4" src={arrow} alt=""></img>
                                         </a>
                                         <h2 className="form-title mx-auto">ADD PRODUCT</h2>

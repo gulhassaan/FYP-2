@@ -11,6 +11,8 @@ import pas from '../images/password.png'
 import './App.css'
 import { EmailContext } from "../../App";
 import Navbar from "./NavbarLogin";
+import "@fontsource/montserrat";
+
 export const Login = (props) => {
   //const [email, setEmail] = useState('');
 

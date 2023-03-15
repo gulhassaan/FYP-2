@@ -1179,7 +1179,7 @@ footer {
   justify-content: center;
   display: flex;
   padding: 30px 0 90px 0;
-  background-color: rgba(0, 95, 96, 0.8);
+  background-color: #FFFFFF;
   height: 600px;
 }
 
@@ -1260,7 +1260,7 @@ footer {
   color: #FFFFFF;
   border-color: 3px solid #008083;
   font-size: larger;
-  width: 15%;
+  width: 17%;
   margin-top: 20px;
   margin-left: 50px;
   transform: translate(50%, 35%);

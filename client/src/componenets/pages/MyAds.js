@@ -19,6 +19,8 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { color } from '@mui/system';
 import Navbar from './NavbarHome';
+import "@fontsource/montserrat";
+
 export const MyAds = () => {
   
   const [Ads, setAds] = useState([]);

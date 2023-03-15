@@ -132,7 +132,7 @@ function Managead() {
          
         </div>
         <div class="pageheading">
-                                <h1>Manage Ad Ecomerce Store</h1>
+                                <h1>Manage Ecomerce Store</h1>
                             </div>
                             <div>
                                 <button className="addproduct-btn" onClick={navi} >

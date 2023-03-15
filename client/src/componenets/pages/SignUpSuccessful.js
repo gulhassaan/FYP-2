@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import './App.css';
 import { NavLink, useNavigate } from "react-router-dom";
 import upd from '../images/updated.png';
+import "@fontsource/montserrat";
+
 import Navbar from './Navbar';
 function SignUpSuccessfully() {
   const navigate = useNavigate();
