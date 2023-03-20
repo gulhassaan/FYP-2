@@ -10,7 +10,7 @@ app.use(cors());
 const db = mysql.createConnection({
     user: "root",
     host: "localhost",
-    password: "password",
+    password: "root1234",
     database: "gamingstan"
 });
 
@@ -625,3 +625,9 @@ app.get("/get_userE/:AdID", (req, res) => {
 app.listen(3006, () => {
     console.log("server listening on port 3006")
 })
+
+
+console.log("This is ,y final year project gamingstan p2p market place for gammers where gamers can buy")
+
+
+
