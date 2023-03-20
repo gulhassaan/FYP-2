@@ -39,7 +39,7 @@ import Navbar from './NavbarHome';
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { EmailContext } from "../../App";
 import { AdDContext } from "../../App";
-
+import "@fontsource/montserrat";
 export const Home = () => {
 
 

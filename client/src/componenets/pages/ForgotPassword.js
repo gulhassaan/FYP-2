@@ -8,6 +8,8 @@ import emailjs from "@emailjs/browser";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import arrow from "../images/arrow.png";
+import "@fontsource/montserrat";
+
 function ForgotPassword() {
 
   const form = useRef();

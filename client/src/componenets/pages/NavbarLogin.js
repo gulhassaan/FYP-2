@@ -66,6 +66,8 @@ export default Navbar;*/
 import React, { useState } from "react";
 import './App.css';
 import logo1 from '../images/logo.png';
+import "@fontsource/montserrat";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (

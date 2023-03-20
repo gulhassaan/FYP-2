@@ -38,6 +38,8 @@ import Container from "@mui/material/Container";
 import { color } from '@mui/system';
 import Navbar from './Navbar';
 import { Link,useNavigate } from "react-router-dom";
+import "@fontsource/montserrat";
+
 export const LandingPage = () => {
   const [listOfAds, setListOfAds] = useState([]);
   const [page, setpage] = useState(0);

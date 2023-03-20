@@ -8,6 +8,8 @@ import email1 from '../images/email.png'
 import phone1 from '../images/icons8-phone-book-80.png'
 import password1 from '../images/password.png'
 import user1 from '../images/icons8-user-60.png'
+import "@fontsource/montserrat";
+
 import emailjs from "@emailjs/browser";
 function Signup() {
   //  const [user, setUser] = useState("");

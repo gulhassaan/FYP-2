@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import logo from '../images/logo1.png';
+import "@fontsource/montserrat";
+
 function Footer() {
   return (
     <div className='main-footer'>

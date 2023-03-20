@@ -4,6 +4,7 @@ import { NavLink,useNavigate } from "react-router-dom";
 import upd from '../images/updated.png';
 import Navbar from './Navbar';
 import arrow from '../images/arrow.png'
+import "@fontsource/montserrat";
 function AboutUs() {
   const navigate=useNavigate();
   useEffect(() => {

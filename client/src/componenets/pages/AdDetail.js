@@ -5,6 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 //import { global } from "../App";
 import { AdDContext } from "../../App";
+import "@fontsource/montserrat";
 // import io from "socket.io-client";
 // const socket = io.connect("http://localhost:3001");
 

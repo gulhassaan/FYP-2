@@ -4,6 +4,8 @@ import logo1 from '../images/logo.png';
 import chat from '../images/chat.png';
 import bell from '../images/bell.png';
 import account from '../images/account.png';
+import "@fontsource/montserrat";
+
 import drop from '../images/drop.png';
 const NavbarHome = () => {
   const [isOpen, setIsOpen] = useState(false);

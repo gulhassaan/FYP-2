@@ -5,6 +5,8 @@ import pin from '../images/pin.png';
 import arrow from '../images/arrow.png'
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
+import "@fontsource/montserrat";
+
 import { Link,useNavigate } from "react-router-dom";
 import Navbar from './Navbar';
 function Reset() {

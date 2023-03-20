@@ -4,6 +4,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import upd from '../images/updated.png';
 import Navbar from './Navbar';
 import useEffect from "react";
+import "@fontsource/montserrat";
+
 function Updated() {
   const navigate=useNavigate()
   useEffect(() => {
