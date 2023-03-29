@@ -71,6 +71,7 @@ export const Login = (props) => {
           setEmailerr(false);
           setPasserr(false);
           localStorage.setItem('email_token', email)
+          setEMAIL(email);
   
         //  errors.email = 'Congratulation Successfully Login';
           { navigate('/home') }

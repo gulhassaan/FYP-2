@@ -442,9 +442,9 @@ app.put("/UnblockUser/:email", (req, res) => {
 app.get("/Get_Up_Ad/:AdID", (req, res) => {
     const id = req.params.AdID;
     console.log("Serverr : ", id)
-    db.query(`SELECT * FROM ads WHERE Ad_id = '${id}' AND Status=1`, (err, result) => {
+    db.query(`SELECT a.*,u.contact_number FROM ads a join users u  on a.email =  u.email where a.Ad_id = ${id} AND a.Status=1`, (err, result) => {
         res.send(result);
-
+console.log(result[0].contact_number)
     })
 })
 
