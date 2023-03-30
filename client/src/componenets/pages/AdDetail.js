@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import Navbar from './NavbarHome';
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+
 //import { global } from "../App";
 import { AdDContext,EmailContext } from "../../App";
 import "@fontsource/montserrat";
@@ -11,9 +12,9 @@ import "@fontsource/montserrat";
 
 const ProductDetail = () => {
 
-  //let { id } = useParams();
-  // const { user } = useContext(global);
-  //  const isLoggedIn=!!user.id
+
+
+
 const {Email,setEMAIL} = useContext(EmailContext)
   const [images, setImages] = useState([]);
   const [mainImage, setMainImage] = useState('');
@@ -24,9 +25,9 @@ const {Email,setEMAIL} = useContext(EmailContext)
   const [room, setRoom] = useState("");
   const navigate = useNavigate();
   const [report, setReport] = useState(1);
-  const [price, setPrice] = useState(1000);
+  const [price, setPrice] = useState();
   const [usd, setusd] = useState(0);
-  const [amount, setamount] = useState(0);
+  const [amount, setamount] = useState(78);
   const [loading, setLoading] = useState(true);
   const [contact_number,setContact] = useState();
   useEffect(() => {
@@ -63,23 +64,21 @@ const {Email,setEMAIL} = useContext(EmailContext)
 
     if (!loading) {
       console.log("after get data")
-
       console.log("price is : ", price)
       var myHeaders = new Headers();
-      myHeaders.append("apikey", "c1F2fsIXBMc9OXXhnfNSUiWzNKsBoKGo");
+
+      myHeaders.append("apikey", "WkVouJ3EwA3LB3wz0LSmrdRGCR2B9Ue1");
 
       var requestOptions = {
         method: 'GET',
         redirect: 'follow',
         headers: myHeaders
       };
-
+console.log("HELO HELP HE:LP ")
       fetch(`https://api.apilayer.com/fixer/convert?to=usd&from=pkr&amount=${price}`, requestOptions)
-        .then(response =>
-           response.json()
-          )
+        .then(response => response.json())
         .then(result => {
-          console.log("result",result.result)
+          console.log("result is",result.result)
           // setusd(result)
           // console.log("THis is the :", usd["result"])
           setamount(result.result)
