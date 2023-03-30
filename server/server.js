@@ -202,6 +202,15 @@ app.get("/Get_Product", (req, res) => {
     })
 })
 
+//Get Specific Product
+app.get("/Get_Up_Product/:AdD", (req, res) => {
+    const id = req.params.AdD;
+    console.log("Serverr : ", id)
+    db.query(`SELECT * FROM product where ID = ${id} AND Status=1`, (err, result) => {
+        res.send(result);
+    })
+})
+
 //For Delete Product
 app.put("/del_Product/:id", (req, res) => {
     const ID = req.params.id;
@@ -371,6 +380,16 @@ app.post("/forget", (req, res) => {
         else {
             res.send("user found")
         }
+    })
+})
+
+
+//Get All Products
+//FOR Geting All Ads    
+app.get("/Get_Products", (req, res) => {
+    db.query(`SELECT * FROM product where Status=1 AND Quantity > 0`, (err, result) => {
+        res.send(result);
+      
     })
 })
 

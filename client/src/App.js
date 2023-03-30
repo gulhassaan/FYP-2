@@ -30,7 +30,8 @@ import Ecomerce from "./componenets/EcommerceStore/src/App";
 import ManageEcomerce from "./componenets/AdminPages/ManageEcomerce";
 import AddProduct from "./componenets/AdminPages/AddProduct";
 import UpdateProduct from "./componenets/AdminPages/UpdateProduct";
-
+import StoreHome from "./componenets/EcomercePages/StoreHome";
+import ProductDetail from "./componenets/EcomercePages/ProductDetail";
 //Context APIs
 const EmailContext = createContext();
 const ImagesContext = createContext();
@@ -78,10 +79,10 @@ function App() {
                       element={<ForgotPassword />}
                     ></Route>
                     <Route path="/updated" element={<Updated />}></Route>
-                  
+                    <Route path="/productdetail" element={<ProductDetail />}></Route>
                     <Route path="/MyAds" element={<MyAds />}></Route>
                     <Route path="/reset" element={<Reset />}></Route>
-
+                    <Route path="/storehome" element={<StoreHome />}></Route>
                     <Route path="/AdminLogin" element={<AdminLogin />}></Route>
 
                     <Route path="/AppC" element={<AppC />}></Route>
