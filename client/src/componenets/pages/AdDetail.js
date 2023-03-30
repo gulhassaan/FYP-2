@@ -3,17 +3,19 @@ import React, { useEffect, useState, useContext } from "react";
 import Navbar from './NavbarHome';
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+
 //import { global } from "../App";
-import { AdDContext } from "../../App";
+import { AdDContext,EmailContext } from "../../App";
 import "@fontsource/montserrat";
 // import io from "socket.io-client";
 // const socket = io.connect("http://localhost:3001");
 
 const ProductDetail = () => {
 
-  //let { id } = useParams();
-  // const { user } = useContext(global);
-  //  const isLoggedIn=!!user.id
+
+
+
+const {Email,setEMAIL} = useContext(EmailContext)
   const [images, setImages] = useState([]);
   const [mainImage, setMainImage] = useState('');
   const [product, setProduct] = useState([]);
@@ -23,10 +25,11 @@ const ProductDetail = () => {
   const [room, setRoom] = useState("");
   const navigate = useNavigate();
   const [report, setReport] = useState(1);
-  const [price, setPrice] = useState(1000);
+  const [price, setPrice] = useState();
   const [usd, setusd] = useState(0);
-  const [amount, setamount] = useState(0);
+  const [amount, setamount] = useState(78);
   const [loading, setLoading] = useState(true);
+  const [contact_number,setContact] = useState();
   useEffect(() => {
     setPrice(1000)
     setuser(localStorage.getItem("user"));
@@ -34,15 +37,18 @@ const ProductDetail = () => {
     setLoading(true)
     axios.get(`http://localhost:3006/Get_Up_Ad/${AdD}`).then((response) => {
       var temp = response.data;
+      
       temp.forEach(element => {
         element.Images = JSON.parse(element.Images)
 
       });
+      console.log("Contav   ",temp[0].concat_number)
       setAd(temp);
       setPrice(temp[0].Cost)
       setImages(temp[0].Images)
       setMainImage(temp[0].Images[0])
       setProduct(temp[0])
+    setContact(temp.concat_number);
       setLoading(false);
       console.log("got data")
 
@@ -58,23 +64,21 @@ const ProductDetail = () => {
 
     if (!loading) {
       console.log("after get data")
-
       console.log("price is : ", price)
       var myHeaders = new Headers();
-      myHeaders.append("apikey", "c1F2fsIXBMc9OXXhnfNSUiWzNKsBoKGo");
+
+      myHeaders.append("apikey", "WkVouJ3EwA3LB3wz0LSmrdRGCR2B9Ue1");
 
       var requestOptions = {
         method: 'GET',
         redirect: 'follow',
         headers: myHeaders
       };
-
+console.log("HELO HELP HE:LP ")
       fetch(`https://api.apilayer.com/fixer/convert?to=usd&from=pkr&amount=${price}`, requestOptions)
-        .then(response =>
-           response.json()
-          )
+        .then(response => response.json())
         .then(result => {
-          console.log("result",result.result)
+          console.log("result is",result.result)
           // setusd(result)
           // console.log("THis is the :", usd["result"])
           setamount(result.result)
@@ -119,6 +123,7 @@ const ProductDetail = () => {
 
 
   const GO = (id) => {
+    console.log(Email);
     setuser(localStorage.getItem("user"));
     console.log("user is : ", user)
     localStorage.setItem('room', id)
@@ -129,7 +134,7 @@ const ProductDetail = () => {
     console.log("AD ID IS : ", id)
 
     if (user !== "" && id !== "") {
-      navigate("/AppC", { state: { user: user, room: id } })
+      navigate("/AppC", { state: { user: Email, room: id } })
     }
     else {
       navigate("/login")
@@ -202,20 +207,27 @@ const ProductDetail = () => {
                   <Typography gutterBottom variant="h4" style={{ fontweight: "bold" }} component="div">
                     {product.title}
                   </Typography>
+        
                 </Grid>
                 <Grid item xs={12} >
                   <Typography gutterBottom variant="body1" component="div" style={{ fontSize: "20px", color: "rgba(0, 95, 96, 2)" }}>
                     {product.Description}
                   </Typography></Grid>
+                  <Typography gutterBottom variant="h5" style={{ fontweight: "bold" }} component="div">
+                  {product.Location}
+                </Typography>
                 <Grid item xs={12}><Typography gutterBottom variant="h5" component="div">
                   Price: Rs.{product.Cost}/-
                 </Typography></Grid>
+                <Grid item xs={12}><Typography gutterBottom variant="h5" component="div">
+               +92 {product.contact_number}
+              </Typography></Grid>
                 <CardActions sx={{ marginTop: "20px" }}>
                   <Button variant="contained" onClick={() => { GO(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Contact Seller</Button>
                   <Button variant="contained" onClick={() => { Report(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Report</Button>
 
                 </CardActions>
-                <CardActions sx={{ marginTop: "5px" }}>
+                <CardActions sx={{ marginTop: "21px" }}>
                   <form action="https://www.escrow-sandbox.com/checkout" method="post">
                     <input type="hidden" name="type" value="domain_name" />
                     <input type="hidden" name="non_initiator_email" value="arslanm1517@gmail.com" />
@@ -231,22 +243,7 @@ const ProductDetail = () => {
                     <Button type="submit" sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Buy It Now</Button>
                     <img src="https://t.escrow-sandbox.com/1px.gif?name=bin&price&title=Buy%20Now&user_id=1295393" style={{ display: "none" }} />
                   </form>
-                  <form action="https://www.escrow-sandbox.com/offer" method="post">
-                    <input type="hidden" name="type" value="domain_name" />
-                    <input type="hidden" name="non_initiator_email" value="arslanm1517@gmail.com" /><input
-                      type="hidden" name="non_initiator_id" value="1295393" /><input type="hidden" name="non_initiator_role"
-                        value="seller" /><input type="hidden" name="title" value="Buy Now" /><input type="hidden" name="currency"
-                          value="USD" /><input type="hidden" name="domain" value="gamingstan.com" /><input type="hidden" name="price"
-                            value="5" /><input type="hidden" name="concierge" value="false" /><input type="hidden" name="with_content"
-                              value="false" />
-                    <input type="hidden" name="inspection_period" value="1" /><input type="hidden" name="fee_payer"
-                      value="split" /><input type="hidden" name="return_url" value="" /><input type="hidden" name="button_types"
-                        value="both" /><input type="hidden" name="auto_accept" value="" /><input type="hidden" name="auto_reject"
-                          value="" /><input type="hidden" name="item_key" value="6060a3b0-c2a2-11ed-9ec3-cda813b5bb3c" />
-
-                    <Button type="submit" sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Make An Offer</Button>
-                    <img src="https://t.escrow-sandbox.com/1px.gif?name=bin&price=5&title=Buy%20Now&user_id=1295393" sx={{ display: "none" }} />
-                  </form>
+                  
                 </CardActions>
               </Grid>
             </Grid>
