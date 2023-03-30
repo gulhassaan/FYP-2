@@ -67,9 +67,11 @@ import React, { useState } from "react";
 import './App.css';
 import logo1 from '../images/logo.png';
 import "@fontsource/montserrat";
-
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const navigate = useNavigate();
   return (
     <div className="Navbar">
 <img className="logo1-nav" src={logo1}></img>
@@ -82,7 +84,7 @@ const Navbar = () => {
         <div className={`nav-items ${isOpen && "open"}`}style={{marginLeft:"auto"}}>
         
         <a className="aa" type="button" href="/login"><b className="ttt">Sell</b></a>
-        <a className="aa" href="/login"><b>Login</b></a>
+      <a className="aa" href="/login"><b>Login</b></a>
         <a className="aa" href="/signup"><b>SignUp</b></a>
         
       </div>
