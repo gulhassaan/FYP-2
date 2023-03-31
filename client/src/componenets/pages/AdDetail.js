@@ -66,7 +66,6 @@ const {Email,setEMAIL} = useContext(EmailContext)
       console.log("after get data")
       console.log("price is : ", price)
       var myHeaders = new Headers();
-
       myHeaders.append("apikey", "WkVouJ3EwA3LB3wz0LSmrdRGCR2B9Ue1");
 
       var requestOptions = {
@@ -223,8 +222,8 @@ console.log("HELO HELP HE:LP ")
                +92 {product.contact_number}
               </Typography></Grid>
                 <CardActions sx={{ marginTop: "20px" }}>
-                  <Button variant="contained" onClick={() => { GO(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Contact Seller</Button>
-                  <Button variant="contained" onClick={() => { Report(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Report</Button>
+                  <Button className="adDetail-btn"  onClick={() => { GO(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Contact Seller</Button>
+                  <Button className="adDetail-btn"  onClick={() => { Report(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Report</Button>
 
                 </CardActions>
                 <CardActions sx={{ marginTop: "21px" }}>
@@ -240,10 +239,10 @@ console.log("HELO HELP HE:LP ")
                     <input type="hidden" name="concierge" value="false" /><input type="hidden" name="with_content" value="false" /><input type="hidden" name="inspection_period" value="1" /><input type="hidden" name="fee_payer" value="split" /><input type="hidden" name="return_url" value="" /><input type="hidden" name="button_types" value="both" />
                     <input type="hidden" name="auto_accept" value="" /><input type="hidden" name="auto_reject" value="" />
                     <input type="hidden" name="item_key" value="undefined" />
-                    <Button type="submit" sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Buy It Now</Button>
+                    <Button className="adDetail-btn" type="submit" sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF"}}>Buy It Now</Button>
                     <img src="https://t.escrow-sandbox.com/1px.gif?name=bin&price&title=Buy%20Now&user_id=1295393" style={{ display: "none" }} />
                   </form>
-                  
+              
                 </CardActions>
               </Grid>
             </Grid>

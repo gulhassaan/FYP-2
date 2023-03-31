@@ -15,12 +15,12 @@ const NavbarHome = () => {
 <div className="nav-items1">
 <a href="/home"><b>Home</b> </a>
         <a href="/myads"> <b>My Ads</b> </a>
+        <a href="/storehome"><b>Gamingstan Store</b> </a>
         <a href="/about"><b>About Us</b> </a>
       
 </div>
         <div className={`nav-items ${isOpen && "open"}`}style={{marginLeft:"auto"}}>
-       <a href=""><img className="pass-icon1" src={chat}></img></a>
-       <a href=""><img className="pass-icon1" src={bell}></img></a>
+       
       <a href=""><img className="pass-icon1" src={account}></img>
       
     

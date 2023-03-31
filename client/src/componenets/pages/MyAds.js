@@ -22,7 +22,7 @@ import Navbar from './NavbarHome';
 import "@fontsource/montserrat";
 
 export const MyAds = () => {
-  
+
   const [Ads, setAds] = useState([]);
   const [page, setpage] = useState(0);
   const { Email } = useContext(EmailContext);
@@ -45,26 +45,24 @@ export const MyAds = () => {
   }, []);
 
 
-  
-const getUser = (AdID) => {
-  console.log("AD IDcbxbc IS : ",AdID)
-  axios.get(`http://localhost:3006/get_userE/${AdID}`).then((res) => {
-     console.log("Receiver User is : ", res.data[0].email)
+
+  const getUser = (AdID) => {
+    console.log("AD IDcbxbc IS : ", AdID)
+    axios.get(`http://localhost:3006/get_userE/${AdID}`).then((res) => {
+      console.log("Receiver User is : ", res.data[0].email)
 
 
-console.log("AD ID IS : ",AdID)
-     
-  if (res.data[0].email !== "" && AdID !== "") 
-  {
-    console.log("rec is : ",res.data[0].email )
- navigate("/AppC",{state:{user:res.data[0].email,room:AdID}})
+      console.log("AD ID IS : ", AdID)
+
+      if (res.data[0].email !== "" && AdID !== "") {
+        console.log("rec is : ", res.data[0].email)
+        navigate("/AppC", { state: { user: res.data[0].email, room: AdID } })
+      }
+      else {
+        navigate("/login")
+      }
+    })
   }
-  else
-  {
-    navigate("/login")
-  }
-})
-}
 
 
   const delete_Ad = (id) => {
@@ -87,8 +85,7 @@ console.log("AD ID IS : ",AdID)
 
   }
   useEffect(() => {
-    if(!localStorage.getItem('email_token'))
-    {
+    if (!localStorage.getItem('email_token')) {
       navigate('/login')
     }
   }, [])
@@ -115,7 +112,7 @@ console.log("AD ID IS : ",AdID)
                     <CardMedia
                       component="img"
                       height={200}
-                    
+
                       sx={{ padding: "1em 1em 0 1em" }}
                       image={card.Images[0]}
                       alt="random"
@@ -144,9 +141,9 @@ console.log("AD ID IS : ",AdID)
                     </CardContent>
                     <Box alignItems={"center"} >
                       <CardActions sx={{ marginLeft: 0 }}>
-                        <Button class="myad-btn"  onClick={() => { delete_Ad(card.Ad_id) }}>Delete</Button>
-                        <Button class="myad-btn"  onClick={() => { update1(card.Ad_id) }}>Update</Button>
-                        <Button class="myad-btn"  onClick={() => { getUser(card.Ad_id) }}>Receive</Button>
+                        <Button class="myad-btn" onClick={() => { delete_Ad(card.Ad_id) }}>Delete</Button>
+                        <Button class="myad-btn" onClick={() => { update1(card.Ad_id) }}>Update</Button>
+                        <Button class="myad-btn" onClick={() => { getUser(card.Ad_id) }}>Receive</Button>
 
                       </CardActions>
                     </Box>

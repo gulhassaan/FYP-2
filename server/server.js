@@ -502,13 +502,13 @@ app.get("/filterLtoH",(req,res)=>{
 })
 //filter for lastest Ad
 app.get("/filterLatest",(req,res)=>{
-    db.query("SELECT * FROM ads where Status=1 ORDER BY date ASC",(err,result)=>{
+    db.query("SELECT * FROM ads where Status=1 ORDER BY date DESC",(err,result)=>{
         res.send(result);
     })
 })
 //Filter for oldest AD
 app.get("/filterOldest",(req,res)=>{
-    db.query("SELECT * FROM ads where Status=1 ORDER BY date DESC",(err,result)=>{
+    db.query("SELECT * FROM ads where Status=1 ORDER BY date ASC",(err,result)=>{
         res.send(result);
     })
 })

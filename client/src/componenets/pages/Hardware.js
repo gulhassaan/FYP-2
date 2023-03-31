@@ -59,7 +59,7 @@ console.log("bew emai l is ",newEmail)
    //   seterrE(true)
       seterror("Title is Required")
       seterrT(true)
-    }else if(price === "")
+    }else if(price === "" || price === "0")
     {
 
    //   seterrE(true)
@@ -117,7 +117,7 @@ console.log("bew emai l is ",newEmail)
     const re = /^[0-9\b]+$/;
   
     // if value is not blank, then test the regex
-    if (e.target.value == "") {
+    if (e.target.value == "" || e.target.value == "0") {
       seterrP(true)
     }
     else {
@@ -536,7 +536,7 @@ const DesHandle=(e)=>{
     }
   }, [])
   return (
-    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
+    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)"}}>
     <div className="back">
       <Navbar />
       <section className="sell-main">

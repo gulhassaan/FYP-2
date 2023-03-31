@@ -78,6 +78,7 @@ const Navbar = () => {
 <div className="nav-items1">
 <a href="/landingpage"><b>Home</b> </a>
         <a href="/login"> <b>My Ads</b> </a>
+        <a href="/login"><b>Gamingstan Store</b> </a>
         <a href="/service"><b>About Us</b> </a>
       
 </div>

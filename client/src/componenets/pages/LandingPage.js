@@ -37,7 +37,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { color } from '@mui/system';
 import Navbar from './Navbar';
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "@fontsource/montserrat";
 
 export const LandingPage = () => {
@@ -48,22 +48,22 @@ export const LandingPage = () => {
   const [Filter, setFilter] = useState("");
   useEffect(() => {
     axios.get(`http://localhost:3006/Get_AD`).then((response) => {
-      console.log("THis is Response Data : ",response.data)
+      console.log("THis is Response Data : ", response.data)
       var temp = response.data;
       temp.forEach(element => {
 
         element.Images = JSON.parse(element.Images)
-      
+
       });
       setListOfAds(temp);
-      console.log("After parse : ",temp)
+      console.log("After parse : ", temp)
     });
   }, []);
   const navigate = useNavigate();
   const moreinfo = () => {
-navigate('/login')
+    navigate('/login')
   }
-  
+
   // const searching = (e) => {
   //   var S_AD = e.target.value;
   //   setSearch(e.target.value)
@@ -147,105 +147,104 @@ navigate('/login')
 
   }
   useEffect(() => {
-    if(localStorage.getItem('email_token'))
-    {
+    if (localStorage.getItem('email_token')) {
       navigate('/home')
     }
   }, [])
   return (
 
-    <div style={{backgroundColor:"rgba(0, 0, 0, 0)"}}>
-<Navbar/>
-    <main>
-    <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"50PX" }}>
-    <input
-      style={{ width: '50%', marginRight: '0.5rem', backgroundColor: '#FFFFFF',color:"rgba(0, 95, 96, 0.8)" }}
-      autoComplete='off'
-      placeholder='Search'
-      type='text'
-      className='customform w-50'
-      list='item-list'
-      onChange={(e)=>setSearch(e.target.value)}
-    />
-  
-    <FormControl style={{ minWidth: 150 ,borderRadius:"20px"}} size='small'>
-      <InputLabel id='demo-select-small' style={{color:"rgba(0, 95, 96, 0.8)"}}>Filters</InputLabel>
-      <Select
-        labelId='demo-select-small'
-        id='demo-select-small'
-        value={Filter}
-        label='Filters'
-        onChange={Selectfilter}
-        style={{borderRadius:"20px",height:"45px",color:"rgba(0, 95, 96, 0.8)"}}
+    <div style={{ backgroundColor: "rgba(0, 0, 0, 0)" }}>
+      <Navbar />
+      <main>
+        <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center', justifyContent: "center", paddingTop: "50PX" }}>
+          <input
+            style={{ width: '50%', marginRight: '0.5rem', backgroundColor: '#FFFFFF', color: "rgba(0, 95, 96, 0.8)" }}
+            autoComplete='off'
+            placeholder='Search'
+            type='text'
+            className='customform w-50'
+            list='item-list'
+            onChange={(e) => setSearch(e.target.value)}
+          />
 
-      >
-        <MenuItem value=''  style={{borderRadius:"20px",color:"rgba(0, 95, 96, 0.8)"}}>
-          <em>None</em>
-        </MenuItem>
-        <MenuItem value={'High TO Low'}  style={{borderRadius:"20px",color:"rgba(0, 95, 96, 0.8)"}}>High to Low</MenuItem>
-        <MenuItem value={'Low To High'}  style={{borderRadius:"20px",color:"rgba(0, 95, 96, 0.8)"}}>Low to High</MenuItem>
-        <MenuItem value={'Latest'}  style={{borderRadius:"20px",color:"rgba(0, 95, 96, 0.8)"}}>Latest</MenuItem>
-        <MenuItem value={'Oldest'}  style={{borderRadius:"20px",color:"rgba(0, 95, 96, 0.8)"}}>Oldest</MenuItem>
-      </Select>
-    </FormControl>
-  </div>
+          <FormControl style={{ backgroundColor: "rgba(255, 255, 255)", minWidth: 150, borderRadius: "30px" }} size='small'>
+            <InputLabel id='demo-select-small' style={{ color: "rgba(0, 95, 96, 0.8)" }}>Sort by</InputLabel>
+            <Select
+              labelId='demo-select-small'
+              id='demo-select-small'
+              value={Filter}
+              label='Filters'
+              onChange={Selectfilter}
+              style={{ borderRadius: "20px", height: "45px", color: "rgba(0, 95, 96, 0.8)" }}
 
-
-    <Container  sx={{ py: 8 }}>
-    
-      <Grid container spacing={4}>
-        {listOfAds.filter((card)=>{
-          return search.toLowerCase()===''?card:(card.title.toLowerCase().includes(search) ||card.adCategory.toLowerCase().includes(search)); 
-        }).map((card) => (
-          <Grid item key={card} xs={12} sm={6} md={3}>
-            <Card
-            style={{backgroundColor:"#FFFFFF",height:"330px",borderRadius:"20px"}}
-            sx={{
-              maxWidth: 280,
-              margin: "0 auto",
-              padding: "0.1em",
-              maxHeight:450
-            }}
             >
-              <CardMedia
-                component="img"
-            
-                height={200}
-                image={card.Images[0]}
-                alt="random"
-                sx={{ padding: "0.5em 0.5em 0 0.5em",borderRadius:"20px" }}
-              />
-              <CardContent sx={{ flexGrow: 1 }}  >
-                <Typography gutterBottom variant="h6" component="h6" sx={{ fontWeight: 'bold' }} style={{color:"rgba(0, 95, 96, 0.8)"}}>
-                  {card.title}
-                </Typography>
-                <Typography variant="p" style={{topmargin:"5px",color:"rgba(0, 95, 96, 0.8)"}}>
-                {card.Location}
-               </Typography>
-               <br></br>
-                <Typography variant="p" style={{color:"rgba(0, 95, 96, 0.8)"}}>
-                {card.date}
-               </Typography>
-               <br></br>
-               <Typography variant="p" sx={{ fontWeight: 'bold' }} style={{color:"rgba(0, 95, 96, 0.8)"}}>
-                 Rs.{card.Cost}/-
-                </Typography>
-              </CardContent>
-              <Box alignItems={"center"} >
-                      <CardActions sx={{ marginLeft: 8}}>
-                        <Button class="forgot-btn" onClick={moreinfo}>More Info</Button>
+              <MenuItem value='' style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}>
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={'High TO Low'} style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}>High to Low</MenuItem>
+              <MenuItem value={'Low To High'} style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}>Low to High</MenuItem>
+              <MenuItem value={'Latest'} style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}>Latest</MenuItem>
+              <MenuItem value={'Oldest'} style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}>Oldest</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
 
-                      </CardActions>
-                    </Box>
-            </Card>
+
+        <Container sx={{ py: 8 }}>
+
+          <Grid container spacing={4}>
+            {listOfAds.filter((card) => {
+              return search.toLowerCase() === '' ? card : (card.title.toLowerCase().includes(search) || card.adCategory.toLowerCase().includes(search));
+            }).map((card) => (
+              <Grid item key={card} xs={12} sm={6} md={3}>
+                <Card
+                  style={{ backgroundColor: "#FFFFFF", height: "330px", borderRadius: "20px" }}
+                  sx={{
+                    maxWidth: 280,
+                    margin: "0 auto",
+                    padding: "0.1em",
+                    maxHeight: 450
+                  }}
+                >
+                  <CardMedia
+                    component="img"
+
+                    height={200}
+                    image={card.Images[0]}
+                    alt="random"
+                    sx={{ padding: "0.5em 0.5em 0 0.5em", borderRadius: "20px" }}
+                  />
+                  <CardContent sx={{ flexGrow: 1 }}  >
+                    <Typography gutterBottom variant="h6" component="h6" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)" }}>
+                      {card.title}
+                    </Typography>
+                    <Typography variant="p" style={{ topmargin: "5px", color: "rgba(0, 95, 96, 0.8)" }}>
+                      {card.Location}
+                    </Typography>
+                    <br></br>
+                    <Typography variant="p" style={{ color: "rgba(0, 95, 96, 0.8)" }}>
+                      {card.date}
+                    </Typography>
+                    <br></br>
+                    <Typography variant="p" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)" }}>
+                      Rs.{card.Cost}/-
+                    </Typography>
+                  </CardContent>
+                  <Box alignItems={"center"} >
+                    <CardActions sx={{ marginLeft: 8 }}>
+                      <Button class="forgot-btn" onClick={moreinfo}>More Info</Button>
+
+                    </CardActions>
+                  </Box>
+                </Card>
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
-        <Stack spacing={2} alignItems={"center"}>
-<Pagination count={10} sx={{marginTop:7}} variant="outlined" color="secondary" onChange={(e,v)=>setpage(v-1)} />
-</Stack>
-    </Container>
-  </main>
+          <Stack spacing={2} alignItems={"center"}>
+            <Pagination count={10} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
+          </Stack>
+        </Container>
+      </main>
 
 
 

@@ -181,8 +181,8 @@ export const Home = () => {
         onChange={(e)=>setSearch(e.target.value)}
       />
     
-      <FormControl style={{ minWidth: 150 ,borderRadius:"20px"}} size='small'>
-        <InputLabel id='demo-select-small' style={{color:"rgba(0, 95, 96, 0.8)"}}>Filters</InputLabel>
+      <FormControl style={{ backgroundColor: "rgba(255, 255, 255)",minWidth: 150 ,borderRadius:"30px"}} size='small'>
+        <InputLabel id='demo-select-small' style={{color:"rgba(0, 95, 96, 0.8)"}}>Sort by</InputLabel>
         <Select
           labelId='demo-select-small'
           id='demo-select-small'

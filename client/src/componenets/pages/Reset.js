@@ -85,7 +85,7 @@ const CpassHandler = (e) => {
     }
   }, [])
   return (
-    <div>
+    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
       <Navbar/>
     
   <section className="reset">
