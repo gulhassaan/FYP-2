@@ -36,9 +36,11 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { color } from '@mui/system';
-import Navbar from './Navbar';
+import Navbar from './NavbarLanding';
+import landingpageBanner from '../images/landingpage_banner.png';
 import { Link, useNavigate } from "react-router-dom";
 import "@fontsource/montserrat";
+import { TextAlignCenter } from 'phosphor-react';
 
 export const LandingPage = () => {
   const [listOfAds, setListOfAds] = useState([]);
@@ -153,9 +155,14 @@ export const LandingPage = () => {
   }, [])
   return (
 
-    <div style={{ backgroundColor: "rgba(0, 0, 0, 0)" }}>
+    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
       <Navbar />
       <main>
+        <div className='Landingpage-banner'>
+        <a href='signup'><img className="Landingpage-banner-Image" src={landingpageBanner}></img></a>
+        
+        </div>
+        <h2 className='txt-align'>Fresh Recommendations</h2>
         <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center', justifyContent: "center", paddingTop: "50PX" }}>
           <input
             style={{ width: '50%', marginRight: '0.5rem', backgroundColor: '#FFFFFF', color: "rgba(0, 95, 96, 0.8)" }}
@@ -188,7 +195,6 @@ export const LandingPage = () => {
             </Select>
           </FormControl>
         </div>
-
 
         <Container sx={{ py: 8 }}>
 

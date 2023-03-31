@@ -16,6 +16,7 @@
 // //     </div>
 // //   );
 // // }
+
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -40,6 +41,9 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { EmailContext } from "../../App";
 import { AdDContext } from "../../App";
 import "@fontsource/montserrat";
+import banner from '../images/bannerimage.png';
+
+
 export const Home = () => {
 
 
@@ -105,7 +109,7 @@ export const Home = () => {
   //     })
   //   }
   // }
-
+ 
   const Selectfilter = (e) => {
     var filter = e.target.value;
     setFilter(e.target.value)
@@ -166,11 +170,18 @@ export const Home = () => {
     }
   }, [])
   return (
+    
 
     <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
       <Navbar />
+      
       <main>
-      <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"50PX" }}>
+      <div className='bannerimage'>
+        <a><img src={banner}></img></a>
+        
+        </div>
+        <h2 className='txt-align'>Fresh Recommendations</h2>
+      <div className='Search_Filters' style={{ marginTop:'30px',display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"50PX" }}>
       <input
         style={{ width: '50%', marginRight: '0.5rem', backgroundColor: '#FFFFFF',color:"rgba(0, 95, 96, 0.8)" }}
         autoComplete='off'

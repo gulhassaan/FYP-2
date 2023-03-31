@@ -635,7 +635,7 @@ const DesHandle=(e)=>{
                     </div>
                     
                     <div className="w-50 p-1">
-                      <h6>Set Price</h6>
+                      <h6>Set Price (PKR)</h6>
                       <input
                       style={{ backgroundColor: '#FFFFFF' }}
                         value={price}

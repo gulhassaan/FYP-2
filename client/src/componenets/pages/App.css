@@ -287,6 +287,12 @@ margin-right: -120px;
   margin: 7px;
   background-color: #F78104;
 }
+.txt-align{
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: -20px;
+  
+}
 
 #password {
   border: 2px solid #008083;
@@ -960,10 +966,102 @@ footer {
   align-items: center;
   background: rgba(0, 95, 96, 1);
 }
+.storebanner{
+  margin-top: 60px; 
+}
+.Navbarstore {
+  height: 60px;
+  overflow: hidden;
+  margin-top: -60px;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 95, 96, 1);
+}
+.txt-align-home{
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: -50px;
+  
+}
+.Navbarhome {
+  height: 60px;
+  overflow: hidden;
+  margin-top: -60px;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 95, 96, 1);
+}
+
+.bannerimage{
+  margin-top: 60px;
+  
+}
+.storebanner{
+  margin-top: 60px;
+}
+.Landingpage-banner{
+  margin-top: 60px;
+}
+.NavbarLanding {
+  height: 60px;
+  overflow: hidden;
+  margin-top: -60px;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 95, 96, 1);
+}
 .logo1-nav{
   height: 100px;
 }
 .Navbar > .nav-items > .aa {
+  color: #FFFFFF;
+  font-family: 'Montserrat';
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 10px;
+  text-decoration: white;
+  margin: 15px;
+  position: relative;
+  opacity: 0.9;
+  cursor: pointer;
+  
+}
+.Navbarstore > .nav-items > .aa {
+  color: #FFFFFF;
+  font-family: 'Montserrat';
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 10px;
+  text-decoration: white;
+  margin: 15px;
+  position: relative;
+  opacity: 0.9;
+  cursor: pointer;
+  
+}
+.Navbarhome > .nav-items > .aa {
+  color: #FFFFFF;
+  font-family: 'Montserrat';
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 10px;
+  text-decoration: white;
+  margin: 15px;
+  position: relative;
+  opacity: 0.9;
+  cursor: pointer;
+  
+}
+.NavbarLanding > .nav-items > .aa {
   color: #FFFFFF;
   font-family: 'Montserrat';
   border-radius: 10px;
@@ -1004,9 +1102,80 @@ footer {
   
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
-
+.Navbarstore > .nav-items > .ab {
+  color: #FFFFFF;
+  font-size: 16px;
+  border: 2px solid #FFFFFF;
+  border-radius: 80px;
+ padding: 10px 30px;
+  text-decoration: none;
+  margin: 7px;
+  position: relative;
+  opacity: 0.9;
+  cursor: pointer;
+  
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.Navbarhome > .nav-items > .ab {
+  color: #FFFFFF;
+  font-size: 16px;
+  border: 2px solid #FFFFFF;
+  border-radius: 80px;
+ padding: 10px 30px;
+  text-decoration: none;
+  margin: 7px;
+  position: relative;
+  opacity: 0.9;
+  cursor: pointer;
+  
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.NavbarLanding > .nav-items > .ab {
+  color: #FFFFFF;
+  font-size: 16px;
+  border: 2px solid #FFFFFF;
+  border-radius: 80px;
+ padding: 10px 30px;
+  text-decoration: none;
+  margin: 7px;
+  position: relative;
+  opacity: 0.9;
+  cursor: pointer;
+  
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
 .Navbar > .nav-items1 > a {
+  color: #FFFFFF;
+  
+  font-size: 16px;
+ font-family: Montserrat;
+  text-decoration: none;
+  margin: 15px;
+  position: relative;
+  opacity: 0.9;
+}
+.Navbarstore > .nav-items1 > a {
+  color: #FFFFFF;
+  
+  font-size: 16px;
+ font-family: Montserrat;
+  text-decoration: none;
+  margin: 15px;
+  position: relative;
+  opacity: 0.9;
+}
+.Navbarhome > .nav-items1 > a {
+  color: #FFFFFF;
+  
+  font-size: 16px;
+ font-family: Montserrat;
+  text-decoration: none;
+  margin: 15px;
+  position: relative;
+  opacity: 0.9;
+}
+.NavbarLanding > .nav-items1 > a {
   color: #FFFFFF;
   
   font-size: 16px;
@@ -1024,6 +1193,58 @@ footer {
   opacity: 1;
 }
 .Navbar > .nav-items > a::before {
+  content: "";
+  position: absolute;
+  
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  /*hower color */
+  transition: all 0.45s;
+}
+
+.Navbarstore > .nav-items > a:hover {
+  opacity: 1;
+}
+.Navbarstore > .nav-items1 > a:hover {
+  opacity: 1;
+}
+.Navbarstore > .nav-items > a::before {
+  content: "";
+  position: absolute;
+  
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  /*hower color */
+  transition: all 0.45s;
+}
+.NavbarLanding > .nav-items > a:hover {
+  opacity: 1;
+}
+.NavbarLanding > .nav-items1 > a:hover {
+  opacity: 1;
+}
+.NavbarLanding > .nav-items > a::before {
+  content: "";
+  position: absolute;
+  
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  /*hower color */
+  transition: all 0.45s;
+}
+.Navbarhome > .nav-items > a:hover {
+  opacity: 1;
+}
+.Navbarhome > .nav-items1 > a:hover {
+  opacity: 1;
+}
+.Navbarhome > .nav-items > a::before {
   content: "";
   position: absolute;
   
@@ -1091,7 +1312,7 @@ footer {
     transform: translateX(-100%);
     transition: all .45s;
   }
-
+}
   .Navbar > .nav-items > a::before {
       background: transparent;
       
@@ -1110,6 +1331,133 @@ footer {
     justify-content: center;
     cursor: pointer;
   }
+
+  .NavbarLanding > .nav-items > a:hover::before {
+    width: 100%;
+    
+  }
+  
+  .NavbarLanding > .nav-toggle {
+    display: none;
+  }
+  
+  @media (max-width: 700px) {
+    .NavbarLanding > .nav-items {
+      position: absolute;
+      top: 60px;
+      display: flex;
+      border: 2px solid #F78104;
+      flex-direction: column;
+      background: rgba(0, 95, 96, 1);
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transform: translateX(-100%);
+      transition: all .45s;
+    }
+  
+    .NavbarLanding > .nav-items > a::before {
+        background: transparent;
+        
+    }
+  
+    .NavbarLanding > .nav-items.open {
+        transform: translateX(0);
+        
+    }
+  
+    .NavbarLanding > .nav-toggle {
+      display: flex;
+      width: 50px;
+      height: 50px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .Navbarstore > .nav-items > a:hover::before {
+      width: 100%;
+      
+    }
+    
+    .Navbarstore > .nav-toggle {
+      display: none;
+    }
+    
+    @media (max-width: 700px) {
+      .Navbarstore > .nav-items {
+        position: absolute;
+        top: 60px;
+        display: flex;
+        border: 2px solid #F78104;
+        flex-direction: column;
+        background: rgba(0, 95, 96, 1);
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: translateX(-100%);
+        transition: all .45s;
+      }
+    }
+      .Navbarstore > .nav-items > a::before {
+          background: transparent;
+          
+      }
+    
+      .Navbarstore > .nav-items.open {
+          transform: translateX(0);
+          
+      }
+    
+      .Navbarstore > .nav-toggle {
+        display: flex;
+        width: 50px;
+        height: 50px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+    .Navbarhome > .nav-items > a:hover::before {
+      width: 100%;
+      
+    }
+    
+    .Navbarhome > .nav-toggle {
+      display: none;
+    }
+    
+    @media (max-width: 700px) {
+      .Navbarhome > .nav-items {
+        position: absolute;
+        top: 60px;
+        display: flex;
+        border: 2px solid #F78104;
+        flex-direction: column;
+        background: rgba(0, 95, 96, 1);
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: translateX(-100%);
+        transition: all .45s;
+      }
+    }
+      .Navbarhome > .nav-items > a::before {
+          background: transparent;
+          
+      }
+    
+      .Navbarhome > .nav-items.open {
+          transform: translateX(0);
+          
+      }
+    
+      .Navbarhome > .nav-toggle {
+        display: flex;
+        width: 50px;
+        height: 50px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
 
   .nav-toggle > .bar {
     position: relative;

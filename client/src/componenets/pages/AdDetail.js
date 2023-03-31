@@ -210,19 +210,20 @@ console.log("HELO HELP HE:LP ")
                 </Grid>
                 <Grid item xs={12} >
                   <Typography gutterBottom variant="body1" component="div" style={{ fontSize: "20px", color: "rgba(0, 95, 96, 2)" }}>
-                    {product.Description}
+                  Description: {product.Description}
                   </Typography></Grid>
                   <Typography gutterBottom variant="h5" style={{ fontweight: "bold" }} component="div">
-                  {product.Location}
+                 Ad Location: {product.Location}
                 </Typography>
                 <Grid item xs={12}><Typography gutterBottom variant="h5" component="div">
-                  Price: Rs.{product.Cost}/-
+                  Price: {product.Cost} Pkr
                 </Typography></Grid>
                 <Grid item xs={12}><Typography gutterBottom variant="h5" component="div">
                +92 {product.contact_number}
               </Typography></Grid>
                 <CardActions sx={{ marginTop: "20px" }}>
                   <Button className="adDetail-btn"  onClick={() => { GO(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Contact Seller</Button>
+                  
                   <Button className="adDetail-btn"  onClick={() => { Report(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Report</Button>
 
                 </CardActions>

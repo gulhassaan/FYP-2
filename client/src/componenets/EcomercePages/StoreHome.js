@@ -39,7 +39,8 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { EmailContext } from "../../App";
 import { AdDContext } from "../../App";
 import "@fontsource/montserrat";
-import NavbarS from './NavbarS';
+import NavbarStore from './Navbarstore';
+import storebanner from '../images/gamingstanstore.png';
 const StoreHome = () => {
 
 
@@ -91,9 +92,13 @@ const StoreHome = () => {
 
     <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
       <main>
-      <NavbarS/>
-      <h1 style={{color:"rgba(0, 95, 96, 0.8)",display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"10PX"}}>E-comerce Store</h1>
-      <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"50PX" }}>
+      <NavbarStore/>
+      <div className='storebanner'>
+        <a><img src={storebanner}></img></a>
+        
+        </div>
+      <h1 style={{color:"rgba(0, 95, 96, 0.8)",display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"30PX"}}>Fresh Recommendations</h1>
+      <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"40PX" }}>
       <input
         style={{ width: '50%', marginRight: '0.5rem', backgroundColor: '#FFFFFF',color:"rgba(0, 95, 96, 0.8)" }}
         autoComplete='off'
