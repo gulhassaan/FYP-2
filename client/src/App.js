@@ -33,6 +33,7 @@ import UpdateProduct from "./componenets/AdminPages/UpdateProduct";
 import StoreHome from "./componenets/EcomercePages/StoreHome";
 import ProductDetail from "./componenets/EcomercePages/ProductDetail";
 import NewNavbar from "./componenets/pages/NewNavbar"
+import AddToCart from "./componenets/EcomercePages/AddToCart";
 //Context APIs
 const EmailContext = createContext();
 const ImagesContext = createContext();
@@ -71,6 +72,7 @@ function App() {
                     <Route path="/ecomerce" element={<Ecomerce />}></Route>
                     <Route path="/addproduct" element={<AddProduct />}></Route>
                     <Route path="/signup" element={<Signup />}></Route>
+                    <Route path="/addToCart" element={<AddToCart />}></Route>
                     <Route path="/updateproduct" element={<UpdateProduct />}></Route>
 <Route path="/service" element={<AboutUs />}></Route>
                     <Route path="/updatead" element={<UpdateAd />}></Route>
