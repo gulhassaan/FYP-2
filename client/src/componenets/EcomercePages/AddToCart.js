@@ -31,8 +31,7 @@ const AddToCart = (props) => {
       updatedCartItems.push(cartItem);
     }
     setCartItems(updatedCartItems);
-    axios
-      .post("http://localhost:3006/addtocart", {
+    axios.post("http://localhost:3006/addtocart", {
         Email: localStorage.getItem("email_token"),
         Ad_Id: AdD,
         Product_Id: cartItem.id,
