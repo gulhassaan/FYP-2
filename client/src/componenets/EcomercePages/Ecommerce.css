@@ -21,4 +21,6 @@
     height: auto;
     padding: 0 20px; /* Add gaps from the left and right */
   }
-  
+  .bg-storehome{
+    background-color: aliceblue;
+  }

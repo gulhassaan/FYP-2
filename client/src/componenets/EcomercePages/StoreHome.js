@@ -80,7 +80,7 @@ const StoreHome = () => {
     }
   }, [])
   return (
-
+<div className='bg-storehome'>
     <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
       <main>
 
@@ -153,7 +153,7 @@ const StoreHome = () => {
             }).map((card) => (
               <Grid item key={card} xs={12} sm={6} md={3}>
                 <Card
-                  style={{ backgroundColor: "#FFFFFF", height: "330px", borderRadius: "20px", boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)" }}
+                  style={{ backgroundColor: "#FFFFFF", height: "330px", borderRadius: "20px", boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.55)" }}
                   raised
                   sx={{
                     maxWidth: 280,
@@ -202,7 +202,7 @@ const StoreHome = () => {
 
 
     </div>
-    
+    </div>
   );
 
 
