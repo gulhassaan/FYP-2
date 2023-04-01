@@ -7,7 +7,7 @@ import account from '../images/account.png';
 import drop from '../images/drop.png';
 import "@fontsource/montserrat";
 
-const NavbarHome = () => {
+const NewNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
 
@@ -44,4 +44,4 @@ const NavbarHome = () => {
   );
 };
 
-export default NavbarHome;
+export default NewNavbar;
