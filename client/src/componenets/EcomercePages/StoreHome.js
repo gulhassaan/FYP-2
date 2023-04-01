@@ -22,17 +22,15 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { EmailContext } from "../../App";
 import { AdDContext } from "../../App";
 import "@fontsource/montserrat";
-<<<<<<< Updated upstream
 import NavbarStore from './Navbarstore';
 import storebanner from '../images/gamingstanstore.png';
-=======
 import NavbarS from './NavbarS';
 import ProductDetail from './ProductDetail';
 import './Ecommerce.css';
 import banner1 from "./images/slider1.png";
 import banner2 from "./images/slider2.png";
 import banner3 from "./images/slider3.png";
->>>>>>> Stashed changes
+
 const StoreHome = () => {
 
 
@@ -84,15 +82,10 @@ const StoreHome = () => {
 
     <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
       <main>
-<<<<<<< Updated upstream
+
       <NavbarStore/>
-      <div className='storebanner'>
-        <a><img src={storebanner} width="100%"></img></a>
-        
-        </div>
-      <h1 style={{color:"rgba(0, 95, 96, 0.8)",display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"30PX"}}>Fresh Recommendations</h1>
-      <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"40PX" }}>
-=======
+    
+    
       <NavbarS/>
       <h1 style={{color:"rgba(0, 95, 96, 0.8)",display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"10PX"}}>Ecommerce Store</h1>
     
@@ -135,7 +128,7 @@ const StoreHome = () => {
 
 
       <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"50PX" }}>
->>>>>>> Stashed changes
+
       <input
         style={{ width: '50%', marginRight: '0.5rem', backgroundColor: '#FFFFFF',color:"rgba(0, 95, 96, 0.8)" }}
         autoComplete='off'
@@ -215,6 +208,7 @@ const StoreHome = () => {
 
 
     </div>
+    
   );
 
 
