@@ -20,10 +20,10 @@ import Managead from "./componenets/AdminPages/Managead";
 import PrivateRouting from "./componenets/pages/PrivateRouting";
 import UpdateAd from "./componenets/pages/UpdateAd";
 import SignUpSuccessfully from "./componenets/pages/SignUpSuccessful";
-import landingpage, { LandingPage } from './componenets/pages/LandingPage';
-import AboutUs from "./componenets/pages/AboutUs"; 
-import AdDetail from "./componenets/pages/AdDetail"
-import AppC from "./componenets/chatsys/AppC"
+import { LandingPage } from "./componenets/pages/LandingPage";
+import AboutUs from "./componenets/pages/AboutUs";
+import AdDetail from "./componenets/pages/AdDetail";
+import AppC from "./componenets/chatsys/AppC";
 import Manage_UserAds from "./componenets/AdminPages/Manage_UserAds";
 import ManageUsers from "./componenets/AdminPages/ManageUsers";
 import Ecomerce from "./componenets/EcommerceStore/src/App";
@@ -33,28 +33,31 @@ import UpdateProduct from "./componenets/AdminPages/UpdateProduct";
 import StoreHome from "./componenets/EcomercePages/StoreHome";
 import ProductDetail from "./componenets/EcomercePages/ProductDetail";
 import NewNavbar from "./componenets/pages/NewNavbar";
+import AddToCart from "./componenets/EcomercePages/AddToCart";
 //Context APIs
 const EmailContext = createContext();
 const ImagesContext = createContext();
 const AdContext = createContext();
 const AdFContext = createContext();
 const ProContext = createContext();
-const AdDContext = createContext()
+const AdDContext = createContext();
 function App() {
   //global states
+  const [cartItems, setCartItems] = useState([]);
   const [Images, setImages] = useState([]);
   const [Email, setEMAIL] = useState("");
   const [AdID, setAdID] = useState("");
   const [AdFID, setAdFID] = useState("");
   const [ProID, setProID] = useState("");
-  const [AdD, setAdD]=useState('');
+  const [AdD, setAdD] = useState("");
   return (
     <EmailContext.Provider value={{ Email, setEMAIL }}>
       <AdContext.Provider value={{ AdID, setAdID }}>
         <AdFContext.Provider value={{ AdFID, setAdFID }}>
           <ImagesContext.Provider value={{ Images, setImages }}>
+
           <AdDContext.Provider value={{AdD,setAdD}}>
-   <ProContext.Provider value={{ProID,setProID}}>
+           <ProContext.Provider value={{ProID,setProID}}>
             <div className="page-containerr">
               <div className="content-wrap">
                 {/**/}
@@ -86,32 +89,97 @@ function App() {
                     <Route path="/reset" element={<Reset />}></Route>
                     <Route path="/storehome" element={<StoreHome />}></Route>
                     <Route path="/AdminLogin" element={<AdminLogin />}></Route>
+            <AdDContext.Provider value={{ AdD, setAdD }}>
+              <ProContext.Provider value={{ ProID, setProID }}>
+                <div className="page-containerr">
+                  <div className="content-wrap">
+                    {/**/}
+                    <BrowserRouter>
+                      <Routes>
+                        <Route path="/" element={<LandingPage />}></Route>
+                        <Route path="/home" element={<Home />}></Route>
+                        <Route path="/about" element={<About />}></Route>
+                        <Route path="/hardware" element={<Hardware />}></Route>
+                        <Route
+                          path="/signupsuccess"
+                          element={<SignUpSuccessfully />}
+                        ></Route>
+                        <Route
+                          path="/landingpage"
+                          element={<LandingPage />}
+                        ></Route>
+                        <Route path="/login" element={<Login />}></Route>
+                        <Route path="/addetail" element={<AdDetail />}></Route>
+                        <Route path="/ecomerce" element={<Ecomerce />}></Route>
+                        <Route
+                          path="/addproduct"
+                          element={<AddProduct />}
+                        ></Route>
+                        <Route path="/signup" element={<Signup />}></Route>
+                        <Route
+                          path="/updateproduct"
+                          element={<UpdateProduct />}
+                        ></Route>
+                        <Route path="/service" element={<AboutUs />}></Route>
+                        <Route path="/updatead" element={<UpdateAd />}></Route>
+                        <Route
+                          path="/managestore"
+                          element={<ManageEcomerce />}
+                        ></Route>
+                        <Route
+                          path="/forgotpassword"
+                          element={<ForgotPassword />}
+                        ></Route>
+                        <Route path="/updated" element={<Updated />}></Route>
+                        <Route
+                          path="/productdetail"
+                          element={<ProductDetail />}
+                        ></Route>
+                       <Route path="/addtocart" element={<AddToCart cartItems={cartItems} setCartItems={setCartItems} />} />
+                        <Route path="/MyAds" element={<MyAds />}></Route>
+                        <Route path="/reset" element={<Reset />}></Route>
+                        <Route
+                          path="/storehome"
+                          element={<StoreHome />}
+                        ></Route>
+                        <Route
+                          path="/AdminLogin"
+                          element={<AdminLogin />}
+                        ></Route>
 
-                    <Route path="/AppC" element={<AppC />}></Route>
+                        <Route path="/AppC" element={<AppC />}></Route>
 
-                    <Route
-                      path="/Pac_updated"
-                      element={<Pac_Updated />}
-                    ></Route>
+                        <Route
+                          path="/Pac_updated"
+                          element={<Pac_Updated />}
+                        ></Route>
 
-                    <Route path="/addpackage" element={<Addpackage />}></Route>
-                    <Route path="/manageusersads" element={<Manage_UserAds />}></Route>
-                    <Route path="/manageusers" element={<ManageUsers />}></Route>
-                    <Route
-                      path="/editpackage"
-                      element={<Editpackage />}
-                    ></Route>
+                        <Route
+                          path="/addpackage"
+                          element={<Addpackage />}
+                        ></Route>
+                        <Route
+                          path="/manageusersads"
+                          element={<Manage_UserAds />}
+                        ></Route>
+                        <Route
+                          path="/manageusers"
+                          element={<ManageUsers />}
+                        ></Route>
+                        <Route
+                          path="/editpackage"
+                          element={<Editpackage />}
+                        ></Route>
 
-                    <Route path="/managead" element={<Managead />}></Route>
-                  </Routes>
-                </BrowserRouter>
+                        <Route path="/managead" element={<Managead />}></Route>
+                      </Routes>
+                    </BrowserRouter>
 
-                <Footer />
-              </div>
-            </div>
-            </ProContext.Provider>
+                    <Footer />
+                  </div>
+                </div>
+              </ProContext.Provider>
             </AdDContext.Provider>
-   
           </ImagesContext.Provider>
         </AdFContext.Provider>
       </AdContext.Provider>
@@ -125,7 +193,4 @@ export { AdContext };
 export { ImagesContext };
 export { AdFContext };
 export { ProContext };
-export {AdDContext};
-
-
-
+export { AdDContext };
