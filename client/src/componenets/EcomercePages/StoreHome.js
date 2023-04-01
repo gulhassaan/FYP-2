@@ -98,10 +98,10 @@ const StoreHome = () => {
       <div id="carouselExample" class="carousel slide">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src={banner1} class="d-block w-100" alt=""/>
+      <img src={banner2} class="d-block w-100" alt=""/>
     </div>
     <div class="carousel-item">
-      <img src={banner2} class="d-block w-100" alt=""/>
+      <img src={banner1} class="d-block w-100" alt=""/>
     </div>
     <div class="carousel-item">
       <img src={banner3} class="d-block w-100" alt=""/>
@@ -116,16 +116,6 @@ const StoreHome = () => {
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-
-
-
-
-
-
-
-
-
-
 
 
 
