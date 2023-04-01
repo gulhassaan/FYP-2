@@ -12,10 +12,7 @@ import "@fontsource/montserrat";
 
 const ProductDetail = () => {
 
-
-
-
-const {Email,setEMAIL} = useContext(EmailContext)
+  const {Email,setEMAIL} = useContext(EmailContext)
   const [images, setImages] = useState([]);
   const [mainImage, setMainImage] = useState('');
   const [product, setProduct] = useState([]);
@@ -26,6 +23,7 @@ const {Email,setEMAIL} = useContext(EmailContext)
   const [report, setReport] = useState(1);
   const [Price, setPrice] = useState();
 
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
 
@@ -43,14 +41,18 @@ const {Email,setEMAIL} = useContext(EmailContext)
       setProduct(temp[0])
     });
   }, []);
-
-
-
-
-
-
   
-
+  const handleAddToCart = () => {
+    const cartItem = {
+    id: product.Id,
+    name: product.Name,
+    price: product.Price,
+    image: mainImage,
+    };
+    setCartItems([...cartItems, cartItem]);
+    navigate('/addtocart', { state: { product: product } });
+    };
+  
 
   function imageSet(ind) {
     console.log(ind);
@@ -108,7 +110,8 @@ const {Email,setEMAIL} = useContext(EmailContext)
                   {product.Price}
                 </Typography>
                 <CardActions sx={{ marginTop: "20px" }}>
-                  <Button variant="contained" sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Add To Cart</Button>
+                  <Button variant="contained" sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}  onClick={handleAddToCart}>Add To Cart</Button>
+                  <Button variant="contained" sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}  href="/storehome">Go Back</Button>
                 </CardActions>
                
               </Grid>
