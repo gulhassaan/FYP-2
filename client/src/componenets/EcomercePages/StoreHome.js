@@ -31,6 +31,7 @@ import './Ecommerce.css';
 import banner1 from "./images/slider1.png";
 import banner2 from "./images/slider2.png";
 import banner3 from "./images/slider3.png";
+import { NavLink } from 'react-router-dom';
 const StoreHome = () => {
 
 
@@ -184,7 +185,7 @@ const StoreHome = () => {
                       {card.Description}
                     </Typography>
                     <br></br>
-                    
+                    <NavLink to="/productdetail" style={{ backgroundColor: '#0D8485', color: 'white', padding: '10px', borderRadius: '5px', justifyContent:'center' , paddingTop:"7px", textDecoration: 'none' }} activeStyle={{ backgroundColor: 'gray'}}> View Detail </NavLink>
                   </CardContent>
 
                 </Card>

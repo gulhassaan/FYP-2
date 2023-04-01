@@ -50,7 +50,7 @@ const ProductDetail = () => {
     image: mainImage,
     };
     setCartItems([...cartItems, cartItem]);
-    navigate('/addToCart', { state: { product: product } });
+    navigate('/addtocart', { state: { product: product } });
     };
   
 

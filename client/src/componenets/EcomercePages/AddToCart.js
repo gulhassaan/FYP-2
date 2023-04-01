@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AdDContext } from "../../App";
 import axios from "axios";
 import { CartContext } from "./CartContext";
+
 const AddToCart = (props) => {
   const navigate = useNavigate();
   const { AdD } = useContext(AdDContext);
@@ -15,7 +16,7 @@ const AddToCart = (props) => {
       id: product.Id,
       name: product.Name,
       price: product.Price,
-      image: props.location.state.product.Images[0],
+      image: product.Images[0],
       quantity: quantity,
     };
     const updatedCartItems = [...cartItems];
@@ -40,7 +41,6 @@ const AddToCart = (props) => {
       .then((response) => {
         console.log(response.data);
       });
-    navigate("/cart");
   };
 
   const handleQuantityChange = (event) => {
@@ -50,7 +50,7 @@ const AddToCart = (props) => {
   return (
     <div style={{ padding: "3rem" }}>
       <h1>Add To Cart</h1>
-      <image >{props.state.product.image}</image>
+      <img src={props.location.state.product.Images[0]} alt="product" />
       <p>{props.location.state.product.Name}</p>
       <p>Price: {props.location.state.product.Price}</p>
       <label>
