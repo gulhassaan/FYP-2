@@ -2,7 +2,7 @@
 
 
 
-import React, { useState, useContext,useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import log from '../images/login.png'
 import ema from '../images/email.png'
@@ -13,15 +13,15 @@ import { EmailContext } from "../../App";
 import Navbar from "./NavbarHome";
 import "@fontsource/montserrat";
 
- 
-  useEffect(() => {
-    if(localStorage.getItem('email_token'))
-    {
-      navigate('/home')
-    }
-  }, [])
-  return (
-    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
+
+useEffect(() => {
+  if (localStorage.getItem('email_token')) {
+    navigate('/home')
+  }
+}, [])
+
+return (
+  <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
     <div>
       <Navbar />
 
@@ -44,7 +44,7 @@ import "@fontsource/montserrat";
                   </label>
 
                   <input
-                  style={{ backgroundColor: '#FFFFFF' }}
+                    style={{ backgroundColor: '#FFFFFF' }}
                     type="email"
                     name="email"
                     id="email"
@@ -54,11 +54,11 @@ import "@fontsource/montserrat";
                     value={email}
                     autoComplete="on"
                   ></input>
-              
-                                  
+
+
                 </div>
                 {
-                  emailerr?<span style={{color:"red"}}>Email Is Required</span>:""
+                  emailerr ? <span style={{ color: "red" }}>Email Is Required</span> : ""
                 }
                 <p className="error"> {errors.email} </p>
                 <div className="login-inp">
@@ -66,35 +66,35 @@ import "@fontsource/montserrat";
                     <img className="pass-icon" src={pas}></img>
                   </label>
                   <input
-                  style={{ backgroundColor: '#FFFFFF' }}
+                    style={{ backgroundColor: '#FFFFFF' }}
                     type="password"
                     name="passwrod"
                     id="password"
                     placeholder="Password"
                     onChange={passHandler}
                     value={password}
-                    autocomplete="on"               
+                    autocomplete="on"
                   ></input>
-                
+
                 </div>
                 {
-                  passerr?<span style={{color:"red"}}>Password is required</span>:""
+                  passerr ? <span style={{ color: "red" }}>Password is required</span> : ""
                 }
                 <div className="login-forgotfooterbtn">
-                {
-                  checkemail?<span style={{color:"red",marginRight:"65px"}}>Invalid Email and Password</span>:""
-                }
-                {
-                  checkpass?<span style={{color:"red",marginRight:"65px"}}>Invalid Password</span>:""
-                }
+                  {
+                    checkemail ? <span style={{ color: "red", marginRight: "65px" }}>Invalid Email and Password</span> : ""
+                  }
+                  {
+                    checkpass ? <span style={{ color: "red", marginRight: "65px" }}>Invalid Password</span> : ""
+                  }
                   <NavLink to="/forgotpassword" className="signup-image-link">
                     Forgot Password
                   </NavLink>
-                
+
                 </div>
 
-               
-            <button className="login-btn" type="submit" onClick={login}>Log In</button>
+
+                <button className="login-btn" type="submit" onClick={login}>Log In</button>
 
 
               </form>
@@ -113,7 +113,6 @@ import "@fontsource/montserrat";
         </div>
       </section>
     </div>
-    </div>
+  </div>
 
-  )
-} 
+)

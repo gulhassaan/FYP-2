@@ -1,4 +1,21 @@
 
+// // function Home() {
+
+
+// //   return (
+// //     <div>
+// //       {listOfPosts.map((value, key) => {
+// //         return (
+// //           <div className="post">
+// //             <div className="title"> {value.title} </div>
+// //             <div className="body">{value.postText}</div>
+// //             <div className="footer">{value.username}</div>
+// //           </div>
+// //         );
+// //       })}
+// //     </div>
+// //   );
+// // }
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -24,13 +41,13 @@ import { AdDContext } from "../../App";
 import "@fontsource/montserrat";
 import NavbarStore from './Navbarstore';
 import storebanner from '../images/gamingstanstore.png';
+
 import NavbarS from './NavbarS';
 import ProductDetail from './ProductDetail';
 import './Ecommerce.css';
 import banner1 from "./images/slider1.png";
 import banner2 from "./images/slider2.png";
 import banner3 from "./images/slider3.png";
-
 const StoreHome = () => {
 
 
@@ -83,6 +100,7 @@ const StoreHome = () => {
     <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
       <main>
 
+
       <NavbarStore/>
     
     
@@ -127,7 +145,15 @@ const StoreHome = () => {
 
 
 
-      <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"50PX" }}>
+      <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"50PX" }}/>
+
+      <NavbarStore/>
+      <div className='storebanner'>
+        <a><img src={storebanner} width="100%"></img></a>
+        
+        </div>
+      <h1 style={{color:"rgba(0, 95, 96, 0.8)",display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"30PX"}}>Fresh Recommendations</h1>
+      <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"40PX" }}>
 
       <input
         style={{ width: '50%', marginRight: '0.5rem', backgroundColor: '#FFFFFF',color:"rgba(0, 95, 96, 0.8)" }}
@@ -139,69 +165,57 @@ const StoreHome = () => {
         onChange={(e)=>setSearch(e.target.value)}
       />
     </div>
+        <Container sx={{ py: 8 }}>
+
+          <Grid container spacing={4}>
+            {listofProducts.filter((card)=>{
+              return search.toLowerCase()===''?card:(card.Name.toLowerCase().includes(search)); 
+            }).map((card) => (
+              <Grid item key={card} xs={12} sm={6} md={3}>
+                <Card
+                  style={{ backgroundColor: "#FFFFFF", height: "330px", borderRadius: "20px", boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)" }}
+                  raised
+                  sx={{
+                    maxWidth: 280,
+                    margin: "0 auto",
+                    padding: "0.1em",
+                    maxHeight: 450
+                  }}
 
 
-    <Container sx={{ py: 8 }}>
+                >
+                  <CardMedia
+                    component="img"
+                    height={180}
+                    image={card.Images[0]}
+                    alt="random"
+                    style={{ padding: "0.5em 0.5em 0 0.5em", borderRadius: "20px" }}
+                    onClick={() => { view(card.ID) }}
+                  />
+                  <CardContent sx={{ flexGrow: 1 }} onClick={() => { view(card.ID) }} >
+                    <Typography gutterBottom variant="h6" component="h6" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)" }}>
+                      {card.Name}
+                    </Typography>
 
-<Grid container spacing={4}>
-  {listofProducts.filter((card)=>{
-    return search.toLowerCase()===''?card:(card.Name.toLowerCase().includes(search)); 
-  }).map((card) => (
-    <Grid item key={card} xs={12} sm={6} md={3}>
-      <Card
-        style={{ backgroundColor: "#FFFFFF", height: "330px", borderRadius: "20px", boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)" }}
-        raised
-        sx={{
-          maxWidth: 280,
-          margin: "0 auto",
-          padding: "0.1em",
-          maxHeight: 450
-        }}
+                    <Typography variant="p" style={{ topmargin: "5px", color: "rgba(0, 95, 96, 0.8)" }}>
+                      {card.Price}
+                    </Typography>
+                    <br></br>
+                    <Typography variant="p" style={{ color: "rgba(0, 95, 96, 0.8)" }}>
+                      {card.Description}
+                    </Typography>
+                    <br></br>
+                    
+                  </CardContent>
 
-
-      >
-        <CardMedia
-          component="img"
-          height={180}
-          image={card.Images[0]}
-          alt="random"
-          style={{ padding: "0.5em 0.5em 0 0.5em", borderRadius: "20px" }}
-          onClick={() => { view(card.ID) }}
-        />
-        <CardContent sx={{ flexGrow: 1 }} onClick={() => { view(card.ID) }} >
-          <Typography gutterBottom variant="h6" component="h6" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)" }}>
-            {card.Name}
-          </Typography>
-
-          <Typography variant="p" style={{ topmargin: "5px", color: "rgba(0, 95, 96, 0.8)" }}>
-            {card.Price}
-          </Typography>
-          <br></br>
-          <Typography variant="p" style={{ color: "rgba(0, 95, 96, 0.8)" }}>
-            {card.Description}
-            
-            <CardActions>
-    <Button className='ViewDetail' 
-      onClick={() => navigate(`/productdetail/${ProductDetail.id}`)}>
-      View Details
-    </Button>
-  </CardActions>
-
-
-
-          </Typography>
-          <br></br>
-       
-        </CardContent>
-
-      </Card>
-    </Grid>
-  ))}
-</Grid>
-<Stack spacing={2} alignItems={"center"}>
-  <Pagination count={2} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
-</Stack>
-</Container>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+          <Stack spacing={2} alignItems={"center"}>
+            <Pagination count={2} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
+          </Stack>
+        </Container>
       </main>
 
 

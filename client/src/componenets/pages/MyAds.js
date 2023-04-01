@@ -19,6 +19,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { color } from '@mui/system';
 import Navbar from './NavbarHome';
+import NewNavbar from './NewNavbar';
 import "@fontsource/montserrat";
 
 export const MyAds = () => {
@@ -93,11 +94,11 @@ export const MyAds = () => {
   return (
 
     <div>
-      <Navbar />
-      <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
-
-        <main>
-          <Container sx={{ py: 8 }}>
+            <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
+           
+        <main style={{marginTop:60}}>
+        <NewNavbar/>
+          <Container sx={{ py: 8 }} to>
 
             <Grid container spacing={4}>
               {Ads.map((card) => (
