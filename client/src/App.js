@@ -32,6 +32,7 @@ import AddProduct from "./componenets/AdminPages/AddProduct";
 import UpdateProduct from "./componenets/AdminPages/UpdateProduct";
 import StoreHome from "./componenets/EcomercePages/StoreHome";
 import ProductDetail from "./componenets/EcomercePages/ProductDetail";
+import NewNavbar from "./componenets/pages/NewNavbar";
 //Context APIs
 const EmailContext = createContext();
 const ImagesContext = createContext();
@@ -71,7 +72,7 @@ function App() {
                     <Route path="/addproduct" element={<AddProduct />}></Route>
                     <Route path="/signup" element={<Signup />}></Route>
                     <Route path="/updateproduct" element={<UpdateProduct />}></Route>
-<Route path="/service" element={<AboutUs />}></Route>
+                    <Route path="/service" element={<AboutUs />}></Route>
                     <Route path="/updatead" element={<UpdateAd />}></Route>
                     <Route path="/managestore" element={<ManageEcomerce />}></Route>
                     <Route
@@ -79,6 +80,7 @@ function App() {
                       element={<ForgotPassword />}
                     ></Route>
                     <Route path="/updated" element={<Updated />}></Route>
+                    <Route path="/newNavbar" element={<NewNavbar />}></Route>
                     <Route path="/productdetail" element={<ProductDetail />}></Route>
                     <Route path="/MyAds" element={<MyAds />}></Route>
                     <Route path="/reset" element={<Reset />}></Route>

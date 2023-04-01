@@ -159,10 +159,10 @@ export const LandingPage = () => {
       <Navbar />
       <main>
         <div className='Landingpage-banner'>
-        <a href='signup'><img className="Landingpage-banner-Image" src={landingpageBanner}></img></a>
+        <a href='signup'><img className="Landingpage-banner-Image" src={landingpageBanner} width="100%"></img></a>
         
         </div>
-        <h2 className='txt-align'>Fresh Recommendations</h2>
+        <h2 className='txt-align' style={{color: "rgba(0, 95, 96, 0.8)",fontWeight:"bolder"}}>Fresh Recommendations</h2>
         <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center', justifyContent: "center", paddingTop: "50PX" }}>
           <input
             style={{ width: '50%', marginRight: '0.5rem', backgroundColor: '#FFFFFF', color: "rgba(0, 95, 96, 0.8)" }}
@@ -183,7 +183,7 @@ export const LandingPage = () => {
               label='Filters'
               onChange={Selectfilter}
               style={{ borderRadius: "20px", height: "45px", color: "rgba(0, 95, 96, 0.8)" }}
-
+              autoComplete='off'
             >
               <MenuItem value='' style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}>
                 <em>None</em>
