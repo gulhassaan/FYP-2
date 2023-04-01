@@ -94,7 +94,7 @@ const StoreHome = () => {
       <main>
       <NavbarStore/>
       <div className='storebanner'>
-        <a><img src={storebanner}></img></a>
+        <a><img src={storebanner} width="100%"></img></a>
         
         </div>
       <h1 style={{color:"rgba(0, 95, 96, 0.8)",display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"30PX"}}>Fresh Recommendations</h1>

@@ -177,7 +177,7 @@ export const Home = () => {
       
       <main>
       <div className='bannerimage'>
-        <a><img src={banner}></img></a>
+        <a><img src={banner}  width="100%" height="50%"></img></a>
         
         </div>
         <h2 className='txt-align'>Fresh Recommendations</h2>
