@@ -1,6 +1,6 @@
 import { Grid, Container, Typography, Button, CardActions, Hidden } from "@mui/material";
 import React, { useEffect, useState, useContext } from "react";
-import Navbar from './NavbarHome';
+import Navbar from './NewNavbar';
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
