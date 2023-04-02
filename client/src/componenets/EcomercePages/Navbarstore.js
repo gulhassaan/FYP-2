@@ -6,7 +6,7 @@ import bell from '../images/bell.png';
 import account from '../images/account.png';
 import drop from '../images/drop.png';
 import "@fontsource/montserrat";
-
+import cartimg from './images/addtocart.png';
 const NavbarS = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -20,7 +20,8 @@ const NavbarS = () => {
         <a href="/about"><b>About Us</b> </a>
 </div>
         <div className={`nav-items ${isOpen && "open"}`}style={{marginLeft:"auto"}}>
-      <a href=""><img className="pass-icon1" src={account}></img></a>
+       <a href="addtocart"><img className="pass-icon1" src={cartimg}></img></a>
+      <a href="/"><img className="pass-icon1" src={account}></img></a>
       <a className="ab" href="/hardware"><b>Sell</b></a>
       <a className="ab" onClick={() => {
         localStorage.removeItem('email_token')
