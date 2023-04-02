@@ -44,7 +44,7 @@ const Cart = () => {
 
   return (
     <div className="cart-container">
-      <h1>Add to Cart Page</h1>
+      <h1 className='title-label'>Add to Cart Page</h1>
       <div className="items-container">
         {cartItems.map((item) => (
           <div className="item" key={item.id}>
@@ -62,7 +62,7 @@ const Cart = () => {
           </div>
         ))}
       </div>
-      <h2>Total Bill: {calculateTotalBill()}</h2>
+      <h2 className='total-label'>Total Bill: {calculateTotalBill()}</h2>
     </div>
   );
 };
