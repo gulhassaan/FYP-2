@@ -7,20 +7,20 @@
     border-radius: 20px solid black;
 }
 #carouselExample {
-    margin: 0 auto; /* Center the carousel container */
-    width: 80%; /* Set the maximum width of the carousel */
-    
-  }
+  margin: 0 auto; /* Center the carousel container */
+  width: 80%; /* Set the maximum width of the carousel */
   
-  .carousel-item {
-    width: 100%; /* Make all carousel items equal in size */
-    height: 100%;
-  }
-  
-  .carousel-inner {
-    height: auto;
-    padding: 0 20px; /* Add gaps from the left and right */
-  }
+}
+
+.carousel-item {
+  width: 100%; /* Make all carousel items equal in size */
+  height: 100%;
+}
+
+.carousel-inner {
+  height: auto;
+  padding: 0 20px; /* Add gaps from the left and right */
+}
   .bg-storehome{
     background-color: aliceblue;
   }

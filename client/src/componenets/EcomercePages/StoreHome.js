@@ -28,7 +28,7 @@ import storebanner from '../images/gamingstanstore.png';
 import NavbarS from './NavbarS';
 import ProductDetail from './ProductDetail';
 import './Ecommerce.css';
-import banner1 from "./images/slider1.png";
+import banner1 from "../images/gamingstanstore.png";
 import banner2 from "./images/slider2.png";
 import banner3 from "./images/slider3.png";
 import { NavLink } from 'react-router-dom';
@@ -88,34 +88,15 @@ const StoreHome = () => {
       <NavbarStore/>
     
     
-      <NavbarS/>
-      <h1 style={{color:"rgba(0, 95, 96, 0.8)",display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"10PX"}}>Ecommerce Store</h1>
+     
     
     
+
     
-    
-    
-      <div id="carouselExample" class="carousel slide">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src={banner2} class="d-block w-100" alt=""/>
-    </div>
-    <div class="carousel-item">
-      <img src={banner1} class="d-block w-100" alt=""/>
-    </div>
-    <div class="carousel-item">
-      <img src={banner3} class="d-block w-100" alt=""/>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
+      <div className='storebanner'>
+        <a><img src={banner1} width="100%"></img></a>
+        
+        </div>
 
 
 

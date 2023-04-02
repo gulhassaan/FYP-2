@@ -989,7 +989,6 @@ footer {
 .Navbarhome {
   height: 60px;
   overflow: hidden;
-  margin-top: -60px;
   width: 100%;
   position: fixed;
   display: flex;
@@ -998,6 +997,21 @@ footer {
   background: rgba(0, 95, 96, 1);
 }
 
+#carouselExample {
+   /* Center the carousel container */
+  width: 100%; /* Set the maximum width of the carousel */
+  margin-top: 30px;
+}
+
+.carousel-item {
+  width: 100%; /* Make all carousel items equal in size */
+  height: 100%;
+}
+
+.carousel-inner {
+  height: auto;
+  padding: 0 20px; /* Add gaps from the left and right */
+}
 .bannerimage{
   margin-top: 60px;
 
@@ -1700,3 +1714,4 @@ footer {
 
 
 /**/
+
