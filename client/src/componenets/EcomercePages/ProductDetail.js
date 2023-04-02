@@ -1,6 +1,7 @@
 import { Grid, Container, Typography, Button, CardActions, Hidden } from "@mui/material";
 import React, { useEffect, useState, useContext } from "react";
 import NavbarD from "./NavbarD";
+
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -44,14 +45,23 @@ const ProductDetail = () => {
   
   const handleAddToCart = () => {
     const cartItem = {
-    id: product.Id,
-    name: product.Name,
-    price: product.Price,
-    image: mainImage,
+      id: product.Id,
+      name: product.Name,
+      price: product.Price,
+      image: mainImage,
     };
     setCartItems([...cartItems, cartItem]);
-    navigate('/addtocart', { state: { product: product } });
-    };
+  
+    navigate('/addtocart', {
+      state: {
+        id: product.Id,
+        name: product.Name,
+        price: product.Price,
+        image: mainImage,
+      }
+    });
+    
+  };
   
 
   function imageSet(ind) {

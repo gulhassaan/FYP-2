@@ -10,7 +10,7 @@ app.use(cors());
 const db = mysql.createConnection({
     user: "root",
     host: "localhost",
-    password: "root1234",
+    password: "password",
     database: "gamingstan"
 });
 
@@ -650,3 +650,57 @@ console.log("This is ,y final year project gamingstan p2p market place for gamme
 
 
 
+//ecom
+
+app.get("/addtocart/:id", (req, res) => {
+    const id = req.params.product.id;
+    console.log("Serverr : ", id)
+    db.query(`SELECT * FROM product WHERE ID = '${id}' `, (err, result) => {
+        res.send(result);
+
+    })
+})
+
+
+app.get('/Get_Up_Product/:productId', (req, res) => {
+    const productId = req.params.productId;
+    db.query(`SELECT * FROM product WHERE ID = ${productId} AND Status = 1`, (err, result) => {
+      if (err) {
+        console.log(err);
+    
+      } else {
+        if (result.length === 0) {
+          res.status(404).send('Product not found');
+        } else {
+          res.send(result[0]);
+        }
+      }
+    });
+  });
+  
+
+  app.get('/addtocart/:id', (req, res) => {
+    const productId = req.params.product.id;
+    db.query(`SELECT ID, Name, Price, Images FROM product WHERE ID = ${productId} AND Status = 1`, (err, result) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send('Error retrieving product information');
+      } else {
+        if (result.length === 0) {
+          res.status(404).send('Product not found');
+        } else {
+          res.send(result[0]);
+        }
+      }
+    });
+  });
+  
+
+
+  
+  
+  
+  
+  
+  
+  
