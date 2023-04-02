@@ -10,7 +10,7 @@ app.use(cors());
 const db = mysql.createConnection({
     user: "root",
     host: "localhost",
-    password: "password",
+    password: "root1234",
     database: "gamingstan"
 });
 
@@ -104,6 +104,70 @@ app.post("/Productpublish", async (req, res) => {
     );
     res.json("Success");
 })
+
+
+//Add to Cart
+app.post("/addToCart", async (req, res) => {
+
+    const ID = req.body.ProductId
+   const Email = req.body.CartID;
+    const Price = req.body.Price;
+    const Name = req.body.ProductName;
+    const Images = req.body.Images;
+    console.log(ID)
+    db.query(
+        "INSERT INTO cart(CartID,ProductId, Price ,ProductName,Images) VALUES (?,?,?,?,?)",
+        [Email,ID, Price,Name, Images],
+        (err, result) => {
+            console.log(err);
+            console.log(result.data)
+        }
+    );
+    res.json("Success");
+})
+
+//Get From Cart
+app.get("/Get_items", async (req, res) => {
+    console.log("im a server")
+    db.query(`SELECT * FROM cart where Quantity > 0`, (err, result) => {
+        res.send(result);
+        console.log("THIS IS CART ",result )
+
+    })
+})
+
+//Update Cart
+
+app.put("/UpdateCart/:id", (req, res) => {
+    const ID = req.params.id;
+    const Quantity = req.params.Quantity;
+    console.log(ID)
+    console.log("FOR UPDATE")
+    db.query(`UPDATE cart SET Quantity = ? WHERE ProductId = ?`,[Quantity,ID], (err, result) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.send(result)
+        }
+    })
+})
+
+
+//Delete Product
+app.delete("/RemoveCart/:id", (req, res) => {
+    const ID = req.params.id;
+    db.query(`DELETE FROM cart WHERE ProductId = ? AND Quantity < 1`,[ID], (err, result) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.send(result)
+        }
+    })
+})
+
+
 //FOR USER Login
 app.post("/login", (req, res) => {
 
