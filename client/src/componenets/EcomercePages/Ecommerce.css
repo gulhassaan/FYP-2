@@ -6,11 +6,11 @@
     padding-bottom: 30px;
     border-radius: 20px solid black;
 }
-#carouselExample {
+ {
   margin: 0 auto; /* Center the carousel container */
   width: 80%; /* Set the maximum width of the carousel */
   
-}
+}#carouselExample
 
 .carousel-item {
   width: 100%; /* Make all carousel items equal in size */

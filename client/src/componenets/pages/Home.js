@@ -149,20 +149,20 @@ export const Home = () => {
     }
   }, []);
   return (
-    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
+    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)", width:"100%" }}>
       <Navbar />
 
       <main>
         <div id="carouselExample" class="carousel slide">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src={banner2} class="d-block w-100" alt="" />
+              <img src={banner2}  width="100%"/>
             </div>
             <div class="carousel-item">
-              <img src={banner1} class="d-block w-100" alt="" />
+              <img src={banner3} width="100%" />
             </div>
             <div class="carousel-item">
-              <img src={banner3} class="d-block w-100" alt="" />
+              <img src={banner1} width="100%" />
             </div>
           </div>
           <button
@@ -363,6 +363,7 @@ export const Home = () => {
               color="secondary"
               onChange={(e, v) => setpage(v - 1)}
             />
+            
           </Stack>
         </Container>
       </main>
