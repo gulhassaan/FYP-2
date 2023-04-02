@@ -1,21 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import Axios from 'axios';
+import NavbarD from "./NavbarD";
+const Cart = () => {
 
-const CartPage = () => {
-  const [cart, setCart] = useState([]);
+const [cart, setCart] = useState([]);
+const [count , setCount] = useState(1);
+var email = localStorage.getItem("email");
+useEffect(() => {
+    Axios.get(`http://localhost:3006/Get_items`).then((response) => {
+      console.log("THis is Response Data : ", response.data)
+      var temp = response.data;
+      console.log(response.data);
+      temp.forEach(element => {
 
-  useEffect(() => {
-    axios.get('/api/cart')
-      .then(res => {
-        setCart(res.data);
-      })
-      .catch(err => {
-        console.log(err);
+        element.Images = JSON.parse(element.Images)
+
       });
+      setCart(temp);
+      console.log("After parse : ", temp)
+    });
   }, []);
 
+
+  console.log("THis is carty ", cart)
+
   const updateCart = (id, quantity) => {
-    axios.put(`/api/cart/${id}`, { quantity })
+    console.log("HELOE")
+console.log(quantity);
+    Axios.put(`http://localhost:3006/UpdateCart/${id}`, { Quantity :quantity })
       .then(res => {
         setCart(res.data);
       })
@@ -25,9 +37,12 @@ const CartPage = () => {
   };
 
   const removeFromCart = (id) => {
-    axios.delete(`/api/cart/${id}`)
+    console.log(id)
+    Axios.delete(`http://localhost:3006/RemoveCart/${id}`)
       .then(res => {
-        setCart(res.data);
+        setCart (cart.filter((val) => {
+            return val.ProductId != id
+          }));
       })
       .catch(err => {
         console.log(err);
@@ -39,15 +54,15 @@ const CartPage = () => {
       <h1>Cart</h1>
       <ul>
         {cart.map((item) => (
-          <li key={item.id}>
-            {item.name} - {item.price}
-            <button onClick={() => updateCart(item.id, item.quantity + 1)}>
+          <li key={item.ProductId}>
+            {item.ProductName} - {item.Price}
+            <button onClick={() => updateCart(item.ProductId, setCount(count+1))}>
               +
             </button>
-            <button onClick={() => updateCart(item.id, item.quantity - 1)}>
+            <button onClick={() => updateCart(item.ProductId, setCount(count-1))}>
               -
             </button>
-            <button onClick={() => removeFromCart(item.id)}>Remove</button>
+            <button onClick={() => removeFromCart(item.ProductId)}>Remove</button>
           </li>
         ))}
       </ul>
@@ -55,4 +70,4 @@ const CartPage = () => {
   );
 };
 
-export default CartPage;
+export default Cart;

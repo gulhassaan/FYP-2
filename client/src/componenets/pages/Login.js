@@ -12,12 +12,13 @@ import './App.css'
 import { EmailContext } from "../../App";
 import Navbar from "./NavbarLogin";
 import "@fontsource/montserrat";
-
+import {byerContext} from "../../App";
 export const Login = (props) => {
   //const [email, setEmail] = useState('');
 
 
   const { Email, setEMAIL } = useContext(EmailContext);
+  const {byer, setbyer} = useContext(byerContext);
   const [email, setEmail] = useState("")
   const [password, setPass] = useState('');
 
@@ -49,6 +50,7 @@ export const Login = (props) => {
   { 
     if(email!=="" && password!=="")
      {
+
       Axios.post("http://localhost:3006/login", {
         email: email,
         password: password,
@@ -72,7 +74,8 @@ export const Login = (props) => {
           setPasserr(false);
           localStorage.setItem('email_token', email)
           setEMAIL(email);
-  
+         setbyer(email)
+         console.log("BYER : ", byer);
         //  errors.email = 'Congratulation Successfully Login';
           { navigate('/home') }
           //setlogin_S(1)

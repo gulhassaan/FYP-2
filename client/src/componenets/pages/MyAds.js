@@ -18,9 +18,9 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { color } from '@mui/system';
-import Navbar from './NavbarHome';
 import NewNavbar from './NewNavbar';
 import "@fontsource/montserrat";
+import { TextAlignJustify } from 'phosphor-react';
 
 export const MyAds = () => {
 
@@ -95,9 +95,12 @@ export const MyAds = () => {
 
     <div>
             <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
-           
+            <NewNavbar/>
         <main style={{marginTop:60}}>
-        <NewNavbar/>
+          <div style={{ textAlign:"center", color:"rgba(0, 95, 96, 1)", }}>
+          <h1><b>My Ads</b></h1>
+          </div>
+        
           <Container sx={{ py: 8 }} to>
 
             <Grid container spacing={4}>

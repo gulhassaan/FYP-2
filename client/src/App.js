@@ -32,10 +32,11 @@ import AddProduct from "./componenets/AdminPages/AddProduct";
 import UpdateProduct from "./componenets/AdminPages/UpdateProduct";
 import StoreHome from "./componenets/EcomercePages/StoreHome";
 import ProductDetail from "./componenets/EcomercePages/ProductDetail";
-import NewNavbar from "./componenets/pages/NewNavbar"
-import AddToCart from "./componenets/EcomercePages/AddToCart";
+import NewNavbar from "./componenets/pages/NewNavbar";
+import Cart from "./componenets/EcomercePages/Cart";
 //Context APIs
 const EmailContext = createContext();
+const byerContext = createContext();
 const ImagesContext = createContext();
 const AdContext = createContext();
 const AdFContext = createContext();
@@ -48,6 +49,7 @@ function App() {
   const [AdID, setAdID] = useState("");
   const [AdFID, setAdFID] = useState("");
   const [ProID, setProID] = useState("");
+  const [byer,setbyer] = useState("");
   const [AdD, setAdD]=useState('');
   return (
     <EmailContext.Provider value={{ Email, setEMAIL }}>
@@ -56,6 +58,7 @@ function App() {
           <ImagesContext.Provider value={{ Images, setImages }}>
           <AdDContext.Provider value={{AdD,setAdD}}>
    <ProContext.Provider value={{ProID,setProID}}>
+   <byerContext.Provider value={{byer,setbyer}}>
             <div className="page-containerr">
               <div className="content-wrap">
                 {/**/}
@@ -72,7 +75,7 @@ function App() {
                     <Route path="/ecomerce" element={<Ecomerce />}></Route>
                     <Route path="/addproduct" element={<AddProduct />}></Route>
                     <Route path="/signup" element={<Signup />}></Route>
-                    <Route path="/addtocart" element={<AddToCart />}></Route>
+                    <Route path="/cart" element={<Cart />}></Route>
                     <Route path="/updateproduct" element={<UpdateProduct />}></Route>
 <Route path="/service" element={<AboutUs />}></Route>
                     <Route path="/updatead" element={<UpdateAd />}></Route>
@@ -111,6 +114,7 @@ function App() {
                 <Footer />
               </div>
             </div>
+            </byerContext.Provider>
             </ProContext.Provider>
             </AdDContext.Provider>
    
@@ -122,6 +126,7 @@ function App() {
 }
 
 export default App;
+export{byerContext};
 export { EmailContext };
 export { AdContext };
 export { ImagesContext };

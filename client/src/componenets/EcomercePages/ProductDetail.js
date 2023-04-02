@@ -1,25 +1,23 @@
 import { Grid, Container, Typography, Button, CardActions, Hidden } from "@mui/material";
 import React, { useEffect, useState, useContext } from "react";
 import NavbarD from "./NavbarD";
-
+import { byerContext } from "../../App";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 //import { global } from "../App";
-import { AdDContext,EmailContext } from "../../App";
+import {AdDContext,EmailContext} from "../../App"
 import "@fontsource/montserrat";
 // import io from "socket.io-client";
 // const socket = io.connect("http://localhost:3001");
 
 const ProductDetail = () => {
-
-  const {Email,setEMAIL} = useContext(EmailContext)
+const [Email,setEmail] = useState("");
   const [images, setImages] = useState([]);
   const [mainImage, setMainImage] = useState('');
   const [product, setProduct] = useState([]);
   const [Ad, setAd] = useState([])
   const { AdD } = useContext(AdDContext);
-
   const navigate = useNavigate();
   const [report, setReport] = useState(1);
   const [Price, setPrice] = useState();
@@ -43,33 +41,17 @@ const ProductDetail = () => {
     });
   }, []);
   
-  const handleAddToCart = () => {
-    const cartItem = {
-      id: product.Id,
-      name: product.Name,
-      price: product.Price,
-      image: mainImage,
-    };
-    setCartItems([...cartItems, cartItem]);
-  
-    navigate('/addtocart', {
-      state: {
-        id: product.Id,
-        name: product.Name,
-        price: product.Price,
-        image: mainImage,
-      }
-    });
+  const handleAddToCart = () => 
+  {
+    axios.post("http://localhost:3006/addToCart", {CartID:localStorage.getItem("email"), ProductId:product.ID, Price: product.Price, ProductName:product.Name, Images: JSON.stringify(product.Images)}).then((response) => {
+      console.log(response.data);
+  })
+
+  navigate("/Cart")
     
   };
   
 
-  function imageSet(ind) {
-    console.log(ind);
-    console.log(images);
-    setMainImage(images[ind]);
-    console.log(mainImage);
-  }
 
   
   console.log(images);
@@ -95,9 +77,6 @@ const ProductDetail = () => {
                       src={image}
                       width={200}
                       height={100}
-                      onClick={() => {
-                        imageSet(ind);
-                      }}
                       style={{ borderRadius: 'inherit', height: 120, width: 170 }}
                     ></img>
                   </Grid>
