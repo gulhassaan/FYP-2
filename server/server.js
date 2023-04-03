@@ -116,8 +116,8 @@ app.post("/addToCart", async (req, res) => {
     const Images = req.body.Images;
     console.log(ID)
     db.query(
-        "INSERT INTO cart(CartID,ProductId, Price ,ProductName,Images) VALUES (?,?,?,?,?)",
-        [Email,ID, Price,Name, Images],
+        "INSERT INTO cart(CartID,ProductId, Price ,ProductName,Images,Total) VALUES (?,?,?,?,?,?)",
+        [Email,ID, Price,Name, Images,Price],
         (err, result) => {
             console.log(err);
             console.log(result.data)
@@ -135,15 +135,25 @@ app.get("/Get_items", async (req, res) => {
 
     })
 })
+app.get("/Get_bill", async (req, res) => {
+    console.log("im a server")
+    db.query(`SELECT SUM(Total) as TotalBill from cart`, (err, result) => {
+        res.send(result);
+        console.log("THIS IS CART ",result )
 
+    })
+})
 //Update Cart
 
 app.put("/UpdateCart/:id", (req, res) => {
     const ID = req.params.id;
-    const Quantity = req.params.Quantity;
+    const Quantity = req.body.Quantity;
+    const Price = req.body.Price;
+    const new_price = Price * Quantity
+  
     console.log(ID)
     console.log("FOR UPDATE")
-    db.query(`UPDATE cart SET Quantity = ? WHERE ProductId = ?`,[Quantity,ID], (err, result) => {
+    db.query(`UPDATE cart SET Quantity = ${Quantity}, Total =${Price} WHERE ProductId = ${ID}`, (err, result) => {
         if (err) {
             console.log(err)
         }
