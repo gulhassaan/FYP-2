@@ -51,7 +51,7 @@ function Footer() {
           <hr />
           <p className='col-sm'>
 
-            &copy;{new Date().getFullYear()} Gamingstan  Inc. | All  Right  Reserved |  Privacy.
+            &copy;{new Date().getFullYear()} Gamingstan  Inc. | All  Rights  Reserved |  Privacy.
           </p>
         </div>
       </div>

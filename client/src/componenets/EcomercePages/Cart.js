@@ -75,9 +75,9 @@ const Cart = () => {
     <div>
       <NavbarD />
       <div className="cart-container">
-      <div style={{ textAlign:"center", color:"rgba(0, 95, 96, 1)", }}>
-        <h1><b>My Cart</b></h1>
-      </div>
+        <div style={{ textAlign: "center", color: "rgba(0, 95, 96, 1)", }}>
+          <h1><b>My Cart</b></h1>
+        </div>
         <div className="items-container">
           {cart.map((item) => (
             <div className="item" key={item.id}>
@@ -96,9 +96,10 @@ const Cart = () => {
             </div>
           ))}
         </div>
-        <div style={{ textAlign:"center", color:"rgba(0, 95, 96, 1)",marginTop:60}}>
-        <h2>Total Bill: {total}</h2>
+        <div style={{ textAlign: "center", color: "rgba(0, 95, 96, 1)", marginTop: 60 }}>
+          <h2>Total Bill: {total}</h2>
         </div>
+       
       </div>
     </div>
   );

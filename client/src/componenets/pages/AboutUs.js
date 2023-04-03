@@ -14,7 +14,7 @@ function AboutUs() {
     }
   }, [])
   return (
-    <div>
+    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)", width:"100%"  }}>
       <Navbar/>
     
   <section className="About">
