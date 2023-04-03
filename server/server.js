@@ -135,14 +135,7 @@ app.get("/Get_items", async (req, res) => {
 
     })
 })
-app.get("/Get_bill", async (req, res) => {
-    console.log("im a server")
-    db.query(`SELECT SUM(Total) as TotalBill from cart`, (err, result) => {
-        res.send(result);
-        console.log("THIS IS CART ",result )
 
-    })
-})
 //Update Cart
 
 app.put("/UpdateCart/:id", (req, res) => {

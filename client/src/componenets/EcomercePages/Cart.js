@@ -20,12 +20,7 @@ element.Sum = element.Sum + element.Total;
       setCart(temp);
       console.log("After parse : ", temp.Sum)
     });
-
-    Axios.get(`http://localhost:3006/Get_bill`).then((response) => {
-        var temp = response.data;
-      setCount(temp);
-      });
-      console.log("COUN NJN",count[0].TotalBill);
+  
   }, []);
 
  
@@ -54,11 +49,7 @@ element.Sum = element.Sum + element.Total;
         console.log("After parse : ", temp)
       });
 
-      Axios.get(`http://localhost:3006/Get_bill`).then((response) => {
-        var temp = response.data;
-      setCount(temp);
-      });
-      console.log("COUN NJN",count[0].TotalBill);
+      
     
   };
 
@@ -73,8 +64,13 @@ element.Sum = element.Sum + element.Total;
       .catch(err => {
         console.log(err);
       });
-  };
 
+  };
+  const total = cart.reduce((acc, item) => {
+    return acc + (item.Total);
+  }, 0);
+
+  console.log("TRIS  tos:lb : ", total)
   return (
     <div className="cart-container">
     <h1>Add to Cart Page</h1>
@@ -95,7 +91,7 @@ element.Sum = element.Sum + element.Total;
         </div>
       ))}
     </div>
-    <h2>Total Bill: {count[0].TotalBill}</h2>
+    <h2>Total Bill: {total}</h2>
   </div>
   );
 };
