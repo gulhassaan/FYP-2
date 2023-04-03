@@ -26,7 +26,6 @@ import AdDetail from "./componenets/pages/AdDetail"
 import AppC from "./componenets/chatsys/AppC"
 import Manage_UserAds from "./componenets/AdminPages/Manage_UserAds";
 import ManageUsers from "./componenets/AdminPages/ManageUsers";
-import Ecomerce from "./componenets/EcommerceStore/src/App";
 import ManageEcomerce from "./componenets/AdminPages/ManageEcomerce";
 import AddProduct from "./componenets/AdminPages/AddProduct";
 import UpdateProduct from "./componenets/AdminPages/UpdateProduct";
@@ -72,7 +71,6 @@ function App() {
                     <Route path="/landingpage" element={<LandingPage/>}></Route>
                     <Route path="/login" element={<Login />}></Route>
                     <Route path="/addetail" element={<AdDetail />}></Route>
-                    <Route path="/ecomerce" element={<Ecomerce />}></Route>
                     <Route path="/addproduct" element={<AddProduct />}></Route>
                     <Route path="/signup" element={<Signup />}></Route>
                     <Route path="/cart" element={<Cart />}></Route>
