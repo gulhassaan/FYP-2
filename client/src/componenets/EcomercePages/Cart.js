@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import NavbarD from "./NavbarD";
+import { Navigate, useNavigate } from 'react-router-dom';
 const Cart = () => {
 
   const [cart, setCart] = useState([]);
   const [count, setCount] = useState(1);
   var quant = 1;
+  const navigate = useNavigate();
   var email = localStorage.getItem("email");
   useEffect(() => {
     Axios.get(`http://localhost:3006/Get_items`).then((response) => {
@@ -53,6 +55,8 @@ const Cart = () => {
 
   };
 
+
+
   const removeFromCart = (id) => {
     console.log(id)
     Axios.delete(`http://localhost:3006/RemoveCart/${id}`)
@@ -64,11 +68,17 @@ const Cart = () => {
       .catch(err => {
         console.log(err);
       });
-
   };
   const total = cart.reduce((acc, item) => {
     return acc + (item.Total);
   }, 0);
+
+
+  const GoProceed = ()=>{
+
+    localStorage.setItem('TotalBill', total)
+  navigate('/checkout');
+  }
 
   console.log("TRIS  tos:lb : ", total)
   return (

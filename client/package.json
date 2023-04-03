@@ -29,8 +29,11 @@
     "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",
     "react-scroll-to-bottom": "^4.2.0",
+    "react-stripe-checkout": "^2.6.3",
     "socket.io-client": "^4.5.4",
     "styled-components": "^5.3.5",
+    "sweetalert2": "^11.7.3",
+    "sweetalert2-react-content": "^5.0.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
