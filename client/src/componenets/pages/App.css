@@ -978,7 +978,7 @@ footer {
 /*navbar styling*/
 .Navbar {
   height: 60px;
-  
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1007,8 +1007,7 @@ footer {
 #carouselExample {
  /* Center the carousel container */
  /* Set the maximum width of the carousel */
-  padding-top: 60px;
-  width: auto;
+  padding-top: 60px; width: 100%;
 }
 
 .carousel-item {

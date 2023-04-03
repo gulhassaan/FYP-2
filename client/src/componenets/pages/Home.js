@@ -149,21 +149,21 @@ export const Home = () => {
     }
   }, []);
   return (
-    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)", width: "100%" }}>
+    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)", minwidth: "100%"  }}>
       <Navbar />
 
       <main>
-      
-        <div id="carouselExample" class="carousel slide">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src={banner2} width="100%" />
+
+        <div id="carouselExample" class="carousel slide" style={{ width: "100%" }}>
+          <div class="carousel-inner" >
+            <div class="carousel-item active" >
+              <a><img src={banner2} width="100%" /></a>
             </div>
             <div class="carousel-item">
-              <img src={banner3} width="100%" />
+              <a><img src={banner3} width="100%" /></a>
             </div>
             <div class="carousel-item">
-              <img src={banner1} width="100%" />
+              <a><img src={banner1} width="100%" /></a>
             </div>
           </div>
           <button

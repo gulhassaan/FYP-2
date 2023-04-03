@@ -43,7 +43,7 @@ const [Email,setEmail] = useState("");
   
   const handleAddToCart = () => 
   {
-    axios.post("http://localhost:3006/addToCart", {CartID:localStorage.getItem("email"), ProductId:product.ID, Price: product.Price, ProductName:product.Name, Images: JSON.stringify(product.Images)}).then((response) => {
+    axios.post("http://localhost:3006/addToCart", {CartID:localStorage.getItem("email_token"), ProductId:product.ID, Price: product.Price, ProductName:product.Name, Images: JSON.stringify(product.Images)}).then((response) => {
       console.log(response.data);
   })
 
