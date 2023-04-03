@@ -30,7 +30,7 @@ function SignUpSuccessfully() {
                   <p className="txt"> You have been registered Successfully!</p>
 
                   <div className="signin-image">
-                    <button className="forgot-btn">
+                    <button className="to_login">
                       <NavLink to="/login" className="signup-image-link1">
                         Login
                       </NavLink>

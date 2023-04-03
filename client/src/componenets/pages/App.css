@@ -133,6 +133,21 @@
   background-color: #008083;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
+.to_login{
+  border: 2px solid #008083;
+  color: #FFFFFF;
+  border-radius: 30px;
+  padding: 10px;
+  margin: 10px;
+  width: 100px;
+  padding-bottom: -20px;
+  background-color: #FFFFFF;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+.to_login:hover{
+background-color: #008083;
+color: #FFFFFF;
+}
 .adminforgot-btn
 {
   border: 2px solid #008083;
@@ -572,9 +587,12 @@ border-radius: 80px;
 }
 
 .login-btn:hover {background-color: #ffffff; color: #008083;}
-.OTP-btn:hover {background-color: #ffffff; color: #008083;}
+.OTP-btn:focus {background-color: #ffffff; color: #008083;}
 .register-btn:hover {background-color: #ffffff; color: #008083;}
-.OTPsignup-btn:hover {background-color: #ffffff; color: #008083;}
+
+.OTPsignup-btn:focus {
+  background-color: #ffffff; color: #008083;
+}
 .adDetail-btn:hover {background-color: #ffffff; color: #008083; border: 2px solid #008083; border-radius: 10px;}
 #F-btn:hover {background-color: #ffffff; color: #008083;}
 #btn_F:hover {background-color: #ffffff; color: #008083;}

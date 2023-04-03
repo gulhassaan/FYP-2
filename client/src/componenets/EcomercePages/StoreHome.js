@@ -156,7 +156,7 @@ const StoreHome = () => {
                       {card.Description}
                     </Typography>
                     <br></br>
-                    <NavLink to="/productdetail" style={{ backgroundColor: '#0D8485', color: 'white', padding: '10px', borderRadius: '5px', justifyContent:'center' , paddingTop:"7px", textDecoration: 'none' }} activeStyle={{ backgroundColor: 'gray'}}> View Detail </NavLink>
+                    
                   </CardContent>
 
                 </Card>

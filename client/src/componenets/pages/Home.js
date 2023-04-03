@@ -149,14 +149,15 @@ export const Home = () => {
     }
   }, []);
   return (
-    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)", width:"100%" }}>
+    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)", width: "100%" }}>
       <Navbar />
 
       <main>
+      
         <div id="carouselExample" class="carousel slide">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src={banner2}  width="100%"/>
+              <img src={banner2} width="100%" />
             </div>
             <div class="carousel-item">
               <img src={banner3} width="100%" />
@@ -278,7 +279,7 @@ export const Home = () => {
                 return search.toLowerCase() === ""
                   ? card
                   : card.title.toLowerCase().includes(search) ||
-                      card.adCategory.toLowerCase().includes(search);
+                  card.adCategory.toLowerCase().includes(search);
               })
               .map((card) => (
                 <Grid item key={card} xs={12} sm={6} md={3}>
@@ -363,7 +364,7 @@ export const Home = () => {
               color="secondary"
               onChange={(e, v) => setpage(v - 1)}
             />
-            
+
           </Stack>
         </Container>
       </main>

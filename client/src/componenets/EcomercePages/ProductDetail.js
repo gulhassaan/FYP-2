@@ -100,7 +100,7 @@ const [Email,setEmail] = useState("");
                 </Typography>
                 <CardActions sx={{ marginTop: "20px" }}>
                   <Button variant="contained" sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}  onClick={handleAddToCart}>Add To Cart</Button>
-                  <Button variant="contained" sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}  href="/storehome">Go Back</Button>
+                  
                 </CardActions>
                
               </Grid>
