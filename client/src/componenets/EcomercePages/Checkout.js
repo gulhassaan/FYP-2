@@ -69,8 +69,18 @@ useEffect(() => {
       <p>
         <span>Price: </span>Rs.{Cost}
       </p>
-
-  </div>
+      <StripeCheckout
+      stripeKey={publishableKey}
+      label="Pay Now"
+      name="Pay With Credit Card"
+      billingAddress
+      shippingAddress
+      amount={Cost}
+      description={`Your total is $${Cost}`}
+      token={payNow}
+    />      
+    
+    </div>
   );
 }
 

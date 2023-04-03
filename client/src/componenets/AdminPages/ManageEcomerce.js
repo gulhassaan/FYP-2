@@ -153,7 +153,7 @@ function Managead() {
                 }).map((card) => (
                   <Grid item key={card} xs={12} sm={6} md={3}>
                     <Card
-                      style={{ backgroundColor: "#FFFFFF", height: "380px", borderRadius: "20px" }}
+                      style={{ backgroundColor: "#FFFFFF", height: "420px", borderRadius: "20px" }}
                       raised
                       sx={{
                         maxWidth: 280,

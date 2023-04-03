@@ -146,8 +146,8 @@ const ManageUsers = () => {
           <MenuItem value=''  style={{borderRadius:"20px",color:"#000000"}}>
             <em>None</em>
           </MenuItem>
-          <MenuItem value={"All Users"}  style={{borderRadius:"20px",color:"#000000"}}>All ADs</MenuItem>
-          <MenuItem value={"Reported Users"} style={{borderRadius:"20px",color:"#000000)"}}>Reported ADs</MenuItem>  
+          <MenuItem value={"All Users"}  style={{borderRadius:"20px",color:"#000000"}}>All Users</MenuItem>
+          <MenuItem value={"Reported Users"} style={{borderRadius:"20px",color:"#000000)"}}>Reported Users</MenuItem>  
           <MenuItem value={"Blocked Users"}  style={{borderRadius:"20px",color:"#000000"}}>Blocked Users</MenuItem>
          </Select>
       </FormControl>

@@ -144,7 +144,7 @@ style={{ backgroundColor: "#FFFFFF", height: "260px", width: "300px", borderRadi
 
                       </Box>
                       <Box alignItems={"center"} >
-                        <CardActions sx={{ marginLeft: 9 }}>
+                        <CardActions sx={{ marginLeft: 7 }}>
                           {
                           check==1 ?<div> <Button class="pkg-btn" style={{ color: 'white' }} onClick={() => { delete_AdPac(card.AdF_id) }}>Delete</Button>
                           <Button class="pkg-btn" style={{ 'margin-left': '10px', color: 'white' }} onClick={() => { update(card.AdF_id) }}>Update</Button></div>
