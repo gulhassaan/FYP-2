@@ -33,6 +33,7 @@ import StoreHome from "./componenets/EcomercePages/StoreHome";
 import ProductDetail from "./componenets/EcomercePages/ProductDetail";
 import NewNavbar from "./componenets/pages/NewNavbar";
 import Cart from "./componenets/EcomercePages/Cart";
+import CheckOut from "./componenets/EcomercePages/Checkout";
 //Context APIs
 const EmailContext = createContext();
 const byerContext = createContext();
@@ -74,6 +75,7 @@ function App() {
                     <Route path="/addproduct" element={<AddProduct />}></Route>
                     <Route path="/signup" element={<Signup />}></Route>
                     <Route path="/cart" element={<Cart />}></Route>
+                    <Route path="/checkout" element={<CheckOut />}></Route>
                     <Route path="/updateproduct" element={<UpdateProduct />}></Route>
 <Route path="/service" element={<AboutUs />}></Route>
                     <Route path="/updatead" element={<UpdateAd />}></Route>
