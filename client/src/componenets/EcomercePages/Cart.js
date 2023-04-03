@@ -91,11 +91,12 @@ const Cart = () => {
                   <button className="quantity-btn" onClick={() => updateCart(item.ProductId, item.Quantity += 1, item.Total += item.Price)}>+</button>
                 </div>
                 <button className="delete-btn" onClick={() => removeFromCart(item.ProductId)}>Delete</button>
+                <br></br>
               </div>
             </div>
           ))}
         </div>
-        <div style={{ textAlign:"center", color:"rgba(0, 95, 96, 1)", }}>
+        <div style={{ textAlign:"center", color:"rgba(0, 95, 96, 1)",marginTop:60}}>
         <h2>Total Bill: {total}</h2>
         </div>
       </div>
