@@ -32,7 +32,7 @@ const {Email,setEMAIL} = useContext(EmailContext)
   const [contact_number,setContact] = useState();
   useEffect(() => {
     setPrice(1000)
-    setuser(localStorage.getItem("user"));
+    setuser(localStorage.getItem("email_token"));
     setRoom(localStorage.getItem('room'));
     setLoading(true)
     axios.get(`http://localhost:3006/Get_Up_Ad/${AdD}`).then((response) => {
@@ -123,7 +123,7 @@ console.log("HELO HELP HE:LP ")
 
   const GO = (id) => {
     console.log(Email);
-    setuser(localStorage.getItem("user"));
+    setuser(localStorage.getItem("email_token"));
     console.log("user is : ", user)
     localStorage.setItem('room', id)
     console.log("sen is : ", user)
@@ -160,12 +160,12 @@ console.log("HELO HELP HE:LP ")
   const Report = (AdID) => {
     console.log(AdID)
     console.log(report)
-    axios.put(`http://localhost:3006/Report_AD/${AdID}`).then((response) => {
+    console.log(user)
+    axios.put(`http://localhost:3006/Report_AD/${AdID}`,{User:user}).then((response) => {
       console.log(response.data);
 
     })
 
-    navigate("/home");
   }
 
   console.log(images);

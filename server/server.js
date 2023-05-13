@@ -631,7 +631,30 @@ app.get("/Get_Blocked_Users",(req,res)=>{
 
 //Get all users
 app.get("/Get_Users",(req,res)=>{
-    db.query("SELECT * FROM users u where u.Status=?",[1],(err,result)=>{
+    db.query("SELECT * FROM users u where u.Status=? AND u.ReportBy=?",[1,0],(err,result)=>{
+        res.send(result);       
+    })
+})
+
+//Set User that report Ads
+app.put("/SetReportUser",(req,res)=>{   
+    const temp =1;
+    db.query(`UPDATE users u JOIN  ads a ON u.email = a.ReportedBy  SET u.ReportBy=?`,[temp],(err,result)=>{
+        if (err) throw err;
+            else if (result.length == 0) {
+                console.log("User Not Set")
+
+                return res.status(404).send({ found: false })
+            }
+            else {
+                res.send({ found: true })
+            } 
+    })
+})
+
+//Get Users That report Ads
+app.get("/GetUserThatReport",(req,res)=>{
+    db.query("Select * from users where ReportBy=1",(err,result)=>{
         res.send(result);       
     })
 })
@@ -654,8 +677,10 @@ app.get("/Search_Users/:S_User", (req, res) => {
 
 app.put("/Report_AD/:AdID",(req,res)=>{
     const AdID = req.params.AdID
+    const user = req.body.User
+   
     const temp =1;
-    db.query(`UPDATE users u JOIN  ads a ON u.email = a.email  SET a.Report =${temp}  where a.Ad_id = ${AdID}`,(err,result)=>{
+    db.query(`UPDATE users u JOIN  ads a ON u.email = a.email  SET a.Report =?,a.ReportedBy=? where a.Ad_id =?`,[temp,user,AdID],(err,result)=>{
         if (err) throw err;
             else if (result.length == 0) {
                 console.log("User Not Reported")
@@ -664,7 +689,7 @@ app.put("/Report_AD/:AdID",(req,res)=>{
             }
             else {
                 res.send({ found: true })
-                console.log("User Reported Successfully")
+                console.log("User Reported Successfully",user)
             } 
     })
 })

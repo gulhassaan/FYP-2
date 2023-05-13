@@ -34,7 +34,7 @@ const Manage_UserAds = () => {
   const [check, setcheck] = useState();
   const [img, setimg] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:3006/Get_AD`).then((response) => {
+    axios.get(`http://localhost:3006/Get_MYAD`).then((response) => {
       console.log("THis is Response Data : ", response.data)
       var temp = response.data;
       console.log(response.data);
@@ -203,7 +203,7 @@ const Manage_UserAds = () => {
             }).map((card) => (
               <Grid item key={card} xs={12} sm={6} md={3}>
                 <Card
-                  style={{ backgroundColor: "#FFFFFF", height: "400px", borderRadius: "20px" }}
+                  style={{ backgroundColor: "#FFFFFF", height: "430px", borderRadius: "20px" }}
                   raised
                   sx={{
                     maxWidth: 300,
@@ -225,14 +225,18 @@ const Manage_UserAds = () => {
                     <Typography gutterBottom variant="h6" component="h6" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)" }}>
                       {card.title}
                     </Typography>
-
+                    
                     <Typography variant="p">
                       {card.Description}
                     </Typography>
-                    <br></br>
+                    <br></br>   
                     <Typography variant="p" style={{ topmargin: "5px", color: "rgba(0, 95, 96, 0.8)" }}>
                       {card.Location}
                     </Typography>
+                    <br></br>
+                    <Typography variant="p" style={{ topmargin: "5px", color: "rgba(0, 95, 96, 0.8)" }}>
+                     {card.ReportedBy}
+                  </Typography>
                     <br></br>
                   </CardContent>
                   {

@@ -108,7 +108,7 @@ const form = useRef();
       seterrE(true)
       seterr("Email Already Exist")
     }
-    else if(contact_number.length<12 &&/^\d+$/.test(contact_number)===false)
+    else if(contact_number.length<11 &&/^\d+$/.test(contact_number)===false)
     {
      seterrCN(true) 
     }
@@ -220,8 +220,7 @@ const form = useRef();
     const re = /^[0-9\b]+$/;
   
     // if value is not blank, then test the regex
-
-    if (re.test(e.target.value) &&e.target.value.length< 11) 
+    if (re.test(e.target.value) &&e.target.value.length <= 11) 
     {
       setcontact(e.target.value);
       seterrCN(true)
@@ -345,7 +344,7 @@ const form = useRef();
                     name="phone"
                     id="phone"
                     placeholder="Phone(0333XXXXXXX)"
-                    maxlength="11"
+                    maxlength="12"
                     //pattern="[0-9]{4}-[0-9]{7}"
                     onChange={contactHandler}
                   value={contact_number}

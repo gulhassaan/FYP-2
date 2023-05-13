@@ -35,13 +35,13 @@ const ManageUsers = () => {
   const [check, setcheck] = useState();
 
   useEffect(() => {
+    axios.put("http://localhost:3006/SetReportUser").then((response) => {
+      console.log(response.data);
+    })
     axios.get(`http://localhost:3006/Get_Users`).then((response) => {
       console.log("THis is Response Data : ", response.data)
-  setcheck(1)
-      var temp = response.data;
-      console.log(response.data);
-      setListOfUsers(temp);
-      console.log("After parse : ", temp)
+       setcheck(1)
+      setListOfUsers(response.data);
     });
   }, []);
 
@@ -75,27 +75,29 @@ const ManageUsers = () => {
         setListOfUsers(data)
       })
 
-    } else if (filter == "Reported Users") {
+    } else if (filter === "Reported Users") {
       setcheck(1);
       axios.get(`http://localhost:3006/Get_Reported_Users`).then((response) => {
         var data = response.data;
         setListOfUsers(data)
       })
     }
-    else if (filter == "Blocked Users") {
+    else if (filter === "Blocked Users") {
       setcheck(0);
       axios.get(`http://localhost:3006/Get_Blocked_Users`).then((response) => {
         var data = response.data;
         setListOfUsers(data)
       })
+    }  else if (filter === "UsersthatReport") {
+        axios.get("http://localhost:3006/GetUserThatReport").then((response) => {
+        var data = response.data;
+        console.log("HELO OO ",data)
+        setListOfUsers(data)
+      })
     }
-
-
-
   }
 
   const BlockUser = (email) => {
-    
     axios.put(`http://localhost:3006/blockUser/${email}`).then((res) => {
       console.log(res.data);
       setListOfUsers(
@@ -149,11 +151,12 @@ const ManageUsers = () => {
           <MenuItem value={"All Users"}  style={{borderRadius:"20px",color:"#000000"}}>All Users</MenuItem>
           <MenuItem value={"Reported Users"} style={{borderRadius:"20px",color:"#000000)"}}>Reported Users</MenuItem>  
           <MenuItem value={"Blocked Users"}  style={{borderRadius:"20px",color:"#000000"}}>Blocked Users</MenuItem>
+          <MenuItem value={"UsersthatReport"}  style={{borderRadius:"20px",color:"#000000"}}>Users that Report</MenuItem>
          </Select>
       </FormControl>
     </div>
         <main>
-          <Container sx={{ py: 8, marginTop: 2 }}>
+          <Container sx={{ py: 5, marginTop: 2 }}>
 
             <Grid container spacing={4}>
               {listOfUsers.filter((card)=>{
@@ -161,7 +164,6 @@ const ManageUsers = () => {
               }).map((card) => (
                 <Grid class="manageusers-card" item key={card} xs={12} sm={6} md={3}>
                   <Card
-
                     style={{ backgroundColor: "#FFFFFF", height: "260px", width: "300px", borderRadius: "20px" }}
                     sx={{
                       height: "100%",
@@ -172,7 +174,6 @@ const ManageUsers = () => {
                     }}
 
                   >
-
                     <CardContent sx={{ flexGrow: 1 }}>
                       <Typography gutterBottom variant="h6" component="h6" style={{ color: "rgba(0, 95, 96, 0.8)" }} sx={{ fontWeight: 'bold' }}>
                         {card.Name}
@@ -206,10 +207,6 @@ const ManageUsers = () => {
         </main>
 
       </main>
-
-
-
-
     </div>
   );
 

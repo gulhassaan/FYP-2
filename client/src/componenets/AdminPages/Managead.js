@@ -141,6 +141,7 @@ function Managead() {
                         <Typography variant="p" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)", fontSize: "16px" }}>
                           Rs.{card.Price}/-
                         </Typography>
+                        
 
                       </Box>
                       <Box alignItems={"center"} >
