@@ -469,6 +469,16 @@ app.get("/Get_AD", (req, res) => {
 
     })
 })
+
+//For Admin GET ALL ADS
+app.get("/Get_MYAD", (req, res) => {
+    db.query(`SELECT a.*, u.Name
+    FROM ads a
+    JOIN users u ON a.email = u.email where a.Status=1 && a.Report=0`, (err, result) => {
+        res.send(result);
+
+    })
+})
 //Get Repoted ADs
 
 
@@ -496,6 +506,33 @@ app.put("/del_MyAD/:id", (req, res) => {
         }
     })
 })
+
+//For Un Reporting add
+app.put("/UnReport/:id",(req,res)=>{
+    const AdID = req.params.id;
+    db.query(`UPDATE ads SET Report = ? WHERE Ad_id = ?`,[0,AdID],(err, result) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.send(result)
+        }
+    })
+})
+
+//For Activate Ad
+app.put("/activeAd/:id",(req,res)=>{
+    const AdID = req.params.id;
+    db.query(`UPDATE ads SET Status = ? WHERE Ad_id = ?`,[1,AdID],(err, result) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.send(result)
+        }
+    })
+})
+
 
 //Block User
 app.put("/blockUser/:email", (req, res) => {
@@ -560,6 +597,12 @@ app.get("/Get_Reported_ADs",(req,res)=>{
     })
 })
 
+//Get Deleted ADs
+app.get("/Get_Deleted_ADs",(req,res)=>{
+    db.query("SELECT * FROM ads where Status=0",(err,result)=>{
+        res.send(result);       
+    })
+})
 
 //Filter L to H AD
 app.get("/filterLtoH",(req,res)=>{

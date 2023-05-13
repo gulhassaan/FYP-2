@@ -31,6 +31,7 @@ const Manage_UserAds = () => {
   const [page, setpage] = useState(0);
   const [search, setSearch] = useState("");
   const [Filter, setFilter] = useState("");
+  const [check, setcheck] = useState();
   const [img, setimg] = useState([]);
   useEffect(() => {
     axios.get(`http://localhost:3006/Get_AD`).then((response) => {
@@ -44,6 +45,7 @@ const Manage_UserAds = () => {
       });
       setListOfAds(temp);
       console.log("After parse : ", temp)
+      setcheck(1);
     });
   }, []);
   
@@ -82,16 +84,15 @@ const Manage_UserAds = () => {
     if (filter == "All ADs") {
 
       console.log(Filter)
-      axios.get(`http://localhost:3006/Get_AD`).then((response) => {
+      axios.get(`http://localhost:3006/Get_MYAD`).then((response) => {
         var data = response.data;
         data.forEach(element => {
 
           element.Images = JSON.parse(element.Images)
-
         });
         setListOfAds(data)
       })
-
+      setcheck(1)
     } else if (filter == "Reported ADs") {
 
       axios.get(`http://localhost:3006/Get_Reported_ADs`).then((response) => {
@@ -102,6 +103,20 @@ const Manage_UserAds = () => {
 
         });
         setListOfAds(data)
+      })
+      setcheck(2)
+
+    } else if (filter == "Deleted ADs") {
+
+      axios.get(`http://localhost:3006/Get_Deleted_ADs`).then((response) => {
+        var data = response.data;
+        data.forEach(element => {
+
+          element.Images = JSON.parse(element.Images)
+
+        });
+        setListOfAds(data)
+        setcheck(0);
       })
 
 
@@ -121,6 +136,29 @@ const Manage_UserAds = () => {
     })
 
   }
+
+  const UN_Report = (id) => {
+
+    axios.put(`http://localhost:3006/UnReport/${id}`).then((res) => {
+      console.log(res.data);
+      setListOfAds(
+        listOfAds.filter((val) => {
+          return val.Ad_id != id
+        }))
+    })
+
+  }
+  const activeAd = (id) => {
+    axios.put(`http://localhost:3006/activeAd/${id}`).then((res) => {
+      console.log(res.data);
+      setListOfAds(
+        listOfAds.filter((val) => {
+          return val.Ad_id != id
+        }))
+    })
+
+  }
+
   return (
 
     <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
@@ -153,6 +191,7 @@ const Manage_UserAds = () => {
           </MenuItem>
           <MenuItem value={"All ADs"}  style={{borderRadius:"20px",color:"#000000"}}>All ADs</MenuItem>
           <MenuItem  value={"Reported ADs"}  style={{borderRadius:"20px",color:"#000000"}}>Reported ADs</MenuItem>
+          <MenuItem  value={"Deleted ADs"}  style={{borderRadius:"20px",color:"#000000"}}>Deleted ADs</MenuItem>
          </Select>
       </FormControl>
     </div>
@@ -167,7 +206,7 @@ const Manage_UserAds = () => {
                   style={{ backgroundColor: "#FFFFFF", height: "400px", borderRadius: "20px" }}
                   raised
                   sx={{
-                    maxWidth: 280,
+                    maxWidth: 300,
                     margin: "0 auto",
                     padding: "0.1em",
                     maxHeight: 450
@@ -196,10 +235,23 @@ const Manage_UserAds = () => {
                     </Typography>
                     <br></br>
                   </CardContent>
-  
-                  <Button class="pkg-btn" style={{ 'margin-left': '80px', color: 'white' }} onClick={()=>{Del_Ads(card.Ad_id)}}>Delete</Button>
-           
-                </Card>
+                  {
+                  check == 1 &&
+                  <Button class="pkg-btn" style={{ 'margin-left': '60px', color: 'white' }} onClick={()=>{Del_Ads(card.Ad_id)}}>Delete AD</Button>
+                  }
+                  {
+                  check == 2 &&
+                  <div>
+                  <Button class="pkg-btn" style={{ 'margin-left': '3px', color: 'white' }} onClick={()=>{Del_Ads(card.Ad_id)}}>Delete</Button>
+                  <Button class="pkg-btn" style={{ 'margin-left': '3px', color: 'white' }} onClick={()=>{UN_Report(card.Ad_id)}}>Remove</Button>
+                  </div>
+                  }
+                  
+                  {
+                  check ==0 && <Button class="pkg-btn" style={{ 'margin-left': '50px', color: 'white' }} onClick={()=>{activeAd(card.Ad_id)}}>Activate Ad</Button>
+                  }
+               
+                 </Card>
               </Grid>
             ))}
           </Grid>

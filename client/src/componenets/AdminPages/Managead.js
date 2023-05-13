@@ -118,13 +118,13 @@ function Managead() {
                   <Grid class="package-card" item key={card} xs={12} sm={6} md={3}>
                     <Card
 
-style={{ backgroundColor: "#FFFFFF", height: "260px", width: "300px", borderRadius: "20px" }}
+                      style={{ backgroundColor: "#FFFFFF", height: "260px", width: "300px", borderRadius: "15px"}}
                       sx={{
                         height: "100%",
                         display: "flex",
                         flexDirection: "column",
-                        textAlign: "center"
-
+                        textAlign: "center",
+                        
                       }}
 
                     >
