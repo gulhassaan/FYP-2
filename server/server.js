@@ -652,6 +652,41 @@ app.put("/SetReportUser",(req,res)=>{
     })
 })
 
+//Post rating and review
+app.post("/addingRev", (req, res) => {
+    const ProductID = req.body.productID;
+    const user = req.body.user;
+    const rating = req.body.rating;
+    const review = req.body.review;
+    db.query(
+        "INSERT INTO reviews (Product_ID,user,rating,review) VALUES (?,?,?,?)",
+        [ProductID, user, rating, review],
+        (err, result) => {
+            console.log(err);
+        }
+    );
+  
+})
+//Get Reviews
+app.get('/Get_Up_Review/:AdD', (req, res) => {
+    const productId = req.params.AdD;
+    db.query(`SELECT * FROM reviews WHERE Product_ID = ${productId}`, (err, result) => {
+      if (err) {
+        console.log(err);
+    
+      } else {
+        if (result.length === 0) {
+          res.status(404).send('Product review not found');
+        } else {
+            console.log(result)
+            res.send(result);
+         
+        }
+      }
+    });
+  });
+
+
 //Get Users That report Ads
 app.get("/GetUserThatReport",(req,res)=>{
     db.query("Select * from users where ReportBy=1",(err,result)=>{
