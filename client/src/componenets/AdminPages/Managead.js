@@ -96,7 +96,7 @@ function Managead() {
         <div className='page-heading'>
 
 
-          <div class="pageheading">
+          <div class="pageheading" style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"90PX" }}>
             <h1>Manage Ad Featuring Packages</h1>
           </div>
           <div>

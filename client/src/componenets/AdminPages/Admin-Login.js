@@ -1,7 +1,3 @@
-
-
-
-
 import React, { useState, useContext,useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import log from '../images/login.png'
