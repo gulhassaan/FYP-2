@@ -41,7 +41,7 @@ import { color } from '@mui/system';
 import Navbar from './NavbarLanding';
 import landingpageBanner from '../images/landingpage_banner.png';
 import landingvideo from '../images/landing1.mp4';
-import gif from '../images/intro.gif';
+
 import { Link, useNavigate } from "react-router-dom";
 import "@fontsource/montserrat";
 import { TextAlignCenter } from 'phosphor-react';

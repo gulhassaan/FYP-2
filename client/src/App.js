@@ -57,45 +57,6 @@ function App() {
       <AdContext.Provider value={{ AdID, setAdID }}>
         <AdFContext.Provider value={{ AdFID, setAdFID }}>
           <ImagesContext.Provider value={{ Images, setImages }}>
-<<<<<<< Updated upstream
-          <AdDContext.Provider value={{AdD,setAdD}}>
-   <ProContext.Provider value={{ProID,setProID}}>
-   <byerContext.Provider value={{byer,setbyer}}>
-            <div className="page-containerr">
-              <div className="content-wrap">
-                {/**/}
-                <BrowserRouter>
-                  <Routes>
-                    <Route path="/" element={<LandingPage />}></Route>
-                    <Route path="/home" element={<Home />}></Route>
-                    <Route path="/profile" element={<Profile />}></Route>
-                    <Route path="/about" element={<About />}></Route>
-                    <Route path="/hardware" element={<Hardware />}></Route>
-                    <Route path="/signupsuccess" element={<SignUpSuccessfully/>}></Route>
-                    <Route path="/landingpage" element={<LandingPage/>}></Route>
-                    <Route path="/login" element={<Login />}></Route>
-                    <Route path="/addetail" element={<AdDetail />}></Route>
-                    <Route path="/addproduct" element={<AddProduct />}></Route>
-                    <Route path="/signup" element={<Signup />}></Route>
-                    <Route path="/cart" element={<Cart />}></Route>
-                    <Route path="/checkout" element={<CheckOut />}></Route>
-                    <Route path="/userauth" element={<UserAuth />}></Route>
-                    <Route path="/updateproduct" element={<UpdateProduct />}></Route>
-<Route path="/service" element={<AboutUs />}></Route>
-                    <Route path="/updatead" element={<UpdateAd />}></Route>
-                    <Route path="/managestore" element={<ManageEcomerce />}></Route>
-                    <Route
-                      path="/forgotpassword"
-                      element={<ForgotPassword />}
-                    ></Route>
-                    <Route path="/updated" element={<Updated />}></Route>
-                    <Route path="/newNavbar" element={<NewNavbar />}></Route>
-                    <Route path="/productdetail" element={<ProductDetail />}></Route>
-                    <Route path="/MyAds" element={<MyAds />}></Route>
-                    <Route path="/reset" element={<Reset />}></Route>
-                    <Route path="/storehome" element={<StoreHome />}></Route>
-                    <Route path="/AdminLogin" element={<AdminLogin />}></Route>
-=======
             <AdDContext.Provider value={{ AdD, setAdD }}>
               <ProContext.Provider value={{ ProID, setProID }}>
                 <byerContext.Provider value={{ byer, setbyer }}>
@@ -131,7 +92,6 @@ function App() {
                           <Route path="/reset" element={<Reset />}></Route>
                           <Route path="/storehome" element={<StoreHome />}></Route>
                           <Route path="/AdminLogin" element={<AdminLogin />}></Route>
->>>>>>> Stashed changes
 
                           <Route path="/AppC" element={<AppC />}></Route>
 
