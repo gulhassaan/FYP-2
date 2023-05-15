@@ -571,6 +571,18 @@ console.log(result[0].contact_number)
     })
 })
 
+
+//Get USer For profile
+app.get("/Get_Up_User/:user", (req, res) => {
+    const id = req.params.user;
+    console.log(id)
+    db.query(`SELECT * FROM users where email =?`,[id], (err, result) => {
+        res.send(result);
+        console.log(result)
+    })
+
+})
+
 // Seacrhing Ads
 app.get("/Search_Ad/:S_AD", (req, res) => {
 

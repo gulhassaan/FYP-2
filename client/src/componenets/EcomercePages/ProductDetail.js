@@ -116,17 +116,17 @@ const ProductDetail = () => {
       setreviewErr(false);
       setRating(0);
       setWriteReview('');
-      axios.get(`http://localhost:3006/Get_Up_Review/${AdD}`)
+     
+    }
+    axios.get(`http://localhost:3006/Get_Up_Review/${AdD}`)
       .then((response) => {
         var temp = response.data;
        setReviews(temp);
-  
+
        const totalRating = temp.reduce((sum, review) => sum + review.rating, 0);
        const averageRating = (totalRating / temp.length).toFixed(1);
        setAverageRating(averageRating);
       });
-    }
-   
   };
   const getRatingColor = (rating) => {
     if (rating >= 4.5) {
@@ -141,7 +141,7 @@ const ProductDetail = () => {
     const filledStars = Math.floor(rating);
     const hasHalfStar = rating - filledStars >= 0.5;
     const starIcons = [];
-  
+     
     // Filled stars
     for (let i = 0; i < filledStars; i++) {
       starIcons.push(<StarIcon key={i} style={{ color: "#FFC107" }} />);

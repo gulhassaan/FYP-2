@@ -42,7 +42,7 @@ function AdminLogin(){
   { 
     if(email!=="" && password!=="")
      {
-      Axios.post("http://localhost:3006/login", {
+      Axios.post("http://localhost:3006/Admin_login", {
         email: email,
         password: password,
       }).then((response) => {

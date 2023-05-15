@@ -107,7 +107,7 @@ export const MyAds = () => {
               {Ads.map((card) => (
                 <Grid class="myad-card" item key={card} xs={12} sm={6} md={3}>
                   <Card
-                    style={{ backgroundColor: "#FFFFFF", height: "480px", borderRadius: "20px", width: "350px", boxShadow: "4px 4px 4px 4px rgba(0, 0, 0, 0.25)" }}
+                    style={{ backgroundColor: "#FFFFFF", height: "520px", borderRadius: "20px", width: "350px", boxShadow: "4px 4px 4px 4px rgba(0, 0, 0, 0.25)" }}
                     sx={{
                       maxWidth: 480,
                       maxHeight: 450
@@ -115,7 +115,7 @@ export const MyAds = () => {
                   >
                     <CardMedia
                       component="img"
-                      height={200}
+                      height={190}
 
                       sx={{ padding: "1em 1em 0 1em" }}
                       image={card.Images[0]}
