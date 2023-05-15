@@ -5,10 +5,11 @@ import chat from '../images/chat.png';
 import bell from '../images/bell.png';
 import account from '../images/account.png';
 import drop from '../images/drop.png';
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import "@fontsource/montserrat";
-
 const NavbarHome = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
   return (
     <div className="Navbarhome">
       <img className="logo1-nav" src={logo1}></img>
@@ -21,7 +22,7 @@ const NavbarHome = () => {
       </div>
       <div className={`nav-items ${isOpen && "open"}`} style={{ marginLeft: "auto" }}>
 
-        <a><img className="pass-icon1" src={account}></img></a>
+        <a><img className="pass-icon1" onClick={()=>{navigate("/profile")}} src={account}></img></a>
         <a className="ab" href="/hardware"><b>Sell</b></a>
         <a className="ab" onClick={() => {
           localStorage.removeItem('email_token')

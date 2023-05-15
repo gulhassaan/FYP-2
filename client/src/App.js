@@ -4,7 +4,7 @@ import { Home } from "./componenets/pages/Home";
 import About from "./componenets/pages/About";
 import { Login } from "./componenets/pages/Login";
 import Signup from "./componenets/pages/Signup";
-
+import Profile from "./componenets/pages/Profile";
 import Hardware from "./componenets/pages/Hardware";
 import ForgotPassword from "./componenets/pages/ForgotPassword";
 import Updated from "./componenets/pages/Updated";
@@ -66,6 +66,7 @@ function App() {
                   <Routes>
                     <Route path="/" element={<LandingPage />}></Route>
                     <Route path="/home" element={<Home />}></Route>
+                    <Route path="/profile" element={<Profile />}></Route>
                     <Route path="/about" element={<About />}></Route>
                     <Route path="/hardware" element={<Hardware />}></Route>
                     <Route path="/signupsuccess" element={<SignUpSuccessfully/>}></Route>
