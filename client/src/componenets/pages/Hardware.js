@@ -1,4 +1,4 @@
-import React, { Component, useContext,useEffect } from 'react'
+import React, { Component, useContext, useEffect } from 'react'
 import { useState } from 'react';
 import Axios from 'axios'
 import { EmailContext } from '../../App';
@@ -16,84 +16,78 @@ import "@fontsource/montserrat";
 import { MultiUploader } from "../../Uploader/Uploader";
 
 export default function Hardware() {
-  
-  
+
+
   const { Email } = useContext(EmailContext);
-const navigate = useNavigate();
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [Description, setDescription] = useState('');
   const [price, setprice] = useState('');
- // const [Images, setimage] = useState({ Images: "", });
+  // const [Images, setimage] = useState({ Images: "", });
   const [newEmail, setEmail] = useState('')
   const [location, setlocation] = useState('')
-   const  {Images}  = useContext(ImagesContext); 
-console.log("THIS IS PUBLISH : ",Images);
-const [error,seterror]=useState('');
+  const { Images } = useContext(ImagesContext);
+  console.log("THIS IS PUBLISH : ", Images);
+  const [error, seterror] = useState('');
 
 
-const [errC, seterrC] = useState(false)
-const [errL, seterrL] = useState(false)
-const [errT, seterrT] = useState(false)
-const [errD, seterrD] = useState(false)
-const [errI, seterrI] = useState(false)
-const [errP, seterrP] = useState(false)
+  const [errC, seterrC] = useState(false)
+  const [errL, seterrL] = useState(false)
+  const [errT, seterrT] = useState(false)
+  const [errD, seterrD] = useState(false)
+  const [errI, seterrI] = useState(false)
+  const [errP, seterrP] = useState(false)
 
 
   const publish = () => {
-    const param1 = localStorage.getItem("email_token") 
+    const param1 = localStorage.getItem("email_token")
     setEmail(param1)
-console.log("bew emai l is ",newEmail)
+    console.log("bew emai l is ", newEmail)
     if (Category === "") {
       seterror("Category is Required")
       seterrC(true)
-     // seterrN(true)
+      // seterrN(true)
     }
-    else if(location === "")
-    {
-   //   seterrE(true)
+    else if (location === "") {
+      //   seterrE(true)
       seterror("location is Required")
       seterrL(true)
     }
-    else if(title === "")
-    {
-   //   seterrE(true)
+    else if (title === "") {
+      //   seterrE(true)
       seterror("Title is Required")
       seterrT(true)
-    }else if(price === "" || price === "0")
-    {
+    } else if (price === "" || price === "0") {
 
-   //   seterrE(true)
+      //   seterrE(true)
       seterror("Price is Required")
       seterrP(true)
     }
-    
-    else if(Description === "")
-    {
-    
-   //   seterrE(true)
+
+    else if (Description === "") {
+
+      //   seterrE(true)
       seterror("Description is Required")
       seterrD(true)
     }
-    else if(Images.length === 0)
-    {
-   //   seterrE(true)
+    else if (Images.length === 0) {
+      //   seterrE(true)
       seterror("Images is Required")
       seterrI(true)
-    } 
-    else
-    {
-    Axios.post("http://localhost:3006/publish", { title: title, Description: Description, Cost: price, Images: JSON.stringify(Images), email: newEmail,location:location,Type:Type,adCategory:Category}).then((response) => {
-      console.log(response.data);
-      seterrC(false);
-      seterrD(false);
-      seterrI(false);
-      seterrL(false);
-      seterrP(false);
-      seterrT(false);
-      
-      navigate("/home")
-    })
-  }
+    }
+    else {
+      Axios.post("http://localhost:3006/publish", { title: title, Description: Description, Cost: price, Images: JSON.stringify(Images), email: newEmail, location: location, Type: Type, adCategory: Category }).then((response) => {
+        console.log(response.data);
+        seterrC(false);
+        seterrD(false);
+        seterrI(false);
+        seterrL(false);
+        seterrP(false);
+        seterrT(false);
+
+        navigate("/home")
+      })
+    }
 
   }
   const handleSubmit = (e) => {
@@ -102,20 +96,20 @@ console.log("bew emai l is ",newEmail)
 
   }
 
-   const [Type, setType] = useState("Account");
+  const [Type, setType] = useState("Account");
   // const [price, setprice] = useState("");
-    const [Category, setCategory] = useState("");
+  const [Category, setCategory] = useState("");
   // const [title, setTitle] = useState("");
   // const [location, setLocation] = useState("");
   // const [message, setMessage] = useState("");
   // const [img, setImg] = useState("");
   // const [post, setPost] = useState("");
-   const [err, setErr] = useState(false);
-   const [errMessage, setErrMessage] = useState("");
+  const [err, setErr] = useState(false);
+  const [errMessage, setErrMessage] = useState("");
 
   const priceHandle = (e) => {
     const re = /^[0-9\b]+$/;
-  
+
     // if value is not blank, then test the regex
     if (e.target.value == "" || e.target.value == "0") {
       seterrP(true)
@@ -138,21 +132,21 @@ console.log("bew emai l is ",newEmail)
     }
 
 
-    if (e.target.value.length > 50) {    
-        setErrMessage("Title length less than 50")
-        setErr(true)
+    if (e.target.value.length > 50) {
+      setErrMessage("Title length less than 50")
+      setErr(true)
     } else {
       setTitle(e.target.value)
       setErrMessage("")
       setErr(false)
     }
   };
-  
+
 
 
   const setcat = (e) => {
     const temp = e.target.value;
-    const param1 = localStorage.getItem("email_token") 
+    const param1 = localStorage.getItem("email_token")
     setEmail(param1)
     setType(temp);
   };
@@ -166,7 +160,7 @@ console.log("bew emai l is ",newEmail)
     }
 
     const temp = e.target.value;
-    const param1 = localStorage.getItem("email_token") 
+    const param1 = localStorage.getItem("email_token")
     setEmail(param1)
     setCategory(temp);
   };
@@ -178,37 +172,37 @@ console.log("bew emai l is ",newEmail)
       seterrC(false)
     }
     const temp = e.target.value;
-    const param1 = localStorage.getItem("email_token") 
+    const param1 = localStorage.getItem("email_token")
     setEmail(param1)
     setCategory(temp);
   };
 
 
 
-const Location=(e)=>{
-  if (e.target.value == "") {
-    seterrL(true)
+  const Location = (e) => {
+    if (e.target.value == "") {
+      seterrL(true)
+    }
+    else {
+      seterrL(false)
+    }
+    const param1 = localStorage.getItem("email_token")
+    setEmail(param1)
+    const temp = e.target.value;
+    setlocation(temp);
   }
-  else {
-    seterrL(false)
-  }
-  const param1 = localStorage.getItem("email_token") 
-  setEmail(param1)
-  const temp= e.target.value;
-  setlocation(temp);
-}
 
 
-const DesHandle=(e)=>{
-  if (e.target.value == "") {
-    seterrD(true)
+  const DesHandle = (e) => {
+    if (e.target.value == "") {
+      seterrD(true)
+    }
+    else {
+      seterrD(false)
+    }
+    const temp = e.target.value;
+    setDescription(temp);
   }
-  else {
-    seterrD(false)
-  }
-  const temp= e.target.value;
-  setDescription(temp);
-}
 
 
   useEffect(() => {
@@ -222,7 +216,7 @@ const DesHandle=(e)=>{
           b,
           i,
           val = this.value;
-          
+
         /*close any already open lists of autocompleted values*/
         closeAllLists();
         if (!val) {
@@ -251,18 +245,16 @@ const DesHandle=(e)=>{
             b.addEventListener("click", function (e) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
-              console.log("THIS IS FIRTS:",this.getElementsByTagName("input")[0].value)
-              console.log("fgnhj",countries.findall("Lahore"))
-              
-              if(document.getElementById("city_list").value=="Okara")
-              {
+              console.log("THIS IS FIRTS:", this.getElementsByTagName("input")[0].value)
+              console.log("fgnhj", countries.findall("Lahore"))
+
+              if (document.getElementById("city_list").value == "Okara") {
                 setlocation(inp.value)
               }
-              else if(document.getElementById("hardware_list").value=="GAMING CONSOLE"){
-              setCategory(inp.value)
+              else if (document.getElementById("hardware_list").value == "GAMING CONSOLE") {
+                setCategory(inp.value)
               }
-              else if(document.getElementById("game_list").value=="PUBG")
-              {
+              else if (document.getElementById("game_list").value == "PUBG") {
                 setCategory(inp.value)
               }
               /*close the list of autocompleted values,
@@ -330,7 +322,7 @@ const DesHandle=(e)=>{
         closeAllLists(e.target);
       });
     }
-    
+
     /*An array containing all the country names in the world:*/
     const countries = [
       "Abbottabad",
@@ -530,169 +522,168 @@ const DesHandle=(e)=>{
     }
   });
   useEffect(() => {
-    if(!localStorage.getItem('email_token'))
-    {
+    if (!localStorage.getItem('email_token')) {
       navigate('/login')
     }
   }, [])
   return (
-    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)"}}>
-    <div className="back">
-      <Navbar />
-      <section className="sell-main">
-        <div className="conatiner mt-5">
-          <div className="sell-main-content">
-            <div className="signup-form w-100">
-              {/* New Design */}
-              <div className="">
-                <div className="d-flex align-items-center w-full justify-content-between p-1">
-                  <a href="/home">
-                    <img className="pass-icon4" src={arrow} alt=""></img>
-                  </a>
-                  <h2 className="form-title mx-auto">Publish Your Ad</h2>
+    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
+      <div className="back">
+        <Navbar />
+        <section className="sell-main">
+          <div className="conatiner mt-5">
+            <div className="sell-main-content">
+              <div className="signup-form w-100">
+                {/* New Design */}
+                <div className="">
+                  <div className="d-flex align-items-center w-full justify-content-between p-1">
+                    <a href="/home">
+                      <img className="pass-icon4" src={arrow} alt=""></img>
+                    </a>
+                    <h2 className="form-title mx-auto">Publish Your Ad</h2>
+                  </div>
+                  <form onSubmit={handleSubmit}>
+                    {/* Forms */}
+                    <div className="p-5">
+                      {/* Row 1 */}
+                      <div className="w-50 my-2">
+
+                        <h6>Type</h6>
+                        <select
+                          style={{ backgroundColor: '#FFFFFF' }}
+                          name=""
+                          id="category-btn"
+                          className="customform w-100"
+                          onClick={setcat}
+                        >
+                          <option value="Account" style={{ backgroundColor: '#FFFFFF' }}>Account</option>
+                          <option value="Hardware" style={{ backgroundColor: '#FFFFFF' }}>Hardware</option>
+                        </select>
+                      </div>
+                      <hr></hr>
+                      {/* Row 2 */}
+                      <div className="d-flex w-100 justify-between my-2">
+                        <div className="autocomplete w-50 p-1">
+                          <h6> Category</h6>
+
+                          {Type == "Account" ? (
+                            <input
+                              style={{ backgroundColor: '#FFFFFF' }}
+                              type="text"
+                              id="game_list"
+                              className="cat w-100"
+                              placeholder="Select Game"
+                              onChange={setacc}
+                            ></input>
+                          ) : (
+                            <input
+                              style={{ backgroundColor: '#FFFFFF' }}
+                              type="text"
+                              id="hardware_list"
+                              className="cat w-100"
+                              placeholder="Select Hardware"
+                              onChange={sethard}
+                            ></input>
+                          )}
+                          {
+                            errC ? <span style={{ color: "red" }}>Category Is Required</span> : ""
+                          }
+                        </div>
+
+                        <div className="autocomplete w-50 p-1">
+                          <h6>Your Ad's Location</h6>
+                          <input
+                            style={{ backgroundColor: '#FFFFFF' }}
+                            autoComplete="off"
+                            type="text"
+                            className="customform w-100"
+                            id="city_list"
+                            name="myCountry"
+                            list="item-list"
+                            onChange={Location}
+                          ></input>
+                          {errL ? <span style={{ color: "red" }}>Location Is Required</span> : ""}
+                        </div>
+
+                      </div>
+
+                      {/* Row 3 */}
+                      <div className="d-flex w-100 justify-between my-2">
+                        <div className="w-50 p-1">
+                          <h6>Ad Title</h6>
+                          <input
+                            style={{ backgroundColor: '#FFFFFF' }}
+                            value={title}
+                            onChange={titleHandle}
+                            name=""
+                            id=""
+                            className="customform w-100"
+                            placeholder="Ad Title"
+                            required
+                          />
+
+                          {errT ? <span style={{ color: "red" }}>Title Is Required</span> : ""}
+                        </div>
+
+                        <div className="w-50 p-1">
+                          <h6>Set Price (PKR)</h6>
+                          <input
+                            style={{ backgroundColor: '#FFFFFF' }}
+                            value={price}
+                            onChange={priceHandle}
+                            type="text"
+                            name=""
+                            id=""
+                            className="customform w-100"
+                            placeholder="RS | "
+                          />
+
+                          {errP ? <span style={{ color: "red" }}>Price Is Required</span> : ""}
+                        </div>
+
+                      </div>
+                      <div className="w-full">
+                        <div>
+                          <p>{errMessage}</p>
+                        </div>
+                        <h6>Ad Description</h6>
+                        <textarea
+                          style={{ backgroundColor: '#FFFFFF' }}
+                          name=""
+                          id=""
+                          className="customform1 w-100"
+                          rows="5"
+                          onChange={DesHandle}
+                        ></textarea>
+
+                        {errD ? <span style={{ color: "red" }}>Description Is Required</span> : ""}
+                      </div>
+                      <div className="custom-text">
+
+                        <br></br>
+                        <h5>Upload photos</h5>
+                      </div>
+
+                      <div className="d-flex mt-3 justify-content-between">
+                        <MultiUploader />
+                        {errI ? <span style={{ color: "red" }}>Images Is Required</span> : ""}
+                      </div>
+
+                      <button onClick={publish} className="PostNow">
+                        Post Now
+                      </button>
+
+                    </div>
+                  </form>
                 </div>
-                <form onSubmit={handleSubmit}>
-                {/* Forms */}
-                <div className="p-5">
-                  {/* Row 1 */}
-                  <div className="w-50 my-2">
-                   
-                    <h6>Type</h6>
-                    <select
-                    style={{ backgroundColor: '#FFFFFF' }}
-                      name=""
-                      id="category-btn"
-                      className="customform w-100"
-                      onClick={setcat}
-                    >
-                      <option value="Account" style={{ backgroundColor: '#FFFFFF' }}>Account</option>
-                      <option value="Hardware" style={{ backgroundColor: '#FFFFFF' }}>Hardware</option>
-                    </select>
-                  </div>
-                  <hr></hr>
-                  {/* Row 2 */}
-                  <div className="d-flex w-100 justify-between my-2">
-                    <div className="autocomplete w-50 p-1">
-                      <h6> Category</h6>
 
-                      {Type == "Account" ? (
-                        <input
-                        style={{ backgroundColor: '#FFFFFF' }}
-                          type="text"
-                          id="game_list"
-                          className="cat w-100"
-                          placeholder="Select Game"
-                        onChange={setacc}
-                        ></input>
-                      ) : (
-                        <input
-                        style={{ backgroundColor: '#FFFFFF' }}
-                          type="text"
-                          id="hardware_list"
-                          className="cat w-100"
-                          placeholder="Select Hardware"
-                          onChange={sethard}
-                        ></input>
-                      )}
-                      {
-                        errC ? <span style={{ color: "red" }}>Category Is Required</span> : ""
-                      }
-                    </div>
-
-                    <div className="autocomplete w-50 p-1">
-                      <h6>Your Ad's Location</h6>
-                      <input
-                      style={{ backgroundColor: '#FFFFFF' }}
-                        autoComplete="off"
-                        type="text"
-                        className="customform w-100"
-                        id="city_list"
-                        name="myCountry"
-                        list="item-list"
-                        onChange={Location}
-                      ></input>
-                      {errL ? <span style={{ color: "red" }}>Location Is Required</span> : ""}
-                    </div>
-
-                  </div>
-
-                  {/* Row 3 */}
-                  <div className="d-flex w-100 justify-between my-2">
-                    <div className="w-50 p-1">
-                      <h6>Ad Title</h6>
-                      <input
-                      style={{ backgroundColor: '#FFFFFF' }}
-                        value={title}
-                        onChange={titleHandle}
-                        name=""
-                        id=""
-                        className="customform w-100"
-                        placeholder="Ad Title"
-                        required
-                      />
-                      
-                      {errT ? <span style={{ color: "red" }}>Title Is Required</span> : ""}
-                    </div>
-                    
-                    <div className="w-50 p-1">
-                      <h6>Set Price (PKR)</h6>
-                      <input
-                      style={{ backgroundColor: '#FFFFFF' }}
-                        value={price}
-                        onChange={priceHandle}
-                        type="text"
-                        name=""
-                        id=""
-                        className="customform w-100"
-                        placeholder="RS | "
-                      />
-                      
-                      {errP ? <span style={{ color: "red" }}>Price Is Required</span> : ""}
-                    </div>
-                   
-                  </div>
-                  <div className="w-full">
-                  <div>
-                      <p>{errMessage}</p>
-                    </div>
-                    <h6>Ad Description</h6>
-                    <textarea
-                    style={{ backgroundColor: '#FFFFFF' }}
-                      name=""
-                      id=""
-                      className="customform1 w-100"
-                      rows="5"
-                      onChange={DesHandle}
-                    ></textarea>
-                    
-                    {errD ? <span style={{ color: "red" }}>Description Is Required</span> : ""}
-                  </div>
-                  <div className="custom-text">
-                 
-<br></br>
-                    <h5>Upload photos</h5>
-                  </div>
-
-                  <div className="d-flex mt-3 justify-content-between">
-                    <MultiUploader/>
-                    {errI ? <span style={{ color: "red" }}>Images Is Required</span> : ""}
-                  </div>
-               
-                  <button onClick={publish} className="PostNow">
-                      Post Now
-                  </button>
-              
-                </div>
-                </form>
               </div>
-          
+
             </div>
-          
+
           </div>
-          
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
     </div>
   );
 }

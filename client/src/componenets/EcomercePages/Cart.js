@@ -74,10 +74,10 @@ const Cart = () => {
   }, 0);
 
 
-  const GoProceed = ()=>{
+  const GoProceed = () => {
 
     localStorage.setItem('TotalBill', total)
-  navigate('/checkout');
+    navigate('/checkout');
   }
 
   console.log("TRIS  tos:lb : ", total)
@@ -109,7 +109,9 @@ const Cart = () => {
         <div style={{ textAlign: "center", color: "rgba(0, 95, 96, 1)", marginTop: 60 }}>
           <h2>Total Bill: {total}</h2>
         </div>
-       
+        <button className="BuyNow">
+          Buy Now
+        </button>
       </div>
     </div>
   );

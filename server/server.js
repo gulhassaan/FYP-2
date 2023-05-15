@@ -10,7 +10,7 @@ app.use(cors());
 const db = mysql.createConnection({
     user: "root",
     host: "localhost",
-    password: "root1234",
+    password: "password",
     database: "gamingstan"
 });
 
@@ -877,7 +877,89 @@ app.get('/Get_Up_Product/:productId', (req, res) => {
     });
   });
   
-
+//Stripe
+app.post('/user/payment', async (req, res) => {
+    var price = req.body.Price;
+    var email = req.body.Email;
+    var m_email = req.body.Email;
+  
+    var c_expiryMonth = req.body.ExpiryMonth;
+    var c_expiryYear = req.body.ExpiryYear;
+    var c_cvc = req.body.CVC;
+    var c_card = req.body.Card;
+    var expiryDate = c_expiryMonth + '/' + c_expiryYear;
+  
+    var Publishable_Key =
+      'pk_test_51MhrdhHP8xthSvwojtL4bTcrC3ISf4Va0m4c2xMGMCtOOgLOYnFJis9tfNrW7oF2HFJlJnZvGx8Nqkfrk7Ext0qL00RmA6bX5M';
+    var Secret_Key =
+      'sk_test_51MhrdhHP8xthSvwoYB5uApAf6Gs3Wd2v5EkHm7XYWS3EfDCFDQUFuxOxnoB5vCCHPyF8RgIgOUAqXIFn0BVaIWxI00r7kPF0i6';
+  
+    const stripe = require('stripe')(Secret_Key);
+  
+    try {
+      const customer = await stripe.customers.create({
+        description: email,
+      });
+  
+      if (customer == '' || customer == null) {
+        return res.status(500).json({
+          message: 'Error Occured in Stripe Customer',
+        });
+      }
+  
+      const card_Token = await stripe.tokens.create({
+        card: {
+          number: c_card.replace(/\s/g, ''),
+          exp_month: Number(c_expiryMonth),
+          exp_year: Number(c_expiryYear),
+          cvc: c_cvc,
+        },
+      });
+  
+      if (card_Token == '' || card_Token == null) {
+        return res.status(500).json({
+          message: 'Error Occured in Stripe CardToken',
+        });
+      }
+      const card = await stripe.customers.createSource(customer.id, {
+        source: card_Token.id,
+      });
+  
+      console.log(card);
+  
+      var amount = 0;
+      amount = Number(price);
+      const createCharge = await stripe.charges.create({
+        receipt_email: email,
+        amount: amount * 100, //USD*100
+        currency: 'PKR',
+        card: card.id,
+        customer: customer.id,
+      });
+      console.log(createCharge.id);
+      if (createCharge == '' || createCharge == null) {
+        return res.status(500).json({
+          message: 'Error Occured in Stripe Charges',
+        });
+      }
+  
+      if (createCharge.status == 'succeeded') {
+        return res.status(200).json({
+          message: 'Payment Successful!',
+        });
+      } else {
+        console.log(err);
+        return res.status(500).json({
+          message: 'Stripe Payment Failed!',
+        });
+      }
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json({
+        message: 'Payment Failed',
+      });
+    }
+  });
 
   
   

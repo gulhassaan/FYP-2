@@ -115,11 +115,11 @@
 }
 
 .sign-in {
+  
   text-align: center;
   justify-content: center;
   display: flex;
-  padding: 30px 0 90px 0;
-
+  padding: 80px 0 90px 0;
   
   height: 600px;
 }
@@ -274,9 +274,10 @@ margin-right: -120px;
   box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.25);
   padding-top: 20px;
   border-radius: 20px;
-  background-color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.1);
 
 }
+
 .adminsignin-content {
 
   display: flex;
@@ -477,6 +478,8 @@ border-radius: 80px;
   background-color: #FFFFFF;
   color: rgba(0, 95, 96, 0.8);
 }
+
+
 .login-forgotfooterbtn{
   margin: -1px;
   margin-left: 160px;
@@ -495,7 +498,17 @@ border-radius: 80px;
   color: #FFFFFF;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
-
+.BuyNow{
+  border-radius: 30px;
+  padding: 9px 45px;
+  margin: 7px;
+  border: 2px solid #008083;
+  background-color: #008083;
+  margin-left: 50px;
+  margin-top: 20px;
+  color: #FFFFFF;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
 .update-now{
   border-radius: 25px;
   margin: 7px;
@@ -598,6 +611,7 @@ border-radius: 80px;
 #btn_F:hover {background-color: #ffffff; color: #008083;}
 .myad-btn:hover{background-color: #ffffff; color: #008083;}
 .PostNow:hover{background-color: #ffffff; color: #008083;}
+.BuyNow:hover{background-color: #ffffff; color: #008083;}
 #btn_F{
   border: 2px solid #008083;
   color: #FFFFFF;
@@ -682,7 +696,7 @@ justify-content:space-between;
 }
 
 .form-title {
-  color: rgba(0, 95, 96, 0.8);
+  color:  rgba(255, 255, 255);
   font-size: 40px;
   margin-top: 20px;
 }
@@ -955,7 +969,7 @@ footer {
 .main-footer {
   color: #FFFFFF;
   background: rgba(0, 95, 96, 0.9);
-  padding-top: 2em;
+ /* padding-top: 2em; */
   position: relative;
   bottom: 0;
   margin-bottom: -140px;
@@ -971,19 +985,12 @@ footer {
   
   background: rgba(0, 95, 96, 1);
   text-align: center;
-  
+  width: 100%;
 }
 
 
 /*navbar styling*/
-.Navbar {
-  height: 60px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(0, 95, 96, 1);
-}
+
 .storebanner{
   margin-top: 60px; 
 }
@@ -1039,6 +1046,46 @@ footer {
 }
 .Landingpage-banner{
   margin-top: 60px;
+  width: 100%;
+  height: 100vh;
+}
+.Login-banner{
+  
+  width: 100%;
+  height: 100vh;
+}
+video{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  position: fixed;
+  
+}
+.overlaybg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0, 0.6);
+  
+}
+
+.ContentLanding{
+  position: relative;
+
+  top: 0;
+}
+.Navbar {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10000;
+  background: rgba(0, 95, 96, 1);
 }
 .NavbarLanding {
   height: 60px;
@@ -1733,3 +1780,103 @@ footer {
 
 
 /**/
+#textblock {
+  background-color: #210002;
+  height: 100vh;
+}
+
+#textblock-container {
+  width: 50%;
+  margin: 0 auto;
+  padding-top: 70px;
+}
+
+#textblock-title {
+  color: #ffaf1b;
+  font-size: 35px;
+  font-weight: 600;
+  font-family: "Helvetica Neue";
+}
+
+#textblock-content {
+  color: #ffaf1b;
+  font-size: 20px;
+}
+
+#textblock-footer {
+  color: #ffaf1b;
+  font-size: 15px;
+  font-weight: 400;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  margin-bottom: 20px;
+
+}
+
+#textblock-devsense {
+  text-decoration: none;
+  color: #ffaf1b;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.animation, .animation_layer {
+	height: 1000px;
+}
+
+.animation {
+  display: block;
+	position: relative;
+	z-index: 10;
+}
+
+.animation_layer {
+	background-position: bottom center;
+	background-size: auto 1038px;
+	background-repeat: repeat-x;
+	width: 100%;
+	position: absolute;
+}
+.animation_layer.parallax {
+	position: fixed;
+}
+
+#artback {
+  background-image: url(../images/background.png);
+}
+
+#mountain {
+  background-image: url(../images/mountains.png);
+}
+
+#logoland {
+  background-image: url(../images/logo_land.png);
+}
+
+#jungle1 {
+  background-image: url(../images/jungle1.png);
+}
+
+#jungle2 {
+  background-image: url(../images/jungle2.png);
+}
+
+#jungle3 {
+  background-image: url(../images/jungle3.png);
+}
+
+#jungle4 {
+  background-image: url(../images/jungle4.png);
+}
+
+#jungle5 {
+  background-image: url(../images/jungle5.png);
+}
+
+#manonmountain {
+  background-image: url(../images/man_on_mountain.png);
+}

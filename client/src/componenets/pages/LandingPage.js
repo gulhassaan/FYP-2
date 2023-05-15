@@ -18,6 +18,7 @@
 // //   );
 // // }
 import InputLabel from '@mui/material/InputLabel';
+import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
@@ -25,6 +26,7 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Pagination from '@mui/material/Pagination';
+import Fade from 'react-reveal/Fade';
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -38,9 +40,12 @@ import Container from "@mui/material/Container";
 import { color } from '@mui/system';
 import Navbar from './NavbarLanding';
 import landingpageBanner from '../images/landingpage_banner.png';
+import landingvideo from '../images/landing1.mp4';
+import gif from '../images/intro.gif';
 import { Link, useNavigate } from "react-router-dom";
 import "@fontsource/montserrat";
 import { TextAlignCenter } from 'phosphor-react';
+import { Zoom } from 'react-reveal';
 
 export const LandingPage = () => {
   const [listOfAds, setListOfAds] = useState([]);
@@ -153,103 +158,116 @@ export const LandingPage = () => {
       navigate('/home')
     }
   }, [])
+  //<div className='Landingpage-banner'>
+  //<a href='signup'><img className="Landingpage-banner-Image" src={landingpageBanner} width="100%"></img></a>
+
+  //</div> 
   return (
-    
-    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)", width:"100%"  }}>
+
+    <div>
       <Navbar />
+
       <main>
-        <div className='Landingpage-banner'>
-        <a href='signup'><img className="Landingpage-banner-Image" src={landingpageBanner} width="100%"></img></a>
         
+        <div className='Landingpage-banner'>
+        <div class="overlaybg"></div>
+          <video src={landingvideo} autoPlay loop muted />
         </div>
-        <h2 className='txt-align' style={{color: "rgba(0, 95, 96, 0.8)",fontWeight:"bolder"}}>Fresh Recommendations</h2>
-        <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center', justifyContent: "center", paddingTop: "50PX" }}>
-          <input
-            style={{ width: '50%', marginRight: '0.5rem', backgroundColor: '#FFFFFF', color: "rgba(0, 95, 96, 0.8)" }}
-            autoComplete='off'
-            placeholder='Search'
-            type='text'
-            className='customform w-50'
-            list='item-list'
-            onChange={(e) => setSearch(e.target.value)}
-          />
+        <div className='ContentLanding'>
+          <Fade top distance="10%" duration={1500}>
+            <h2 className='txt-align' style={{ color: "rgba(0, 95, 96, 0.8", fontWeight: "bolder" }}>Fresh Recommendations</h2>
+          </Fade>
+          <Fade top distance="20%" duration={1500}>
+            <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center', justifyContent: "center", paddingTop: "50PX" }}>
+              <input
+                style={{ width: '50%', marginRight: '0.5rem', backgroundColor: 'rgba(255, 255, 255)', color: "rgba(0, 95, 96, 0.8)" }}
+                autoComplete='off'
+                placeholder='Search'
+                type='text'
+                className='customform w-50'
+                list='item-list'
+                onChange={(e) => setSearch(e.target.value)}
+              />
 
-          <FormControl style={{ backgroundColor: "rgba(255, 255, 255)", minWidth: 150, borderRadius: "30px" }} size='small'>
-            <InputLabel id='demo-select-small' style={{ color: "rgba(0, 95, 96, 0.8)" }}>Sort by</InputLabel>
-            <Select
-              labelId='demo-select-small'
-              id='demo-select-small'
-              value={Filter}
-              label='Filters'
-              onChange={Selectfilter}
-              style={{ borderRadius: "20px", height: "45px", color: "rgba(0, 95, 96, 0.8)" }}
-              autoComplete='off'
-            >
-              <MenuItem value='' style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}>
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={'High TO Low'} style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}>High to Low</MenuItem>
-              <MenuItem value={'Low To High'} style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}>Low to High</MenuItem>
-              <MenuItem value={'Latest'} style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}>Latest</MenuItem>
-              <MenuItem value={'Oldest'} style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}>Oldest</MenuItem>
-            </Select>
-          </FormControl>
-        </div>
-
-        <Container sx={{ py: 8 }}>
-
-          <Grid container spacing={4}>
-            {listOfAds.filter((card) => {
-              return search.toLowerCase() === '' ? card : (card.title.toLowerCase().includes(search) || card.adCategory.toLowerCase().includes(search));
-            }).map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={3}>
-                <Card
-                  style={{ backgroundColor: "#FFFFFF", height: "330px", borderRadius: "20px" }}
-                  sx={{
-                    maxWidth: 280,
-                    margin: "0 auto",
-                    padding: "0.1em",
-                    maxHeight: 450
-                  }}
+              <FormControl style={{ backgroundColor: "rgba(255, 255, 255)", minWidth: 150, borderRadius: "30px" }} size='small'>
+                <InputLabel id='demo-select-small' style={{ color: "rgba(0, 95, 96, 0.8)" }}>Sort by</InputLabel>
+                <Select
+                  labelId='demo-select-small'
+                  id='demo-select-small'
+                  value={Filter}
+                  label='Filters'
+                  onChange={Selectfilter}
+                  style={{ borderRadius: "20px", height: "45px", color: "rgba(0, 95, 96, 0.8)" }}
+                  autoComplete='off'
                 >
-                  <CardMedia
-                    component="img"
+                  <MenuItem value='' style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}>
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={'High TO Low'} style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}>High to Low</MenuItem>
+                  <MenuItem value={'Low To High'} style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}>Low to High</MenuItem>
+                  <MenuItem value={'Latest'} style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}>Latest</MenuItem>
+                  <MenuItem value={'Oldest'} style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}>Oldest</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+          </Fade>
+          <Fade top distance="10%" duration={1500}>
+            <Container sx={{ py: 8 }}>
 
-                    height={200}
-                    image={card.Images[0]}
-                    alt="random"
-                    sx={{ padding: "0.5em 0.5em 0 0.5em", borderRadius: "20px" }}
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}  >
-                    <Typography gutterBottom variant="h6" component="h6" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)" }}>
-                      {card.title}
-                    </Typography>
-                    <Typography variant="p" style={{ topmargin: "5px", color: "rgba(0, 95, 96, 0.8)" }}>
-                      {card.Location}
-                    </Typography>
-                    <br></br>
-                    <Typography variant="p" style={{ color: "rgba(0, 95, 96, 0.8)" }}>
-                      {card.date}
-                    </Typography>
-                    <br></br>
-                    <Typography variant="p" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)" }}>
-                      Rs.{card.Cost}/-
-                    </Typography>
-                  </CardContent>
-                  <Box alignItems={"center"} >
-                    <CardActions sx={{ marginLeft: 8 }}>
-                      <Button class="forgot-btn" onClick={moreinfo}>More Info</Button>
+              <Grid container spacing={4}>
+                {listOfAds.filter((card) => {
+                  return search.toLowerCase() === '' ? card : (card.title.toLowerCase().includes(search) || card.adCategory.toLowerCase().includes(search));
+                }).map((card) => (
+                  <Grid item key={card} xs={12} sm={6} md={3}>
+                    <Card
+                      style={{ backgroundColor: "#FFFFFF", height: "330px", borderRadius: "20px" }}
+                      sx={{
+                        maxWidth: 280,
+                        margin: "0 auto",
+                        padding: "0.1em",
+                        maxHeight: 450
+                      }}
+                    >
+                      <CardMedia
+                        component="img"
 
-                    </CardActions>
-                  </Box>
-                </Card>
+                        height={200}
+                        image={card.Images[0]}
+                        alt="random"
+                        sx={{ padding: "0.5em 0.5em 0 0.5em", borderRadius: "20px" }}
+                      />
+                      <CardContent sx={{ flexGrow: 1 }}  >
+                        <Typography gutterBottom variant="h6" component="h6" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)" }}>
+                          {card.title}
+                        </Typography>
+                        <Typography variant="p" style={{ topmargin: "5px", color: "rgba(0, 95, 96, 0.8)" }}>
+                          {card.Location}
+                        </Typography>
+                        <br></br>
+                        <Typography variant="p" style={{ color: "rgba(0, 95, 96, 0.8)" }}>
+                          {card.date}
+                        </Typography>
+                        <br></br>
+                        <Typography variant="p" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)" }}>
+                          Rs.{card.Cost}/-
+                        </Typography>
+                      </CardContent>
+                      <Box alignItems={"center"} >
+                        <CardActions sx={{ marginLeft: 8 }}>
+                          <Button class="forgot-btn" onClick={moreinfo}>More Info</Button>
+
+                        </CardActions>
+                      </Box>
+                    </Card>
+                  </Grid>
+                ))}
               </Grid>
-            ))}
-          </Grid>
-          <Stack spacing={2} alignItems={"center"}>
-            <Pagination count={10} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
-          </Stack>
-        </Container>
+              <Stack spacing={2} alignItems={"center"}>
+                <Pagination count={10} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
+              </Stack>
+            </Container>
+          </Fade>
+        </div>
       </main>
 
 

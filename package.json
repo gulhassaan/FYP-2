@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "@fontsource/montserrat": "^4.5.14",
-    "phosphor-react": "^1.4.1"
+    "phosphor-react": "^1.4.1",
+    "react-reveal": "^1.2.2"
   },
   "devDependencies": {
     "cypress": "^12.9.0"

@@ -72,20 +72,20 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="Navbar">
-<img className="logo1-nav" src={logo1}></img>
-<div className="nav-items1">
-<a href="/landingpage"><b>Home</b> </a>
+      <img className="logo1-nav" src={logo1}></img>
+      <div className="nav-items1">
+        <a href="/landingpage"><b>Home</b> </a>
         <a href="/login"> <b>My Ads</b> </a>
         <a href="/login"><b>Gamingstan Store</b> </a>
         <a href="/service"><b>About Us</b> </a>
-        
-</div>
-        <div className={`nav-items ${isOpen && "open"}`}style={{marginLeft:"auto"}}>
-        
-        
+
       </div>
-      
-    
+      <div className={`nav-items ${isOpen && "open"}`} style={{ marginLeft: "auto" }}>
+
+
+      </div>
+
+
       <div
         className={`nav-toggle ${isOpen && "open"}`}
         onClick={() => setIsOpen(!isOpen)}

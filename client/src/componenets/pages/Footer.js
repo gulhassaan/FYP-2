@@ -2,51 +2,51 @@ import React from 'react';
 import './App.css';
 import logo from '../images/logo1.png';
 import "@fontsource/montserrat";
-
+//   <div className='container'>
+      //  <div class="manage-footer">
+       //   <div className='row'>
+       //     {/*column1*/}
+        //    <div className='col '>
+//
+         //     <ul className='list-unstyled'>
+          //      <img className='logo' id='logo' src={logo} alt="" />
+         //     </ul>
+         //   </div>
+          //  {/*column2*/}
+          //  <div className='col'>
+          //    <h4>About Us</h4>
+         //     <ul className='list-unstyled'>
+           //     <li>Our Blog</li>
+          //      <li>Our Services</li>
+           //   </ul>
+          //  </div>
+          //  {/*column3*/}
+          //  <div className='col'>
+           //   <h4>Need Help?</h4>
+           //   <ul className='list-unstyled'>
+           //     <li>FAQ</li>
+            //    <li>Contact Us</li>
+            //    <li>Gamingstan for Business</li>
+            //  </ul>
+         //   </div>
+            {/*column4*/}
+           // <div className='col'>
+           //   <h4>Gamingstan</h4>
+           //   <ul className='list-unstyled'>
+          //      <li>Terms Of Use</li>
+          //      <li>Privacy Policy</li>
+          //    </ul>
+          //  </div>
+//
+         // </div >
+      //  </div >
+      //</div >
 function Footer() {
   return (
     <div className='main-footer'>
-      <div className='container'>
-      <div class="manage-footer">
-      <div className='row'>
-            {/*column1*/}
-            <div className='col '>
+   
 
-              <ul className='list-unstyled'>
-                <img className='logo' id='logo' src={logo} alt="" />
-              </ul>
-            </div>
-            {/*column2*/}
-            <div className='col'>
-              <h4>About Us</h4>
-              <ul className='list-unstyled'>
-                <li>Our Blog</li>
-                <li>Our Services</li>
-              </ul>
-            </div>
-            {/*column3*/}
-            <div className='col'>
-              <h4>Need Help?</h4>
-              <ul className='list-unstyled'>
-                <li>FAQ</li>
-                <li>Contact Us</li>
-                <li>Gamingstan for Business</li>
-              </ul>
-            </div>
-            {/*column4*/}
-            <div className='col'>
-              <h4>Gamingstan</h4>
-              <ul className='list-unstyled'>
-                <li>Terms Of Use</li>
-                <li>Privacy Policy</li>
-              </ul>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <div className='lower-footer'>
+      < div className='lower-footer' >
         <div className='row'>
           <hr />
           <p className='col-sm'>
@@ -54,8 +54,8 @@ function Footer() {
             &copy;{new Date().getFullYear()} Gamingstan  Inc. | All  Rights  Reserved |  Privacy.
           </p>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
     /* <div>
         <footer class="footer">
       <div class="container">
