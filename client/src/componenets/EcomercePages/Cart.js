@@ -29,8 +29,6 @@ const Cart = () => {
 
   console.log("THis is carty ", cart)
   const updateCart = (id, quantity, price) => {
-    console.log("wertyhj")
-    console.log("Price is ", price)
     Axios.put(`http://localhost:3006/UpdateCart/${id}`, { Quantity: quantity, Price: price })
       .then(res => {
         console.log(res.data);
@@ -38,6 +36,7 @@ const Cart = () => {
       .catch(err => {
         console.log(err);
       });
+
     Axios.get(`http://localhost:3006/Get_items`).then((response) => {
       console.log("THis is Response Data : ", response.data)
       var temp = response.data;
@@ -109,7 +108,7 @@ const Cart = () => {
         <div style={{ textAlign: "center", color: "rgba(0, 95, 96, 1)", marginTop: 60 }}>
           <h2>Total Bill: {total}</h2>
         </div>
-        <button className="BuyNow">
+        <button className="BuyNow" onClick={() =>{navigate("/payment")}}>
           Buy Now
         </button>
       </div>

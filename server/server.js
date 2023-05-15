@@ -941,7 +941,8 @@ app.get('/Get_Up_Product/:productId', (req, res) => {
   });
   
 //Stripe
-app.post('/user/payment', async (req, res) => {
+
+app.post('/payment', async (req, res) => {
     var price = req.body.Price;
     var email = req.body.Email;
     var m_email = req.body.Email;

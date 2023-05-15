@@ -33,6 +33,7 @@
     "react-scroll-to-bottom": "^4.2.0",
     "react-stripe-checkout": "^2.6.3",
     "socket.io-client": "^4.5.4",
+    "strip": "^3.0.0",
     "styled-components": "^5.3.5",
     "sweetalert2": "^11.7.3",
     "sweetalert2-react-content": "^5.0.7",
