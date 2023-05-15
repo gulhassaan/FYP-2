@@ -35,10 +35,21 @@ const Authenticate = () => {
   }, []);
 
 
-const verify =()=>{
-
-    axios.post('')
-
+const verify =(email)=>{
+    axios.put(`http://localhost:3006/setAuth/${email}`).then((res) => {
+        console.log(res.data);
+        User(
+          User.filter((val) => {
+            return val.user != email
+          }))
+      })
+      axios.put(`http://localhost:3006/setAuth2/${email}`).then((res) => {
+        console.log(res.data);
+        User(
+          User.filter((val) => {
+            return val.user != email
+          }))
+      })
 }
 
 
@@ -78,7 +89,7 @@ const verify =()=>{
             ))}
            
           </div>
-          <Button class="myad-btn" style={{marginLeft:350,marginTop:30}} onClick={verify}>Verify User</Button>
+          <Button class="myad-btn" style={{marginLeft:350,marginTop:30}} onClick={()=>{verify(User.user)}}>Verify User</Button>
           </Grid>
         </Grid>
       </Paper>

@@ -164,7 +164,7 @@ const Manage_UserAds = () => {
     <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
     <Navbar />
       <main>
-      <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"50PX" }}>
+      <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"90PX" }}>
       <input
         style={{ width: '50%', marginRight: '0.5rem', backgroundColor: '#FFFFFF',color:"rgba(0, 95, 96, 0.8)" }}
         autoComplete='off'

@@ -10,7 +10,7 @@ app.use(cors());
 const db = mysql.createConnection({
     user: "root",
     host: "localhost",
-    password: "password",
+    password: "root1234",
     database: "gamingstan"
 });
 
@@ -664,6 +664,31 @@ app.put("/SetReportUser",(req,res)=>{
     })
 })
 
+//Set Auth
+app.put("/setAuth/:email", (req, res) => {
+    const email = req.params.email;
+    db.query(`UPDATE users SET IsDealer = ? WHERE email = ?`,[1,email],(err, result) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.send(result)
+        }
+    })
+})
+
+app.put("/setAuth2/:email", (req, res) => {
+    const email = req.params.email;
+    db.query(`UPDATE userauthentication SET IsVerified = ? WHERE user = ?`,[1,email],(err, result) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.send(result)
+        }
+    })
+})
+
 //Add Authentication data
 app.post("/AuthRequest", (req, res) => {
     const User = req.body.User;
@@ -694,8 +719,9 @@ app.get("/Get_Up_UserAuth/:user", (req, res) => {
 
 //Get Auth Requests
 app.get("/Get_UsersReq",(req,res)=>{
-    db.query("SELECT * FROM userauthentication",(err,result)=>{
-        res.send(result);       
+    db.query("SELECT * FROM userauthentication where IsVerified=?",[0],(err,result)=>{
+        res.send(result);
+        console.log(result);       
     })
 })
 

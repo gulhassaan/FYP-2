@@ -58,7 +58,7 @@ const UserReq = () => {
       <Navbar />
       <main>
       
-      <h1 style={{ color: "rgba(0, 95, 96, 0.8)",marginLeft:350,marginTop:20}}>Users Requests For Authentication</h1>
+      <h1 style={{ color: "rgba(0, 95, 96, 0.8)",marginLeft:350,marginTop:50}}>Users Requests For Authentication</h1>
       <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"50PX" }}>
       <input
         style={{ width: '50%', marginRight: '0.5rem', backgroundColor: '#FFFFFF',color:"rgba(0, 95, 96, 0.8)" }}
