@@ -7,12 +7,12 @@ const Navbar2 = () => {
   return (
     <div className="Navbar">
 <img className="logo1-nav" src={logo1}></img>
-<div className="nav-items1">
-        <a href="/managead"> <b>Home</b> </a>
+<div className="nav-items1">       
         <a href="/manageusersads"><b>Ads</b> </a>
         <a href="/manageusers"><b>User</b> </a>
         <a href="/managestore"><b>E-commerce Store</b> </a>
         <a href="/managead"><b>Ad Featuring Package</b> </a>
+        <a href="/userreq"><b>User Authentication</b> </a>
 </div>
 <a className="admin-logout-btn" onClick={() => {
   localStorage.removeItem('Adminemail')

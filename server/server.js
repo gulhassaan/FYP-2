@@ -664,6 +664,43 @@ app.put("/SetReportUser",(req,res)=>{
     })
 })
 
+//Add Authentication data
+app.post("/AuthRequest", (req, res) => {
+    const User = req.body.User;
+    const Name = req.body.Name;
+    const CNIC = req.body.CNIC;
+    const img = req.body.Images;
+    const NTN = req.body.NTN;
+  
+    db.query(
+        "INSERT INTO userauthentication (User,Name,CNIC,Images,NTN) VALUES (?,?,?,?,?)",
+        [User, Name, CNIC, img, NTN],
+        (err, result) => {
+            console.log(err);
+        }
+    );
+  
+})
+
+//Get Auth Users
+app.get("/Get_Up_UserAuth/:user", (req, res) => {
+    const id = req.params.user;
+    console.log("Serverr : ", id)
+    db.query(`SELECT * FROM userauthentication WHERE user = '${id}'`, (err, result) => {
+        res.send(result);
+        console.log(result)
+    })
+})
+
+//Get Auth Requests
+app.get("/Get_UsersReq",(req,res)=>{
+    db.query("SELECT * FROM userauthentication",(err,result)=>{
+        res.send(result);       
+    })
+})
+
+
+
 //Post rating and review
 app.post("/addingRev", (req, res) => {
     const ProductID = req.body.productID;

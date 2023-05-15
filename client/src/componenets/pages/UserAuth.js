@@ -42,7 +42,12 @@ function UserAuth() {
 
             //   seterrE(true)
             seterror("CNIC is Required")
-            seterrQ(true)
+            seterrQ(true) 
+        }  else if (CNIC.length !=13) {
+
+            //   seterrE(true)
+            seterror("CNIC must be 13")
+            seterrQ(true) 
         }  else if (NTN === "") {
 
             //   seterrE(true)
@@ -55,18 +60,17 @@ function UserAuth() {
             seterrI(true)
         }
         else {
-            console.log("helo");
-            Axios.post("http://localhost:3006/AuthRequest", { User:email,Name: Name,CNIC:CNIC,NTN:NTN , Images: JSON.stringify(Images) }).then((response) => {
+            Axios.post("http://localhost:3006/AuthRequest", { User:email,Name:Name,CNIC:CNIC,NTN:NTN ,Images:JSON.stringify(Images) }).then((response) => {
                 console.log(response.data);
+          
                 console.log("helo2");
                 seterrD(false);
                 seterrI(false);
                 seterrQ(false);
                 seterrP(false);
-                seterrT(false);
-
-         
+                seterrT(false);   
             })
+            navigate("/profile")  
         }
 
     }
@@ -88,7 +92,7 @@ function UserAuth() {
         else {
             seterrQ(false)
         }
-        if (e.target.value === "" || re.test(e.target.value)) {
+        if (e.target.value === "" || re.test(e.target.value) ||e.target.value.length ===13) {
             setCNIC(e.target.value);
         }
     };

@@ -66,7 +66,7 @@ function AdminLogin(){
           
           localStorage.setItem("Adminemail", email)
         //  errors.email = 'Congratulation Successfully Login';
-          { navigate('/managead') }
+          { navigate('/managestore') }
           //setlogin_S(1)
         }
 
@@ -115,7 +115,7 @@ else{
   useEffect(() => {
     if(localStorage.getItem('Adminemail'))
     {
-      navigate('/managead')
+      navigate('/managestore')
     }
   }, [])
   return (

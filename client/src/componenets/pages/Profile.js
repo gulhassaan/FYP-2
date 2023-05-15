@@ -45,14 +45,7 @@ const UserProfile = () => {
 
 
 
-  const user = {
-    name: "John Doe",
-    email: "johndoe@example.com",
-    location: "New York, USA",
-    listings: 10,
-    rating: 4.5,
-    avatar: "https://example.com/avatar.jpg",
-  };
+  
 
   return (
     <div>    <Navbar />
