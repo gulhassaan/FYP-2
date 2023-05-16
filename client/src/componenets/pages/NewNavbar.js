@@ -12,7 +12,7 @@ const NewNavbar = () => {
   return (
 
 
-    <div className="Navbar">
+    <div className="NavbarAds">
       <img className="logo1-nav" src={logo1}></img>
       <div className="nav-items1">
         <a href="/home"><b>Home</b> </a>

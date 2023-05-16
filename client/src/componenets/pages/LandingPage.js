@@ -168,36 +168,47 @@ export const LandingPage = () => {
       <Navbar />
 
       <main>
-        
+
         <div className='Landingpage-banner'>
-        <div class="overlaybg"></div>
+
+
+
           <video src={landingvideo} autoPlay loop muted />
+          <div class="overlaybg"></div>
+          <div className='welcomelanding'>
+            <h2>Welcome</h2>
+            <h4>To</h4>
+            <h1>GAMINGSTAN</h1>
+            <a href="/Login">Get Started</a>
+
+          </div>
         </div>
+
         <div className='ContentLanding'>
           <Fade top distance="10%" duration={1500}>
-            <h2 className='txt-align' style={{ color: "rgba(0, 95, 96, 0.8", fontWeight: "bolder" }}>Fresh Recommendations</h2>
+            <h2 className='txt-align' style={{ color: "#ffffff", fontWeight: "bold" }}>Fresh Recommendations</h2>
           </Fade>
           <Fade top distance="20%" duration={1500}>
             <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center', justifyContent: "center", paddingTop: "50PX" }}>
               <input
-                style={{ width: '50%', marginRight: '0.5rem', backgroundColor: 'rgba(255, 255, 255)', color: "rgba(0, 95, 96, 0.8)" }}
+                style={{ width: '50%', marginRight: '0.5rem', backgroundColor: "transparent",  color: "#ffffff" }}
                 autoComplete='off'
                 placeholder='Search'
                 type='text'
-                className='customform w-50'
+                className='customform w-50 '
                 list='item-list'
                 onChange={(e) => setSearch(e.target.value)}
               />
 
-              <FormControl style={{ backgroundColor: "rgba(255, 255, 255)", minWidth: 150, borderRadius: "30px" }} size='small'>
-                <InputLabel id='demo-select-small' style={{ color: "rgba(0, 95, 96, 0.8)" }}>Sort by</InputLabel>
+              <FormControl style={{ backgroundColor: "transparent", border: "2px solid #ffffff", color: "#ffffff", minWidth: 150, borderRadius: "30px" }} size='small'>
+                <InputLabel id='demo-select-small' style={{ color: "#ffffff" }}>Sort by</InputLabel>
                 <Select
                   labelId='demo-select-small'
                   id='demo-select-small'
                   value={Filter}
                   label='Filters'
                   onChange={Selectfilter}
-                  style={{ borderRadius: "20px", height: "45px", color: "rgba(0, 95, 96, 0.8)" }}
+                  style={{ borderRadius: "20px", height: "45px", color: "#ffffff" }}
                   autoComplete='off'
                 >
                   <MenuItem value='' style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}>
@@ -220,7 +231,7 @@ export const LandingPage = () => {
                 }).map((card) => (
                   <Grid item key={card} xs={12} sm={6} md={3}>
                     <Card
-                      style={{ backgroundColor: "#FFFFFF", height: "330px", borderRadius: "20px" }}
+                      style={{ backgroundColor: "rgba(255, 255, 255, 0.2)", height: "330px", borderRadius: "20px" }}
                       sx={{
                         maxWidth: 280,
                         margin: "0 auto",
@@ -237,18 +248,18 @@ export const LandingPage = () => {
                         sx={{ padding: "0.5em 0.5em 0 0.5em", borderRadius: "20px" }}
                       />
                       <CardContent sx={{ flexGrow: 1 }}  >
-                        <Typography gutterBottom variant="h6" component="h6" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)" }}>
+                        <Typography gutterBottom variant="h6" component="h6" sx={{ fontWeight: 'bold' }} style={{ color: "#ffffff", marginBottom:"5px" }}>
                           {card.title}
                         </Typography>
-                        <Typography variant="p" style={{ topmargin: "5px", color: "rgba(0, 95, 96, 0.8)" }}>
+                        <Typography variant="p" style={{ topmargin: "3px", color: "#ffffff" }}>
                           {card.Location}
                         </Typography>
                         <br></br>
-                        <Typography variant="p" style={{ color: "rgba(0, 95, 96, 0.8)" }}>
+                        <Typography variant="p" style={{ color: "#ffffff" }}>
                           {card.date}
                         </Typography>
                         <br></br>
-                        <Typography variant="p" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)" }}>
+                        <Typography variant="p" sx={{ fontWeight: '700' }} style={{ color: "#ffffff", marginBottom:"5px" }}>
                           Rs.{card.Cost}/-
                         </Typography>
                       </CardContent>

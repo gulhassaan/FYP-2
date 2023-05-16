@@ -4,16 +4,17 @@
 
 import React, { useState, useContext, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import log from '../images/login.png'
-import ema from '../images/email.png'
+import log from '../images/login1.png'
+import ema from '../images/email1.png'
 import Axios from 'axios';
-import pas from '../images/password.png'
+import pas from '../images/password1.png'
 import './App.css'
 import { EmailContext } from "../../App";
 import Navbar from "./NavbarLogin";
 import "@fontsource/montserrat";
 import { byerContext } from "../../App";
-import landingvideo from '../images/landing.mp4';
+
+import imag2 from '../images/login4.jpg';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 export const Login = (props) => {
   //const [email, setEmail] = useState('');
@@ -125,14 +126,15 @@ export const Login = (props) => {
       navigate('/home')
     }
   }, [])
+  //<video src={landingvideo} autoPlay loop muted />
   return (
-    <div >
+    <div className="loginpage">
 
       <div>
         <Navbar />
         <div className='Login-banner'>
-          <div className="overlaybg"></div>
-          <video src={landingvideo} autoPlay loop muted />
+          <div className="overlaybg1"></div>
+          <img className="img1" src={imag2}></img>
           <div className='ContentLanding'>
             <section className="sign-in">
 
@@ -151,17 +153,17 @@ export const Login = (props) => {
                     >
 
                       <div className="login-inp">
-                        <label htmlFor="email">
+                        <label className="label" htmlFor="email">
                           {/* <i class="zmdi zmdi-email"></i>*/}
                           <img className="pass-icon" src={ema}></img>
                         </label>
 
                         <input
-                          style={{ backgroundColor: "rgba(255, 255, 255, 0.1)" }}
+                          style={{ backgroundColor: "rgba(255, 255, 255, 0.1)", border: "2px solid #ffffff", color:"#ffffff" }}
                           type="email"
                           name="email"
                           id="email"
-
+                          className="custom-input"
                           placeholder="Email"
                           onChange={EmailHandler}
                           value={email}
@@ -171,15 +173,15 @@ export const Login = (props) => {
 
                       </div>
                       {
-                        emailerr ? <span style={{ color: "red" }}>Email Is Required</span> : ""
+                        emailerr ? <span style={{ color: "#00ffff" }}>Email Is Required</span> : ""
                       }
                       <p className="error"> {errors.email} </p>
                       <div className="login-inp">
-                        <label htmlFor="password">
+                        <label className="label" htmlFor="password">
                           <img className="pass-icon" src={pas}></img>
                         </label>
                         <input
-                          style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
+                          style={{ backgroundColor: "rgba(255, 255, 255, 0.1)", border: "2px solid #ffffff", color:"#ffffff" }}
                           type="password"
                           name="passwrod"
                           id="password"
@@ -191,14 +193,14 @@ export const Login = (props) => {
 
                       </div>
                       {
-                        passerr ? <span style={{ color: "red" }}>Password is required</span> : ""
+                        passerr ? <span style={{ color: "#00ffff" }}>Password is required</span> : ""
                       }
                       <div className="login-forgotfooterbtn">
                         {
-                          checkemail ? <span style={{ color: "red", marginRight: "65px" }}>Invalid Email and Password</span> : ""
+                          checkemail ? <span style={{ color: "#00ffff", marginRight: "65px" }}>Invalid Email and Password</span> : ""
                         }
                         {
-                          checkpass ? <span style={{ color: "red", marginRight: "65px" }}>Invalid Password</span> : ""
+                          checkpass ? <span style={{ color: "#00ffff", marginRight: "65px" }}>Invalid Password</span> : ""
                         }
                         <NavLink to="/forgotpassword" className="signup-image-link">
                           Forgot Password
@@ -212,7 +214,7 @@ export const Login = (props) => {
 
                     </form>
 
-                    <hr></hr>
+                    <hr color="white"></hr>
 
 
                     <div className="login-footerbtn">

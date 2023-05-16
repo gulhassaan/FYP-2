@@ -15,10 +15,11 @@ import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
+import imag2 from '../images/login1.jpg';
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { color } from '@mui/system';
-import NewNavbar from './NewNavbar';
+import NewNavbar from './NavbarHome';
 import "@fontsource/montserrat";
 import { TextAlignJustify } from 'phosphor-react';
 
@@ -94,74 +95,82 @@ export const MyAds = () => {
   return (
 
     <div>
-            <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
-            <NewNavbar/>
-        <main style={{marginTop:60}}>
-          <div style={{ textAlign:"center", color:"rgba(0, 95, 96, 1)", }}>
-          <h1><b>My Ads</b></h1>
+      <NewNavbar />
+
+      <main>
+        <div className='Myads-banner'>
+          <div className="overlaybg1"></div>
+          <img className="img1" src={imag2}></img>
+          <div className='ContentLanding'>
+            <div style={{ textAlign: "center", color: "rgba(0, 95, 96, 1)"}}>
+              <h1><b>My Ads</b></h1>
+            </div>
+            <div style={{ textAlign: "center", color: "#ffffff", marginTop: "30px"}}>
+              <h1><b>My Ads</b></h1>
+            </div>
+            <Container sx={{ py: 8 }} to>
+            
+              <Grid container spacing={4}>
+                {Ads.map((card) => (
+                  <Grid class="myad-card" item key={card} xs={12} sm={6} md={3}>
+                    <Card
+                      style={{ backgroundColor: "rgba(255, 255, 255, 0.2)", height: "520px", borderRadius: "20px", width: "350px", boxShadow: "4px 4px 4px 4px rgba(0, 0, 0, 0.25)" }}
+                      sx={{
+                        maxWidth: 480,
+                        maxHeight: 450
+                      }}
+                    >
+                      <CardMedia
+                        component="img"
+                        height={190}
+
+                        sx={{ padding: "1em 1em 0 1em" }}
+                        image={card.Images[0]}
+                        alt="random"
+
+                      />
+                      <CardContent sx={{ flexGrow: 1 }}  >
+                        <Typography gutterBottom variant="h6" component="h6" sx={{ fontWeight: 'bold' }} style={{ color: "#ffffff" }}>
+                          {card.title}
+                        </Typography>
+
+                        <Typography variant="p" style={{ topmargin: "5px", color: "#ffffff" }}>
+                          {card.Description}
+                        </Typography>
+                        <br></br>
+                        <Typography variant="p" style={{ topmargin: "5px", color: "#ffffff" }}>
+                          {card.Location}
+                        </Typography>
+                        <br></br>
+                        <Typography variant="p" style={{ color: "#ffffff" }}>
+                          {card.date}
+                        </Typography>
+                        <br></br>
+                        <Typography variant="p" sx={{ fontWeight: 'bold' }} style={{ color: "#ffffff" }}>
+                          Rs.{card.Cost}/-
+                        </Typography>
+                      </CardContent>
+                      <Box alignItems={"center"} >
+                        <CardActions sx={{ marginLeft: 0 }}>
+                          <Button class="myad-btn" onClick={() => { delete_Ad(card.Ad_id) }}>Delete</Button>
+                          <Button class="myad-btn" onClick={() => { update1(card.Ad_id) }}>Update</Button>
+                          <Button class="myad-btn" onClick={() => { getUser(card.Ad_id) }}>Receive</Button>
+
+                        </CardActions>
+                      </Box>
+                    </Card>
+                  </Grid>
+
+                ))}
+              </Grid>
+              <Stack spacing={2} alignItems={"center"}>
+                <Pagination count={10} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
+              </Stack>
+            </Container>
           </div>
-        
-          <Container sx={{ py: 8 }} to>
+        </div>
+      </main>
 
-            <Grid container spacing={4}>
-              {Ads.map((card) => (
-                <Grid class="myad-card" item key={card} xs={12} sm={6} md={3}>
-                  <Card
-                    style={{ backgroundColor: "#FFFFFF", height: "520px", borderRadius: "20px", width: "350px", boxShadow: "4px 4px 4px 4px rgba(0, 0, 0, 0.25)" }}
-                    sx={{
-                      maxWidth: 480,
-                      maxHeight: 450
-                    }}
-                  >
-                    <CardMedia
-                      component="img"
-                      height={190}
-
-                      sx={{ padding: "1em 1em 0 1em" }}
-                      image={card.Images[0]}
-                      alt="random"
-
-                    />
-                    <CardContent sx={{ flexGrow: 1 }}  >
-                      <Typography gutterBottom variant="h6" component="h6" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)" }}>
-                        {card.title}
-                      </Typography>
-
-                      <Typography variant="p">
-                        {card.Description}
-                      </Typography>
-                      <br></br>
-                      <Typography variant="p" style={{ topmargin: "5px", color: "rgba(0, 95, 96, 0.8)" }}>
-                        {card.Location}
-                      </Typography>
-                      <br></br>
-                      <Typography variant="p" style={{ color: "rgba(0, 95, 96, 0.8)" }}>
-                        {card.date}
-                      </Typography>
-                      <br></br>
-                      <Typography variant="p" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)" }}>
-                        Rs.{card.Cost}/-
-                      </Typography>
-                    </CardContent>
-                    <Box alignItems={"center"} >
-                      <CardActions sx={{ marginLeft: 0 }}>
-                        <Button class="myad-btn" onClick={() => { delete_Ad(card.Ad_id) }}>Delete</Button>
-                        <Button class="myad-btn" onClick={() => { update1(card.Ad_id) }}>Update</Button>
-                        <Button class="myad-btn" onClick={() => { getUser(card.Ad_id) }}>Receive</Button>
-
-                      </CardActions>
-                    </Box>
-                  </Card>
-                </Grid>
-
-              ))}
-            </Grid>
-            <Stack spacing={2} alignItems={"center"}>
-              <Pagination count={10} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
-            </Stack>
-          </Container>
-        </main>
-      </div>
     </div>
   );
 
