@@ -37,7 +37,8 @@ import NewNavbar from "./componenets/pages/NewNavbar";
 import Cart from "./componenets/EcomercePages/Cart";
 import CheckOut from "./componenets/EcomercePages/Checkout";
 import UserAuth from "./componenets/pages/UserAuth";
-import Payment from "./componenets/EcomercePages/Payment"
+import { Payment } from "./componenets/EcomercePages/Payment";
+import Adfeaturing from "./componenets/pages/Adfeaturing";
 //Context APIs
 const EmailContext = createContext();
 const byerContext = createContext();
@@ -72,7 +73,6 @@ function App() {
                           <Route path="/home" element={<Home />}></Route>
                           <Route path="/profile" element={<Profile />}></Route>
                           <Route path="/about" element={<About />}></Route>
-                          <Route path="/payment" element={<Payment />}></Route>
                           <Route
                             path="/hardware"
                             element={<Hardware />}
@@ -173,6 +173,8 @@ function App() {
                             path="/managead"
                             element={<Managead />}
                           ></Route>
+                          {/* <Route path="payment" element={<Payment/>}></Route> */}
+                          <Route path="adfeaturing" element={<Adfeaturing/>}></Route>
                         </Routes>
                       </BrowserRouter>
 
