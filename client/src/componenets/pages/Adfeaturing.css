@@ -1,0 +1,72 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 0px;
+    border: 2px solid #cddbda;
+  }
+  
+  .logo {
+    margin-top: 50px;
+  }
+  
+  .logo img {
+    width: 200px;
+    height: 200px;
+    
+    /* Add any additional logo styles here */
+  }
+  
+  .heading {
+    margin-top: 90px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .p{
+    font-size: 17px;
+  }
+  .title {
+    margin-top: 20px;
+    text-align: left;
+    justify-content: left;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .package {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 400px;
+  }
+  
+  .package-name {
+    font-weight: bold;
+  }
+  
+  .package-details {
+    text-align: left;
+  }
+  
+  .package-price {
+    font-weight: bold;
+  }
+  
+  .post-now-button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    background-color: #008000;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .post-now-button:hover {
+    background-color: #006400;
+  }

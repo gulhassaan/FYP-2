@@ -149,4 +149,3 @@ const [cvc,setCvc] = useState('')
     };
     
     export default Payment;
-    
