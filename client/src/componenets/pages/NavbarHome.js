@@ -10,6 +10,11 @@ import "@fontsource/montserrat";
 const NavbarHome = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+const viewProf=()=>{
+  localStorage.setItem("pro",0)
+  navigate("/profile")
+}
+
   return (
     <div className="Navbarhome">
       <img className="logo1-nav" src={logo1}></img>
@@ -22,7 +27,7 @@ const NavbarHome = () => {
       </div>
       <div className={`nav-items ${isOpen && "open"}`} style={{ marginLeft: "auto" }}>
 
-        <a><img className="pass-icon1" onClick={()=>{navigate("/profile")}} src={account}></img></a>
+        <a><img className="pass-icon1" onClick={()=>{viewProf()}} src={account}></img></a>
         <a className="ab" href="/hardware"><b>Sell</b></a>
         <a className="ab" onClick={() => {
           localStorage.removeItem('email_token')

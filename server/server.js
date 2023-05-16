@@ -10,7 +10,7 @@ app.use(cors());
 const db = mysql.createConnection({
     user: "root",
     host: "localhost",
-    password: "password",
+    password: "root1234",
     database: "gamingstan"
 });
 
@@ -711,7 +711,7 @@ app.post("/AuthRequest", (req, res) => {
 app.get("/Get_Up_UserAuth/:user", (req, res) => {
     const id = req.params.user;
     console.log("Serverr : ", id)
-    db.query(`SELECT * FROM userauthentication WHERE user = '${id}'`, (err, result) => {
+    db.query(`SELECT * FROM userauthentication WHERE user = '${id}' AND IsVerified=0`, (err, result) => {
         res.send(result);
         console.log(result)
     })

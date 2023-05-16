@@ -11,10 +11,6 @@ import "@fontsource/montserrat";
 // const socket = io.connect("http://localhost:3001");
 
 const ProductDetail = () => {
-
-
-
-
 const {Email,setEMAIL} = useContext(EmailContext)
   const [images, setImages] = useState([]);
   const [mainImage, setMainImage] = useState('');
@@ -29,11 +25,14 @@ const {Email,setEMAIL} = useContext(EmailContext)
   const [usd, setusd] = useState(0);
   const [amount, setamount] = useState(78);
   const [loading, setLoading] = useState(true);
+  var [isDealer,setisDealer] = useState(0)
+  const [User,setUser] = useState("");
   const [contact_number,setContact] = useState();
   useEffect(() => {
     setPrice(1000)
     setuser(localStorage.getItem("email_token"));
     setRoom(localStorage.getItem('room'));
+   
     setLoading(true)
     axios.get(`http://localhost:3006/Get_Up_Ad/${AdD}`).then((response) => {
       var temp = response.data;
@@ -50,7 +49,14 @@ const {Email,setEMAIL} = useContext(EmailContext)
       setProduct(temp[0])
     setContact(temp.concat_number);
       setLoading(false);
-      console.log("got data")
+
+      axios.get(`http://localhost:3006/Get_Up_User/${temp[0].email}`)
+      .then((response) => {
+        var temp = response.data;
+        setUser(temp)    
+        console.log("bbvbbbb",temp[0].IsDealer);
+        setisDealer(temp[0].IsDealer)   
+      });
 
     });
 
@@ -73,7 +79,6 @@ const {Email,setEMAIL} = useContext(EmailContext)
         redirect: 'follow',
         headers: myHeaders
       };
-console.log("HELO HELP HE:LP ")
       fetch(`https://api.apilayer.com/fixer/convert?to=usd&from=pkr&amount=${price}`, requestOptions)
         .then(response => response.json())
         .then(result => {
@@ -155,6 +160,7 @@ console.log("HELO HELP HE:LP ")
     console.log(images);
     setMainImage(images[ind]);
     console.log(mainImage);
+    console.log(isDealer);
   }
 
   const Report = (AdID) => {
@@ -167,8 +173,15 @@ console.log("HELO HELP HE:LP ")
     })
 
   }
+const viewProfile=(email)=>{
+  console.log(email)
+localStorage.setItem("AdUser",email)
+  localStorage.setItem("pro",1)
+  navigate('/profile')
+}
 
-  console.log(images);
+
+console.log(images);
   useEffect(() => {
     if (!localStorage.getItem('email_token')) {
       navigate('/login')
@@ -219,13 +232,22 @@ console.log("HELO HELP HE:LP ")
                   Price: {product.Cost} Pkr
                 </Typography></Grid>
                 <Grid item xs={12}><Typography gutterBottom variant="h5" component="div">
-               +92 {product.contact_number}
+               Contact Number : +92 {product.contact_number}
               </Typography></Grid>
+              {isDealer==1?
+                <div>
+              <Grid item xs={12}><Typography gutterBottom variant="h5" component="div">
+              Type: Authenticated Dealer
+             </Typography></Grid></div>
+             :<div>  <Grid item xs={12}><Typography gutterBottom variant="h5" component="div">
+             Type: Not Verified Dealer
+            </Typography></Grid></div>
+              }
                 <CardActions sx={{ marginTop: "20px" }}>
                   <Button className="adDetail-btn"  onClick={() => { GO(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Contact Seller</Button>
                   
                   <Button className="adDetail-btn"  onClick={() => { Report(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Report</Button>
-
+                  <Button className="adDetail-btn"  onClick={()=>{viewProfile(product.email)}} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>View Profile</Button>
                 </CardActions>
                 <CardActions sx={{ marginTop: "21px" }}>
                   <form action="https://www.escrow-sandbox.com/checkout" method="post">

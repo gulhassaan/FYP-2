@@ -50,6 +50,7 @@ const verify =(email)=>{
             return val.user != email
           }))
       })
+      navigate('/userreq')
 }
 
 

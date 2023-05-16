@@ -19,8 +19,17 @@ const UserProfile = () => {
   const [User,setUser] = useState([]);
   const navigate = useNavigate();
   const [page, setpage] = useState(0);
+  var profileCheck = localStorage.getItem("pro")
+  console.log(profileCheck)
   useEffect(() => {
+    if(profileCheck == 1)
+    {
+      var user = localStorage.getItem("AdUser")
+    }
+    else
+    {
     var user = localStorage.getItem("email_token")
+    }
     axios.get(`http://localhost:3006/Get_Up_User/${user}`)
       .then((response) => {
         var temp = response.data;
@@ -42,11 +51,6 @@ const UserProfile = () => {
 
   }, []);
 
-
-
-
-  
-
   return (
     <div>    <Navbar />
     <Container maxWidth="md" style={{ paddingTop: "120px", paddingBottom: "120px" }}>
@@ -65,8 +69,17 @@ const UserProfile = () => {
             <Typography variant="body1" gutterBottom>
               Contact: {User.contact_number}
             </Typography>
-            <Button class="myad-btn" onClick={() => {navigate("/userauth")}}>Authenticate as a Dealer</Button>
-            {/* Additional user profile information can be displayed here */}
+            {profileCheck == 0 ?
+              <div>
+              {User.IsDealer == 0  ?
+                <Button class="myad-btn" onClick={() => {navigate("/userauth")}}>Authenticate as a Dealer</Button>
+              :<Typography variant="body1" gutterBottom>Type: Authenticated User</Typography>}
+             </div>
+            :<div>{User.IsDealer == 0 ?
+              <Typography variant="body1" gutterBottom>Type: Not Verified User</Typography>
+            :<Typography variant="body1" gutterBottom>Type: Authenticated User</Typography>}
+            </div>}
+           
           </Grid>
         </Grid>
       </Paper>

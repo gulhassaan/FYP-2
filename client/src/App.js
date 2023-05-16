@@ -30,6 +30,8 @@ import ManageEcomerce from "./componenets/AdminPages/ManageEcomerce";
 import AddProduct from "./componenets/AdminPages/AddProduct";
 import UpdateProduct from "./componenets/AdminPages/UpdateProduct";
 import StoreHome from "./componenets/EcomercePages/StoreHome";
+import Authenticate from './componenets/AdminPages/Authenticate';
+import UserReq from "./componenets/AdminPages/UserReq";
 import ProductDetail from "./componenets/EcomercePages/ProductDetail";
 import NewNavbar from "./componenets/pages/NewNavbar";
 import Cart from "./componenets/EcomercePages/Cart";
@@ -84,11 +86,11 @@ function App() {
                             element={<LandingPage />}
                           ></Route>
                           <Route path="/login" element={<Login />}></Route>
-                          {/* <Route
+                           <Route
                             path="/authenticate"
                             element={<Authenticate />}
                           ></Route>
-                          <Route path="/userreq" element={<UserReq />}></Route> */}
+                          <Route path="/userreq" element={<UserReq />}></Route> 
                           <Route
                             path="/addetail"
                             element={<AdDetail />}

@@ -53,12 +53,14 @@ const UserReq = () => {
  
 
   return (
+<div>
 
-    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
-      <Navbar />
+<div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
+<Navbar/>
+<h1 style={{ color: "rgba(0, 95, 96, 0.8)",marginLeft:350,marginTop:50}}>Users Requests For Authentication</h1>
       <main>
       
-      <h1 style={{ color: "rgba(0, 95, 96, 0.8)",marginLeft:350,marginTop:50}}>Users Requests For Authentication</h1>
+     
       <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"50PX" }}>
       <input
         style={{ width: '50%', marginRight: '0.5rem', backgroundColor: '#FFFFFF',color:"rgba(0, 95, 96, 0.8)" }}
@@ -72,6 +74,7 @@ const UserReq = () => {
     
     
     </div>
+  {listOfUsers!=""?
         <main>
           <Container sx={{ py: 5, marginTop: 2 }}>
         
@@ -122,9 +125,14 @@ const UserReq = () => {
             </Stack>
           </Container>
         </main>
-
+        :<div>
+          <h2 style={{marginTop:100,marginBottom:340,marginLeft:600}}>No User Requests</h2>
+        </div>        }
       </main>
+         
     </div>
+    </div>
+
   );
 
 
