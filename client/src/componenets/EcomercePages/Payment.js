@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ".././pages/App.css";
-
+import "../EcomercePages/Payment.css";
 import Navbar from "../EcomercePages/NavbarS";
 import axios from "axios";
 
@@ -32,7 +32,7 @@ const [cvc,setCvc] = useState('')
     setYear(year);
   };
 
-  const handleCVVChange = (event) => {
+  const handleCvcChange = (event) => {
     setCvc(event.target.value);
   };
 
@@ -63,76 +63,87 @@ const [cvc,setCvc] = useState('')
         Card:cardNumber
       })
       .then((response) => {
-        console.log(response.data);
-        console.log("helo2");
+        console.log(response.status);
+        if(response.status==200)
+        {
+          console.log("Payment Successful")
+        }
       })
       .catch((error) => {
+        console.log("Payment Unsuccessfull, Please Enter accurate credentials")
         console.error("Error submitting payment:", error);
       });
 
     // You can add your logic here to handle the payment
   };
-
+  
+  const cardLogos = [
+    'https://t.ly/VBHJ',
+    'https://t.ly/N62N',
+    'https://t.ly/btuH',
+  ];
   return (
-    <div>
-      <Navbar />
-
-      <section className="Payment">
-        <div className="container mt-5">
-          <div className="Payment-content">
-            <div className="signin-form">
-              <h1>Payment Details</h1>
-              <form onSubmit={handleSubmit}>
-                <div>
-                  <label htmlFor="cardNumber">Card Number:</label>
-                  <input
-                    type="text"
-                    id="CardNumber"
-                    value={cardNumber}
-                    onChange={handleCardNumberChange}
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="cardHolderName">Card Holder Name:</label>
-                  <input
-                    type="text"
-                    id="CardName"
-                    value={cardHolderName}
-                    onChange={handleCardHolderNameChange}
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="expirationDate">
-                    Expiration Date (MM/YY):
-                  </label>
-                  <input
-                    type="text"
-                    id="ExpireDate"
-                    value={expirationDate}
-                    onChange={handleExpirationDateChange}
-                    required/>
-                    </div>
-                    <div>
-                      <label htmlFor="cvv">CVV:</label>
-                      <input
-                        type="text"
-                        id="Cvv"
-                        value={cvc}
-                        onChange={handleCVVChange}
-                        required
-                      />
-                    </div>
-                    <button type="submit" className="submit-button">
-                      Submit Payment
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </section>
+    <div className="payment-container">
+    <h2>Total Bill: Rs.{Bill}</h2>
+    <form onSubmit={handleSubmit}>
+      <div className="form-row">
+        <div className="form-group">
+          <label htmlFor="firstName">Card Holder Name</label>
+          <input
+            type="text"
+            id="firstName"
+            value={cardHolderName}
+            onChange={handleCardHolderNameChange}
+            required
+          />
         </div>
+      
+      </div>
+      <div className="form-row">
+        <div className="form-group">
+          <label htmlFor="cardNumber">Card Number</label>
+          <input
+            type="text"
+            id="cardNumber"
+            value={cardNumber}
+            onChange={handleCardNumberChange}
+            required
+          />
+          
+        </div>
+        <div className="form-group">
+          <label htmlFor="cvv">CVC</label>
+          <input
+            type="text"
+            id="cvv"
+            value={cvc}
+            onChange={handleCvcChange}
+            required
+          />
+        </div>
+      </div>
+      <div className="form-row">
+      <div className="form-group logos" style={{marginTop:40}}>
+          {cardLogos.map((logo, index) => (
+            <img key={index} src={logo} alt={`Card Logo ${index}`} />
+          ))}
+        </div>
+        <div className="form-group">
+          <label htmlFor="expiryDate">MM/YY</label>
+          <input
+            type="text"
+            id="expiryDate"
+            value={expirationDate}
+            onChange={handleExpirationDateChange}
+            required
+          />
+        </div>
+      </div>
+      <div className="form-row">
+        <button type="submit" style={{marginBottom:200,marginTop:20}}>Submit Payment</button>
+      </div>
+    </form>
+  </div>
       );
     };
     
