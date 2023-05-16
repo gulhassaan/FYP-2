@@ -52,7 +52,8 @@ const [cvc,setCvc] = useState('')
     console.log("Expiration Date:", expirationDate);
     console.log("Month:", month);
     console.log("Year:", year);
-
+    console.log("Price:", Bill);
+    console.log("Email:", email);
     // Send payment details to the server
     axios.post("http://localhost:3006/payment", {
         Email: email,

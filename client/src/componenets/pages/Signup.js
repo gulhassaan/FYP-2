@@ -252,7 +252,7 @@ function Signup() {
       <div>
         <Navbar />
         <div className='Login-banner'>
-          <div className="overlaybg1"></div>
+          <div className="overlaybg2"></div>
           <img className="img1" src={imag2}></img>
           <div className='ContentLanding'>
             <section className="signup">

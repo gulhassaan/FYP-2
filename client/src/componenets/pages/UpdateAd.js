@@ -9,11 +9,11 @@ import "./App.css";
 import "./test.css";
 import { NavLink } from "react-router-dom";
 import AddImage from "../images/Add-Image.png";
-import arrow from "../images/arrow.png";
+import arrow from "../images/arrow1.png";
 import Navbar from "./NavbarNotSell";
 import "@fontsource/montserrat";
 
-
+import imag2 from '../images/login5.jpg';
 import { MultiUploader } from "../../Uploader/Uploader";
 export default function UpdateAd() {
   
@@ -562,172 +562,175 @@ const DesHandle=(e)=>{
     }
   }, [])
   return (
-    <div className="back">
-      <Navbar />
-      <section className="sell-main">
-        <div className="conatiner mt-5">
-          <div className="sell-main-content">
-            <div className="signup-form w-100">
-              {/* New Design */}
-              <div className="">
-                <div className="d-flex align-items-center w-full justify-content-between p-1">
-                  <a href="/home">
-                    <img className="pass-icon4" src={arrow} alt=""></img>
-                  </a>
-                  <h2 className="form-title mx-auto">Update Your Ad</h2>
+    <div >
+      <div className="back">
+        <Navbar />
+        <div className='sell-banner'>
+          <div className="overlaybg0"></div>
+          <img className="img1" src={imag2}></img>
+          <div className='ContentLanding'>
+            <section className="sell-main">
+              <div className="conatiner mt-5">
+                <div className="sell-main-content">
+                  <div className="signup-form w-100">
+                    {/* New Design */}
+                    <div className="">
+                      <div className="d-flex align-items-center w-full justify-content-between p-1">
+                        <a href="/home">
+                          <img className="pass-icon4" src={arrow} alt=""></img>
+                        </a>
+                        <h2 className="form-title mx-auto">Publish Your Ad</h2>
+                      </div>
+                      <form onSubmit={handleSubmit}>
+                        {/* Forms */}
+                        <div className="p-5">
+                          {/* Row 1 */}
+                          <div className="w-50 my-2">
+                            <div className="w-full">
+                              <h6>Type</h6>
+                            </div>
+                            <select
+                              style={{ backgroundColor: "rgba(0,0,0, 0.1)", border: "1px solid #ffffff", color: "#ffffff", borderRadius: "20px" }}
+                              name=""
+                              id="category-btn"
+                              className="customform w-100"
+                              onClick={setcat}
+                            >
+                              <option value="Account" style={{ backgroundColor: '#FFFFFF', color: "rgba(0, 95, 96, 1)" }}>Account</option>
+                              <option value="Hardware" style={{ backgroundColor: '#FFFFFF', color: "rgba(0, 95, 96, 1)" }}>Hardware</option>
+                            </select>
+                          </div>
+                          <div className="w-full">
+                            <hr></hr>
+                          </div>
+                          {/* Row 2 */}
+                          <div className="d-flex w-100 justify-between my-2">
+                            <div className=" autocomplete w-50 p-1">
+                              <div className="w-full">
+                                <h6> Category</h6>
+                              </div>
+                              {Type == "Account" ? (
+                                <input
+                                  style={{ backgroundColor: "rgba(0,0,0, 0.1)", border: "1px solid #ffffff", color: "#ffffff", borderRadius: "20px" }}
+                                  type="text"
+                                  id="game_list"
+                                  className="cat w-100"
+                                  placeholder="Select Game"
+                                  onChange={setacc}
+                                ></input>
+                              ) : (
+                                <input
+                                  style={{ backgroundColor: "rgba(0,0,0, 0.1)", border: "1px solid #ffffff", color: "#ffffff", borderRadius: "20px" }}
+                                  type="text"
+                                  id="hardware_list"
+                                  className="cat w-100"
+                                  placeholder="Select Hardware"
+                                  onChange={sethard}
+                                ></input>
+                              )}
+                              {
+                                errC ? <span style={{ color: "#00ffff" }}>Category Is Required</span> : ""
+                              }
+                            </div>
+
+                            <div className=" autocomplete w-50 p-1">
+                              <div className="w-full">
+                                <h6>Your Ad's Location</h6>
+                              </div>
+                              <input
+                                style={{ backgroundColor: "rgba(0,0,0, 0.1)", border: "1px solid #ffffff", color: "#ffffff", borderRadius: "20px" }}
+                                autoComplete="off"
+                                type="text"
+                                className="customform w-100"
+                                id="city_list"
+                                name="myCountry"
+                                list="item-list"
+                                onChange={Location}
+                              ></input>
+                              {errL ? <span style={{ color: "#00ffff" }}>Location Is Required</span> : ""}
+                            </div>
+
+                          </div>
+
+                          {/* Row 3 */}
+                          <div className="d-flex w-100 justify-between my-2">
+                            <div className="w-full w-50 p-1">
+                              <h6>Ad Title</h6>
+                              <input
+                                style={{ backgroundColor: "rgba(0,0,0, 0.1)", border: "1px solid #ffffff", color: "#ffffff", borderRadius: "20px" }}
+                                value={title}
+                                onChange={titleHandle}
+                                name=""
+                                id=""
+                                className="customform w-100"
+                                placeholder="Ad Title"
+                                required
+                              />
+
+                              {errT ? <span style={{ color: "#00ffff" }}>Title Is Required</span> : ""}
+                            </div>
+
+                            <div className="w-full w-50 p-1">
+                              <h6>Set Price (PKR)</h6>
+                              <input
+                                style={{ backgroundColor: "rgba(0,0,0, 0.1)", border: "1px solid #ffffff", color: "#ffffff", borderRadius: "20px" }}
+                                value={price}
+                                onChange={priceHandle}
+                                type="text"
+                                name=""
+                                id=""
+                                className="customform w-100"
+                                placeholder="RS | "
+                              />
+
+                              {errP ? <span style={{ color: "#00ffff" }}>Price Is Required</span> : ""}
+                            </div>
+
+                          </div>
+                          <div className="w-full">
+                            <div>
+                              <p>{errMessage}</p>
+                            </div>
+                            <h6>Ad Description</h6>
+                            <textarea
+                              style={{ backgroundColor: "rgba(0,0,0, 0.1)", border: "1px solid #ffffff", color: "#ffffff" }}
+                              name=""
+                              id=""
+                              className="customform1 w-100"
+                              rows="5"
+                              onChange={DesHandle}
+                            ></textarea>
+
+                            {errD ? <span style={{ color: "#00ffff" }}>Description Is Required</span> : ""}
+                          </div>
+                          <div className="custom-text">
+
+                            <br></br>
+                            <h5 >Upload photos</h5>
+                          </div>
+
+                          <div className="d-flex mt-3 justify-content-between">
+                            <MultiUploader />
+                            {errI ? <span style={{ color: "#00ffff" }}>Images Is Required</span> : ""}
+                          </div>
+
+                          <button onClick={publish} className="PostNow">
+                            Update
+                          </button>
+
+                        </div>
+                      </form>
+                    </div>
+
+                  </div>
+
                 </div>
-                <form onSubmit={handleSubmit}>
-                {/* Forms */}
-                <div className="p-5">
-                  {/* Row 1 */}
-                  <div className="w-50 my-2">
-                   
-                    <h6>Type</h6>
-                    <select
-                    style={{ backgroundColor: '#FFFFFF' }}
-                      name=""
-                      id="category-btn"
-                      className="customform w-100"
-                      onClick={setcat}
-                      value={Type}
-                    >
-                      <option value="Account">Account</option>
-                      <option value="Hardware">Hardware</option>
-                    </select>
-                  </div>
-                  <hr></hr>
-                  {/* Row 2 */}
-                  <div className="d-flex w-100 justify-between my-2">
-                    <div className="autocomplete w-50 p-1">
-                      <h6>Category</h6>
 
-                      {Type == "Account" ? (
-                        <input
-                        style={{ backgroundColor: '#FFFFFF' }}
-                          type="text"
-                          id="game_list"
-                          className="customform w-100"
-                          placeholder="Select Game"
-                        onChange={setacc}
-                        value={Category}
-                        ></input>
-                      ) : (
-                        <input
-                        style={{ backgroundColor: '#FFFFFF' }}
-                          type="text"
-                          id="hardware_list"
-                          className="customform w-100"
-                          placeholder="Select Hardware"
-                          onChange={sethard}
-                          value={Category}
-                        ></input>
-
-                      )}
-                      {
-                        errC ? <span style={{ color: "red" }}>Category Is Required</span> : ""
-                      }
-                    </div>
-
-                    <div className="autocomplete w-50 p-1">
-                      <h6>Your Ad's Location</h6>
-                      <input
-                      style={{ backgroundColor: '#FFFFFF' }}
-                        autoComplete="off"
-                        type="text"
-                        className="customform w-100"
-                        id="city_list"
-                        name="myCountry"
-                        list="item-list"
-                        onChange={Location}
-                        value={location}
-                      ></input>
-                      {
-                        errL ? <span style={{ color: "red" }}>Location Is Required</span> : ""
-                      }
-                    </div>
-                  </div>
-
-                  {/* Row 3 */}
-                  <div className="d-flex w-100 justify-between my-2">
-                    <div className="w-50 p-1">
-                      <h6>Ad Title</h6>
-                      <input
-                      style={{ backgroundColor: '#FFFFFF' }}
-                        value={title}
-                        onChange={titleHandle}
-                        name=""
-                        id=""
-                        className="customform w-100"
-                        placeholder="Ad Title"
-                        required
-                      />
-                      {
-                        errT ? <span style={{ color: "red" }}>Title Is Required</span> : ""
-                      }
-                    </div>
-                    
-                    <div className="w-50 p-1">
-                      <h6>Set Price (PKR)</h6>
-                      <input
-                      style={{ backgroundColor: '#FFFFFF' }}
-                        value={price}
-                        onChange={priceHandle}
-                        type="text"
-                        name=""
-                        id=""
-                        className="customform w-100"
-                        placeholder="RS | "
-                      />
-                      {
-                        errP ? <span style={{ color: "red" }}>Price Is Required</span> : ""
-                      }
-                    </div>
-                   
-                  </div>
-                  <div className="w-full">
-                  <div>
-                      <p>{errMessage}</p>
-                    </div>
-                    <h6>Ad Description</h6>
-                    <textarea
-                    style={{ backgroundColor: '#FFFFFF' }}
-                      name=""
-                      id=""
-                      className="customform1 w-100"
-                      rows="5"
-                      value={Description}
-                      onChange={DesHandle}
-                    ></textarea>
-                    {
-                      errD ? <span style={{ color: "red" }}>Description Is Required</span> : ""
-                    }
-                  </div>
-                  <div className="custom-text">
-                 
-<br></br>
-                    <h5>Upload photos</h5>
-                  </div>
-
-                  <div className="d-flex mt-3 justify-content-between">
-                    <MultiUploader/>
-                    {
-                      errI ? <span style={{ color: "red" }}>Images Is Required</span> : ""
-                    }
-                  </div>
-                  <button onClick={publish} className="PostNow">
-                      Update
-                  </button>
-                  
-                </div>
-                </form>
               </div>
-          
-            </div>
-          
+            </section>
           </div>
-          
         </div>
-      </section>
+      </div>
     </div>
   );
 }

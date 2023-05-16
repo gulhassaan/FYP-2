@@ -22,7 +22,7 @@ import { color } from '@mui/system';
 import NewNavbar from './NavbarHome';
 import "@fontsource/montserrat";
 import { TextAlignJustify } from 'phosphor-react';
-
+import Fade from 'react-reveal/Fade';
 export const MyAds = () => {
 
   const [Ads, setAds] = useState([]);
@@ -102,12 +102,13 @@ export const MyAds = () => {
           <div className="overlaybg1"></div>
           <img className="img1" src={imag2}></img>
           <div className='ContentLanding'>
-            <div style={{ textAlign: "center", color: "rgba(0, 95, 96, 1)"}}>
-              <h1><b>My Ads</b></h1>
-            </div>
+            <br></br>
+            <br></br>
+            <Fade top distance="20%" duration={1500}>
             <div style={{ textAlign: "center", color: "#ffffff", marginTop: "30px"}}>
               <h1><b>My Ads</b></h1>
             </div>
+            
             <Container sx={{ py: 8 }} to>
             
               <Grid container spacing={4}>
@@ -166,7 +167,9 @@ export const MyAds = () => {
               <Stack spacing={2} alignItems={"center"}>
                 <Pagination count={10} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
               </Stack>
+              
             </Container>
+            </Fade>
           </div>
         </div>
       </main>

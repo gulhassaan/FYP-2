@@ -1,17 +1,21 @@
 import { Grid, Container, Typography, Button, CardActions, Hidden } from "@mui/material";
 import React, { useEffect, useState, useContext } from "react";
-import Navbar from './NewNavbar';
+import Navbar from './NavbarHome';
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import imag2 from '../images/login6.jpg';
 //import { global } from "../App";
-import { AdDContext,EmailContext } from "../../App";
+import { AdDContext, EmailContext } from "../../App";
 import "@fontsource/montserrat";
 // import io from "socket.io-client";
 // const socket = io.connect("http://localhost:3001");
 
 const ProductDetail = () => {
-const {Email,setEMAIL} = useContext(EmailContext)
+
+
+
+const[Contact,setContact] = useState("");
+  const { Email, setEMAIL } = useContext(EmailContext)
   const [images, setImages] = useState([]);
   const [mainImage, setMainImage] = useState('');
   const [product, setProduct] = useState([]);
@@ -23,11 +27,10 @@ const {Email,setEMAIL} = useContext(EmailContext)
   const [report, setReport] = useState(1);
   const [price, setPrice] = useState();
   const [usd, setusd] = useState(0);
+  const[User,setUser] = useState("")
+  const [isDealer,setisDealer] = useState(0)
   const [amount, setamount] = useState(78);
   const [loading, setLoading] = useState(true);
-  var [isDealer,setisDealer] = useState(0)
-  const [User,setUser] = useState("");
-  const [contact_number,setContact] = useState();
   useEffect(() => {
     setPrice(1000)
     setuser(localStorage.getItem("email_token"));
@@ -36,18 +39,18 @@ const {Email,setEMAIL} = useContext(EmailContext)
     setLoading(true)
     axios.get(`http://localhost:3006/Get_Up_Ad/${AdD}`).then((response) => {
       var temp = response.data;
-      
+
       temp.forEach(element => {
         element.Images = JSON.parse(element.Images)
 
       });
-      console.log("Contav   ",temp[0].concat_number)
+      console.log("Contav   ", temp[0].concat_number)
       setAd(temp);
       setPrice(temp[0].Cost)
       setImages(temp[0].Images)
       setMainImage(temp[0].Images[0])
       setProduct(temp[0])
-    setContact(temp.concat_number);
+      setContact(temp.concat_number);
       setLoading(false);
 
       axios.get(`http://localhost:3006/Get_Up_User/${temp[0].email}`)
@@ -79,10 +82,11 @@ const {Email,setEMAIL} = useContext(EmailContext)
         redirect: 'follow',
         headers: myHeaders
       };
+      console.log("HELO HELP HE:LP ")
       fetch(`https://api.apilayer.com/fixer/convert?to=usd&from=pkr&amount=${price}`, requestOptions)
         .then(response => response.json())
         .then(result => {
-          console.log("result is",result.result)
+          console.log("result is", result.result)
           // setusd(result)
           // console.log("THis is the :", usd["result"])
           setamount(result.result)
@@ -167,7 +171,7 @@ const {Email,setEMAIL} = useContext(EmailContext)
     console.log(AdID)
     console.log(report)
     console.log(user)
-    axios.put(`http://localhost:3006/Report_AD/${AdID}`,{User:user}).then((response) => {
+    axios.put(`http://localhost:3006/Report_AD/${AdID}`, { User: user }).then((response) => {
       console.log(response.data);
 
     })
@@ -188,91 +192,87 @@ console.log(images);
     }
   }, [])
   return (
-    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
+    <div >
       <Navbar />
       <main>
-        <Container sx={{ py: 3 }} >
-          <Grid container spacing={1} marginTop={5} style={{ backgroundColor: "#FFFFFF", height: "550px", borderRadius: "20px", color: "rgba(0, 95, 96, 2)", boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)" }}>
-            <Grid item xs={12} sm={7}>
-              <Grid container padding={1}>
-                <Grid item xs={12} height={350} width="inherit" borderRadius={3}>
-                  <img src={mainImage} style={{ borderRadius: 'inherit', height: "inherit", width: 'inherit' }}></img>
-                </Grid>
-                {images.map((image, ind) => (
-                  <Grid item xs={4} borderRadius={3} padding={'1rem'}>
-                    <img
-                      src={image}
-                      width={200}
-                      height={100}
-                      onClick={() => {
-                        imageSet(ind);
-                      }}
-                      style={{ borderRadius: 'inherit', height: 120, width: 170 }}
-                    ></img>
+        <div className='sell-banner'>
+          <div className="overlaybg0"></div>
+          <img className="img1" src={imag2}></img>
+          <div className='ContentLanding'>
+            <Container sx={{ py: 3 }} >
+              <Grid container spacing={1} marginTop={5} style={{ backgroundColor: "rgba(255, 255, 255, 0.2)", height: "550px", borderRadius: "20px", color: "#ffffff", boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)", marginTop:"60px" }}>
+                <Grid item xs={12} sm={7}>
+                  <Grid container padding={1}>
+                    <Grid item xs={12} height={350} width="inherit" borderRadius={3}>
+                      <img src={mainImage} style={{ borderRadius: 'inherit', height: "inherit", width: 'inherit' }}></img>
+                    </Grid>
+                    {images.map((image, ind) => (
+                      <Grid item xs={4} borderRadius={3} padding={'1rem'}>
+                        <img
+                          src={image}
+                          width={200}
+                          height={100}
+                          onClick={() => {
+                            imageSet(ind);
+                          }}
+                          style={{ borderRadius: 'inherit', height: 120, width: 170 }}
+                        ></img>
+                      </Grid>
+                    ))}
                   </Grid>
-                ))}
-              </Grid>
-            </Grid>
-            <Grid item xs={12} sm={5}>
-              <Grid container height={'initial'} style={{ marginLeft: "10px" }}>
-                <Grid item xs={12}>
-                  <Typography gutterBottom variant="h4" style={{ fontweight: "bold" }} component="div">
-                    {product.title}
-                  </Typography>
-        
                 </Grid>
-                <Grid item xs={12} >
-                  <Typography gutterBottom variant="body1" component="div" style={{ fontSize: "20px", color: "rgba(0, 95, 96, 2)" }}>
-                  Description: {product.Description}
-                  </Typography></Grid>
-                  <Typography gutterBottom variant="h5" style={{ fontweight: "bold" }} component="div">
-                 Ad Location: {product.Location}
-                </Typography>
-                <Grid item xs={12}><Typography gutterBottom variant="h5" component="div">
-                  Price: {product.Cost} Pkr
-                </Typography></Grid>
-                <Grid item xs={12}><Typography gutterBottom variant="h5" component="div">
-               Contact Number : +92 {product.contact_number}
-              </Typography></Grid>
-              {isDealer==1?
-                <div>
-              <Grid item xs={12}><Typography gutterBottom variant="h5" component="div">
-              Type: Authenticated Dealer
-             </Typography></Grid></div>
-             :<div>  <Grid item xs={12}><Typography gutterBottom variant="h5" component="div">
-             Type: Not Verified Dealer
-            </Typography></Grid></div>
-              }
-                <CardActions sx={{ marginTop: "20px" }}>
-                  <Button className="adDetail-btn"  onClick={() => { GO(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Contact Seller</Button>
-                  
-                  <Button className="adDetail-btn"  onClick={() => { Report(product.Ad_id) }} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>Report</Button>
-                  <Button className="adDetail-btn"  onClick={()=>{viewProfile(product.email)}} sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF" }}>View Profile</Button>
-                </CardActions>
-                <CardActions sx={{ marginTop: "21px" }}>
-                  <form action="https://www.escrow-sandbox.com/checkout" method="post">
-                    <input type="hidden" name="type" value="domain_name" />
-                    <input type="hidden" name="non_initiator_email" value="arslanm1517@gmail.com" />
-                    <input type="hidden" name="non_initiator_id" value="1295393" />
-                    <input type="hidden" name="non_initiator_role" value="seller" />
-                    <input type="hidden" name="title" value="Buy Now" />
-                    <input type="hidden" name="currency" value="USD" />
-                    <input type="hidden" name="domain" value="gamingstan.com" />
-                    <input name="price" required value={amount} type="hidden" />
-                    <input type="hidden" name="concierge" value="false" /><input type="hidden" name="with_content" value="false" /><input type="hidden" name="inspection_period" value="1" /><input type="hidden" name="fee_payer" value="split" /><input type="hidden" name="return_url" value="" /><input type="hidden" name="button_types" value="both" />
-                    <input type="hidden" name="auto_accept" value="" /><input type="hidden" name="auto_reject" value="" />
-                    <input type="hidden" name="item_key" value="undefined" />
-                    <Button className="adDetail-btn" type="submit" sx={{ backgroundColor: "rgba(0, 95, 96, 0.8)", color: "#FFFFFF"}}>Buy It Now</Button>
-                    <img src="https://t.escrow-sandbox.com/1px.gif?name=bin&price&title=Buy%20Now&user_id=1295393" style={{ display: "none" }} />
-                  </form>
-              
-                </CardActions>
+                <Grid item xs={12} sm={5}>
+                  <Grid container height={'initial'} style={{ marginLeft: "10px" }}>
+                    <Grid item xs={12}>
+                      <Typography gutterBottom variant="h4" style={{ fontweight: "bold" }} component="div">
+                        {product.title}
+                      </Typography>
+
+                    </Grid>
+                    <Grid item xs={12} >
+                      <Typography gutterBottom variant="body1" component="div" style={{ fontSize: "20px", color: "#ffffff" }}>
+                        Description: {product.Description}
+                      </Typography></Grid>
+                    <Typography gutterBottom variant="h5" style={{ fontweight: "bold" }} component="div">
+                      Ad Location: {product.Location}
+                    </Typography>
+                    <Grid item xs={12}><Typography gutterBottom variant="h5" component="div">
+                      Price: {product.Cost} Pkr
+                    </Typography></Grid>
+                    <Grid item xs={12}><Typography gutterBottom variant="h5" component="div">
+                      +92 {product.contact_number}
+                    </Typography></Grid>
+                    <CardActions sx={{ marginTop: "20px" }}>
+                      <Button className="adDetail-btn" onClick={() => { GO(product.Ad_id) }} sx={{ backgroundColor: "#008083", color: "#FFFFFF", border: "2px solid #008083", borderRadius: "20px" }}>Contact Seller</Button>
+
+                      <Button className="adDetail-btn" onClick={() => { Report(product.Ad_id) }} sx={{ backgroundColor: "#008083", color: "#FFFFFF", border: "2px solid #008083", borderRadius: "20px" }}>Report</Button>
+
+                    </CardActions>
+                    <CardActions sx={{ marginTop: "21px" }}>
+                      <form action="https://www.escrow-sandbox.com/checkout" method="post">
+                        <input type="hidden" name="type" value="domain_name" />
+                        <input type="hidden" name="non_initiator_email" value="arslanm1517@gmail.com" />
+                        <input type="hidden" name="non_initiator_id" value="1295393" />
+                        <input type="hidden" name="non_initiator_role" value="seller" />
+                        <input type="hidden" name="title" value="Buy Now" />
+                        <input type="hidden" name="currency" value="USD" />
+                        <input type="hidden" name="domain" value="gamingstan.com" />
+                        <input name="price" required value={amount} type="hidden" />
+                        <input type="hidden" name="concierge" value="false" /><input type="hidden" name="with_content" value="false" /><input type="hidden" name="inspection_period" value="1" /><input type="hidden" name="fee_payer" value="split" /><input type="hidden" name="return_url" value="" /><input type="hidden" name="button_types" value="both" />
+                        <input type="hidden" name="auto_accept" value="" /><input type="hidden" name="auto_reject" value="" />
+                        <input type="hidden" name="item_key" value="undefined" />
+                        <Button className="adDetail-btn" type="submit" sx={{ backgroundColor: "#008083", color: "#FFFFFF", border: "2px solid #008083", borderRadius: "20px" }}>Buy It Now</Button>
+                        <img src="https://t.escrow-sandbox.com/1px.gif?name=bin&price&title=Buy%20Now&user_id=1295393" style={{ display: "none" }} />
+                      </form>
+
+                    </CardActions>
+                  </Grid>
+                </Grid>
               </Grid>
-            </Grid>
-          </Grid>
 
-        </Container>
-
+            </Container>
+          </div>
+        </div>
       </main>
 
 

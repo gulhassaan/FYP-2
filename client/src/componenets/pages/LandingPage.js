@@ -191,7 +191,7 @@ export const LandingPage = () => {
           <Fade top distance="20%" duration={1500}>
             <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center', justifyContent: "center", paddingTop: "50PX" }}>
               <input
-                style={{ width: '50%', marginRight: '0.5rem', backgroundColor: "transparent",  color: "#ffffff" }}
+                style={{ width: '50%', marginRight: '0.5rem', backgroundColor: "transparent",  color: "#ffffff", borderRadius: "30px" }}
                 autoComplete='off'
                 placeholder='Search'
                 type='text'
