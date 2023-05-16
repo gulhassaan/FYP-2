@@ -263,6 +263,7 @@ console.log(images);
                         <input type="hidden" name="item_key" value="undefined" />
                         <Button className="adDetail-btn" type="submit" sx={{ backgroundColor: "#008083", color: "#FFFFFF", border: "2px solid #008083", borderRadius: "20px" }}>Buy It Now</Button>
                         <img src="https://t.escrow-sandbox.com/1px.gif?name=bin&price&title=Buy%20Now&user_id=1295393" style={{ display: "none" }} />
+                        <Button className="adDetail-btn"  onClick={()=>{viewProfile(product.email)}} sx={{ backgroundColor: "#008083", color: "#FFFFFF", border: "2px solid #008083", borderRadius: "20px" }}>View Profile</Button>
                       </form>
 
                     </CardActions>
