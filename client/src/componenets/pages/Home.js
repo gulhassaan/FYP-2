@@ -126,6 +126,29 @@ export const Home = () => {
   //const handlechange = (e,p) =>{
     //setpage(p)
   //}
+
+
+
+ /*Pagination: */
+
+ const itemsPerPage = 8; // Number of items to display per page
+ const [currentPage, setCurrentPage] = useState(0);
+
+ const handlePageChange = (event, value) => {
+   setCurrentPage(value - 1);
+ };
+
+
+const startIndex = currentPage * itemsPerPage;
+const endIndex = startIndex + itemsPerPage;
+
+// Slice the list of products based on the current page
+const displayedAds = listOfAds.slice(startIndex, endIndex);
+
+
+
+
+
   return (
     <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)", minwidth: "100%" }}>
       <Navbar />
@@ -240,7 +263,7 @@ export const Home = () => {
           <Fade top distance="20%" duration={1500}>
           <Container sx={{ py: 8 }}>
             <Grid container spacing={4}>
-              {listOfAds
+              {displayedAds
                 .filter((card) => {
                   return search.toLowerCase() === ""
                     ? card
@@ -251,7 +274,7 @@ export const Home = () => {
                   <Grid item key={card} xs={12} sm={6} md={3}>
                     <Card
                       style={{
-                        border: card.Days>0 ? "2px solid gold" : "none", 
+                        border: card.Days>0 ? "2px solid gold" : "none",
                         backgroundColor: "rgba(255, 255, 255, 0.2)",
                         height: "330px",
                         borderRadius: "20px",
@@ -333,14 +356,15 @@ export const Home = () => {
             </Grid>
         
             <Stack spacing={2} alignItems={"center"}>
-              <Pagination
-                count={10}
-                sx={{ marginTop: 7 }}
-                variant="outlined"
-                color="primary"
-                onChange={(e, v) => setpage(v - 1)}
-              />
-            </Stack>
+            <Pagination
+          count={Math.ceil(listOfAds.length / itemsPerPage)}
+          sx={{ marginTop: 7 }}
+          variant="outlined"
+          color="primary"
+          onChange={handlePageChange}
+          page={currentPage}
+        />
+      </Stack>
           </Container>
         </Fade>
         
