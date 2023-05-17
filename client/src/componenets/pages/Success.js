@@ -7,12 +7,11 @@ const Success = () => {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(true);
 
-  const handleBackButton = () => {
-    navigate('/profile');
-  };
+ 
 
   const closePopup = () => {
     setShowPopup(false);
+    navigate('/profile');
   };
 
   return (
@@ -28,7 +27,6 @@ const Success = () => {
             </div>
           </div>
         )}
-        <button className="back-button" onClick={handleBackButton}>Back</button>
       </div>
     </div>
   );

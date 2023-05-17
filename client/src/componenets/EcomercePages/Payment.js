@@ -11,6 +11,7 @@ const Payment = () => {
   const [cardHolderName, setCardHolderName] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
   const [month, setMonth] = useState("");
+  const [error,seterror] = useState(0);
   const [year, setYear] = useState("");
   var PkgType = localStorage.getItem("PackageType");
   var id = localStorage.getItem("SetIDPKG")
@@ -22,6 +23,8 @@ console.log("ID ISWAS",id)
   const email = localStorage.getItem("email_token");
   console.log(email);
   var days = localStorage.getItem("PackageDays");
+
+  const cartCheck = localStorage.getItem("cart")
   const handleCardNumberChange = (event) => {
     setCardNumber(event.target.value);
   };
@@ -36,6 +39,7 @@ console.log("ID ISWAS",id)
     setExpirationDate(date);
     setMonth(month);
     setYear(year);
+
   };
 
   const handleCvcChange = (event) => {
@@ -71,12 +75,20 @@ console.log("ID ISWAS",id)
     })
       .then((response) => {
         console.log(response.status);
-        if (response.status == 200) {
+        if (response.status == 200 && cartCheck==1) {
+seterror(0)
+console.log("THrought cart chanfe")
+          axios.post(`http://localhost:3006/truncate`).then((res) => {
+            console.log(res.data);  
+          })
           navigate('/successfull')
           console.log("Payment Successful")
         }
-        if(PkgType !="" && response.status==200)
+        else if(PkgType !="" && response.status==200)
         {
+          
+console.log("THrought profiel chanfe")
+          seterror(0)
           console.log(id,PkgType)
           axios.put(`http://localhost:3006/Buy_AdPackage/${id}`,{pkg : PkgType,Days:days}).then((res) => {
             console.log(res.data);  
@@ -86,6 +98,8 @@ console.log("ID ISWAS",id)
         }
       })
       .catch((error) => {
+
+        seterror(1)
         console.log("Payment Unsuccessfull, Please Enter accurate credentials")
         console.error("Error submitting payment:", error);
       });
@@ -161,11 +175,16 @@ console.log("ID ISWAS",id)
                   />
                 </div>
               </div>
+              {error==1&&
+              
+                  <span style={{ color: "#00ffff" }}>Invalid Credentials</span> 
+                
+                
+              }
               <div className="form-row" style={{ display: 'flex', justifyContent: 'center' }}>
-  <button type="submit" style={{ marginBottom: 200, marginTop: 20, marginRight: 250 }} onClick={() => {navigate("/cart")}}>Back To Cart</button>
   <button type="submit" style={{ marginBottom: 200, marginTop: 20, marginRight: 250 }}>Pay Now</button>
   
-</div>
+   </div>
 
             </form>
           </div>

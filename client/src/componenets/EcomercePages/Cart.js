@@ -68,6 +68,8 @@ const Cart = () => {
 
   const GoProceed = () => {
     localStorage.setItem("TotalBill", total);
+    localStorage.setItem("cart",1)
+    localStorage.setItem('PackageType',"")
     navigate("/payment");
   };
 

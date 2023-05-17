@@ -32,6 +32,7 @@ const navigate = useNavigate();
   const Payment=(price,title,days)=>{
     localStorage.setItem('TotalBill', price)
     localStorage.setItem('PackageType',title)
+    localStorage.setItem("cart",0)
     localStorage.setItem('PackageDays',days)
     navigate('/payment');
   }

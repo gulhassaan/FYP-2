@@ -947,8 +947,17 @@ app.listen(3006, () => {
 console.log("This is ,y final year project gamingstan p2p market place for gammers where gamers can buy")
 
 
+//truncate cart after successful buy
+app.post("/truncate", (req, res) => {
+ 
+    db.query("truncate cart",(err, result) => {
+            console.log(err);
+        }
+    );
+  
+})
 
-//ecom
+//Add to cart
 
 app.get("/addtocart/:id", (req, res) => {
     const id = req.params.product.id;
