@@ -14,6 +14,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import imag2 from '../images/login5.jpg';
+import verifieduser from '../images/verified.png';
 import Adfeaturing from "./Adfeaturing";
 const UserProfile = () => {
   // Sample user data
@@ -81,8 +82,10 @@ const Adfeature=(id)=>{
                     <div>
                       {User.IsDealer == 0 ?
                         <Button class="myad-btn" onClick={() => { navigate("/userauth") }}>Authenticate as a Dealer</Button>
-                        : <Typography variant="body1" gutterBottom>Type: Authenticated User</Typography>}
+                        : <Typography variant="body1" gutterBottom><img className="verify-icon" src={verifieduser}></img> Authenticated User</Typography> }
+                        
                     </div>
+                    
                     : <div>{User.IsDealer == 0 ?
                       <Typography variant="body1" gutterBottom>Type: Not Verified User</Typography>
                       : <Typography variant="body1" gutterBottom>Type: Authenticated User</Typography>}

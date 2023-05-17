@@ -2,6 +2,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import Fade from 'react-reveal/Fade';
 import React from "react";
 import axios from "axios";
 import { useEffect, useState, useContext } from "react";
@@ -27,7 +28,7 @@ import storebanner from "../images/gamingstanstore.png";
 import NavbarS from "./NavbarS";
 import ProductDetail from "./ProductDetail";
 import "./Ecommerce.css";
-import imag2 from "../images/gamingstanstore.png";
+import imag2 from "../images/login12.jpg";
 import banner2 from "./images/slider2.png";
 import banner3 from "./images/slider3.png";
 import { NavLink } from "react-router-dom";
@@ -150,217 +151,227 @@ const StoreHome = () => {
           <div className="storebanner">
             <div className="overlaybg6"></div>
             <img className="img1" src={imag2}></img>
-            <div className="ContentLanding">
-              <div
-                className="Search_Filters"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  paddingTop: "50PX",
-                }}
-              />
+            <Fade top distance="20%" duration={1500}>
+              <div className='welcomelanding'>
+                <h2>Welcome</h2>
+                <h4>To</h4>
+                <h1>GAMINGSTAN STORE</h1>
 
-              <h1
+              </div>
+            </Fade>
+          </div>
+          <div className="ContentLanding">
+            <div
+              className="Search_Filters"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                paddingTop: "50PX",
+              }}
+            />
+
+            <h1
+              style={{
+                color: "#ffffff",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                paddingTop: "30PX",
+                marginTop:"150px"
+              }}
+            >
+              Fresh Recommendations
+            </h1>
+            <div
+              className="Search_Filters"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                paddingTop: "40PX",
+              }}
+            >
+              <input
                 style={{
+                  width: "50%",
+                  marginRight: "0.5rem",
+                  backgroundColor: "transparent",
                   color: "#ffffff",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  paddingTop: "30PX",
+                  borderRadius: "30px",
+                  border: "2px solid white",
                 }}
-              >
-                Fresh Recommendations
-              </h1>
-              <div
-                className="Search_Filters"
+                autoComplete="off"
+                placeholder="Search"
+                type="text"
+                className="estore w-50"
+                list="item-list"
+                onChange={(e) => setSearch(e.target.value)}
+              />
+              <FormControl
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  paddingTop: "40PX",
+                  backgroundColor: "transparent",
+                  border: "2px solid #ffffff",
+                  color: "#ffffff",
+                  minWidth: 150,
+                  borderRadius: "30px",
                 }}
+                size="small"
               >
-                <input
-                  style={{
-                    width: "50%",
-                    marginRight: "0.5rem",
-                    backgroundColor: "transparent",
-                    color: "#ffffff",
-                    borderRadius: "30px",
-                    border: "2px solid white",
-                  }}
-                  autoComplete="off"
-                  placeholder="Search"
-                  type="text"
-                  className="estore w-50"
-                  list="item-list"
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-                <FormControl
-                  style={{
-                    backgroundColor: "transparent",
-                    border: "2px solid #ffffff",
-                    color: "#ffffff",
-                    minWidth: 150,
-                    borderRadius: "30px",
-                  }}
-                  size="small"
+                <InputLabel
+                  id="demo-select-small"
+                  style={{ color: "#ffffff" }}
                 >
-                  <InputLabel
-                    id="demo-select-small"
-                    style={{ color: "#ffffff" }}
-                  >
-                    Sort by
-                  </InputLabel>
-                  <Select
-                    labelId="demo-select-small"
-                    id="demo-select-small"
-                    value={Filter}
-                    label="Filters"
-                    onChange={Selectfilter}
+                  Sort by
+                </InputLabel>
+                <Select
+                  labelId="demo-select-small"
+                  id="demo-select-small"
+                  value={Filter}
+                  label="Filters"
+                  onChange={Selectfilter}
+                  style={{
+                    borderRadius: "20px",
+                    height: "45px",
+                    color: "rgba(0, 95, 96, 0.8)",
+                  }}
+                >
+                  <MenuItem
+                    value=""
                     style={{
                       borderRadius: "20px",
-                      height: "45px",
                       color: "rgba(0, 95, 96, 0.8)",
                     }}
                   >
-                    <MenuItem
-                      value=""
-                      style={{
-                        borderRadius: "20px",
-                        color: "rgba(0, 95, 96, 0.8)",
-                      }}
-                    >
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem
-                      value={"High TO Low"}
-                      style={{
-                        borderRadius: "20px",
-                        color: "rgba(0, 95, 96, 0.8)",
-                      }}
-                    >
-                      High to Low
-                    </MenuItem>
-                    <MenuItem
-                      value={"Low To High"}
-                      style={{
-                        borderRadius: "20px",
-                        color: "rgba(0, 95, 96, 0.8)",
-                      }}
-                    >
-                      Low to High
-                    </MenuItem>
-                    <MenuItem
-                      value={"Latest"}
-                      style={{
-                        borderRadius: "20px",
-                        color: "rgba(0, 95, 96, 0.8)",
-                      }}
-                    >
-                      Latest
-                    </MenuItem>
-                    <MenuItem
-                      value={"Oldest"}
-                      style={{
-                        borderRadius: "20px",
-                        color: "rgba(0, 95, 96, 0.8)",
-                      }}
-                    >
-                      Oldest
-                    </MenuItem>
-                  </Select>
-                </FormControl>
-              </div>
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem
+                    value={"High TO Low"}
+                    style={{
+                      borderRadius: "20px",
+                      color: "rgba(0, 95, 96, 0.8)",
+                    }}
+                  >
+                    High to Low
+                  </MenuItem>
+                  <MenuItem
+                    value={"Low To High"}
+                    style={{
+                      borderRadius: "20px",
+                      color: "rgba(0, 95, 96, 0.8)",
+                    }}
+                  >
+                    Low to High
+                  </MenuItem>
+                  <MenuItem
+                    value={"Latest"}
+                    style={{
+                      borderRadius: "20px",
+                      color: "rgba(0, 95, 96, 0.8)",
+                    }}
+                  >
+                    Latest
+                  </MenuItem>
+                  <MenuItem
+                    value={"Oldest"}
+                    style={{
+                      borderRadius: "20px",
+                      color: "rgba(0, 95, 96, 0.8)",
+                    }}
+                  >
+                    Oldest
+                  </MenuItem>
+                </Select>
+              </FormControl>
+            </div>
 
-              <Container sx={{ py: 8 }}>
-                <Grid container spacing={4}>
-                  {displayedProducts
-                    .map((card) => {
-                      return search.toLowerCase() === ""
-                        ? card
-                        : card.Name.toLowerCase().includes(search);
-                    })
-                    .map((card) => (
-                      <Grid item key={card} xs={12} sm={6} md={3}>
-                        <Card
+            <Container sx={{ py: 8 }}>
+              <Grid container spacing={4}>
+                {displayedProducts
+                  .map((card) => {
+                    return search.toLowerCase() === ""
+                      ? card
+                      : card.Name.toLowerCase().includes(search);
+                  })
+                  .map((card) => (
+                    <Grid item key={card} xs={12} sm={6} md={3}>
+                      <Card
+                        style={{
+                          backgroundColor: "rgba(255, 255, 255, 0.1)",
+                          height: "330px",
+                          borderRadius: "20px",
+                          boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.55)",
+                          color: "white",
+                        }}
+                        raised
+                        sx={{
+                          maxWidth: 280,
+                          margin: "0 auto",
+                          padding: "0.1em",
+                          maxHeight: 450,
+                        }}
+                      >
+                        <CardMedia
+                          component="img"
+                          height={180}
+                          image={card.Images[0]}
+                          alt="random"
                           style={{
-                            backgroundColor: "rgba(255, 255, 255, 0.1)",
-                            height: "330px",
+                            padding: "0.5em 0.5em 0 0.5em",
                             borderRadius: "20px",
-                            boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.55)",
-                            color: "white",
                           }}
-                          raised
-                          sx={{
-                            maxWidth: 280,
-                            margin: "0 auto",
-                            padding: "0.1em",
-                            maxHeight: 450,
+                          onClick={() => {
+                            view(card.ID);
+                          }}
+                        />
+                        <CardContent
+                          sx={{ flexGrow: 1 }}
+                          onClick={() => {
+                            view(card.ID);
                           }}
                         >
-                          <CardMedia
-                            component="img"
-                            height={180}
-                            image={card.Images[0]}
-                            alt="random"
-                            style={{
-                              padding: "0.5em 0.5em 0 0.5em",
-                              borderRadius: "20px",
-                            }}
-                            onClick={() => {
-                              view(card.ID);
-                            }}
-                          />
-                          <CardContent
-                            sx={{ flexGrow: 1 }}
-                            onClick={() => {
-                              view(card.ID);
-                            }}
+                          <Typography
+                            gutterBottom
+                            variant="h6"
+                            component="h6"
+                            sx={{ fontWeight: "bold" }}
+                            style={{ color: "#ffffff" }}
                           >
-                            <Typography
-                              gutterBottom
-                              variant="h6"
-                              component="h6"
-                              sx={{ fontWeight: "bold" }}
-                              style={{ color: "#ffffff" }}
-                            >
-                              {card.Name}
-                            </Typography>
+                            {card.Name}
+                          </Typography>
 
-                            <Typography
-                              variant="p"
-                              style={{ topmargin: "5px", color: "#ffffff" }}
-                            >
-                              {card.Price}
-                            </Typography>
-                            <br></br>
-                            <Typography
-                              variant="p"
-                              style={{ color: "#ffffff" }}
-                            >
-                              {card.Description}
-                            </Typography>
-                            <br></br>
-                          </CardContent>
-                        </Card>
-                      </Grid>
-                    ))}
-                </Grid>
+                          <Typography
+                            variant="p"
+                            style={{ topmargin: "5px", color: "#ffffff" }}
+                          >
+                            {card.Price}
+                          </Typography>
+                          <br></br>
+                          <Typography
+                            variant="p"
+                            style={{ color: "#ffffff" }}
+                          >
+                            {card.Description}
+                          </Typography>
+                          <br></br>
+                        </CardContent>
+                      </Card>
+                    </Grid>
+                  ))}
+              </Grid>
 
-                <Stack spacing={2} alignItems={"center"}>
+              <Stack spacing={2} alignItems={"center"}>
                 <Pagination
-  count={Math.ceil(listofProducts.length / itemsPerPage)}
-  style={{ color: "white" }}
-  onChange={handlePageChange}
-  page={currentPage + 1}
-/>
+                  count={Math.ceil(listofProducts.length / itemsPerPage)}
+                  style={{ color: "white" }}
+                  onChange={handlePageChange}
+                  page={currentPage + 1}
+                />
 
-                </Stack>
-              </Container>
-            </div>
+              </Stack>
+            </Container>
           </div>
+
         </main>
       </div>
     </div>
