@@ -65,7 +65,7 @@ useEffect(() => {
     <Container maxWidth="md" style={{ paddingTop: "120px", paddingBottom: "120px" }}>
       <Paper elevation={3} style={{ padding: "30px", display: "flex", flexDirection: "column" }}>
         <Grid container spacing={3} alignItems="center" justifyContent="center">
-          <Grid item>
+        <Grid item>
             <h1>Verify User</h1>
             <img src={avatarUser} alt="Profile Picture" style={{ width: "120px", height: "120px", marginBottom: "20px" }} />
           </Grid>

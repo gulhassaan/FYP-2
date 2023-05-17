@@ -21,7 +21,7 @@ const Successfull = () => {
             <div className="popup-content">
               <h2>Thank You for Your Purchase!</h2>
               <p>We appreciate your business and hope you enjoy your new gaming items.</p>
-              <button className="close-button" onClick={closePopup}>Close</button>
+              <button className="close-button" onClick={handleBackButton}>Continue Shopping</button>
             </div>
           </div>
         )}

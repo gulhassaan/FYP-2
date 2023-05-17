@@ -138,12 +138,7 @@ const Cart = () => {
               <h2>Total Bill: {total}</h2>
             </div>
             <div className="button-container">
-            <button
-                className="BuyNowstore"
-                onClick={() => navigate("/productdetail")}
-              >
-                Back 
-              </button>
+            
               
               <button className="BuyNowstore" onClick={GoProceed}>
                 Buy Now

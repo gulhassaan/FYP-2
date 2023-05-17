@@ -228,6 +228,10 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 }
+.verify-icon{
+  height: 30px;
+  width: 30px;
+}
 .Forgot-content {
   display: flex;
   justify-content: center;

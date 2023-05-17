@@ -74,7 +74,7 @@ function UserAuth() {
                 seterrP(false);
                 seterrT(false);
             })
-            navigate("/profile")
+            navigate("/home")
         }
 
     }
