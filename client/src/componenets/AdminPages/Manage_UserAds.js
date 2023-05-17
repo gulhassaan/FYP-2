@@ -142,6 +142,23 @@ console.log(email);
       navigate('/Adminlogin')
     }
   }, [])
+
+
+    /*Pagination : */
+
+    const itemsPerPage = 2; // Number of items to display per page
+    const [currentPage, setCurrentPage] = useState(1);
+  
+    const handlePageChange = (event, value) => {
+      setCurrentPage(value);
+    };
+  
+    
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const displayedAds = listOfAds.slice(startIndex, endIndex);
+    
+  
   return (
 
     <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
@@ -183,7 +200,7 @@ console.log(email);
 
     <Container sx={{ py: 8 }}>
   <Grid container spacing={4}>
-    {listOfAds
+    {displayedAds
       .filter((card) => {
         return (
           search.toLowerCase() === "" ||
@@ -323,7 +340,14 @@ console.log(email);
             ))}
           </Grid>
           <Stack spacing={2} alignItems={"center"}>
-            <Pagination count={10} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
+          <Pagination
+          count={Math.ceil(listOfAds.length / itemsPerPage)}
+          sx={{ marginTop: 7 }}
+          variant="outlined"
+          color="primary"
+          onChange={handlePageChange}
+          page={currentPage}
+        />
           </Stack>
         </Container>
           :<div>

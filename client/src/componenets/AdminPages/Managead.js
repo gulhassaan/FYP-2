@@ -87,7 +87,19 @@ function Managead() {
     }
   }, [])
 
+/*Pagination : */
 
+const itemsPerPage = 2; // Number of items to display per page
+const [currentPage, setCurrentPage] = useState(1);
+
+const handlePageChange = (event, value) => {
+  setCurrentPage(value);
+};
+
+
+const startIndex = (currentPage - 1) * itemsPerPage;
+const endIndex = startIndex + itemsPerPage;
+const displayedAds = Adpac.slice(startIndex, endIndex);
   return (
     <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
     <div>
@@ -115,7 +127,7 @@ function Managead() {
             <Container sx={{ py: 8, marginTop: 2 }}>
 
               <Grid container spacing={4}>
-                {Adpac.map((card) => (
+                {displayedAds.map((card) => (
                   <Grid class="package-card" item key={card} xs={12} sm={6} md={3} style={{marginLeft:50}}>
                     <Card
 
@@ -170,7 +182,16 @@ function Managead() {
                 ))}
                 
               </Grid>
-            
+              <Stack spacing={2} alignItems={"center"}>
+          <Pagination
+          count={Math.ceil(Adpac.length / itemsPerPage)}
+          sx={{ marginTop: 7 }}
+          variant="outlined"
+          color="primary"
+          onChange={handlePageChange}
+          page={currentPage}
+        />
+          </Stack>
             </Container>:<div>
             <h2 style={{ marginTop: 100, marginLeft: 600, marginBottom: 340 }}>No Ad Featuring Packages</h2>
             

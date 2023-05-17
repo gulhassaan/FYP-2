@@ -129,6 +129,22 @@ const[uCheck,setucheck]=useState(0);
     }
   }, [])
 
+
+
+
+  /*Pagination : */
+
+  const itemsPerPage = 2; // Number of items to display per page
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
+  };
+
+  
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const displayedAds = listOfUsers.slice(startIndex, endIndex);
   return (
 
     <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
@@ -171,7 +187,7 @@ const[uCheck,setucheck]=useState(0);
         <Container sx={{ py: 5, marginTop: 2 }}>
 
             <Grid container spacing={4}>
-              {listOfUsers.filter((card)=>{
+              {displayedAds.filter((card)=>{
                 return search.toLowerCase()===''?card:(card.Name.toLowerCase().includes(search) ||card.email.toLowerCase().includes(search)); 
               }).map((card) => (
                 <Grid class="manageusers-card" item key={card} xs={12} sm={6} md={3}>
@@ -225,7 +241,14 @@ const[uCheck,setucheck]=useState(0);
               ))}
             </Grid>
             <Stack spacing={2} alignItems={"center"}>
-              <Pagination count={10} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
+            <Pagination
+          count={Math.ceil(listOfUsers.length / itemsPerPage)}
+          sx={{ marginTop: 7 }}
+          variant="outlined"
+          color="primary"
+          onChange={handlePageChange}
+          page={currentPage}
+        />
             </Stack>
           </Container>:<div>
           <h2 style={{ marginTop: 100, marginLeft: 600, marginBottom: 340 }}>No Users</h2>
