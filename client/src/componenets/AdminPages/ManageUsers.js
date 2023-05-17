@@ -33,7 +33,7 @@ const ManageUsers = () => {
   const [Filter, setFilter] = useState("");
   const [img, setimg] = useState([]);
   const [check, setcheck] = useState();
-
+const[uCheck,setucheck]=useState(0);
   useEffect(() => {
     axios.put("http://localhost:3006/SetReportUser").then((response) => {
       console.log(response.data);
@@ -154,15 +154,16 @@ const ManageUsers = () => {
           <MenuItem value=''  style={{borderRadius:"20px",color:"#000000"}}>
             <em>None</em>
           </MenuItem>
-          <MenuItem value={"All Users"}  style={{borderRadius:"20px",color:"#000000"}}>All Users</MenuItem>
-          <MenuItem value={"Reported Users"} style={{borderRadius:"20px",color:"#000000)"}}>Reported Users</MenuItem>  
-          <MenuItem value={"Blocked Users"}  style={{borderRadius:"20px",color:"#000000"}}>Blocked Users</MenuItem>
-          <MenuItem value={"UsersthatReport"}  style={{borderRadius:"20px",color:"#000000"}}>Users that Report</MenuItem>
+          <MenuItem value={"All Users"}  style={{borderRadius:"20px",color:"#000000"}} onClick={()=>{setucheck(0)}}>All Users</MenuItem>
+          <MenuItem value={"Reported Users"} style={{borderRadius:"20px",color:"#000000)"}} onClick={()=>{setucheck(0)}}>Reported Users</MenuItem>  
+          <MenuItem value={"Blocked Users"}  style={{borderRadius:"20px",color:"#000000"}} onClick={()=>{setucheck(0)}}>Blocked Users</MenuItem>
+          <MenuItem value={"UsersthatReport"}  style={{borderRadius:"20px",color:"#000000"}} onClick={()=>{setucheck(1)}}>Users Who Report Ads</MenuItem>
          </Select>
       </FormControl>
     </div>
         <main>
-          <Container sx={{ py: 5, marginTop: 2 }}>
+        {listOfUsers!=""?
+        <Container sx={{ py: 5, marginTop: 2 }}>
 
             <Grid container spacing={4}>
               {listOfUsers.filter((card)=>{
@@ -187,13 +188,24 @@ const ManageUsers = () => {
                       <Typography variant="p" style={{ color: "rgba(0, 95, 96, 1)", fontSize: "18px" }}>
                         {card.email}
                       </Typography>
-                    </CardContent>
-                    <Box alignItems={"center"}>
+                      <br></br>
                       <Typography variant="p" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)", fontSize: "16px" }}>
-                        Rs.{card.contact_number}/-
-                      </Typography>
-
-                    </Box>
+                      +92 {card.contact_number}
+                    </Typography>
+                   
+                    {uCheck==1 &&
+                    <div>
+                    <Typography variant="p" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)", fontSize: "16px" }}>
+                    Wrong Reports: {card.WrongReports}
+                  </Typography>
+                  <br></br>
+                  <Typography variant="p" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)", fontSize: "16px" }}>
+                  Right Reports: {card.CorrectReport}
+                    </Typography>
+                </div>
+                    }
+                    </CardContent>
+                
                     <Box alignItems={"center"} >
                       <CardActions sx={{ marginLeft: 9 }}>
                         {check == 1 ?
@@ -209,7 +221,10 @@ const ManageUsers = () => {
             <Stack spacing={2} alignItems={"center"}>
               <Pagination count={10} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
             </Stack>
-          </Container>
+          </Container>:<div>
+          <h2 style={{ marginTop: 100, marginLeft: 600, marginBottom: 340 }}>No Users</h2>
+          
+        </div>}
         </main>
 
       </main>

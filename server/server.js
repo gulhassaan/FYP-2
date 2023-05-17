@@ -562,6 +562,18 @@ app.put("/rightReport/:email",(req,res)=>{
         }
     })
 })
+//For wrong Report
+app.put("/wrongReport/:email",(req,res)=>{
+    const user = req.params.email;
+    db.query(`UPDATE users SET WrongReports=WrongReports+1 WHERE email = ?`,[user],(err, result) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.send(result)
+        }
+    })
+})
 //For Activate Ad
 app.put("/activeAd/:id",(req,res)=>{
     const AdID = req.params.id;

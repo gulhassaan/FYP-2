@@ -111,6 +111,7 @@ function Managead() {
           </div>
 
           <main>
+          {Adpac!=""?
             <Container sx={{ py: 8, marginTop: 2 }}>
 
               <Grid container spacing={4}>
@@ -170,7 +171,10 @@ function Managead() {
                 
               </Grid>
             
-            </Container>
+            </Container>:<div>
+            <h2 style={{ marginTop: 100, marginLeft: 600, marginBottom: 340 }}>No Ad Featuring Packages</h2>
+            
+          </div>}
             
           </main>
           

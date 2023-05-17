@@ -76,7 +76,7 @@ const UserProfile = () => {
     <div style={{ textAlign:"center", color:"rgba(0, 95, 96, 1)", }}>
     <h1><b>User Ads</b></h1>
     </div>
-  
+  {Ads!=""?
     <Container sx={{ py: 8 }} to>
 
       <Grid container spacing={4}>
@@ -128,7 +128,10 @@ const UserProfile = () => {
       <Stack spacing={2} alignItems={"center"}>
         <Pagination count={10} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
       </Stack>
-    </Container>
+    </Container>:<div>
+    <h2 style={{ marginTop: 100, marginLeft: 600, marginBottom: 340,color:"white" }}>No Ads</h2>
+    
+  </div>}
   </main>
     </div>
 

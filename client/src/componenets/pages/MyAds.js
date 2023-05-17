@@ -123,7 +123,7 @@ export const MyAds = () => {
             <div style={{ textAlign: "center", color: "#ffffff", marginTop: "30px"}}>
               <h1><b>My Ads</b></h1>
             </div>
-            
+            {displayedAds!=""?
             <Container sx={{ py: 8 }} to>
               <Grid container spacing={4}>
               {displayedAds.map((card) => (
@@ -190,7 +190,10 @@ export const MyAds = () => {
       </Stack>
 
               
-            </Container>
+            </Container>:<div>
+            <h2 style={{ marginTop: 100, marginLeft: 600, marginBottom: 340,color:"white" }}>No Ads</h2>
+            
+          </div>}
             </Fade>
           </div>
         </div>

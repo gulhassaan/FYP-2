@@ -51,33 +51,7 @@ const Manage_UserAds = () => {
   }, []);
   
 
-  // const searching = (e) => {
-  //   var S_AD = e.target.value;
-  //   setSearch(e.target.value)
-  //   console.log("THIS is search  : ", e.target.value)
-  //   if (S_AD.length != 0) {
-  //     axios.get(`http://localhost:3006/Search_Ad/${S_AD}`).then((response) => {
-  //       var data = response.data;
-  //       data.forEach(element => {
 
-  //         element.Images = JSON.parse(element.Images)
-
-  //       });
-  //       setListOfAds(data)
-  //     })
-  //   }
-  //   else {
-  //     axios.get(`http://localhost:3006/Get_AD`).then((response) => {
-  //       var data = response.data;
-  //       data.forEach(element => {
-
-  //         element.Images = JSON.parse(element.Images)
-
-  //       });
-  //       setListOfAds(data)
-  //     })
-  //   }
-  // }
 
   const Selectfilter = (e) => {
     var filter = e.target.value;
@@ -205,31 +179,36 @@ console.log(email);
          </Select>
       </FormControl>
     </div>
+{listOfAds!=""?
 
-    
-        <Container sx={{ py: 8 }}>
-
-          <Grid container spacing={4}>
-            {listOfAds.filter((card)=>{
-              return search.toLowerCase()===''?card:(card.title.toLowerCase().includes(search) ||card.adCategory.toLowerCase().includes(search)); 
-            }).map((card) => (
-              
-              <Grid item key={card} xs={12} sm={6} md={3}>
-              {
-                check == 2 ?
-                
-                <div>
-                <Card
-                style={{ backgroundColor: "#FFFFFF", height: "450px", borderRadius: "20px",width:"380px" }}
+    <Container sx={{ py: 8 }}>
+  <Grid container spacing={4}>
+    {listOfAds
+      .filter((card) => {
+        return (
+          search.toLowerCase() === "" ||
+          card.title.toLowerCase().includes(search) ||
+          card.adCategory.toLowerCase().includes(search)
+        );
+      })
+      .map((card) => (
+        <Grid item key={card} xs={12} sm={6} md={check === 2 ? 6 : 3}>
+          {check === 2 ? 
+            <div>
+              <Card
+                style={{
+                  backgroundColor: "#FFFFFF",
+                  height: "500px",
+                  borderRadius: "20px",
+                  width: "420px",
+                }}
                 raised
                 sx={{
                   maxWidth: 500,
                   margin: "0 auto",
                   padding: "0.1em",
-                  maxHeight: 550
+                  maxHeight: 550,
                 }}
-
-
               >
                 <CardMedia
                   component="img"
@@ -238,68 +217,95 @@ console.log(email);
                   alt="random"
                   sx={{ padding: "1em 1em 0 1em" }}
                 />
-                <CardContent sx={{ flexGrow: 1 }}  >
-                  <Typography gutterBottom variant="h6" component="h6" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)" }}>
+                <CardContent sx={{ flexGrow: 1 }}>
+                  <Typography
+                    gutterBottom
+                    variant="h6"
+                    component="h6"
+                    sx={{ fontWeight: "bold", color: "rgba(0, 95, 96, 0.8)" }}
+                  >
                     {card.title}
                   </Typography>
-                  
-                  <Typography variant="p">
+                  <Typography variant="p" color="rgba(0, 95, 96, 0.8)">
                     {card.Description}
                   </Typography>
-                  <br></br>   
-                  <Typography variant="p" style={{ topmargin: "5px", color: "rgba(0, 95, 96, 0.8)" }}>
+                  <br></br>
+                  <Typography variant="p" color="rgba(0, 95, 96, 0.8)">
                     {card.Location}
                   </Typography>
                   <br></br>
-                  <Typography variant="p" style={{ topmargin: "5px", color: "rgba(0, 95, 96, 0.8)" }}>
-                  Report BY : {card.ReportedBy}        
+                  <Typography variant="p" color="rgba(0, 95, 96, 0.8)">
+                  Reported By : {card.ReportedBy}
                   </Typography>
                   <br></br>
-               <Typography variant="p" style={{ topmargin: "5px", color: "rgba(0, 95, 96, 0.8)" }}>
-                  Reason : {card.Reason}     
-               </Typography>
-               <Button class="pkg-btn" style={{ 'margin-left': '3px', color: 'white' }} onClick={()=>{Del_Ads(card.Ad_id,card.ReportedBy)}}>Delete</Button>
-               <Button class="pkg-btn" style={{ 'margin-left': '3px', color: 'white' }} onClick={()=>{UN_Report(card.Ad_id,card.ReportedBy)}}>Remove</Button>
-              
+                <Typography variant="p" color="rgba(0, 95, 96, 0.8)">
+                Reason : {card.Reason}
+                </Typography>
+                <br></br>
+                  {/* Add more card content as needed */}
+                  <Button
+                  class="pkg-btn" style={{ 'margin-left': '5px', color: 'white' }}
+                    onClick={() => {
+                      Del_Ads(card.Ad_id, card.ReportedBy);
+                    }}
+                  >
+                    Delete
+                  </Button>
+                  <Button
+                  class="pkg-btn" style={{ 'margin-left': '05px', color: 'white' }}
+                    onClick={() => {
+                      UN_Report(card.Ad_id, card.ReportedBy);
+                    }}
+                  >
+                    Remove
+                  </Button>
                 </CardContent>
-              
-                
-                </Card>
-            
-                </div>
-                
-              :
-              <Card
-                  style={{ backgroundColor: "#FFFFFF", height: "430px", borderRadius: "20px" }}
-                  raised
-                  sx={{
-                    maxWidth: 300,
-                    margin: "0 auto",
-                    padding: "0.1em",
-                    maxHeight: 450
-                  }}
+              </Card>
+            </div>
+           : 
+            <Card
+              style={{
+                backgroundColor: "#FFFFFF",
+                height: "430px",
+                borderRadius: "20px",
+              }}
+              raised
+              sx={{
+                maxWidth: 300,
+                margin: "0 auto",
+                padding: "0.1em",
+                maxHeight: 450,
+              }}
+            >
+              <CardMedia
+                component="img"
+                height={200}
+                image={card.Images[0]}
+                alt="random"
+                sx={{ padding: "1em 1em 0 1em" }}
+              />
+              <CardContent sx={{ flexGrow: 1 }}>
+              <Typography
+              gutterBottom
+              variant="h6"
+              component="h6"
+              sx={{ fontWeight: "bold", color: "rgba(0, 95, 96, 0.8)" }}
+            >
+              {card.title}
+            </Typography>
+            <Typography variant="p" color="rgba(0, 95, 96, 0.8)">
+              {card.Description}
+            </Typography>
+            <br></br>
+            <Typography variant="p" color="rgba(0, 95, 96, 0.8)">
+            Rs.{card.Cost}
+          </Typography>
+            <br></br>
+            <Typography variant="p" color="rgba(0, 95, 96, 0.8)">
+              {card.Location}
+            </Typography>
+               
 
-
-                >
-                  <CardMedia
-                    component="img"
-                    height={200}
-                    image={card.Images[0]}
-                    alt="random"
-                    sx={{ padding: "1em 1em 0 1em" }}
-                  />
-                  <CardContent sx={{ flexGrow: 1 }}  >
-                    <Typography gutterBottom variant="h6" component="h6" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)" }}>
-                      {card.title}
-                    </Typography>
-                    
-                    <Typography variant="p">
-                      {card.Description}
-                    </Typography>
-                    <br></br>   
-                    <Typography variant="p" style={{ topmargin: "5px", color: "rgba(0, 95, 96, 0.8)" }}>
-                      {card.Location}
-                    </Typography>
                
                   </CardContent>
                   {
@@ -320,6 +326,10 @@ console.log(email);
             <Pagination count={10} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
           </Stack>
         </Container>
+          :<div>
+          <h2 style={{ marginTop: 100, marginLeft: 600, marginBottom: 340 }}>No Ads</h2>
+          
+        </div>    }
       </main>
 
 

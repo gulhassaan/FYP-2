@@ -49,6 +49,7 @@ const navigate = useNavigate();
           </div>
 
           <main>
+          {Adpac!=""?
             <Container sx={{ py: 8, marginTop: 2 }}>
 
               <Grid container spacing={6}>
@@ -98,7 +99,10 @@ const navigate = useNavigate();
                 
               </Grid>
             
-            </Container>
+            </Container>:<div>
+            <h2 style={{ marginTop: 100, marginLeft: 600, marginBottom: 340,color:"white" }}>No Ad Featuring Packages</h2>
+            
+          </div>}
             
           </main>
           

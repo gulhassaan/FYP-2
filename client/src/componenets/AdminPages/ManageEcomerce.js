@@ -148,7 +148,7 @@ function Managead() {
           <button className='ManageEcommercebutton' style={{ "background-color": "#008083", "color": "#FFFFFF", "borderRadius": "10px", "borderColor": "#008083", "marginRight": "10px", "box-shadow": "8px 8px 8px rgba(0, 0, 0, 0.25)" }} onClick={() => { CurrentPkg() }}>Available Products</button>
           <button className='ManageEcommercebutton' style={{ "background-color": "#008083", "color": "#FFFFFF", "borderRadius": "10px", "borderColor": "#008083", "marginRight": "10px", "box-shadow": "8px 8px 8px rgba(0, 0, 0, 0.25)" }} onClick={() => { PreviousPkg() }}>Unavailable Products</button>
         </div>
-
+{product!=""?
         <Container sx={{ py: 8 }}>
 
           <Grid container spacing={4}>
@@ -201,7 +201,10 @@ function Managead() {
           <Stack spacing={2} alignItems={"center"}>
             <Pagination count={10} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
           </Stack>
-        </Container>
+        </Container>:<div>
+        <h2 style={{ marginTop: 100, marginLeft: 600, marginBottom: 340 }}>No Products</h2>
+        
+      </div>}
       </main>
 
 
