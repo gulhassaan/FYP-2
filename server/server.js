@@ -10,7 +10,7 @@ app.use(cors());
 const db = mysql.createConnection({
     user: "root",
     host: "localhost",
-    password: "password",
+    password: "root1234",
     database: "gamingstan"
 });
 
@@ -481,9 +481,7 @@ app.get("/Get_Products", (req, res) => {
 
 //FOR Geting All Ads    
 app.get("/Get_AD", (req, res) => {
-    db.query(`SELECT a.*, u.Name
-    FROM ads a
-    JOIN users u ON a.email = u.email where a.Status=1`, (err, result) => {
+    db.query(`SELECT a.*, u.Name FROM ads a  JOIN users u ON a.email = u.email  where a.Status=1 ORDER BY a.Days desc, a.date desc`, (err, result) => {
         res.send(result);
 
     })
