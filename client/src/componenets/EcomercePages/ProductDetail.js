@@ -159,7 +159,11 @@ const ProductDetail = () => {
 
     return starIcons;
   };
+  function imageSet(ind) {
+    
+    setMainImage(images[ind]);
 
+  }
   function imageSet(ind) {
     setMainImage(images[ind]);
 
@@ -196,14 +200,20 @@ const ProductDetail = () => {
                       />
                     </Grid>
                     {images.map((image, ind) => (
-                      <Grid item xs={4} borderRadius={3} padding={"1rem"} key={ind}>
+                      <Grid item xs={4} borderRadius={3} padding={"1rem"}>
                         <img
                           src={image}
                           width={200}
                           height={100}
-                          style={{ borderRadius: "inherit", height: 120, width: 170 }}
-                          alt={`Product ${ind}`}
-                        />
+                          onClick={() => {
+                            imageSet(ind);
+                          }}
+                          style={{
+                            borderRadius: "inherit",
+                            height: 120,
+                            width: 170,
+                          }}
+                        ></img>
                       </Grid>
                     ))}
                   </Grid>
