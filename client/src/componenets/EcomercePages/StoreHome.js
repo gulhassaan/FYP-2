@@ -128,6 +128,24 @@ const StoreHome = () => {
       navigate('/login')
     }
   }, [])
+
+  /*Pagination*/
+
+  const itemsPerPage = 3; // Number of items to display per page
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value - 1);
+  };
+
+
+const startIndex = currentPage * itemsPerPage;
+const endIndex = startIndex + itemsPerPage;
+
+// Slice the list of products based on the current page
+const displayedProducts = listofProducts.slice(startIndex, endIndex);
+
+
   return (
     <div className='bg-storehome'>
       <div >
@@ -214,10 +232,17 @@ const StoreHome = () => {
                 </Select>
               </FormControl>
               </div>
+
+
+
+
+
+
+
               <Container sx={{ py: 8 }}>
 
                 <Grid container spacing={4}>
-                  {listofProducts.filter((card) => {
+                  {displayedProducts.map((card) => {
                     return search.toLowerCase() === '' ? card : (card.Name.toLowerCase().includes(search));
                   }).map((card) => (
                     <Grid item key={card} xs={12} sm={6} md={3}>
@@ -261,10 +286,20 @@ const StoreHome = () => {
                     </Grid>
                   ))}
                 </Grid>
+
+
                 <Stack spacing={2} alignItems={"center"}>
-                  <Pagination count={2} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
-                </Stack>
-              </Container>
+  <Pagination
+    count={Math.ceil(listofProducts.length / itemsPerPage)}
+    sx={{ marginTop: 7 }}
+    variant="outlined"
+    color="primary"
+    onChange={handlePageChange}
+    page={currentPage + 1}
+  />
+</Stack>
+
+        </Container>
             </div>
           </div>
         </main>
