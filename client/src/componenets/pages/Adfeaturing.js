@@ -29,9 +29,10 @@ const navigate = useNavigate();
   }, []);
 
 
-  const Payment=(price,title)=>{
+  const Payment=(price,title,days)=>{
     localStorage.setItem('TotalBill', price)
     localStorage.setItem('PackageType',title)
+    localStorage.setItem('PackageDays',days)
     navigate('/payment');
   }
   return (
@@ -85,7 +86,7 @@ const navigate = useNavigate();
                       </Box>
                       <br></br>
                    
-                      <Button class="pkg-btn" style={{ color: 'white' }} onClick={() => {Payment(card.Price,card.Title)}}>Buy Now</Button>
+                      <Button class="pkg-btn" style={{ color: 'white' }} onClick={() => {Payment(card.Price,card.Title,card.Days)}}>Buy Now</Button>
        
                     </Card>
                     

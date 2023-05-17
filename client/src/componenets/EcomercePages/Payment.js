@@ -21,7 +21,7 @@ console.log("ID ISWAS",id)
   console.log(Bill);
   const email = localStorage.getItem("email_token");
   console.log(email);
-
+  var days = localStorage.getItem("PackageDays");
   const handleCardNumberChange = (event) => {
     setCardNumber(event.target.value);
   };
@@ -78,11 +78,11 @@ console.log("ID ISWAS",id)
         if(PkgType !="" && response.status==200)
         {
           console.log(id,PkgType)
-          axios.put(`http://localhost:3006/Buy_AdPackage/${id}`,{pkg : PkgType}).then((res) => {
+          axios.put(`http://localhost:3006/Buy_AdPackage/${id}`,{pkg : PkgType,Days:days}).then((res) => {
             console.log(res.data);  
 
           })
-          navigate('/successfull')
+          navigate('/success')
         }
       })
       .catch((error) => {
