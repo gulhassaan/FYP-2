@@ -78,32 +78,7 @@ export const Home = () => {
     localStorage.setItem("AdID",id);
     navigate("/AdDetail");
   }
-  // const searching = (e) => {
-  //   var S_AD = e.target.value;
-  //   console.log("THIS is search  : ", e.target.value)
-  //   if (S_AD.length != 0) {
-  //     axios.get(`http://localhost:3006/Search_Ad/${S_AD}`).then((response) => {
-  //       var data = response.data;
-  //       data.forEach(element => {
 
-  //         element.Images = JSON.parse(element.Images)
-
-  //       });
-  //       setListOfAds(data)
-  //     })
-  //   }
-  //   else {
-  //     axios.get(`http://localhost:3006/Get_AD`).then((response) => {
-  //       var data = response.data;
-  //       data.forEach(element => {
-
-  //         element.Images = JSON.parse(element.Images)
-
-  //       });
-  //       setListOfAds(data)
-  //     })
-  //   }
-  // }
 
   const Selectfilter = (e) => {
     var filter = e.target.value;
