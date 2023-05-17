@@ -84,7 +84,6 @@ export default function Hardware() {
         seterrL(false);
         seterrP(false);
         seterrT(false);
-
         navigate("/home")
       })
     }

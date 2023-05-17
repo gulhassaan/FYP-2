@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ".././pages/App.css";
+import { useNavigate } from "react-router-dom";
 import "../EcomercePages/Payment.css";
 import Navbar from "../EcomercePages/NavbarS";
 import axios from "axios";
@@ -10,6 +11,7 @@ const Payment = () => {
   const [expirationDate, setExpirationDate] = useState("");
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
+  const navigate = useNavigate();
 const [cvc,setCvc] = useState('')
   const Bill = localStorage.getItem("TotalBill");
   console.log(Bill);
@@ -67,6 +69,7 @@ const [cvc,setCvc] = useState('')
         console.log(response.status);
         if(response.status==200)
         {
+          navigate('/successfull')
           console.log("Payment Successful")
         }
       })

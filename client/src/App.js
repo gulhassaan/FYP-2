@@ -38,6 +38,7 @@ import Cart from "./componenets/EcomercePages/Cart";
 import CheckOut from "./componenets/EcomercePages/Checkout";
 import UserAuth from "./componenets/pages/UserAuth";
 import Payment from "./componenets/EcomercePages/Payment"
+import Successfull from "./componenets/EcomercePages/Successfull";
 //Context APIs
 const EmailContext = createContext();
 const byerContext = createContext();
@@ -70,6 +71,7 @@ function App() {
                         <Routes>
                           <Route path="/" element={<LandingPage />}></Route>
                           <Route path="/home" element={<Home />}></Route>
+                          <Route path="/successfull" element={<Successfull />}></Route>
                           <Route path="/profile" element={<Profile />}></Route>
                           <Route path="/about" element={<About />}></Route>
                           <Route path="/payment" element={<Payment />}></Route>

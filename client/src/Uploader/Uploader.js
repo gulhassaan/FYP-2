@@ -31,8 +31,8 @@ export const MultiUploader = (props) => {
         <div className="form-group">
               <div className="d-flex">
                 <div className="d-flex">
-                  
-                    <input multiple className="file-input" type="file"  onChange={handleChange} accept="image/*"/>
+                     
+                    <input multiple className="file-input" accept="image/*" type="file"  onChange={handleChange} />
                 </div>
               
             </div>
