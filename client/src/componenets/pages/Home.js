@@ -75,7 +75,7 @@ export const Home = () => {
   function view(id) {
     console.log(id);
     setAdD(id);
-    localStorage.setItem("AdID",id);
+    localStorage.setItem("AdID", id);
     navigate("/AdDetail");
   }
 
@@ -124,26 +124,26 @@ export const Home = () => {
     }
   }, []);
   //const handlechange = (e,p) =>{
-    //setpage(p)
+  //setpage(p)
   //}
 
 
 
- /*Pagination: */
+  /*Pagination: */
 
- const itemsPerPage = 8; // Number of items to display per page
- const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 8; // Number of items to display per page
+  const [currentPage, setCurrentPage] = useState(0);
 
- const handlePageChange = (event, value) => {
-   setCurrentPage(value - 1);
- };
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value - 1);
+  };
 
 
-const startIndex = currentPage * itemsPerPage;
-const endIndex = startIndex + itemsPerPage;
+  const startIndex = currentPage * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
 
-// Slice the list of products based on the current page
-const displayedAds = listOfAds.slice(startIndex, endIndex);
+  // Slice the list of products based on the current page
+  const displayedAds = listOfAds.slice(startIndex, endIndex);
 
 
 
@@ -161,13 +161,13 @@ const displayedAds = listOfAds.slice(startIndex, endIndex);
           <video src={homevideo} autoPlay loop muted />
           <div class="overlaybg2"></div>
           <Fade top distance="20%" duration={1500}>
-          <div className='welcomelanding'>
-            <h2>Welcome</h2>
-            <h4>To</h4>
-            <h1>GAMINGSTAN</h1>
-            <a href="/hardware">Sell Now</a>
+            <div className='welcomelanding'>
+              <h2>Welcome</h2>
+              <h4>To</h4>
+              <h1>GAMINGSTAN</h1>
+              <a href="/hardware">Sell Now</a>
 
-          </div>
+            </div>
           </Fade>
         </div>
 
@@ -190,7 +190,7 @@ const displayedAds = listOfAds.slice(startIndex, endIndex);
                 style={{
                   width: "50%",
                   marginRight: "0.5rem",
-                  backgroundColor: "transparent",  color: "#ffffff", borderRadius:"30px", border:"2px solid white"
+                  backgroundColor: "transparent", color: "#ffffff", borderRadius: "30px", border: "2px solid white"
                 }}
                 autoComplete="off"
                 placeholder="Search"
@@ -261,114 +261,117 @@ const displayedAds = listOfAds.slice(startIndex, endIndex);
             </div>
           </Fade>
           <Fade top distance="20%" duration={1500}>
-          <Container sx={{ py: 8 }}>
-            <Grid container spacing={4}>
-              {displayedAds
-                .filter((card) => {
-                  return search.toLowerCase() === ""
-                    ? card
-                    : card.title.toLowerCase().includes(search) ||
+            <Container sx={{ py: 8 }}>
+              <Grid container spacing={4}>
+                {displayedAds
+                  .filter((card) => {
+                    return search.toLowerCase() === ""
+                      ? card
+                      : card.title.toLowerCase().includes(search) ||
                       card.adCategory.toLowerCase().includes(search);
-                })
-                .map((card) => (
-                  <Grid item key={card} xs={12} sm={6} md={3}>
-                    <Card
-                      style={{
-                        border: card.Days>0 ? "2px solid gold" : "none",
-                        backgroundColor: "rgba(255, 255, 255, 0.2)",
-                        height: "330px",
-                        borderRadius: "20px",
-                        boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.55)",
-                        position: "relative", 
-                      }}
-                      raised
-                      sx={{
-                        maxWidth: 280,
-                        margin: "0 auto",
-                        padding: "0.1em",
-                        maxHeight: 450,
-                      }}
-                    >
-                      {card.Days>0 && (
-                        <img
-                          src={star} // Replace with your feature logo image path
-                          alt="Featured"
-                          style={{
-                            position: "absolute",
-                            top: "10px",
-                            right: "10px",
-                            width: "40px",
-                            height: "40px",
-                          }}
-                        />
-                      )}
-                      <CardMedia
-                        component="img"
-                        height={180}
-                        image={card.Images[0]}
-                        alt="random"
+                  })
+                  .map((card) => (
+                    <Grid item key={card} xs={12} sm={6} md={3}>
+                      <Card
                         style={{
-                          padding: "0.5em 0.5em 0 0.5em",
+                          border: card.Days > 0 ? "2px solid gold" : "none",
+                          backgroundColor: "rgba(255, 255, 255, 0.2)",
+                          height: "330px",
                           borderRadius: "20px",
+                          boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.55)",
+                          position: "relative",
                         }}
-                        onClick={() => {
-                          view(card.Ad_id);
-                        }}
-                      />
-                      <CardContent
-                        sx={{ flexGrow: 1 }}
-                        onClick={() => {
-                          view(card.Ad_id);
+                        raised
+                        sx={{
+                          maxWidth: 280,
+                          margin: "0 auto",
+                          padding: "0.1em",
+                          maxHeight: 450,
                         }}
                       >
-                        <Typography
-                          gutterBottom
-                          variant="h6"
-                          component="h6"
-                          sx={{ fontWeight: "bold" }}
-                          style={{ color: "#ffffff", marginBottom: "5px" }}
+                        {card.Days > 0 && (
+                          <span
+                            style={{
+                              position: "absolute",
+                              top: "10px",
+                              left: "10px",
+                              backgroundColor: "yellow",
+                              color: "black",
+                              padding: "5px",
+                              borderRadius: "3px",
+                              fontWeight: "bold",
+                            }}
+                          >
+                            Featured
+                          </span>
+                        )}
+                        <CardMedia
+                          component="img"
+                          height={180}
+                          image={card.Images[0]}
+                          alt="random"
+                          style={{
+                            padding: "0.5em 0.5em 0 0.5em",
+                            borderRadius: "20px",
+                          }}
+                          onClick={() => {
+                            view(card.Ad_id);
+                          }}
+                        />
+                        <CardContent
+                          sx={{ flexGrow: 1 }}
+                          onClick={() => {
+                            view(card.Ad_id);
+                          }}
                         >
-                          {card.title}
-                        </Typography>
-        
-                        <Typography
-                          variant="p"
-                          style={{ topmargin: "3px", color: "#ffffff" }}
-                        >
-                          {card.Location}
-                        </Typography>
-                        <br></br>
-                        <Typography variant="p" style={{ color: "#ffffff" }}>
-                          {card.date}
-                        </Typography>
-                        <br></br>
-                        <Typography
-                          variant="p"
-                          sx={{ fontWeight: "bold" }}
-                          style={{ color: "#ffffff", marginBottom: "5px" }}
-                        >
-                          Rs.{card.Cost}/-
-                        </Typography>
-                      </CardContent>
-                    </Card>
-                  </Grid>
-                ))}
-            </Grid>
-        
-            <Stack spacing={2} alignItems={"center"}>
-            <Pagination
-          count={Math.ceil(listOfAds.length / itemsPerPage)}
-          sx={{ marginTop: 7 }}
-          variant="outlined"
-          color="primary"
-          onChange={handlePageChange}
-          page={currentPage}
-        />
-      </Stack>
-          </Container>
-        </Fade>
-        
-    </div>
+                          <Typography
+                            gutterBottom
+                            variant="h6"
+                            component="h6"
+                            sx={{ fontWeight: "bold" }}
+                            style={{ color: "#ffffff", marginBottom: "5px" }}
+                          >
+                            {card.title}
+                          </Typography>
+
+                          <Typography
+                            variant="p"
+                            style={{ topmargin: "3px", color: "#ffffff" }}
+                          >
+                            {card.Location}
+                          </Typography>
+                          <br></br>
+                          <Typography variant="p" style={{ color: "#ffffff" }}>
+                            {card.date}
+                          </Typography>
+                          <br></br>
+                          <Typography
+                            variant="p"
+                            sx={{ fontWeight: "bold" }}
+                            style={{ color: "#ffffff", marginBottom: "5px" }}
+                          >
+                            Rs.{card.Cost}/-
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                    </Grid>
+                  ))}
+              </Grid>
+
+              <Stack spacing={2} alignItems={"center"}>
+                <Pagination
+                  count={Math.ceil(listOfAds.length / itemsPerPage)}
+                  sx={{ marginTop: 7 }}
+                  variant="outlined"
+                  color="primary"
+                  onChange={handlePageChange}
+                  page={currentPage}
+                />
+              </Stack>
+            </Container>
+          </Fade>
+
+        </div>
 
       </main >
     </div >
