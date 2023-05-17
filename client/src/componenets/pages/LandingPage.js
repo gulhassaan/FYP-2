@@ -1,22 +1,6 @@
 
 
-// // function Home() {
 
-
-// //   return (
-// //     <div>
-// //       {listOfPosts.map((value, key) => {
-// //         return (
-// //           <div className="post">
-// //             <div className="title"> {value.title} </div>
-// //             <div className="body">{value.postText}</div>
-// //             <div className="footer">{value.username}</div>
-// //           </div>
-// //         );
-// //       })}
-// //     </div>
-// //   );
-// // }
 import InputLabel from '@mui/material/InputLabel';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import MenuItem from '@mui/material/MenuItem';
@@ -42,6 +26,7 @@ import Navbar from './NavbarLanding';
 import landingpageBanner from '../images/landingpage_banner.png';
 import landingvideo from '../images/landing1.mp4';
 
+import star from "../images/icons8-star-48.png"
 import { Link, useNavigate } from "react-router-dom";
 import "@fontsource/montserrat";
 import { TextAlignCenter } from 'phosphor-react';
@@ -71,88 +56,8 @@ export const LandingPage = () => {
     navigate('/login')
   }
 
-  // const searching = (e) => {
-  //   var S_AD = e.target.value;
-  //   setSearch(e.target.value)
-  //   console.log("THIS is search  : ", e.target.value)
-  //   if (S_AD.length != 0) {
-  //     axios.get(`http://localhost:3006/Search_Ad/${S_AD}`).then((response) => {
-  //       var data = response.data;
-  //       data.forEach(element => {
 
-  //         element.Images = JSON.parse(element.Images)
-
-  //       });
-  //       setListOfAds(data)
-  //     })
-  //   }
-  //   else {
-  //     axios.get(`http://localhost:3006/Get_AD`).then((response) => {
-  //       var data = response.data;
-  //       data.forEach(element => {
-
-  //         element.Images = JSON.parse(element.Images)
-
-  //       });
-  //       setListOfAds(data)
-  //     })
-  //   }
-  // }
-
-  const Selectfilter = (e) => {
-    var filter = e.target.value;
-    setFilter(e.target.value)
-    if (filter == "High TO Low") {
-
-      console.log(Filter)
-      axios.get(`http://localhost:3006/filterHtoL`).then((response) => {
-        var data = response.data;
-        data.forEach(element => {
-
-          element.Images = JSON.parse(element.Images)
-
-        });
-        setListOfAds(data)
-      })
-
-    } else if (filter == "Low To High") {
-
-      axios.get(`http://localhost:3006/filterLtoH`).then((response) => {
-        var data = response.data;
-        data.forEach(element => {
-
-          element.Images = JSON.parse(element.Images)
-
-        });
-        setListOfAds(data)
-      })
-
-
-    }
-    else if (filter == "Latest") {
-      axios.get(`http://localhost:3006/filterLatest`).then((response) => {
-        var data = response.data;
-        data.forEach(element => {
-
-          element.Images = JSON.parse(element.Images)
-
-        });
-        setListOfAds(data)
-      })
-    }
-    else if (filter == "Oldest") {
-      axios.get(`http://localhost:3006/filterOldest`).then((response) => {
-        var data = response.data;
-        data.forEach(element => {
-
-          element.Images = JSON.parse(element.Images)
-
-        });
-        setListOfAds(data)
-      })
-    }
-
-  }
+ 
   useEffect(() => {
     if (localStorage.getItem('email_token')) {
       navigate('/home')
@@ -189,69 +94,76 @@ export const LandingPage = () => {
             <h2 className='txt-align' style={{ color: "#ffffff", fontWeight: "bold" }}>Fresh Recommendations</h2>
           </Fade>
           <Fade top distance="20%" duration={1500}>
-            <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center', justifyContent: "center", paddingTop: "50PX" }}>
-              <input
-                style={{ width: '50%', marginRight: '0.5rem', backgroundColor: "transparent",  color: "#ffffff", borderRadius: "30px", border: "2px solid white" }}
-                autoComplete='off'
-                placeholder='Search'
-                type='text'
-                className='customform w-50 '
-                list='item-list'
-                onChange={(e) => setSearch(e.target.value)}
-              />
-
-              <FormControl style={{ backgroundColor: "transparent", border: "2px solid #ffffff", color: "#ffffff", minWidth: 150, borderRadius: "30px" }} size='small'>
-                <InputLabel id='demo-select-small' style={{ color: "#ffffff" }}>Sort by</InputLabel>
-                <Select
-                  labelId='demo-select-small'
-                  id='demo-select-small'
-                  value={Filter}
-                  label='Filters'
-                  onChange={Selectfilter}
-                  style={{ borderRadius: "20px", height: "45px", color: "#ffffff" }}
-                  autoComplete='off'
-                >
-                  <MenuItem value='' style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}>
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={'High TO Low'} style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}>High to Low</MenuItem>
-                  <MenuItem value={'Low To High'} style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}>Low to High</MenuItem>
-                  <MenuItem value={'Latest'} style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}>Latest</MenuItem>
-                  <MenuItem value={'Oldest'} style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}>Oldest</MenuItem>
-                </Select>
-              </FormControl>
-            </div>
-          </Fade>
-          <Fade top distance="10%" duration={1500}>
-            <Container sx={{ py: 8 }}>
-
-              <Grid container spacing={4}>
-                {listOfAds.filter((card) => {
-                  return search.toLowerCase() === '' ? card : (card.title.toLowerCase().includes(search) || card.adCategory.toLowerCase().includes(search));
-                }).map((card) => (
+          <Container sx={{ py: 8 }}>
+            <Grid container spacing={4}>
+              {listOfAds
+                .filter((card) => {
+                  return search.toLowerCase() === ""
+                    ? card
+                    : card.title.toLowerCase().includes(search) ||
+                      card.adCategory.toLowerCase().includes(search);
+                })
+                .map((card) => (
                   <Grid item key={card} xs={12} sm={6} md={3}>
                     <Card
-                      style={{ backgroundColor: "rgba(255, 255, 255, 0.2)", height: "330px", borderRadius: "20px" }}
+                      style={{
+                        border: card.Days>0 ? "2px solid gold" : "none", 
+                        backgroundColor: "rgba(255, 255, 255, 0.2)",
+                        height: "330px",
+                        borderRadius: "20px",
+                        boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.55)",
+                        position: "relative", 
+                      }}
+                      raised
                       sx={{
                         maxWidth: 280,
                         margin: "0 auto",
                         padding: "0.1em",
-                        maxHeight: 450
+                        maxHeight: 450,
                       }}
                     >
+                      {card.Days>0 && (
+                        <img
+                          src={star} // Replace with your feature logo image path
+                          alt="Featured"
+                          style={{
+                            position: "absolute",
+                            top: "10px",
+                            right: "10px",
+                            width: "40px",
+                            height: "40px",
+                          }}
+                        />
+                      )}
                       <CardMedia
                         component="img"
-
-                        height={200}
+                        height={180}
                         image={card.Images[0]}
                         alt="random"
-                        sx={{ padding: "0.5em 0.5em 0 0.5em", borderRadius: "20px" }}
+                        style={{
+                          padding: "0.5em 0.5em 0 0.5em",
+                          borderRadius: "20px",
+                        }}
+                 
                       />
-                      <CardContent sx={{ flexGrow: 1 }}  >
-                        <Typography gutterBottom variant="h6" component="h6" sx={{ fontWeight: 'bold' }} style={{ color: "#ffffff", marginBottom:"5px" }}>
+                      <CardContent
+                        sx={{ flexGrow: 1 }}
+              
+                      >
+                        <Typography
+                          gutterBottom
+                          variant="h6"
+                          component="h6"
+                          sx={{ fontWeight: "bold" }}
+                          style={{ color: "#ffffff", marginBottom: "5px" }}
+                        >
                           {card.title}
                         </Typography>
-                        <Typography variant="p" style={{ topmargin: "3px", color: "#ffffff" }}>
+        
+                        <Typography
+                          variant="p"
+                          style={{ topmargin: "3px", color: "#ffffff" }}
+                        >
                           {card.Location}
                         </Typography>
                         <br></br>
@@ -259,25 +171,30 @@ export const LandingPage = () => {
                           {card.date}
                         </Typography>
                         <br></br>
-                        <Typography variant="p" sx={{ fontWeight: '700' }} style={{ color: "#ffffff", marginBottom:"5px" }}>
+                        <Typography
+                          variant="p"
+                          sx={{ fontWeight: "bold" }}
+                          style={{ color: "#ffffff", marginBottom: "5px" }}
+                        >
                           Rs.{card.Cost}/-
                         </Typography>
                       </CardContent>
-                      <Box alignItems={"center"} >
-                        <CardActions sx={{ marginLeft: 8 }}>
-                          <Button class="forgot-btn" onClick={moreinfo}>More Info</Button>
-
-                        </CardActions>
-                      </Box>
                     </Card>
                   </Grid>
                 ))}
-              </Grid>
-              <Stack spacing={2} alignItems={"center"}>
-                <Pagination count={10} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
-              </Stack>
-            </Container>
-          </Fade>
+            </Grid>
+        
+            <Stack spacing={2} alignItems={"center"}>
+              <Pagination
+                count={10}
+                sx={{ marginTop: 7 }}
+                variant="outlined"
+                color="primary"
+                onChange={(e, v) => setpage(v - 1)}
+              />
+            </Stack>
+          </Container>
+        </Fade>
         </div>
       </main>
 

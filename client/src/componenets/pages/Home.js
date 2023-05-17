@@ -41,6 +41,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { EmailContext } from "../../App";
 import { AdDContext } from "../../App";
 import "@fontsource/montserrat";
+import star from "../images/icons8-star-48.png"
 import "./App.css";
 export const Home = () => {
   const { Email } = useContext(EmailContext);
@@ -262,100 +263,112 @@ export const Home = () => {
             </div>
           </Fade>
           <Fade top distance="20%" duration={1500}>
-            <Container sx={{ py: 8 }}>
-              <Grid container spacing={4}>
-                {listOfAds
-                  .filter((card) => {
-                    return search.toLowerCase() === ""
-                      ? card
-                      : card.title.toLowerCase().includes(search) ||
+          <Container sx={{ py: 8 }}>
+            <Grid container spacing={4}>
+              {listOfAds
+                .filter((card) => {
+                  return search.toLowerCase() === ""
+                    ? card
+                    : card.title.toLowerCase().includes(search) ||
                       card.adCategory.toLowerCase().includes(search);
-                  })
-                  .map((card) => (
-                    <Grid item key={card} xs={12} sm={6} md={3}>
-                      <Card
-                        style={{
-                          backgroundColor: "rgba(255, 255, 255, 0.2)", height: "330px", borderRadius: "20px",
-                          boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.55)",
-                        }}
-                        raised
-                        sx={{
-                          maxWidth: 280,
-                          margin: "0 auto",
-                          padding: "0.1em",
-                          maxHeight: 450,
-                        }}
-                      >
-                        <CardMedia
-                          component="img"
-                          height={180}
-                          image={card.Images[0]}
-                          alt="random"
+                })
+                .map((card) => (
+                  <Grid item key={card} xs={12} sm={6} md={3}>
+                    <Card
+                      style={{
+                        border: card.Days>0 ? "2px solid gold" : "none", 
+                        backgroundColor: "rgba(255, 255, 255, 0.2)",
+                        height: "330px",
+                        borderRadius: "20px",
+                        boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.55)",
+                        position: "relative", 
+                      }}
+                      raised
+                      sx={{
+                        maxWidth: 280,
+                        margin: "0 auto",
+                        padding: "0.1em",
+                        maxHeight: 450,
+                      }}
+                    >
+                      {card.Days>0 && (
+                        <img
+                          src={star} // Replace with your feature logo image path
+                          alt="Featured"
                           style={{
-                            padding: "0.5em 0.5em 0 0.5em",
-                            borderRadius: "20px",
-                          }}
-                          onClick={() => {
-                            view(card.Ad_id);
+                            position: "absolute",
+                            top: "10px",
+                            right: "10px",
+                            width: "40px",
+                            height: "40px",
                           }}
                         />
-                        <CardContent
-                          sx={{ flexGrow: 1 }}
-                          onClick={() => {
-                            view(card.Ad_id);
-                          }}
+                      )}
+                      <CardMedia
+                        component="img"
+                        height={180}
+                        image={card.Images[0]}
+                        alt="random"
+                        style={{
+                          padding: "0.5em 0.5em 0 0.5em",
+                          borderRadius: "20px",
+                        }}
+                        onClick={() => {
+                          view(card.Ad_id);
+                        }}
+                      />
+                      <CardContent
+                        sx={{ flexGrow: 1 }}
+                        onClick={() => {
+                          view(card.Ad_id);
+                        }}
+                      >
+                        <Typography
+                          gutterBottom
+                          variant="h6"
+                          component="h6"
+                          sx={{ fontWeight: "bold" }}
+                          style={{ color: "#ffffff", marginBottom: "5px" }}
                         >
-                          <Typography
-                            gutterBottom
-                            variant="h6"
-                            component="h6"
-                            sx={{ fontWeight: "bold" }}
-                            style={{ color: "#ffffff", marginBottom:"5px" }}
-                          >
-                            {card.title}
-                          </Typography>
-
-                          <Typography
-                            variant="p"
-                            style={{
-                              topmargin: "3px", color: "#ffffff"
-                            }}
-                          >
-                            {card.Location}
-                          </Typography>
-                          <br></br>
-                          <Typography
-                            variant="p"
-                            style={{ color: "#ffffff" }}
-                          >
-                            {card.date}
-                          </Typography>
-                          <br></br>
-                          <Typography
-                            variant="p"
-                            sx={{ fontWeight: "bold" }}
-                            style={{ color: "#ffffff", marginBottom:"5px" }}
-                          >
-                            Rs.{card.Cost}/-
-                          </Typography>
-                        </CardContent>
-                      </Card>
-                    </Grid>
-                  ))}
-              </Grid>
-          
-          <Stack spacing={2} alignItems={"center"}>
-            <Pagination
-              count={10}
-              sx={{ marginTop: 7 }}
-              variant="outlined"
-              color="primary"
-              onChange={(e, v) => setpage(v - 1)}
-            />
-
-          </Stack>
-        </Container>
+                          {card.title}
+                        </Typography>
+        
+                        <Typography
+                          variant="p"
+                          style={{ topmargin: "3px", color: "#ffffff" }}
+                        >
+                          {card.Location}
+                        </Typography>
+                        <br></br>
+                        <Typography variant="p" style={{ color: "#ffffff" }}>
+                          {card.date}
+                        </Typography>
+                        <br></br>
+                        <Typography
+                          variant="p"
+                          sx={{ fontWeight: "bold" }}
+                          style={{ color: "#ffffff", marginBottom: "5px" }}
+                        >
+                          Rs.{card.Cost}/-
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                ))}
+            </Grid>
+        
+            <Stack spacing={2} alignItems={"center"}>
+              <Pagination
+                count={10}
+                sx={{ marginTop: 7 }}
+                variant="outlined"
+                color="primary"
+                onChange={(e, v) => setpage(v - 1)}
+              />
+            </Stack>
+          </Container>
         </Fade>
+        
     </div>
 
       </main >
