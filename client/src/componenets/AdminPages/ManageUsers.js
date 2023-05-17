@@ -73,6 +73,7 @@ const[uCheck,setucheck]=useState(0);
       axios.get(`http://localhost:3006/Get_Users`).then((response) => {
         var data = response.data;
         setListOfUsers(data)
+        setucheck(0)
       })
 
     } else if (filter === "Reported Users") {
@@ -80,6 +81,7 @@ const[uCheck,setucheck]=useState(0);
       axios.get(`http://localhost:3006/Get_Reported_Users`).then((response) => {
         var data = response.data;
         setListOfUsers(data)
+        setucheck(0)
       })
     }
     else if (filter === "Blocked Users") {
@@ -87,12 +89,15 @@ const[uCheck,setucheck]=useState(0);
       axios.get(`http://localhost:3006/Get_Blocked_Users`).then((response) => {
         var data = response.data;
         setListOfUsers(data)
+        setucheck(0)
       })
-    }  else if (filter === "UsersthatReport") {
+    }  else if (filter === "Users Who Report Ads") {
         axios.get("http://localhost:3006/GetUserThatReport").then((response) => {
         var data = response.data;
         console.log("HELO OO ",data)
         setListOfUsers(data)
+        setucheck(1)
+        setcheck(1);
       })
     }
   }
@@ -154,10 +159,10 @@ const[uCheck,setucheck]=useState(0);
           <MenuItem value=''  style={{borderRadius:"20px",color:"#000000"}}>
             <em>None</em>
           </MenuItem>
-          <MenuItem value={"All Users"}  style={{borderRadius:"20px",color:"#000000"}} onClick={()=>{setucheck(0)}}>All Users</MenuItem>
-          <MenuItem value={"Reported Users"} style={{borderRadius:"20px",color:"#000000)"}} onClick={()=>{setucheck(0)}}>Reported Users</MenuItem>  
-          <MenuItem value={"Blocked Users"}  style={{borderRadius:"20px",color:"#000000"}} onClick={()=>{setucheck(0)}}>Blocked Users</MenuItem>
-          <MenuItem value={"UsersthatReport"}  style={{borderRadius:"20px",color:"#000000"}} onClick={()=>{setucheck(1)}}>Users Who Report Ads</MenuItem>
+          <MenuItem value={"All Users"}  style={{borderRadius:"20px",color:"#000000"}} >All Users</MenuItem>
+          <MenuItem value={"Reported Users"} style={{borderRadius:"20px",color:"#000000)"}}>Reported Users</MenuItem>  
+          <MenuItem value={"Blocked Users"}  style={{borderRadius:"20px",color:"#000000"}} >Blocked Users</MenuItem>
+          <MenuItem value={"Users Who Report Ads"}  style={{borderRadius:"20px",color:"#000000"}} >Users Who Report Ads</MenuItem>
          </Select>
       </FormControl>
     </div>
@@ -202,7 +207,8 @@ const[uCheck,setucheck]=useState(0);
                   <Typography variant="p" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)", fontSize: "16px" }}>
                   Right Reports: {card.CorrectReport}
                     </Typography>
-                </div>
+                    <br></br>
+             </div>
                     }
                     </CardContent>
                 
