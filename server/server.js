@@ -3,7 +3,7 @@ const mysql = require("mysql");
 const bcrypt = require("bcrypt")
 const app = express();
 var cors = require('cors');
-
+const cron = require('node-cron');
 app.use(express.json());
 app.use(cors());
 
@@ -487,6 +487,18 @@ app.get("/Get_AD", (req, res) => {
     })
 })
 
+//Sub days 
+cron.schedule('0 0 * * *', () => {
+    const query = 'UPDATE ads SET Days = Days - 1 WHERE Days > 0';
+  
+    connection.query(query, (error, results) => {
+      if (error) {
+        console.error('Error updating featured ads:', error);
+      } else {
+        console.log('Featured ads updated successfully.');
+      }
+    });
+});
 //For Admin GET ALL ADS
 app.get("/Get_MYAD", (req, res) => {
     db.query(`SELECT a.*, u.Name

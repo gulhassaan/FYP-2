@@ -20,6 +20,7 @@
     "mui": "^0.0.1",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
+    "node-cron": "^3.0.2",
     "nodemailer": "^6.8.0",
     "rand-token": "^1.0.1",
     "strip": "^3.0.0",
