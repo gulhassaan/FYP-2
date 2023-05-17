@@ -187,7 +187,7 @@ export const Home = () => {
                 style={{
                   width: "50%",
                   marginRight: "0.5rem",
-                  backgroundColor: "transparent",  color: "#ffffff"
+                  backgroundColor: "transparent",  color: "#ffffff", borderRadius:"30px", border:"2px solid white"
                 }}
                 autoComplete="off"
                 placeholder="Search"

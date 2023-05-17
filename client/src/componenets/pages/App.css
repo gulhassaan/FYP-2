@@ -390,9 +390,25 @@
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 80px;
 }
+#addpackage {
+  border: 2px solid #008083;
+  color: rgba(0, 95, 96, 0.8);
 
-
-
+  padding: 9px 30px;
+  margin: 3px;
+  background-color: #F78104;
+  box-sizing: border-box;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 80px;
+}
+#addpackage::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #008083;
+  opacity: 1; /* Firefox */
+}
+.madmin::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #008083;
+  opacity: 1; /* Firefox */
+}
 #name {
   border-radius: 15px;
   padding: 2px;
@@ -743,13 +759,22 @@
   border: 2px solid #ffffff;
   font-weight: bold;
 }
-
+.verify-btn:hover {
+  background-color: transparent;
+  color: #008083;
+  border: 2px solid #008083;
+  font-weight: bold;
+}
 .PostNow:hover {
   background-color: transparent;
   color: #fff;
   border: 2px solid #ffffff;
 }
-
+.ManageEcommercebutton:hover{
+  background-color: #fff;
+  color: #008083;
+  border: 2px solid #008083;
+}
 .BuyNow:hover {
   background-color: #ffffff;
   color: #008083;
@@ -785,7 +810,16 @@
   background-color: #008083;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
-
+.verify-btn {
+  border: 2px solid #008083;
+  color: #FFFFFF;
+  border-radius: 30px;
+  margin-left: 25px;
+  margin-top: 10px;
+  padding: 9px 15px;
+  background-color: #008083;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
 .verify3 {
   border-radius: 30px;
   padding: 9px;
@@ -858,7 +892,13 @@
   font-weight: 400;
   font-style: bold;
 }
-
+.addproduct-title {
+  color: rgba(0, 95, 96, 1);
+  font-size: 40px;
+  margin-top: 20px;
+  font-weight: 400;
+  font-style: bold;
+}
 .about-title {
   color: rgba(255, 255, 255);
   font-size: 40px;
@@ -2130,17 +2170,18 @@ video {
   transform: translate(50%, 35%);
 }
 
+
 .addproduct-btn {
   border-radius: 20px;
   background-color: #008083;
   color: #FFFFFF;
   border-color: 3px solid #008083;
   font-size: larger;
-  width: 15%;
+  width: 25%;
   box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.25);
   margin-top: 20px;
-  margin-left: 50px;
-  transform: translate(50%, 35%);
+  margin-left: 30px;
+  transform: translate(17%, 35%);
 }
 
 /* Utilities */
@@ -2158,7 +2199,10 @@ video {
   color: #ffffff;
   font-size: 6px;
 }
-
+.add-text {
+  color: #000000;
+  font-size: 6px;
+}
 #city_list {
   background-color: #FFFFFF;
   color: #008083;
@@ -2173,8 +2217,25 @@ video {
   background-color: #FFFFFF;
   color: #008083;
 }
-
+.customformAdmin {
+  color: rgba(0, 95, 96, 0.8);
+  border-radius: 80px;
+  border: 1px solid white;
+  width: 100%;
+  display: block;
+  max-width: 90%;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
 .customform {
+  color: #ffffff;
+  border-radius: 80px;
+  border: 1px solid white;
+  width: 100%;
+  display: block;
+  max-width: 90%;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.madmin {
   color: #ffffff;
   border-radius: 80px;
   border: 1px solid white;

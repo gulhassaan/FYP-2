@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import "../pages/App.css";
 import logo1 from '../images/logo.png';
+
 const Navbar2 = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (

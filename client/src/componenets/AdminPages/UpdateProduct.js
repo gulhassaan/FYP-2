@@ -7,7 +7,7 @@ import { ProContext } from '../../App';
 import "../pages/App.css";
 import "../pages/test.css";
 import arrow from "../images/arrow.png";
-
+import Navbar from './Navbar2';
 
 import { MultiUploader } from "../../Uploader/Uploader";
 
@@ -171,118 +171,120 @@ console.log("THIS IS ID : ",ProID)
     }, [])
     return (
         <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
-            <div className="back">
+        <Navbar />
+        <div className="back">
 
-                <section className="sell-main">
-                    <div className="conatiner mt-5">
-                        <div className="sell-main-content">
-                            <div className="signup-form w-100">
-                                {/* New Design */}
-                                <div className="">
-                                    <div className="d-flex align-items-center w-full justify-content-between p-1">
-                                        <a href="/home">
-                                            <img className="pass-icon4" src={arrow} alt=""></img>
-                                        </a>
-                                        <h2 className="form-title mx-auto">Update Product</h2>
-                                    </div>
-                                    <form onSubmit={handleSubmit}>
-                                        {/* Forms */}
-                                        <div className="p-5">
-                                            {/* Row 2 */}
+            <section className="sell-main">
+                <div className="conatiner mt-5">
+                    <div className="sell-main-content">
+                        <div className="signup-form w-100">
+                            {/* New Design */}
+                            <div className="">
+                                <div className="d-flex align-items-center w-full justify-content-between p-1">
+                                    <a href="/managestore">
+                                        <img className="pass-icon4" src={arrow} alt=""></img>
+                                    </a>
+                                    
+                                    <h2 className="addproduct-title mx-auto">UPDATE PRODUCT</h2>
+                                </div>
+                                <form onSubmit={handleSubmit}>
+                                    {/* Forms */}
+                                    <div className="p-5">
+                                        {/* Row 2 */}
 
 
-                                            {/* Row 3 */}
-                                            <div className="d-flex w-100 justify-between my-2">
-                                                <div className="w-50 p-1">
-                                                    <h6>Product Name</h6>
-                                                    <input
-                                                        style={{ backgroundColor: '#FFFFFF' }}
-                                                        value={title}
-                                                        onChange={titleHandle}
-                                                        name=""
-                                                        id=""
-                                                        className="customform w-100"
-                                                        placeholder="Ad Title"
-                                                        required
-                                                    />
-
-                                                    {errT ? <span style={{ color: "red" }}>Name Is Required</span> : ""}
-                                                </div>
-
-                                                <div className="w-50 p-1">
-                                                    <h6>Set Price</h6>
-                                                    <input
-                                                        style={{ backgroundColor: '#FFFFFF' }}
-                                                        value={price}
-                                                        onChange={priceHandle}
-                                                        type="text"
-                                                        name=""
-                                                        id=""
-                                                        className="customform w-100"
-                                                        placeholder="RS | "
-                                                    />
-
-                                                    {errP ? <span style={{ color: "red" }}>Price Is Required</span> : ""}
-                                                </div>
-                                                <div className="w-50 p-1">
-                                                    <h6>Set Quantity</h6>
-                                                    <input
-                                                        style={{ backgroundColor: '#FFFFFF' }}
-                                                        value={quantity}
-                                                        onChange={QuantityHandle}
-                                                        type="text"
-                                                        name=""
-                                                        id=""
-                                                        className="customform w-100"
-                                                        placeholder="Quantity"
-                                                    />
-
-                                                    {errP ? <span style={{ color: "red" }}>Quantity Is Required</span> : ""}
-                                                </div>
-                                            </div>
-                                            <div className="w-full">
-                                                <div>
-                                                    <p>{errMessage}</p>
-                                                </div>
-                                                <h6>Product Description</h6>
-                                                <textarea
-                                                    style={{ backgroundColor: '#FFFFFF' }}
+                                        {/* Row 3 */}
+                                        <div className="d-flex w-100 justify-between my-2">
+                                            <div className="w-50 p-1">
+                                                <h6>Product Name</h6>
+                                                <input
+                                                    style={{ backgroundColor: '#FFFFFF', border:"2px solid #008083" }}
+                                                    value={title}
+                                                    onChange={titleHandle}
                                                     name=""
                                                     id=""
-                                                    value={Description}
-                                                    className="customform1 w-100"
-                                                    rows="5"
-                                                    onChange={DesHandle}
-                                                ></textarea>
+                                                    className="customform w-100"
+                                                    placeholder="Ad Title"
+                                                    required
+                                                />
 
-                                                {errD ? <span style={{ color: "red" }}>Description Is Required</span> : ""}
-                                            </div>
-                                            <div className="custom-text">
-
-                                                <br></br>
-                                                <h5>Upload photos</h5>
+                                                {errT ? <span style={{ color: "red" }}>Name Is Required</span> : ""}
                                             </div>
 
-                                            <div className="d-flex mt-3 justify-content-between">
-                                                <MultiUploader />
-                                                {errI ? <span style={{ color: "red" }}>Images Is Required</span> : ""}
+                                            <div className="w-50 p-1">
+                                                <h6>Set Price</h6>
+                                                <input
+                                                    style={{ backgroundColor: '#FFFFFF', borderRadius:"30px", border:"2px solid #008083" }}
+                                                    value={price}
+                                                    onChange={priceHandle}
+                                                    type="text"
+                                                    name=""
+                                                    id=""
+                                                    className="customform w-100"
+                                                    placeholder="RS | "
+                                                />
+
+                                                {errP ? <span style={{ color: "red" }}>Price Is Required</span> : ""}
                                             </div>
+                                            <div className="w-50 p-1">
+                                                <h6>Set Quantity</h6>
+                                                <input
+                                                    style={{ backgroundColor: '#FFFFFF', borderRadius:"30px", border:"2px solid #008083"  }}
+                                                    value={quantity}
+                                                    onChange={QuantityHandle}
+                                                    type="text"
+                                                    name=""
+                                                    id=""
+                                                    className="customform w-100"
+                                                    placeholder="Quantity"
+                                                />
 
-                                            <button onClick={publish} className="PostNow">
-                                                Post Now
-                                            </button>
-
+                                                {errP ? <span style={{ color: "red" }}>Quantity Is Required</span> : ""}
+                                            </div>
                                         </div>
-                                    </form>
-                                </div>
+                                        <div >
+                                            <div>
+                                                <p>{errMessage}</p>
+                                            </div>
 
+                                            <h6 >Product Description</h6>
+                                            <textarea
+                                                style={{ backgroundColor: '#FFFFFF', borderRadius:"10px", border:"2px solid #008083" }}
+                                                name=""
+                                                id=""
+                                                className="customform1 w-100"
+                                                rows="5"
+                                                onChange={DesHandle}
+                                            ></textarea>
+
+                                            {errD ? <span style={{ color: "red" }}>Description Is Required</span> : ""}
+                                        </div>
+                                        <div className="add-text">
+
+                                            <br></br>
+                                            <h5>Upload photos</h5>
+                                        </div>
+
+                                        <div className="d-flex mt-3 justify-content-between">
+                                            <MultiUploader />
+                                            {errI ? <span style={{ color: "red" }}>Images Is Required</span> : ""}
+                                        </div>
+
+                                        <button onClick={publish} className="PostNow">
+                                            Update
+                                        </button>
+
+                                    </div>
+                                </form>
                             </div>
 
                         </div>
 
                     </div>
-                </section>
-            </div>
+
+                </div>
+            </section>
         </div>
+    </div>
     );
 }

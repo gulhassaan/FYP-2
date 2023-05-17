@@ -19,7 +19,7 @@ import Container from "@mui/material/Container";
 import { color } from '@mui/system';
 
 function Managead() {
-
+ 
   const navigate = useNavigate()
   const [page, setpage] = useState(0);
   const [Adpac, setAdPac] = useState([]);
@@ -106,8 +106,8 @@ function Managead() {
             </button>
           </div>
           <div className='head'>
-          <button style={{ "background-color": "#008083", "color": "#FFFFFF", "borderRadius": "10px", "borderColor": "#008083", "marginRight": "10px", "boxShadow": "4px 4px 4px rgba(0, 0, 0, 0.25)" }} onClick={() => { CurrentPkg() }}>Current Packages</button>
-            <button style={{ "background-color": "#008083", "color": "#FFFFFF", "borderRadius": "10px", "borderColor": "#008083", "marginRight": "10px", "boxShadow": "4px 4px 4px rgba(0, 0, 0, 0.25)" }} onClick={() => { PreviousPkg() }}>Previous Packages</button>
+          <button className='ManageEcommercebutton' style={{ "background-color": "#008083", "color": "#FFFFFF", "borderRadius": "10px", "borderColor": "#008083", "marginRight": "10px", "boxShadow": "4px 4px 4px rgba(0, 0, 0, 0.25)" }} onClick={() => { CurrentPkg() }}>Current Packages</button>
+            <button className='ManageEcommercebutton' style={{ "background-color": "#008083", "color": "#FFFFFF", "borderRadius": "10px", "borderColor": "#008083", "marginRight": "10px", "boxShadow": "4px 4px 4px rgba(0, 0, 0, 0.25)" }} onClick={() => { PreviousPkg() }}>Previous Packages</button>
           </div>
 
           <main>
@@ -120,11 +120,14 @@ function Managead() {
 
                       style={{ backgroundColor: "#FFFFFF", height: "260px", width: "300px", borderRadius: "15px"}}
                       sx={{
-                        height: "100%",
+                        height:"100%",
                         display: "flex",
                         flexDirection: "column",
                         textAlign: "center",
-                        
+                       
+                    margin: "0 auto",
+                    padding: "0.1em",
+                    maxHeight: 450
                       }}
 
                     >
@@ -144,6 +147,7 @@ function Managead() {
                         
 
                       </Box>
+                      <br></br>
                       <Box alignItems={"center"} >
                         <CardActions sx={{ marginLeft: 7 }}>
                           {
@@ -153,17 +157,23 @@ function Managead() {
                           }
                           
                         </CardActions>
+                        
                       </Box>
+                      
                     </Card>
+                    
+                    
+              
                   </Grid>
+                  
                 ))}
+                
               </Grid>
-              <Stack spacing={2} alignItems={"center"}>
-                <Pagination count={10} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
-              </Stack>
+            
             </Container>
+            
           </main>
-
+          
 
 
 

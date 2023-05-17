@@ -152,10 +152,10 @@ export default function AddProduct() {
         setDescription(temp);
     }
     useEffect(() => {
-        if (!localStorage.getItem('email_token')) {
-            navigate('/login')
+        if (!localStorage.getItem('Adminemail')) {
+          navigate('/Adminlogin')
         }
-    }, [])
+      }, [])
     return (
         <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
             <Navbar />
@@ -171,7 +171,8 @@ export default function AddProduct() {
                                         <a href="/managestore">
                                             <img className="pass-icon4" src={arrow} alt=""></img>
                                         </a>
-                                        <h2 className="form-title mx-auto">ADD PRODUCT</h2>
+                                        
+                                        <h2 className="addproduct-title mx-auto">ADD PRODUCT</h2>
                                     </div>
                                     <form onSubmit={handleSubmit}>
                                         {/* Forms */}
@@ -184,7 +185,7 @@ export default function AddProduct() {
                                                 <div className="w-50 p-1">
                                                     <h6>Product Name</h6>
                                                     <input
-                                                        style={{ backgroundColor: '#FFFFFF' }}
+                                                        style={{ backgroundColor: '#FFFFFF', border:"2px solid #008083" }}
                                                         value={title}
                                                         onChange={titleHandle}
                                                         name=""
@@ -200,7 +201,7 @@ export default function AddProduct() {
                                                 <div className="w-50 p-1">
                                                     <h6>Set Price</h6>
                                                     <input
-                                                        style={{ backgroundColor: '#FFFFFF' }}
+                                                        style={{ backgroundColor: '#FFFFFF', borderRadius:"30px", border:"2px solid #008083" }}
                                                         value={price}
                                                         onChange={priceHandle}
                                                         type="text"
@@ -215,7 +216,7 @@ export default function AddProduct() {
                                                 <div className="w-50 p-1">
                                                     <h6>Set Quantity</h6>
                                                     <input
-                                                        style={{ backgroundColor: '#FFFFFF' }}
+                                                        style={{ backgroundColor: '#FFFFFF', borderRadius:"30px", border:"2px solid #008083"  }}
                                                         value={quantity}
                                                         onChange={QuantityHandle}
                                                         type="text"
@@ -228,13 +229,14 @@ export default function AddProduct() {
                                                     {errP ? <span style={{ color: "red" }}>Quantity Is Required</span> : ""}
                                                 </div>
                                             </div>
-                                            <div className="w-full">
+                                            <div >
                                                 <div>
                                                     <p>{errMessage}</p>
                                                 </div>
-                                                <h6>Product Description</h6>
+
+                                                <h6 >Product Description</h6>
                                                 <textarea
-                                                    style={{ backgroundColor: '#FFFFFF' }}
+                                                    style={{ backgroundColor: '#FFFFFF', borderRadius:"10px", border:"2px solid #008083" }}
                                                     name=""
                                                     id=""
                                                     className="customform1 w-100"
@@ -244,7 +246,7 @@ export default function AddProduct() {
 
                                                 {errD ? <span style={{ color: "red" }}>Description Is Required</span> : ""}
                                             </div>
-                                            <div className="custom-text">
+                                            <div className="add-text">
 
                                                 <br></br>
                                                 <h5>Upload photos</h5>

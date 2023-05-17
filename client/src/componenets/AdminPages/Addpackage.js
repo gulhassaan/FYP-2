@@ -106,7 +106,7 @@ function Addpackage() {
                     <img className="adpackage-icon" src={arrow} alt=""></img>
                   </a>
             <img class="addpackage-add" src={ad1}></img>
-            <h2 className="form-title">Add Package</h2>
+            <h2 className="addproduct-title">Add Package</h2>
             <form
               className="register-form"
               id="register-form"
@@ -121,7 +121,7 @@ function Addpackage() {
                 style={{ backgroundColor: '#FFFFFF' }}
                   type="name"
                   name="password"
-                  id="password"
+                  id="addpackage"
                   placeholder="Package Name"
                   onChange={titleHandle}
                 ></input>
@@ -131,24 +131,7 @@ function Addpackage() {
               {
                 errT ? <span style={{ color: "red" }}>Title Is Required</span> : ""
               }
-              <div className="form-group">
-                <label htmlFor="password">
-                  <img className="pass-icon" src={det}></img>
-                </label>
-                <input
-                style={{ backgroundColor: '#FFFFFF' }}
-                  type="pin"
-                  name="pin"
-                  id="pin"
-                  placeholder="Details"
-                  autoComplete="off"
-                  onChange={DesHandle}
-                ></input>
-               
-              </div>
-              {
-                errD ? <span style={{ color: "red" }}>Description Is Required</span> : ""
-              }
+             
 
               <div className="form-group">
                 <label htmlFor="password">
@@ -159,7 +142,7 @@ function Addpackage() {
                 value={price}
                   type="pin"
                   name="pin"
-                  id="pin"
+                  id="addpackage"
                   placeholder="RS | "
                   onChange={priceHandle}
                   autoComplete="off"
@@ -169,7 +152,24 @@ function Addpackage() {
               {
                 errP ? <span style={{ color: "red" }}>Price Is Required</span> : ""
               }
-
+ <div className="form-group">
+                <label htmlFor="password">
+                  <img className="pass-icon" src={det}></img>
+                </label>
+                <input
+                style={{ backgroundColor: '#FFFFFF' }}
+                  type="pin"
+                  name="pin"
+                  id="addpackage"
+                  placeholder="Details"
+                  autoComplete="off"
+                  onChange={DesHandle}
+                ></input>
+               
+              </div>
+              {
+                errD ? <span style={{ color: "red" }}>Description Is Required</span> : ""
+              }
               <div className="signin-image">
                 <button type="submit" className="updatepkg-btn" onClick={publish}>
                   Add

@@ -104,7 +104,11 @@ const [errP, seterrP] = useState(false)
 
 
   }
-
+  useEffect(() => {
+    if (!localStorage.getItem('Adminemail')) {
+      navigate('/Adminlogin')
+    }
+  }, [])
   return (
     <div>
     <Navbar />
@@ -119,7 +123,7 @@ const [errP, seterrP] = useState(false)
                     <img className="adpackage-icon" src={arrow} alt=""></img>
                   </a>
           <img class="addpackage-add" src={edi}></img>
-          <h2 className="form-title">Edit Package</h2>
+          <h2 className="addproduct-title">Edit Package</h2>
           <form
             className="register-form"
             id="register-form"
