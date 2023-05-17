@@ -70,7 +70,9 @@ const ProductDetail = () => {
   }, []);
 
 
-
+const handleBackToStore =()=>{
+navigate("/storehome")
+};
   const handleAddToCart = () => {
 
     console.log("rating is: ", rating);
@@ -241,6 +243,13 @@ const ProductDetail = () => {
                     </Grid>
                     <CardActions sx={{ marginTop: "20px" }}>
                       
+                    <Button
+                        className="pdetails"
+                        sx={{ backgroundColor: "rgba(0, 95, 96, 1)", color: "#FFFFFF", padding:"10px" }}
+                        onClick={handleBackToStore}
+                      >
+                        Back To Store
+                      </Button>
                       <Button
                         className="pdetails"
                         sx={{ backgroundColor: "rgba(0, 95, 96, 1)", color: "#FFFFFF", padding:"10px" }}
@@ -248,6 +257,7 @@ const ProductDetail = () => {
                       >
                         Add To Cart
                       </Button>
+                    
                     </CardActions>
                   </Grid>
                   <CardActions sx={{ marginTop: "200px", marginLeft:"300px" }}>

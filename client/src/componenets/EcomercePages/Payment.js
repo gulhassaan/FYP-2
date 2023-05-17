@@ -161,9 +161,12 @@ console.log("ID ISWAS",id)
                   />
                 </div>
               </div>
-              <div className="form-row">
-                <button type="submit" style={{ marginBottom: 200, marginTop: 20, marginLeft: 250 }}>Pay Now</button>
-              </div>
+              <div className="form-row" style={{ display: 'flex', justifyContent: 'center' }}>
+  <button type="submit" style={{ marginBottom: 200, marginTop: 20, marginRight: 250 }} onClick={() => {navigate("/cart")}}>Back To Cart</button>
+  <button type="submit" style={{ marginBottom: 200, marginTop: 20, marginRight: 250 }}>Pay Now</button>
+  
+</div>
+
             </form>
           </div>
         </div>
