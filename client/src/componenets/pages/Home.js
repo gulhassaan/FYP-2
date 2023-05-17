@@ -107,7 +107,7 @@ export const Home = () => {
       navigate("/login");
     }
   }, []);
-  //Pagination , this following code is for pagination
+  //Pagination: this following code is for pagination
   //}
 
 
