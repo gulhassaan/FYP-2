@@ -10,7 +10,7 @@ app.use(cors());
 const db = mysql.createConnection({
     user: "root",
     host: "localhost",
-    password: "password",
+    password: "root1234",
     database: "gamingstan"
 });
 
@@ -371,6 +371,25 @@ app.get("/Get_PreAdPackages", (req, res) => {
     })
 })
 
+//For Set Ad Featuring Package
+app.put("/Buy_AdPackage/:id", (req, res) => {
+    
+
+    const AdID = req.params.id;
+    const Pkg = req.body.pkg
+    
+    console.log("Ertg",AdID)
+    
+    console.log("Ertg",Pkg)
+    db.query(`UPDATE ads SET Package=? WHERE Ad_id =?`,[Pkg,AdID], (err, result) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.send(result)
+        }
+    })
+})
 
 //For Delete Package
 app.put("/del_AdPackage/:id", (req, res) => {

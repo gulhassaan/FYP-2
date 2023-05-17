@@ -14,6 +14,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import imag2 from '../images/login5.jpg';
+import Adfeaturing from "./Adfeaturing";
 const UserProfile = () => {
   // Sample user data
   const [Ads, setAds] = useState([]);
@@ -49,7 +50,11 @@ const UserProfile = () => {
 
 
   }, []);
-
+const Adfeature=(id)=>{
+  console.log("Id was",id);
+  localStorage.setItem("SetIDPKG",id)
+  navigate("/adfeaturing")
+}
   return (
     <div>    <Navbar />
       <div className='sell-banner'>
@@ -133,7 +138,10 @@ const UserProfile = () => {
                         <Typography variant="p" sx={{ fontWeight: 'bold' }} style={{ color: "#ffffff" }}>
                           Rs.{card.Cost}/-
                         </Typography>
-
+{
+  profileCheck == 0?
+  <Button class="myad-btn" onClick={() => { Adfeature(card.Ad_id) }}>Buy Package</Button>:<p></p>
+                      } 
                       </CardContent>
                     </Card>
                   </Grid>

@@ -76,7 +76,7 @@ const Cart = () => {
   const GoProceed = () => {
 
     localStorage.setItem('TotalBill', total)
-    navigate('/checkout');
+    navigate('/payment');
   }
 
   console.log("TRIS  tos:lb : ", total)
@@ -108,7 +108,7 @@ const Cart = () => {
         <div style={{ textAlign: "center", color: "rgba(0, 95, 96, 1)", marginTop: 60 }}>
           <h2>Total Bill: {total}</h2>
         </div>
-        <button className="BuyNow" onClick={() =>{navigate("/payment")}}>
+        <button className="BuyNow" onClick={() =>{GoProceed()}}>
           Buy Now
         </button>
       </div>

@@ -115,7 +115,7 @@ function Managead() {
 
               <Grid container spacing={4}>
                 {Adpac.map((card) => (
-                  <Grid class="package-card" item key={card} xs={12} sm={6} md={3}>
+                  <Grid class="package-card" item key={card} xs={12} sm={6} md={3} style={{marginLeft:50}}>
                     <Card
 
                       style={{ backgroundColor: "#FFFFFF", height: "260px", width: "300px", borderRadius: "15px"}}

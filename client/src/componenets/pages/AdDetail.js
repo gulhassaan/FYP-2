@@ -247,14 +247,15 @@ console.log(images);
                       <Grid item xs={12}><Typography gutterBottom variant="h5" component="div">
                       Authenticated User
                     </Typography></Grid>
-                    :<Grid item xs={12}><Typography gutterBottom variant="h5" component="div">
+                    :
+                    <Grid item xs={12}><Typography gutterBottom variant="h5" component="div">
                     Not Verified User
                   </Typography></Grid>
                     }
                     <CardActions sx={{ marginTop: "20px" }}>
                       <Button className="adDetail-btn" onClick={() => { GO(product.Ad_id) }} sx={{ backgroundColor: "#008083", color: "#FFFFFF", border: "2px solid #008083", borderRadius: "20px" }}>Contact Seller</Button>
 
-                      <Button className="adDetail-btn" onClick={() => { Report(product.Ad_id) }} sx={{ backgroundColor: "#008083", color: "#FFFFFF", border: "2px solid #008083", borderRadius: "20px", minWidth:"40px" }}>Report</Button>
+                      <Button className="adDetail-btn" onClick={() => { Report(product.Ad_id) }} sx={{ backgroundColor: "#008083", color: "#FFFFFF", border: "2px solid #008083", borderRadius: "20px" }}>Report</Button>
 
                     </CardActions>
                     <CardActions sx={{ marginTop: "21px" }}>
@@ -272,7 +273,7 @@ console.log(images);
                         <input type="hidden" name="item_key" value="undefined" />
                         <Button className="adDetail-btn" type="submit" sx={{ backgroundColor: "#008083", color: "#FFFFFF", border: "2px solid #008083", borderRadius: "20px" }}>Buy It Now</Button>
                         <img src="https://t.escrow-sandbox.com/1px.gif?name=bin&price&title=Buy%20Now&user_id=1295393" style={{ display: "none" }} />
-                        <Button className="adDetail-btn"  onClick={()=>{viewProfile(product.email)}} sx={{ backgroundColor: "#008083", color: "#FFFFFF", border: "2px solid #008083", borderRadius: "20px", marginLeft:"20px" }}>View Profile</Button>
+                        <Button className="adDetail-btn"  onClick={()=>{viewProfile(product.email)}} sx={{ backgroundColor: "#008083", color: "#FFFFFF", border: "2px solid #008083", borderRadius: "20px" }}>View Profile</Button>
                       </form>
 
                     </CardActions>

@@ -11,6 +11,9 @@ const Payment = () => {
   const [expirationDate, setExpirationDate] = useState("");
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
+  var PkgType = localStorage.getItem("PackageType");
+  var id = localStorage.getItem("SetIDPKG")
+console.log("ID ISWAS",id)
   const navigate = useNavigate();
 const [cvc,setCvc] = useState('')
   const Bill = localStorage.getItem("TotalBill");
@@ -71,6 +74,15 @@ const [cvc,setCvc] = useState('')
         {
           navigate('/successfull')
           console.log("Payment Successful")
+        }
+        if(PkgType !="" && response.status==200)
+        {
+          console.log(id,PkgType)
+          axios.put(`http://localhost:3006/Buy_AdPackage/${id}`,{pkg : PkgType}).then((res) => {
+            console.log(res.data);  
+
+          })
+          navigate('/successfull')
         }
       })
       .catch((error) => {
