@@ -161,11 +161,7 @@ navigate("/storehome")
 
     return starIcons;
   };
-  function imageSet(ind) {
-    
-    setMainImage(images[ind]);
 
-  }
   function imageSet(ind) {
     setMainImage(images[ind]);
 
@@ -202,7 +198,7 @@ navigate("/storehome")
                       />
                     </Grid>
                     {images.map((image, ind) => (
-                      <Grid item xs={4} borderRadius={3} padding={"1rem"}>
+                      <Grid item xs={4} borderRadius={3} padding={"1rem"} key={ind}>
                         <img
                           src={image}
                           width={200}
@@ -210,12 +206,9 @@ navigate("/storehome")
                           onClick={() => {
                             imageSet(ind);
                           }}
-                          style={{
-                            borderRadius: "inherit",
-                            height: 120,
-                            width: 170,
-                          }}
-                        ></img>
+                          style={{ borderRadius: "inherit", height: 120, width: 170 }}
+                          alt={`Product ${ind}`}
+                        />
                       </Grid>
                     ))}
                   </Grid>

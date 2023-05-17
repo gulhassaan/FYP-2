@@ -122,19 +122,23 @@ export const LandingPage = () => {
                         maxHeight: 450,
                       }}
                     >
-                      {card.Days>0 && (
-                        <img
-                          src={star} // Replace with your feature logo image path
-                          alt="Featured"
-                          style={{
-                            position: "absolute",
-                            top: "10px",
-                            right: "10px",
-                            width: "40px",
-                            height: "40px",
-                          }}
-                        />
-                      )}
+                    {card.Days>0 && (
+                      <span
+                        style={{
+                          position: "absolute",
+                          top: "10px",
+                          left: "10px",
+                          backgroundColor: "yellow",
+                          color: "black",
+                          padding: "5px",
+                          borderRadius: "3px",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Featured
+                      </span>
+                    )}
+                  
                       <CardMedia
                         component="img"
                         height={180}

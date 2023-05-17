@@ -126,7 +126,7 @@ const Manage_UserAds = () => {
 
   }
 
-  const Del_Ads = (id) => {
+  const Del_Ads = (id,email) => {
 
     axios.put(`http://localhost:3006/del_MyAD/${id}`).then((res) => {
       console.log(res.data);
@@ -135,11 +135,13 @@ const Manage_UserAds = () => {
           return val.Ad_id != id
         }))
     })
-
+    axios.put(`http://localhost:3006/wrongReport/${email}`).then((res) => {
+      console.log(res.data);
+    })
   }
 
-  const UN_Report = (id) => {
-
+  const UN_Report = (id,email) => {
+console.log(email);
     axios.put(`http://localhost:3006/UnReport/${id}`).then((res) => {
       console.log(res.data);
       setListOfAds(
@@ -147,7 +149,9 @@ const Manage_UserAds = () => {
           return val.Ad_id != id
         }))
     })
-
+    axios.put(`http://localhost:3006/rightReport/${email}`).then((res) => {
+      console.log(res.data);
+    })
   }
   const activeAd = (id) => {
     axios.put(`http://localhost:3006/activeAd/${id}`).then((res) => {
@@ -201,14 +205,71 @@ const Manage_UserAds = () => {
          </Select>
       </FormControl>
     </div>
+
+    
         <Container sx={{ py: 8 }}>
 
           <Grid container spacing={4}>
             {listOfAds.filter((card)=>{
               return search.toLowerCase()===''?card:(card.title.toLowerCase().includes(search) ||card.adCategory.toLowerCase().includes(search)); 
             }).map((card) => (
+              
               <Grid item key={card} xs={12} sm={6} md={3}>
+              {
+                check == 2 ?
+                
+                <div>
                 <Card
+                style={{ backgroundColor: "#FFFFFF", height: "450px", borderRadius: "20px",width:"380px" }}
+                raised
+                sx={{
+                  maxWidth: 500,
+                  margin: "0 auto",
+                  padding: "0.1em",
+                  maxHeight: 550
+                }}
+
+
+              >
+                <CardMedia
+                  component="img"
+                  height={200}
+                  image={card.Images[0]}
+                  alt="random"
+                  sx={{ padding: "1em 1em 0 1em" }}
+                />
+                <CardContent sx={{ flexGrow: 1 }}  >
+                  <Typography gutterBottom variant="h6" component="h6" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)" }}>
+                    {card.title}
+                  </Typography>
+                  
+                  <Typography variant="p">
+                    {card.Description}
+                  </Typography>
+                  <br></br>   
+                  <Typography variant="p" style={{ topmargin: "5px", color: "rgba(0, 95, 96, 0.8)" }}>
+                    {card.Location}
+                  </Typography>
+                  <br></br>
+                  <Typography variant="p" style={{ topmargin: "5px", color: "rgba(0, 95, 96, 0.8)" }}>
+                  Report BY : {card.ReportedBy}        
+                  </Typography>
+                  <br></br>
+               <Typography variant="p" style={{ topmargin: "5px", color: "rgba(0, 95, 96, 0.8)" }}>
+                  Reason : {card.Reason}     
+               </Typography>
+               <Button class="pkg-btn" style={{ 'margin-left': '3px', color: 'white' }} onClick={()=>{Del_Ads(card.Ad_id,card.ReportedBy)}}>Delete</Button>
+               <Button class="pkg-btn" style={{ 'margin-left': '3px', color: 'white' }} onClick={()=>{UN_Report(card.Ad_id,card.ReportedBy)}}>Remove</Button>
+              
+                </CardContent>
+              
+                
+                </Card>
+            
+                </div>
+                
+              :
+              <Card
                   style={{ backgroundColor: "#FFFFFF", height: "430px", borderRadius: "20px" }}
                   raised
                   sx={{
@@ -239,22 +300,11 @@ const Manage_UserAds = () => {
                     <Typography variant="p" style={{ topmargin: "5px", color: "rgba(0, 95, 96, 0.8)" }}>
                       {card.Location}
                     </Typography>
-                    <br></br>
-                    <Typography variant="p" style={{ topmargin: "5px", color: "rgba(0, 95, 96, 0.8)" }}>
-                     {card.ReportedBy}
-                  </Typography>
-                    <br></br>
+               
                   </CardContent>
                   {
                   check == 1 &&
                   <Button class="pkg-btn" style={{ 'margin-left': '60px', color: 'white' }} onClick={()=>{Del_Ads(card.Ad_id)}}>Delete AD</Button>
-                  }
-                  {
-                  check == 2 &&
-                  <div>
-                  <Button class="pkg-btn" style={{ 'margin-left': '3px', color: 'white' }} onClick={()=>{Del_Ads(card.Ad_id)}}>Delete</Button>
-                  <Button class="pkg-btn" style={{ 'margin-left': '3px', color: 'white' }} onClick={()=>{UN_Report(card.Ad_id)}}>Remove</Button>
-                  </div>
                   }
                   
                   {
@@ -262,6 +312,7 @@ const Manage_UserAds = () => {
                   }
                
                  </Card>
+                }
               </Grid>
             ))}
           </Grid>

@@ -66,16 +66,6 @@ const ProductDetail = () => {
     handleClose();
   };
 
-  const handleOptionChange = (event) => {
-    const { value } = event.target;
-    setSelectedOptions((prevSelectedOptions) => {
-      if (prevSelectedOptions.includes(value)) {
-        return prevSelectedOptions.filter((option) => option !== value);
-      } else {
-        return [...prevSelectedOptions, value];
-      }
-    });
-  };
   useEffect(() => {
     setPrice(1000);
     setuser(localStorage.getItem("email_token"));
@@ -197,15 +187,19 @@ const ProductDetail = () => {
     console.log(isDealer);
   }
 
-  const Report = (AdID) => {
-    console.log(AdID);
-    console.log(report);
+  const Report = (id) => {
+    var AdID = localStorage.getItem("AdID");
+   
+    console.log(reportReason);
     console.log(user);
     axios
-      .put(`http://localhost:3006/Report_AD/${AdID}`, { User: user })
+      .put(`http://localhost:3006/Report_AD/${AdID}`, { User: user,Reason:reportReason })
       .then((response) => {
         console.log(response.data);
       });
+
+      
+    handleClose();
   };
   const viewProfile = (email) => {
     console.log(email);
@@ -452,45 +446,12 @@ const ProductDetail = () => {
                     <Dialog open={open} onClose={handleClose} maxWidth="md">
                       <DialogTitle>Report Ad</DialogTitle>
                       <DialogContent>
-                        <FormControl component="fieldset">
-                          <FormGroup>
-                            <FormControlLabel
-                              control={
-                                <Checkbox
-                                  checked={selectedOptions.includes("option1")}
-                                  onChange={handleOptionChange}
-                                  value="option1"
-                                />
-                              }
-                              label="Misleading or false information"
-                            />
-                            <FormControlLabel
-                              control={
-                                <Checkbox
-                                  checked={selectedOptions.includes("option2")}
-                                  onChange={handleOptionChange}
-                                  value="option2"
-                                />
-                              }
-                              label="Scam or fraudulent"
-                            />
-                            <FormControlLabel
-                              control={
-                                <Checkbox
-                                  checked={selectedOptions.includes("option3")}
-                                  onChange={handleOptionChange}
-                                  value="option3"
-                                />
-                              }
-                              label="Copyright infringement"
-                            />
-                          </FormGroup>
-                        </FormControl>
                         <TextField
                           label="Reason"
                           multiline
-                          rows={4}
-                          value={reportReason}
+                          rows={8}
+                          style={{width:550}}
+                   
                           onChange={(e) => setReportReason(e.target.value)}
                           fullWidth
                         />
@@ -498,7 +459,7 @@ const ProductDetail = () => {
                       <DialogActions>
                         <Button onClick={handleClose}>Cancel</Button>
                         <Button
-                          onClick={handleReport}
+                          onClick={Report}
                           variant="contained"
                           color="primary"
                         >

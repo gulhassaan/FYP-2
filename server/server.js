@@ -539,6 +539,7 @@ app.put("/del_MyAD/:id", (req, res) => {
 //For Un Reporting add
 app.put("/UnReport/:id",(req,res)=>{
     const AdID = req.params.id;
+
     db.query(`UPDATE ads SET Report = ? WHERE Ad_id = ?`,[0,AdID],(err, result) => {
         if (err) {
             console.log(err)
@@ -549,6 +550,18 @@ app.put("/UnReport/:id",(req,res)=>{
     })
 })
 
+//For right Report
+app.put("/rightReport/:email",(req,res)=>{
+    const user = req.params.email;
+    db.query(`UPDATE users SET CorrectReport=CorrectReport+1 WHERE email = ?`,[user],(err, result) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.send(result)
+        }
+    })
+})
 //For Activate Ad
 app.put("/activeAd/:id",(req,res)=>{
     const AdID = req.params.id;
@@ -816,9 +829,9 @@ app.get("/Search_Users/:S_User", (req, res) => {
 app.put("/Report_AD/:AdID",(req,res)=>{
     const AdID = req.params.AdID
     const user = req.body.User
-   
+   const reason = req.body.Reason
     const temp =1;
-    db.query(`UPDATE users u JOIN  ads a ON u.email = a.email  SET a.Report =?,a.ReportedBy=? where a.Ad_id =?`,[temp,user,AdID],(err,result)=>{
+    db.query(`UPDATE users u JOIN  ads a ON u.email = a.email  SET a.Report =?,a.ReportedBy=?,a.Reason=? where a.Ad_id =?`,[temp,user,reason,AdID],(err,result)=>{
         if (err) throw err;
             else if (result.length == 0) {
                 console.log("User Not Reported")
