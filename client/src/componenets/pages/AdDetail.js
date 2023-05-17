@@ -4,6 +4,7 @@ import Navbar from './NavbarHome';
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import imag2 from '../images/login6.jpg';
+import userpic from '../images/userprofile.png';
 //import { global } from "../App";
 import { AdDContext, EmailContext } from "../../App";
 import "@fontsource/montserrat";
@@ -14,7 +15,7 @@ const ProductDetail = () => {
 
 
 
-const[Contact,setContact] = useState("");
+  const [Contact, setContact] = useState("");
   const { Email, setEMAIL } = useContext(EmailContext)
   const [images, setImages] = useState([]);
   const [mainImage, setMainImage] = useState('');
@@ -27,15 +28,15 @@ const[Contact,setContact] = useState("");
   const [report, setReport] = useState(1);
   const [price, setPrice] = useState();
   const [usd, setusd] = useState(0);
-  const[User,setUser] = useState("")
-  const [isDealer,setisDealer] = useState(0)
+  const [User, setUser] = useState("")
+  const [isDealer, setisDealer] = useState(0)
   const [amount, setamount] = useState(78);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setPrice(1000)
     setuser(localStorage.getItem("email_token"));
     setRoom(localStorage.getItem('room'));
-   var id = localStorage.getItem("AdID")
+    var id= localStorage.getItem("AdID")
     setLoading(true)
     axios.get(`http://localhost:3006/Get_Up_Ad/${id}`).then((response) => {
       var temp = response.data;
@@ -55,12 +56,12 @@ const[Contact,setContact] = useState("");
       localStorage.setItem("email2",temp[0].email)
 
       axios.get(`http://localhost:3006/Get_Up_User/${temp[0].email}`)
-      .then((response) => {
-        var temp = response.data;
-        setUser(temp)    
-        console.log("bbvbbbb",temp[0].IsDealer);
-        setisDealer(temp[0].IsDealer)   
-      });
+        .then((response) => {
+          var temp = response.data;
+          setUser(temp)
+          console.log("bbvbbbb", temp[0].IsDealer);
+          setisDealer(temp[0].IsDealer)
+        });
 
     });
 
@@ -178,15 +179,15 @@ const[Contact,setContact] = useState("");
     })
 
   }
-const viewProfile=(email)=>{
-  console.log(email)
-localStorage.setItem("AdUser",email)
-  localStorage.setItem("pro",1)
-  navigate('/profile')
-}
+  const viewProfile = (email) => {
+    console.log(email)
+    localStorage.setItem("AdUser", email)
+    localStorage.setItem("pro", 1)
+    navigate('/profile')
+  }
 
 
-console.log(images);
+  console.log(images);
   useEffect(() => {
     if (!localStorage.getItem('email_token')) {
       navigate('/login')
@@ -201,7 +202,7 @@ console.log(images);
           <img className="img1" src={imag2}></img>
           <div className='ContentLanding'>
             <Container sx={{ py: 3 }} >
-              <Grid container spacing={1} marginTop={5} style={{ backgroundColor: "rgba(255, 255, 255, 0.2)", height: "550px", borderRadius: "20px", color: "#ffffff", boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)", marginTop:"60px" }}>
+              <Grid container spacing={1} marginTop={5} style={{ backgroundColor: "rgba(255, 255, 255, 0.2)", height: "550px", borderRadius: "20px", color: "#ffffff", boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)", marginTop: "60px" }}>
                 <Grid item xs={12} sm={7}>
                   <Grid container padding={1}>
                     <Grid item xs={12} height={350} width="inherit" borderRadius={3}>
@@ -243,21 +244,6 @@ console.log(images);
                     <Grid item xs={12}><Typography gutterBottom variant="h5" component="div">
                       +92 {product.contact_number}
                     </Typography></Grid>
-                    {isDealer==1?
-                      <Grid item xs={12}><Typography gutterBottom variant="h5" component="div">
-                      Authenticated User
-                    </Typography></Grid>
-                    :
-                    <Grid item xs={12}><Typography gutterBottom variant="h5" component="div">
-                    Not Verified User
-                  </Typography></Grid>
-                    }
-                    <CardActions sx={{ marginTop: "20px" }}>
-                      <Button className="adDetail-btn" onClick={() => { GO(product.Ad_id) }} sx={{ backgroundColor: "#008083", color: "#FFFFFF", border: "2px solid #008083", borderRadius: "20px" }}>Contact Seller</Button>
-
-                      <Button className="adDetail-btn" onClick={() => { Report(product.Ad_id) }} sx={{ backgroundColor: "#008083", color: "#FFFFFF", border: "2px solid #008083", borderRadius: "20px" }}>Report</Button>
-
-                    </CardActions>
                     <CardActions sx={{ marginTop: "21px" }}>
                       <form action="https://www.escrow-sandbox.com/checkout" method="post">
                         <input type="hidden" name="type" value="domain_name" />
@@ -271,14 +257,29 @@ console.log(images);
                         <input type="hidden" name="concierge" value="false" /><input type="hidden" name="with_content" value="false" /><input type="hidden" name="inspection_period" value="1" /><input type="hidden" name="fee_payer" value="split" /><input type="hidden" name="return_url" value="" /><input type="hidden" name="button_types" value="both" />
                         <input type="hidden" name="auto_accept" value="" /><input type="hidden" name="auto_reject" value="" />
                         <input type="hidden" name="item_key" value="undefined" />
-                        <Button className="adDetail-btn" type="submit" sx={{ backgroundColor: "#008083", color: "#FFFFFF", border: "2px solid #008083", borderRadius: "20px" }}>Buy It Now</Button>
+                        <Button className="adDetail-btn" type="submit" sx={{ backgroundColor: "#008083", color: "#FFFFFF", border: "2px solid #008083" }}>Buy It Now</Button>
                         <img src="https://t.escrow-sandbox.com/1px.gif?name=bin&price&title=Buy%20Now&user_id=1295393" style={{ display: "none" }} />
-                        <Button className="adDetail-btn"  onClick={()=>{viewProfile(product.email)}} sx={{ backgroundColor: "#008083", color: "#FFFFFF", border: "2px solid #008083", borderRadius: "20px" }}>View Profile</Button>
+                        <Button className="adDetail-btn" onClick={() => { GO(product.Ad_id) }} sx={{ backgroundColor: "#008083", color: "#FFFFFF", border: "2px solid #008083",  marginLeft: "20px" }}>Contact Seller</Button>
+                        
                       </form>
 
                     </CardActions>
+                    <CardActions sx={{ marginTop: "140px", marginLeft: "255px" }}>
+                      
+                    <Button className="adDetail-btn" onClick={() => { viewProfile(product.email) }} sx={{ backgroundColor: "#008083", color: "#FFFFFF", border: "2px solid #008083", marginLeft: "20px" }}><img className="userpic" src={userpic}></img>Seller Profile</Button>
+                    
+
+                  </CardActions>
+                  <CardActions sx={{ marginBottom: "70px", marginLeft: "335px", textDecorationLine: "underline" }}>
+
+                    <Button className="report-btn" onClick={() => { Report(product.Ad_id) }} sx={{ color: "#FFFFFF", borderRadius: "20px", minWidth: "40px" }}>Report Ad</Button>
+
+                  </CardActions>
                   </Grid>
+
+                  
                 </Grid>
+
               </Grid>
 
             </Container>

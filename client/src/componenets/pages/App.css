@@ -409,6 +409,10 @@
   color: #008083;
   opacity: 1; /* Firefox */
 }
+.estore::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #ffffff;
+  opacity: 1; /* Firefox */
+}
 #name {
   border-radius: 15px;
   padding: 2px;
@@ -600,7 +604,17 @@
   color: #FFFFFF;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
-
+.BuyNowstore {
+  
+  padding: 9px 45px;
+  margin: 7px;
+  border: 2px solid #008083;
+  background-color: #008083;
+  margin-left: 50px;
+  margin-top: 20px;
+  color: #FFFFFF;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
 .update-now {
   border-radius: 25px;
   margin: 7px;
@@ -740,7 +754,15 @@
   border: 2px solid #ffffff;
   border-radius: 20px;
 }
-
+.report-btn:hover {
+  background-color: transparent;
+  color: #008083;
+  border-radius: 20px;
+}
+.userpic{
+  height: 30px;
+  width: 30px;
+}
 #F-btn:hover {
   background-color: transparent;
   color: #ffffff;
@@ -779,7 +801,12 @@
   background-color: #ffffff;
   color: #008083;
 }
-
+.BuyNowstore:hover {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid white;
+  border-radius: 30px;
+}
 #btn_F {
   border: 2px solid #008083;
   color: #FFFFFF;
@@ -1199,7 +1226,18 @@ footer {
 .storebanner {
   margin-top: 60px;
 }
-
+.Navbarhome {
+  height: 60px;
+  overflow: hidden;
+  width: 100%;
+  z-index: 10000;
+  margin-bottom: 20px;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 95, 96, 1);
+}
 .Navbarstore {
   height: 60px;
   overflow: hidden;
@@ -1207,6 +1245,7 @@ footer {
   width: 100%;
   position: fixed;
   display: flex;
+  z-index: 10000;
   justify-content: space-between;
   align-items: center;
   background: rgba(0, 95, 96, 1);
@@ -1234,27 +1273,14 @@ footer {
   height: auto;
 }
 
-.Navbarhome {
-  height: 60px;
-  overflow: hidden;
-  width: 100%;
-  z-index: 10000;
-  margin-bottom: 20px;
-  position: fixed;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(0, 95, 96, 1);
-}
+
 
 .bannerimage {
   margin-top: 60px;
 
 }
 
-.storebanner {
-  margin-top: 60px;
-}
+
 
 .Landingpage-banner {
   margin-top: 60px;
@@ -1342,7 +1368,17 @@ video {
 
 
 }
+.overlaybg6 {
 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+
+
+}
 .overlaybg1 {
 
   position: fixed;
@@ -1394,7 +1430,18 @@ video {
 
   top: 0;
 }
-
+.review-text textarea{
+  color: white;
+ }
+.review-text textarea::placeholder{
+  color: white;
+ }
+ .pdetails:hover{
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  border-radius: 30px;
+ }
 .NavbarAds {
   height: 60px;
   width: 100%;
@@ -2239,6 +2286,15 @@ video {
   color: #ffffff;
   border-radius: 80px;
   border: 1px solid white;
+  width: 100%;
+  display: block;
+  max-width: 90%;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.estore {
+  color: #ffffff;
+  border-radius: 80px;
+  border: 2px solid white;
   width: 100%;
   display: block;
   max-width: 90%;

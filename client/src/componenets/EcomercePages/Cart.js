@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import NavbarD from "./NavbarD";
 import { Navigate, useNavigate } from 'react-router-dom';
+import imag2 from '../images/login10.jpg';
 const Cart = () => {
 
   const [cart, setCart] = useState([]);
@@ -83,34 +84,41 @@ const Cart = () => {
   return (
     <div>
       <NavbarD />
-      <div className="cart-container">
-        <div style={{ textAlign: "center", color: "rgba(0, 95, 96, 1)", }}>
-          <h1><b>My Cart</b></h1>
-        </div>
-        <div className="items-container">
-          {cart.map((item) => (
-            <div className="item" key={item.id}>
-              <img src={item.Images[0]} alt={item.ProductName} />
-              <div className="item-details">
-                <p className="item-name">{item.ProductName}</p>
-                <p className="item-price">{item.Total}</p>
-                <div className="quantity-container">
-                  <button className="quantity-btn" onClick={() => updateCart(item.ProductId, item.Quantity -= 1, item.Total -= item.Price)}>-</button>
-                  <span className="item-quantity">{item.Quantity}</span>
-                  <button className="quantity-btn" onClick={() => updateCart(item.ProductId, item.Quantity += 1, item.Total += item.Price)}>+</button>
-                </div>
-                <button className="delete-btn" onClick={() => removeFromCart(item.ProductId)}>Delete</button>
-                <br></br>
-              </div>
+      <div className='sell-banner'>
+        <div className="overlaybg0"></div>
+        <img className="img1" src={imag2}></img>
+        <div className='ContentLanding'>
+          <div className="cart-container">
+            <div style={{ textAlign: "center", color: "#fff", marginTop:"50px" }}>
+              <h1><b>My Cart</b></h1>
             </div>
-          ))}
+            <div className="items-container">
+              {cart.map((item) => (
+                <div className="item" key={item.id}>
+                  <img src={item.Images[0]} alt={item.ProductName} />
+                  <div className="item-details">
+                    <p className="item-name">{item.ProductName}</p>
+                    <p className="item-price">{item.Total}</p>
+                    <div className="quantity-container">
+                      <button className="quantity-btn" onClick={() => updateCart(item.ProductId, item.Quantity -= 1, item.Total -= item.Price)}>-</button>
+                      <span className="item-quantity">{item.Quantity}</span>
+                      <button className="quantity-btn" onClick={() => updateCart(item.ProductId, item.Quantity += 1, item.Total += item.Price)}>+</button>
+                    </div>
+                    <button className="delete-btn" onClick={() => removeFromCart(item.ProductId)}>Remove</button>
+                    <br></br>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div style={{ textAlign: "center", color: "#fff", marginTop: 60 }}>
+              <h2>Total Bill: {total}</h2>
+            </div>
+            <button className="BuyNowstore" onClick={() => { navigate("/payment") }}>
+              Buy Now
+            </button>
+          </div>
         </div>
-        <div style={{ textAlign: "center", color: "rgba(0, 95, 96, 1)", marginTop: 60 }}>
-          <h2>Total Bill: {total}</h2>
-        </div>
-        <button className="BuyNow" onClick={() =>{GoProceed()}}>
-          Buy Now
-        </button>
+        
       </div>
     </div>
   );

@@ -147,6 +147,9 @@ export const Home = () => {
       navigate("/login");
     }
   }, []);
+  //const handlechange = (e,p) =>{
+    //setpage(p)
+  //}
   return (
     <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)", minwidth: "100%" }}>
       <Navbar />
@@ -346,7 +349,7 @@ export const Home = () => {
               count={10}
               sx={{ marginTop: 7 }}
               variant="outlined"
-              color="secondary"
+              color="primary"
               onChange={(e, v) => setpage(v - 1)}
             />
 

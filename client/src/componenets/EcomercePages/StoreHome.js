@@ -28,7 +28,7 @@ import storebanner from '../images/gamingstanstore.png';
 import NavbarS from './NavbarS';
 import ProductDetail from './ProductDetail';
 import './Ecommerce.css';
-import banner1 from "../images/gamingstanstore.png";
+import imag2 from "../images/gamingstanstore.png";
 import banner2 from "./images/slider2.png";
 import banner3 from "./images/slider3.png";
 import { NavLink } from 'react-router-dom';
@@ -37,9 +37,9 @@ const StoreHome = () => {
 
   const { Email } = useContext(EmailContext)
   const { AdD, setAdD } = useContext(AdDContext);
-
+  const [listOfAds, setListOfAds] = useState([]);
   const navigate = useNavigate();
-  const [page,setpage] = useState(0);
+  const [page, setpage] = useState(0);
   localStorage.setItem("newemail", Email)
   console.log("LCOAL  :", localStorage.getItem("email"))
   console.log("THIS IS LOCAL : ", localStorage.getItem("email"))
@@ -49,7 +49,19 @@ const StoreHome = () => {
   const [Filter, setFilter] = useState("");
   const [img, setimg] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:3006/Get_Products?limit=10&offset=${page*10}`).then((response) => {
+    axios.get(`http://localhost:3006/Get_AD`).then((response) => {
+      console.log("THis is Response Data : ", response.data);
+      var temp = response.data;
+      console.log(response.data);
+      temp.forEach((element) => {
+        element.Images = JSON.parse(element.Images);
+      });
+      setListOfAds(temp);
+      console.log("After parse : ", temp);
+    });
+  }, []);
+  useEffect(() => {
+    axios.get(`http://localhost:3006/Get_Products?limit=10&offset=${page * 10}`).then((response) => {
       console.log("THis is Response Data : ", response.data)
       var temp = response.data;
       console.log(response.data);
@@ -72,7 +84,44 @@ const StoreHome = () => {
 
   }
 
-
+  const Selectfilter = (e) => {
+    var filter = e.target.value;
+    setFilter(e.target.value);
+    if (filter == "High TO Low") {
+      console.log(Filter);
+      axios.get(`http://localhost:3006/filterHtoL`).then((response) => {
+        var data = response.data;
+        data.forEach((element) => {
+          element.Images = JSON.parse(element.Images);
+        });
+        setListOfAds(data);
+      });
+    } else if (filter == "Low To High") {
+      axios.get(`http://localhost:3006/filterLtoH`).then((response) => {
+        var data = response.data;
+        data.forEach((element) => {
+          element.Images = JSON.parse(element.Images);
+        });
+        setListOfAds(data);
+      });
+    } else if (filter == "Latest") {
+      axios.get(`http://localhost:3006/filterLatest`).then((response) => {
+        var data = response.data;
+        data.forEach((element) => {
+          element.Images = JSON.parse(element.Images);
+        });
+        setListOfAds(data);
+      });
+    } else if (filter == "Oldest") {
+      axios.get(`http://localhost:3006/filterOldest`).then((response) => {
+        var data = response.data;
+        data.forEach((element) => {
+          element.Images = JSON.parse(element.Images);
+        });
+        setListOfAds(data);
+      });
+    }
+  };
 
   useEffect(() => {
     if (!localStorage.getItem('email_token')) {
@@ -80,99 +129,150 @@ const StoreHome = () => {
     }
   }, [])
   return (
-<div className='bg-storehome'>
-    <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
-      <main>
+    <div className='bg-storehome'>
+      <div >
+        <main>
 
 
-      <NavbarStore/>
-    
-    
-     
-    
-    
+        <NavbarStore />
+          <div className='storebanner'>
+            <div className="overlaybg6"></div>
+            <img className="img1" src={imag2}></img>
+            <div className='ContentLanding'>
 
-    
-      <div className='storebanner'>
-        <a><img src={banner1} width="100%"></img></a>
-        
-        </div>
+              <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center', justifyContent: "center", paddingTop: "50PX" }} />
 
 
+              <h1 style={{ color: "#ffffff", display: 'flex', alignItems: 'center', justifyContent: "center", paddingTop: "30PX" }}>Fresh Recommendations</h1>
+              <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center', justifyContent: "center", paddingTop: "40PX" }}>
 
-      <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"50PX" }}/>
-
-     
-      <h1 style={{color:"rgba(0, 95, 96, 0.8)",display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"30PX"}}>Fresh Recommendations</h1>
-      <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"40PX" }}>
-
-      <input
-        style={{ width: '50%', marginRight: '0.5rem', backgroundColor: '#FFFFFF',color:"rgba(0, 95, 96, 0.8)" }}
-        autoComplete='off'
-        placeholder='Search'
-        type='text'
-        className='customform w-50'
-        list='item-list'
-        onChange={(e)=>setSearch(e.target.value)}
-      />
-    </div>
-        <Container sx={{ py: 8 }}>
-
-          <Grid container spacing={4}>
-            {listofProducts.filter((card)=>{
-              return search.toLowerCase()===''?card:(card.Name.toLowerCase().includes(search)); 
-            }).map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={3}>
-                <Card
-                  style={{ backgroundColor: "#FFFFFF", height: "330px", borderRadius: "20px", boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.55)" }}
-                  raised
-                  sx={{
-                    maxWidth: 280,
-                    margin: "0 auto",
-                    padding: "0.1em",
-                    maxHeight: 450
-                  }}
-
-
+                <input
+                  style={{ width: '50%', marginRight: '0.5rem', backgroundColor: 'transparent', color: "#ffffff", borderRadius:"30px", border:"2px solid white" }}
+                  autoComplete='off'
+                  placeholder='Search'
+                  type='text'
+                  className='estore w-50'
+                  list='item-list'
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+                <FormControl
+                style={{
+                  backgroundColor: "transparent", border: "2px solid #ffffff", color: "#ffffff",
+                  minWidth: 150,
+                  borderRadius: "30px",
+                }}
+                size="small"
+              >
+                <InputLabel
+                  id="demo-select-small"
+                  style={{ color: "#ffffff" }}
                 >
-                  <CardMedia
-                    component="img"
-                    height={180}
-                    image={card.Images[0]}
-                    alt="random"
-                    style={{ padding: "0.5em 0.5em 0 0.5em", borderRadius: "20px" }}
-                    onClick={() => { view(card.ID) }}
-                  />
-                  <CardContent sx={{ flexGrow: 1 }} onClick={() => { view(card.ID) }} >
-                    <Typography gutterBottom variant="h6" component="h6" sx={{ fontWeight: 'bold' }} style={{ color: "rgba(0, 95, 96, 0.8)" }}>
-                      {card.Name}
-                    </Typography>
+                  Sort by
+                </InputLabel>
+                <Select
+                  labelId="demo-select-small"
+                  id="demo-select-small"
+                  value={Filter}
+                  label="Filters"
+                  onChange={Selectfilter}
+                  style={{
+                    borderRadius: "20px",
+                    height: "45px",
+                    color: "rgba(0, 95, 96, 0.8)",
+                  }}
+                >
+                  <MenuItem
+                    value=""
+                    style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}
+                  >
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem
+                    value={"High TO Low"}
+                    style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}
+                  >
+                    High to Low
+                  </MenuItem>
+                  <MenuItem
+                    value={"Low To High"}
+                    style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}
+                  >
+                    Low to High
+                  </MenuItem>
+                  <MenuItem
+                    value={"Latest"}
+                    style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}
+                  >
+                    Latest
+                  </MenuItem>
+                  <MenuItem
+                    value={"Oldest"}
+                    style={{ borderRadius: "20px", color: "rgba(0, 95, 96, 0.8)" }}
+                  >
+                    Oldest
+                  </MenuItem>
+                </Select>
+              </FormControl>
+              </div>
+              <Container sx={{ py: 8 }}>
 
-                    <Typography variant="p" style={{ topmargin: "5px", color: "rgba(0, 95, 96, 0.8)" }}>
-                      {card.Price}
-                    </Typography>
-                    <br></br>
-                    <Typography variant="p" style={{ color: "rgba(0, 95, 96, 0.8)" }}>
-                      {card.Description}
-                    </Typography>
-                    <br></br>
-                    
-                  </CardContent>
-
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-          <Stack spacing={2} alignItems={"center"}>
-            <Pagination count={2} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
-          </Stack>
-        </Container>
-      </main>
+                <Grid container spacing={4}>
+                  {listofProducts.filter((card) => {
+                    return search.toLowerCase() === '' ? card : (card.Name.toLowerCase().includes(search));
+                  }).map((card) => (
+                    <Grid item key={card} xs={12} sm={6} md={3}>
+                      <Card
+                        style={{ backgroundColor: "rgba(255, 255, 255, 0.1)", height: "330px", borderRadius: "20px", boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.55)", color:"white" }}
+                        raised
+                        sx={{
+                          maxWidth: 280,
+                          margin: "0 auto",
+                          padding: "0.1em",
+                          maxHeight: 450
+                        }}
 
 
+                      >
+                        <CardMedia
+                          component="img"
+                          height={180}
+                          image={card.Images[0]}
+                          alt="random"
+                          style={{ padding: "0.5em 0.5em 0 0.5em", borderRadius: "20px" }}
+                          onClick={() => { view(card.ID) }}
+                        />
+                        <CardContent sx={{ flexGrow: 1 }} onClick={() => { view(card.ID) }} >
+                          <Typography gutterBottom variant="h6" component="h6" sx={{ fontWeight: 'bold' }} style={{ color: "#ffffff" }}>
+                            {card.Name}
+                          </Typography>
+
+                          <Typography variant="p" style={{ topmargin: "5px", color: "#ffffff" }}>
+                            {card.Price}
+                          </Typography>
+                          <br></br>
+                          <Typography variant="p" style={{ color: "#ffffff" }}>
+                            {card.Description}
+                          </Typography>
+                          <br></br>
+
+                        </CardContent>
+
+                      </Card>
+                    </Grid>
+                  ))}
+                </Grid>
+                <Stack spacing={2} alignItems={"center"}>
+                  <Pagination count={2} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
+                </Stack>
+              </Container>
+            </div>
+          </div>
+        </main>
 
 
-    </div>
+
+
+      </div>
     </div>
   );
 

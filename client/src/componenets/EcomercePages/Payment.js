@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import ".././pages/App.css";
 import { useNavigate } from "react-router-dom";
 import "../EcomercePages/Payment.css";
-import Navbar from "../EcomercePages/NavbarS";
-import axios from "axios";
 
+import axios from "axios";
+import NavbarD from "./NavbarD";
+import imag2 from '../images/login10.jpg';
 const Payment = () => {
   const [cardNumber, setCardNumber] = useState("");
   const [cardHolderName, setCardHolderName] = useState("");
@@ -15,7 +16,7 @@ const Payment = () => {
   var id = localStorage.getItem("SetIDPKG")
 console.log("ID ISWAS",id)
   const navigate = useNavigate();
-const [cvc,setCvc] = useState('')
+  const [cvc, setCvc] = useState('')
   const Bill = localStorage.getItem("TotalBill");
   console.log(Bill);
   const email = localStorage.getItem("email_token");
@@ -61,17 +62,16 @@ const [cvc,setCvc] = useState('')
     console.log("Email:", email);
     // Send payment details to the server
     axios.post("http://localhost:3006/payment", {
-        Email: email,
-        Price: Bill,
-        ExpiryMonth: month,
-        ExpiryYear: year,
-        CVC:cvc,
-        Card:cardNumber
-      })
+      Email: email,
+      Price: Bill,
+      ExpiryMonth: month,
+      ExpiryYear: year,
+      CVC: cvc,
+      Card: cardNumber
+    })
       .then((response) => {
         console.log(response.status);
-        if(response.status==200)
-        {
+        if (response.status == 200) {
           navigate('/successfull')
           console.log("Payment Successful")
         }
@@ -92,75 +92,84 @@ const [cvc,setCvc] = useState('')
 
     // You can add your logic here to handle the payment
   };
-  
+
   const cardLogos = [
     'https://t.ly/VBHJ',
     'https://t.ly/N62N',
     'https://t.ly/btuH',
   ];
   return (
-    <div className="payment-container">
-    <h2>Total Bill: Rs.{Bill}</h2>
-    <form onSubmit={handleSubmit}>
-      <div className="form-row">
-        <div className="form-group">
-          <label htmlFor="firstName">Card Holder Name</label>
-          <input
-            type="text"
-            id="firstName"
-            value={cardHolderName}
-            onChange={handleCardHolderNameChange}
-            required
-          />
+    <div>
+      <NavbarD />
+      <div className='payment-banner'>
+        <div className="overlaybg0"></div>
+        <img className="img1" src={imag2}></img>
+        <div className='ContentLanding'>
+          <div className="payment-container">
+            <h2>Total Bill: Rs.{Bill}</h2>
+            <form onSubmit={handleSubmit}>
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="firstName">Card Holder Name</label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    value={cardHolderName}
+                    onChange={handleCardHolderNameChange}
+                    required
+                  />
+                </div>
+
+              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="cardNumber">Card Number</label>
+                  <input
+                    type="text"
+                    id="cardNumber"
+                    value={cardNumber}
+                    onChange={handleCardNumberChange}
+                    required
+                  />
+
+                </div>
+                <div className="form-group">
+                  <label htmlFor="cvv">CVC</label>
+                  <input
+                    type="text"
+                    id="cvv"
+                    value={cvc}
+                    onChange={handleCvcChange}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="form-group logos" style={{ marginTop: 40 }}>
+                  {cardLogos.map((logo, index) => (
+                    <img key={index} src={logo} alt={`Card Logo ${index}`} />
+                  ))}
+                </div>
+                <div className="form-group">
+                  <label htmlFor="expiryDate">MM/YY</label>
+                  <input
+                    type="text"
+                    id="expiryDate"
+                    value={expirationDate}
+                    onChange={handleExpirationDateChange}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="form-row">
+                <button type="submit" style={{ marginBottom: 200, marginTop: 20, marginLeft: 250 }}>Pay Now</button>
+              </div>
+            </form>
+          </div>
         </div>
-      
       </div>
-      <div className="form-row">
-        <div className="form-group">
-          <label htmlFor="cardNumber">Card Number</label>
-          <input
-            type="text"
-            id="cardNumber"
-            value={cardNumber}
-            onChange={handleCardNumberChange}
-            required
-          />
-          
-        </div>
-        <div className="form-group">
-          <label htmlFor="cvv">CVC</label>
-          <input
-            type="text"
-            id="cvv"
-            value={cvc}
-            onChange={handleCvcChange}
-            required
-          />
-        </div>
-      </div>
-      <div className="form-row">
-      <div className="form-group logos" style={{marginTop:40}}>
-          {cardLogos.map((logo, index) => (
-            <img key={index} src={logo} alt={`Card Logo ${index}`} />
-          ))}
-        </div>
-        <div className="form-group">
-          <label htmlFor="expiryDate">MM/YY</label>
-          <input
-            type="text"
-            id="expiryDate"
-            value={expirationDate}
-            onChange={handleExpirationDateChange}
-            required
-          />
-        </div>
-      </div>
-      <div className="form-row">
-        <button type="submit" style={{marginBottom:200,marginTop:20}}>Submit Payment</button>
-      </div>
-    </form>
-  </div>
-      );
-    };
-    
-    export default Payment;
+    </div >
+  );
+};
+
+export default Payment;
