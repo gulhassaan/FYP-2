@@ -30,6 +30,10 @@ function UserAuth() {
     const [errQ, seterrQ] = useState(false)
 
 
+
+
+
+    
     const publish = () => {
         var email = localStorage.getItem("email_token");
 
@@ -85,46 +89,55 @@ function UserAuth() {
 
     const CNICHandle = (e) => {
         const re = /^[0-9\b]+$/;
-
-        if (e.target.value == "") {
-            seterrQ(true)
+      
+        if (e.target.value === "") {
+          seterrQ(true);
+        } else {
+          seterrQ(false);
         }
-        else {
-            seterrQ(false)
+      
+        const inputValue = e.target.value.replace(/\D/g, ""); 
+      
+        if (inputValue.length <= 13) {
+          setCNIC(inputValue.slice(0, 13));
         }
-        if (e.target.value === "" || re.test(e.target.value) || e.target.value.length === 13) {
-            setCNIC(e.target.value);
-        }
-    };
+      };
+      
+      
 
     const NameHandle = (e) => {
-
         if (e.target.value == "") {
-            seterrT(true)
-        }
-        else {
-            seterrT(false)
-        }
-        if (e.target.value.length > 50) {
-            setErrMessage("Name length less than 50")
-            setErr(true)
+          seterrT(true);
         } else {
-            setName(e.target.value)
-            setErrMessage("")
-            setErr(false)
+          seterrT(false);
         }
-    };
-
-    const NTNHandle = (e) => {
-        if (e.target.value == "") {
-            seterrD(true)
+      
+        const nameRegex = /^[A-Za-z\s]+$/;
+        if (!nameRegex.test(e.target.value)) {
+          setErrMessage("Only characters are allowed in the name field");
+          setErr(true);
+        } else {
+          setName(e.target.value);
+          setErrMessage("");
+          setErr(false);
         }
-        else {
-            seterrD(false)
+      };
+      
+      const NTNHandle = (e) => {
+        const re = /^[0-9\b]+$/;
+        const inputValue = e.target.value.replace(/\D/g, ""); 
+      
+        if (inputValue.length === 0) {
+          seterrD(true);
+        } else {
+          seterrD(false);
         }
-        const temp = e.target.value;
-        setNTN(temp);
-    }
+      
+        if (re.test(inputValue) && inputValue.length <= 7) {
+          setNTN(inputValue);
+        }
+      };
+      
 
     useEffect(() => {
         if (!localStorage.getItem('email_token')) {
