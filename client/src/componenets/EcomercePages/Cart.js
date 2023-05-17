@@ -138,21 +138,16 @@ const Cart = () => {
             <div className="button-container">
             <button
                 className="BuyNowstore"
-                onClick={() => navigate("/storehome")}
+                onClick={() => navigate("/productdetail")}
               >
-                Back To Store
+                Back 
               </button>
               
               <button className="BuyNowstore" onClick={GoProceed}>
                 Buy Now
               </button>
 
-              <button
-                className="BuyNowstore"
-                onClick={() => navigate("/productdetail")}
-              >
-                Back To product detail
-              </button>
+              
             </div>
           </div>
         </div>
