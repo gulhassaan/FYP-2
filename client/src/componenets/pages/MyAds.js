@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import axios from "axios";
 import { useEffect, useState, useContext } from "react";
@@ -33,7 +31,7 @@ export const MyAds = () => {
   const navigate = useNavigate();
   useEffect(() => {
     axios.get(`http://localhost:3006/Get_MyAD/${param}`).then((response) => {
-      console.log("THis is Response Data : ", response.data)
+      console.log("This is Response Data : ", response.data)
       var temp = response.data;
       temp.forEach(element => {
 
@@ -92,6 +90,23 @@ export const MyAds = () => {
     }
   }, [])
   //console.log(Ads);
+
+
+  /*Pagination*/
+
+  const itemsPerPage = 2; // Number of items to display per page
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
+  };
+
+  
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const displayedAds = Ads.slice(startIndex, endIndex);
+  
+
   return (
 
     <div>
@@ -110,9 +125,8 @@ export const MyAds = () => {
             </div>
             
             <Container sx={{ py: 8 }} to>
-            
               <Grid container spacing={4}>
-                {Ads.map((card) => (
+              {displayedAds.map((card) => (
                   <Grid class="myad-card" item key={card} xs={12} sm={6} md={3}>
                     <Card
                       style={{ backgroundColor: "rgba(255, 255, 255, 0.2)", height: "520px", borderRadius: "20px", width: "350px", boxShadow: "4px 4px 4px 4px rgba(0, 0, 0, 0.25)" }}
@@ -165,8 +179,16 @@ export const MyAds = () => {
                 ))}
               </Grid>
               <Stack spacing={2} alignItems={"center"}>
-                <Pagination count={10} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
-              </Stack>
+              <Pagination
+          count={Math.ceil(Ads.length / itemsPerPage)}
+          sx={{ marginTop: 7 }}
+          variant="outlined"
+          color="primary"
+          onChange={handlePageChange}
+          page={currentPage}
+        />
+      </Stack>
+
               
             </Container>
             </Fade>
