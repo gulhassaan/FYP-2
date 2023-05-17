@@ -567,7 +567,6 @@ app.get("/Get_Up_Ad/:AdID", (req, res) => {
     console.log("Serverr : ", id)
     db.query(`SELECT a.*,u.contact_number FROM ads a join users u  on a.email =  u.email where a.Ad_id = ${id} AND a.Status=1`, (err, result) => {
         res.send(result);
-console.log(result[0].contact_number)
     })
 })
 

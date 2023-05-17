@@ -10,15 +10,15 @@ function AppC() {
   const location = useLocation();
   console.log()
   const [userName, setuserName] = useState(location.state.user);
-
-  
   const [room, setRoom] = useState(location.state.room);
 
   console.log("JOIN CHAT WITH AD ID",room)
+   console.log("JOIN CHAT WITH Email",userName)
   
   const [showChat, setShowChat]=useState("");
   const joinRoom = () => {
       if (userName !== "" && room !== "") {
+        console.log("helo inside")
       socket.emit("join_room", room);
       setShowChat(true)
     }

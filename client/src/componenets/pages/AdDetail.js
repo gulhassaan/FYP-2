@@ -35,9 +35,9 @@ const[Contact,setContact] = useState("");
     setPrice(1000)
     setuser(localStorage.getItem("email_token"));
     setRoom(localStorage.getItem('room'));
-   
+   var id = localStorage.getItem("AdID")
     setLoading(true)
-    axios.get(`http://localhost:3006/Get_Up_Ad/${AdD}`).then((response) => {
+    axios.get(`http://localhost:3006/Get_Up_Ad/${id}`).then((response) => {
       var temp = response.data;
 
       temp.forEach(element => {
@@ -52,6 +52,7 @@ const[Contact,setContact] = useState("");
       setProduct(temp[0])
       setContact(temp.concat_number);
       setLoading(false);
+      localStorage.setItem("email2",temp[0].email)
 
       axios.get(`http://localhost:3006/Get_Up_User/${temp[0].email}`)
       .then((response) => {
@@ -131,7 +132,7 @@ const[Contact,setContact] = useState("");
 
 
   const GO = (id) => {
-    console.log(Email);
+ 
     setuser(localStorage.getItem("email_token"));
     console.log("user is : ", user)
     localStorage.setItem('room', id)
@@ -142,7 +143,7 @@ const[Contact,setContact] = useState("");
     console.log("AD ID IS : ", id)
 
     if (user !== "" && id !== "") {
-      navigate("/AppC", { state: { user: Email, room: id } })
+      navigate("/AppC", { state: { user: user, room: id } })
     }
     else {
       navigate("/login")
@@ -242,6 +243,14 @@ console.log(images);
                     <Grid item xs={12}><Typography gutterBottom variant="h5" component="div">
                       +92 {product.contact_number}
                     </Typography></Grid>
+                    {isDealer==1?
+                      <Grid item xs={12}><Typography gutterBottom variant="h5" component="div">
+                      Authenticated User
+                    </Typography></Grid>
+                    :<Grid item xs={12}><Typography gutterBottom variant="h5" component="div">
+                    Not Verified User
+                  </Typography></Grid>
+                    }
                     <CardActions sx={{ marginTop: "20px" }}>
                       <Button className="adDetail-btn" onClick={() => { GO(product.Ad_id) }} sx={{ backgroundColor: "#008083", color: "#FFFFFF", border: "2px solid #008083", borderRadius: "20px" }}>Contact Seller</Button>
 

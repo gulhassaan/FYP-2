@@ -24,6 +24,7 @@ import landingpage, { LandingPage } from "./componenets/pages/LandingPage";
 import AboutUs from "./componenets/pages/AboutUs";
 import AdDetail from "./componenets/pages/AdDetail";
 import AppC from "./componenets/chatsys/AppC";
+import Chat from "./componenets/chatsys/Chat";
 import Manage_UserAds from "./componenets/AdminPages/Manage_UserAds";
 import ManageUsers from "./componenets/AdminPages/ManageUsers";
 import ManageEcomerce from "./componenets/AdminPages/ManageEcomerce";
@@ -75,6 +76,7 @@ function App() {
                           <Route path="/profile" element={<Profile />}></Route>
                           <Route path="/about" element={<About />}></Route>
                           <Route path="/payment" element={<Payment />}></Route>
+                          <Route path="/chat" element={<Chat />}></Route>
                           <Route
                             path="/hardware"
                             element={<Hardware />}

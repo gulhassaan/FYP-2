@@ -74,6 +74,7 @@ export const Home = () => {
   function view(id) {
     console.log(id);
     setAdD(id);
+    localStorage.setItem("AdID",id);
     navigate("/AdDetail");
   }
   // const searching = (e) => {

@@ -161,6 +161,10 @@ const ProductDetail = () => {
     return starIcons;
   };
 
+  function imageSet(ind) {
+    setMainImage(images[ind]);
+
+  }
   return (
     <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
       <NavbarD />
@@ -178,28 +182,26 @@ const ProductDetail = () => {
               boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)",
             }}
           >
-            <Grid item xs={12} sm={7}>
-              <Grid container padding={1}>
-                <Grid item xs={12} height={350} width="inherit" borderRadius={3}>
-                  <img
-                    src={mainImage}
-                    style={{ borderRadius: "inherit", height: "inherit", width: "inherit" }}
-                    alt="Product"
-                  />
-                </Grid>
-                {images.map((image, ind) => (
-                  <Grid item xs={4} borderRadius={3} padding={"1rem"} key={ind}>
-                    <img
-                      src={image}
-                      width={200}
-                      height={100}
-                      style={{ borderRadius: "inherit", height: 120, width: 170 }}
-                      alt={`Product ${ind}`}
-                    />
-                  </Grid>
-                ))}
-              </Grid>
+          <Grid item xs={12} sm={7}>
+          <Grid container padding={1}>
+            <Grid item xs={12} height={350} width="inherit" borderRadius={3}>
+              <img src={mainImage} style={{ borderRadius: 'inherit', height: "inherit", width: 'inherit' }}></img>
             </Grid>
+            {images.map((image, ind) => (
+              <Grid item xs={4} borderRadius={3} padding={'1rem'}>
+                <img
+                  src={image}
+                  width={200}
+                  height={100}
+                  onClick={() => {
+                    imageSet(ind);
+                  }}
+                  style={{ borderRadius: 'inherit', height: 120, width: 170 }}
+                ></img>
+              </Grid>
+            ))}
+          </Grid>
+        </Grid>
             <Grid item xs={12} sm={5}>
               <Grid container height={"initial"} style={{ marginLeft: "10px" }}>
                 <Grid item xs={12}>
