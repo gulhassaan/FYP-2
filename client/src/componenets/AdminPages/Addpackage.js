@@ -13,10 +13,12 @@ function Addpackage() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
+  const [Days, setDays] = useState('');
 
   const [errT, seterrT] = useState(false)
   const [errD, seterrD] = useState(false)
   const [errP, seterrP] = useState(false)
+  const [errday, seterrday] = useState(false)
 
 
   const navigate = useNavigate();
@@ -32,15 +34,18 @@ function Addpackage() {
     }
     else if (price === "") {
       seterrP(true)
+    }  else if (Days === "") {
+      seterrday(true)
     }
     else {
-      Axios.post("http://localhost:3006/publish_package", { title: title, description: description, price: price }).then((response) => {
+      Axios.post("http://localhost:3006/publish_package", { title: title, description: description, price: price, Days:Days }).then((response) => {
         console.log(response.data);
       })
       navigate('/managead')
       seterrD(false);
       seterrP(false);
       seterrT(false);
+      seterrday(false);
     }
 
   }
@@ -56,7 +61,17 @@ function Addpackage() {
       setPrice(e.target.value);
     }
   };
-
+  const DaysHandle = (e) => {
+    const re = /^[0-9\b]+$/;
+    if (e.target.value === "") {
+      seterrday(true)
+    }
+    else {
+      seterrday(false)
+    } if (e.target.value === "" || re.test(e.target.value)) {
+      setDays(e.target.value);
+    }
+  };
   const titleHandle = (e) => {
     if (e.target.value === "") {
       seterrT(true)
@@ -152,6 +167,28 @@ function Addpackage() {
               {
                 errP ? <span style={{ color: "red" }}>Price Is Required</span> : ""
               }
+
+
+              <div className="form-group">
+                <label htmlFor="password">
+                  <img className="pass-icon" src={pri}></img>
+                </label>
+                <input
+                style={{ backgroundColor: '#FFFFFF' }}
+                value={Days}
+                  type="pin"
+                  name="pin"
+                  id="addpackage"
+                  placeholder="Days"
+                  onChange={DaysHandle}
+                  autoComplete="off"
+                ></input>
+              
+              </div>
+              {
+                errP ? <span style={{ color: "red" }}>Days Is Required</span> : ""
+              }
+
  <div className="form-group">
                 <label htmlFor="password">
                   <img className="pass-icon" src={det}></img>

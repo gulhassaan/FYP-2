@@ -240,10 +240,10 @@ app.post("/publish_package", async (req, res) => {
     const title = req.body.title;
     const description = req.body.description;
     const price = req.body.price;
-
+const Days = req.body.Days
     db.query(
-        "INSERT INTO ad_packages (Title,Description,Price) VALUES (?,?,?)",
-        [title, description, price],
+        "INSERT INTO ad_packages (Title,Description,Price,Days) VALUES (?,?,?,?)",
+        [title, description, price,Days],
         (err, result) => {
             console.log(err);
         }
@@ -377,11 +377,11 @@ app.put("/Buy_AdPackage/:id", (req, res) => {
 
     const AdID = req.params.id;
     const Pkg = req.body.pkg
-    
+    const Days = req.body.Days
     console.log("Ertg",AdID)
     
     console.log("Ertg",Pkg)
-    db.query(`UPDATE ads SET Package=? WHERE Ad_id =?`,[Pkg,AdID], (err, result) => {
+    db.query(`UPDATE ads SET Package=?,Days=? WHERE Ad_id =?`,[Pkg,Days,AdID], (err, result) => {
         if (err) {
             console.log(err)
         }
