@@ -123,7 +123,7 @@ else{
           <div className="adminsignin-content">
             <div className="signin-form">
               <img src={log} />
-              <h2 className="form-title">Admin Login</h2>
+              <h2 className="addproduct-title">Admin Login</h2>
               <form
                 className="register-form"
                 id="register-form"
@@ -140,7 +140,7 @@ else{
                   style={{ backgroundColor: '#FFFFFF' }}
                     type="email"
                     name="email"
-                    id="email"
+                    id="addpackage"
 
                     placeholder="Email"
                     onChange={EmailHandler}
@@ -162,7 +162,7 @@ else{
                   style={{ backgroundColor: '#FFFFFF' }}
                     type="password"
                     name="passwrod"
-                    id="password"
+                    id="addpackage"
                     placeholder="Password"
                     onChange={passHandler}
                     value={password}

@@ -54,7 +54,11 @@ const verify =(email)=>{
 }
 
 
-
+useEffect(() => {
+  if (!localStorage.getItem('Adminemail')) {
+    navigate('/Adminlogin')
+  }
+}, [])
   return (
     <div>    
     <Navbar />
@@ -62,6 +66,7 @@ const verify =(email)=>{
       <Paper elevation={3} style={{ padding: "30px", display: "flex", flexDirection: "column" }}>
         <Grid container spacing={3} alignItems="center" justifyContent="center">
           <Grid item>
+            <h1>Verify User</h1>
             <img src={avatarUser} alt="Profile Picture" style={{ width: "120px", height: "120px", marginBottom: "20px" }} />
           </Grid>
           <Grid item>
@@ -90,7 +95,7 @@ const verify =(email)=>{
             ))}
            
           </div>
-          <Button class="myad-btn" style={{marginLeft:350,marginTop:30}} onClick={()=>{verify(User.user)}}>Verify User</Button>
+          <Button class="verify-btn" style={{marginLeft:350,marginTop:30}} onClick={()=>{verify(User.user)}}>Verify User</Button>
           </Grid>
         </Grid>
       </Paper>

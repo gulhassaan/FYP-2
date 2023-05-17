@@ -579,7 +579,7 @@ const DesHandle=(e)=>{
                         <a href="/home">
                           <img className="pass-icon4" src={arrow} alt=""></img>
                         </a>
-                        <h2 className="form-title mx-auto">Publish Your Ad</h2>
+                        <h2 className="form-title mx-auto">Update Your Ad</h2>
                       </div>
                       <form onSubmit={handleSubmit}>
                         {/* Forms */}

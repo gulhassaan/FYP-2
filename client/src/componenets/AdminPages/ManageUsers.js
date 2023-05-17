@@ -23,10 +23,10 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const ManageUsers = () => {
 
+ 
 
 
-
-
+  const navigate = useNavigate()
   const [listOfUsers, setListOfUsers] = useState([]);
   const [page, setpage] = useState(0);
   const [search, setSearch] = useState("");
@@ -117,6 +117,12 @@ const ManageUsers = () => {
         }))
     })
   }
+  
+  useEffect(() => {
+    if (!localStorage.getItem('Adminemail')) {
+      navigate('/Adminlogin')
+    }
+  }, [])
 
   return (
 
@@ -125,11 +131,11 @@ const ManageUsers = () => {
       <main>
       <div className='Search_Filters' style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"90PX" }}>
       <input
-        style={{ width: '50%', marginRight: '0.5rem', backgroundColor: '#FFFFFF',color:"rgba(0, 95, 96, 0.8)" }}
+        style={{ width: '50%', marginRight: '0.5rem', backgroundColor: '#FFFFFF',color:"rgba(0, 95, 96, 0.8)", borderRadius:"30px", border:"2px solid #008083" }}
         autoComplete='off'
-        placeholder='Search'
+        placeholder='Search User'
         type='text'
-        className='customform w-50'
+        className='madmin w-50'
         list='item-list'
         onChange={(e)=>{setSearch(e.target.value)}}
       />

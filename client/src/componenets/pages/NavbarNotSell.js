@@ -21,7 +21,7 @@ const NavbarHome = () => {
 </div>
         <div className={`nav-items ${isOpen && "open"}`}style={{marginLeft:"auto"}}>
        
-      <a href=""><img className="pass-icon1" src={account} ></img>
+      <a href="/profile"><img className="pass-icon1" src={account} ></img>
       
     
        </a>
