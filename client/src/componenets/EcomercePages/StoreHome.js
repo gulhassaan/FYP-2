@@ -129,7 +129,7 @@ const StoreHome = () => {
     }
   }, [])
 
-  /*Pagination*/
+  /*Pagination: */
 
   const itemsPerPage = 3; // Number of items to display per page
   const [currentPage, setCurrentPage] = useState(0);

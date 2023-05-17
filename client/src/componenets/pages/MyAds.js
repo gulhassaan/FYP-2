@@ -92,7 +92,7 @@ export const MyAds = () => {
   //console.log(Ads);
 
 
-  /*Pagination*/
+  /*Pagination : */
 
   const itemsPerPage = 2; // Number of items to display per page
   const [currentPage, setCurrentPage] = useState(1);
