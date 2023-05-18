@@ -55,6 +55,7 @@ const Adfeature=(id)=>{
   console.log("Id was",id);
   localStorage.setItem("SetIDPKG",id)
   navigate("/adfeaturing")
+  
 }
   return (
     <div>    <Navbar />

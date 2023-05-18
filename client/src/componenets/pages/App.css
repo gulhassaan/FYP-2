@@ -875,6 +875,11 @@
   justify-content: center;
   text-align: center;
 }
+.pass-iconf {
+  width: 25px;
+  height: 25px;
+
+}
 
 .pass-icon {
   width: 35px;

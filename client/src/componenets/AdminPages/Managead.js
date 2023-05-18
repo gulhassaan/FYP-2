@@ -111,16 +111,14 @@ const displayedAds = Adpac.slice(startIndex, endIndex);
           <div class="pageheading" style={{ display: 'flex', alignItems: 'center',justifyContent:"center" , paddingTop:"90PX" }}>
             <h1>Manage Ad Featuring Packages</h1>
           </div>
-          <div>
-          <button className="manage-btn" onClick={navi} style={{ "background-color": "#008083", "borderColor": "#008083", "boxShadow": "4px 4px 4px rgba(0, 0, 0, 0.25)" }}>
-              <img className='pass-icon' src={add} />
-              Add Packages
-            </button>
-          </div>
+          
           <div className='head'>
-          <button className='ManageEcommercebutton' style={{ "background-color": "#008083", "color": "#FFFFFF", "borderRadius": "10px", "borderColor": "#008083", "marginRight": "10px", "boxShadow": "4px 4px 4px rgba(0, 0, 0, 0.25)" }} onClick={() => { CurrentPkg() }}>Current Packages</button>
-            <button className='ManageEcommercebutton' style={{ "background-color": "#008083", "color": "#FFFFFF", "borderRadius": "10px", "borderColor": "#008083", "marginRight": "10px", "boxShadow": "4px 4px 4px rgba(0, 0, 0, 0.25)" }} onClick={() => { PreviousPkg() }}>Previous Packages</button>
-          </div>
+          
+            
+            <button className='ManageEcommercebutton' style={{ "background-color": "#008083", "color": "#FFFFFF", "borderRadius": "10px", "borderColor": "#008083", "marginRight": "10px", "boxShadow": "4px 4px 4px rgba(0, 0, 0, 0.25)" }}onClick={navi}><img className='pass-iconf' src={add} />Current Packages</button>
+            <button className='ManageEcommercebutton' style={{ "background-color": "#008083", "color": "#FFFFFF", "borderRadius": "10px", "borderColor": "#008083", "marginRight": "10px", "boxShadow": "4px 4px 4px rgba(0, 0, 0, 0.25)" }} onClick={() => { CurrentPkg() }}>Current Packages</button>
+              <button className='ManageEcommercebutton' style={{ "background-color": "#008083", "color": "#FFFFFF", "borderRadius": "10px", "borderColor": "#008083", "marginRight": "10px", "boxShadow": "4px 4px 4px rgba(0, 0, 0, 0.25)" }} onClick={() => { PreviousPkg() }}>Previous Packages</button>
+                        </div>
 
           <main>
           {Adpac!=""?

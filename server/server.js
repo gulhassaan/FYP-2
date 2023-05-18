@@ -10,7 +10,7 @@ app.use(cors());
 const db = mysql.createConnection({
     user: "root",
     host: "localhost",
-    password: "password",
+    password: "root1234",
     database: "gamingstan"
 });
 
@@ -654,6 +654,24 @@ app.get("/filterHtoL",(req,res)=>{
         res.send(result);
     })
 })
+
+
+// Filters H to L Product
+app.get("/filterHtoLP",(req,res)=>{
+    db.query("SELECT * FROM product where Status=1 ORDER BY Price DESC ",(err,result)=>{
+        res.send(result);
+    })
+})
+// Filters L to H Product
+app.get("/filterLtoHP",(req,res)=>{
+    db.query("SELECT * FROM product where Status=1 ORDER BY Price Asc ",(err,result)=>{
+        res.send(result);
+    })
+})
+
+
+
+
 //Get Reported Ads
 
 app.get("/Get_Reported_ADs",(req,res)=>{
@@ -730,9 +748,22 @@ app.put("/setAuth/:email", (req, res) => {
     })
 })
 
-app.put("/setAuth2/:email", (req, res) => {
+//del Auth
+app.put("/delAuth/:email", (req, res) => {
     const email = req.params.email;
-    db.query(`UPDATE userauthentication SET IsVerified = ? WHERE user = ?`,[1,email],(err, result) => {
+    db.query(`UPDATE users SET IsDealer = ? WHERE email = ?`,[0,email],(err, result) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.send(result)
+        }
+    })
+})
+//del request
+app.delete("/delAuth2/:email", (req, res) => {
+    const email = req.params.email;
+    db.query(`Delete from userauthentication  WHERE user = ?`,[email],(err, result) => {
         if (err) {
             console.log(err)
         }

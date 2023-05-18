@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import NavbarS from './NavbarS';
-import './Successfull.css';
-
-const Successfull = () => {
+import NavbarS from '../EcomercePages/NavbarS';
+import '../EcomercePages/Successfull.css';
+import imag2 from '../images/login10.jpg';
+const Success = () => {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(true);
+
 
   const closePopup = () => {
     setShowPopup(false);
@@ -20,8 +21,8 @@ const Successfull = () => {
           <div className="popup">
             <div className="popup-content">
               <h2>Thank You for Your Purchase!</h2>
-              <p>We appreciate your business and hope you enjoy your new gaming items.</p>
-              <button className="close-button" onClick={handleBackButton}>Continue Shopping</button>
+              <p>We appreciate your business and hope you enjoy this product.</p>
+              <button className="close-button" onClick={closePopup}>Continue Shopping</button>
             </div>
           </div>
         )}
@@ -30,4 +31,4 @@ const Successfull = () => {
   );
 };
 
-export default Successfull;
+export default Success;

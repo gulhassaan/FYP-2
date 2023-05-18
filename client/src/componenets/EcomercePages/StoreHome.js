@@ -37,7 +37,6 @@ import { NavLink } from "react-router-dom";
 const StoreHome = () => {
   const { Email } = useContext(EmailContext);
   const { AdD, setAdD } = useContext(AdDContext);
-  const [listOfAds, setListOfAds] = useState([]);
   const navigate = useNavigate();
   const [page, setpage] = useState(0);
   localStorage.setItem("newemail", Email);
@@ -47,36 +46,19 @@ const StoreHome = () => {
 
   const [search, setSearch] = useState("");
   const [Filter, setFilter] = useState("");
-  const [img, setimg] = useState([]);
-  useEffect(() => {
-    axios.get(`http://localhost:3006/Get_AD`).then((response) => {
-      console.log("THis is Response Data : ", response.data);
-      var temp = response.data;
-      console.log(response.data);
-      temp.forEach((element) => {
-        element.Images = JSON.parse(element.Images);
-      });
-      setListOfAds(temp);
-      console.log("After parse : ", temp);
-    });
-  }, []);
+
   useEffect(() => {
     axios
       .get(`http://localhost:3006/Get_Products?limit=10&offset=${page * 10}`)
       .then((response) => {
-        console.log("THis is Response Data : ", response.data);
         var temp = response.data;
-        console.log(response.data);
         temp.forEach((element) => {
           element.Images = JSON.parse(element.Images);
         });
         setlistofProducts(temp);
-        console.log("After parse : ", temp);
       });
   }, []);
-  const moreinfo = () => {
-    navigate("/Addetail");
-  };
+
   function view(id) {
     console.log(id);
     setAdD(id);
@@ -88,38 +70,22 @@ const StoreHome = () => {
     setFilter(e.target.value);
     if (filter == "High TO Low") {
       console.log(Filter);
-      axios.get(`http://localhost:3006/filterHtoL`).then((response) => {
+      axios.get(`http://localhost:3006/filterHtoLP`).then((response) => {
         var data = response.data;
         data.forEach((element) => {
           element.Images = JSON.parse(element.Images);
         });
-        setListOfAds(data);
+        setlistofProducts(data);
       });
     } else if (filter == "Low To High") {
-      axios.get(`http://localhost:3006/filterLtoH`).then((response) => {
+      axios.get(`http://localhost:3006/filterLtoHP`).then((response) => {
         var data = response.data;
         data.forEach((element) => {
           element.Images = JSON.parse(element.Images);
         });
-        setListOfAds(data);
+        setlistofProducts(data);
       });
-    } else if (filter == "Latest") {
-      axios.get(`http://localhost:3006/filterLatest`).then((response) => {
-        var data = response.data;
-        data.forEach((element) => {
-          element.Images = JSON.parse(element.Images);
-        });
-        setListOfAds(data);
-      });
-    } else if (filter == "Oldest") {
-      axios.get(`http://localhost:3006/filterOldest`).then((response) => {
-        var data = response.data;
-        data.forEach((element) => {
-          element.Images = JSON.parse(element.Images);
-        });
-        setListOfAds(data);
-      });
-    }
+    } 
   };
 
   useEffect(() => {
@@ -192,22 +158,20 @@ const StoreHome = () => {
                 paddingTop: "40PX",
               }}
             >
-              <input
-                style={{
-                  width: "50%",
-                  marginRight: "0.5rem",
-                  backgroundColor: "transparent",
-                  color: "#ffffff",
-                  borderRadius: "30px",
-                  border: "2px solid white",
-                }}
-                autoComplete="off"
-                placeholder="Search"
-                type="text"
-                className="estore w-50"
-                list="item-list"
-                onChange={(e) => setSearch(e.target.value)}
-              />
+            <input
+            style={{
+              width: "50%",
+              marginRight: "0.5rem",
+              backgroundColor: "transparent", color: "#ffffff", borderRadius: "30px", border: "2px solid white"
+            }}
+            autoComplete="off"
+            placeholder="Search"
+            type="text"
+            className="customform w-50"
+            list="item-list"
+            onChange={(e) => setSearch(e.target.value)}
+          />
+
               <FormControl
                 style={{
                   backgroundColor: "transparent",
@@ -263,32 +227,15 @@ const StoreHome = () => {
                   >
                     Low to High
                   </MenuItem>
-                  <MenuItem
-                    value={"Latest"}
-                    style={{
-                      borderRadius: "20px",
-                      color: "rgba(0, 95, 96, 0.8)",
-                    }}
-                  >
-                    Latest
-                  </MenuItem>
-                  <MenuItem
-                    value={"Oldest"}
-                    style={{
-                      borderRadius: "20px",
-                      color: "rgba(0, 95, 96, 0.8)",
-                    }}
-                  >
-                    Oldest
-                  </MenuItem>
+                 
                 </Select>
               </FormControl>
             </div>
-
+{displayedProducts!=""?
             <Container sx={{ py: 8 }}>
               <Grid container spacing={4}>
                 {displayedProducts
-                  .map((card) => {
+                  .filter((card) => {
                     return search.toLowerCase() === ""
                       ? card
                       : card.Name.toLowerCase().includes(search);
@@ -369,7 +316,7 @@ const StoreHome = () => {
                 />
 
               </Stack>
-            </Container>
+            </Container>:<h2 style={{color:"white"}}>No Product Available</h2>}
           </div>
 
         </main>

@@ -153,13 +153,9 @@ function Managead() {
 
         </div>
 
-        <div>
-          <button className="addproduct-btn" onClick={navi} >
-            <img className='pass-icon' src={add} />
-            Add Product
-          </button>
-        </div>
+        
         <div className='head'>
+        <button className='ManageEcommercebutton' style={{ "background-color": "#008083", "color": "#FFFFFF", "borderRadius": "10px", "borderColor": "#008083", "marginRight": "10px", "box-shadow": "8px 8px 8px rgba(0, 0, 0, 0.25)" }} onClick={navi}> <img className='pass-iconf' src={add} /> Add Products</button>
           <button className='ManageEcommercebutton' style={{ "background-color": "#008083", "color": "#FFFFFF", "borderRadius": "10px", "borderColor": "#008083", "marginRight": "10px", "box-shadow": "8px 8px 8px rgba(0, 0, 0, 0.25)" }} onClick={() => { CurrentPkg() }}>Available Products</button>
           <button className='ManageEcommercebutton' style={{ "background-color": "#008083", "color": "#FFFFFF", "borderRadius": "10px", "borderColor": "#008083", "marginRight": "10px", "box-shadow": "8px 8px 8px rgba(0, 0, 0, 0.25)" }} onClick={() => { PreviousPkg() }}>Unavailable Products</button>
         </div>
