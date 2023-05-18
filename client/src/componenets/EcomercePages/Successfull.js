@@ -16,6 +16,10 @@ const Success = () => {
   return (
     <div>
       <NavbarS />
+      <div className='Login-banner'>
+        <div className="overlaybg1"></div>
+        <img className="img1" src={imag2}></img>
+        <div className='ContentLanding'>
       <div className="successfull-container">
         {showPopup && (
           <div className="popup">
@@ -26,6 +30,8 @@ const Success = () => {
             </div>
           </div>
         )}
+      </div>
+      </div>
       </div>
     </div>
   );
