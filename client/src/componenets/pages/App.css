@@ -654,7 +654,22 @@
   background-color: #008083;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
-
+.featuread-btn {
+  border: 2px solid #008083;
+  border-radius: 30px;
+  padding: 9px 25px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-left: 30px;
+  margin-left: -30px;
+  background-color: #008083;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.featuread-btn:hover{
+background-color: transparent;
+color: #fff;
+border: 2px solid white;
+}
 .update-passbtn,
 .verify,
 .updated {
@@ -673,7 +688,11 @@
   background-color: #FFFFFF;
   border-radius: 20px;
 }
+.feature-card {
 
+  box-shadow: 8px 8px 8px 8px rgb(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
 .manageusers-card {
   margin-left: 70px;
   margin-bottom: 50px;
@@ -785,6 +804,12 @@
   border: 2px solid #ffffff;
   font-weight: bold;
 }
+.feature-btn:hover {
+  background-color: transparent;
+  color: white;
+  border: 2px solid #ffffff;
+  font-weight: bold;
+}
 .verify-btn:hover {
   background-color: transparent;
   color: #008083;
@@ -830,7 +855,16 @@
   background-color: #008083;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
-
+.feature-btn{
+  border: 2px solid #008083;
+  color: #FFFFFF;
+  border-radius: 30px;
+  margin-left: 25px;
+  margin-top: 30px;
+  padding: 9px 15px;
+  background-color: #008083;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
 .myad-btn {
   border: 2px solid #008083;
   color: #FFFFFF;
@@ -2195,7 +2229,11 @@ video {
   text-align: center;
   padding: 35px;
 }
-
+.featureh {
+  color: #fff;
+  text-align: center;
+  padding: 35px;
+}
 .hd {
   justify-content: center;
   text-align: center;
