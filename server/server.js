@@ -747,7 +747,17 @@ app.put("/setAuth/:email", (req, res) => {
         }
     })
 })
-
+app.put("/setAuth2/:email", (req, res) => {
+    const email = req.params.email;
+    db.query(`UPDATE userauthentication SET IsVerified = ? WHERE user = ?`,[1,email],(err, result) => {
+        if (err) {
+            console.log(err)
+        }
+        else {
+            res.send(result)
+        }
+    })
+})
 //del Auth
 app.put("/delAuth/:email", (req, res) => {
     const email = req.params.email;

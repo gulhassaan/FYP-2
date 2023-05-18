@@ -51,7 +51,7 @@ const verify =(email)=>{
             return val.user != email
           }))
       })
-      navigate('/userreq')
+      navigate('/manageusers')
 }
 
 const del =(email)=>{
@@ -69,7 +69,7 @@ const del =(email)=>{
           return val.user != email
         }))
     })
-    navigate('/userreq')
+    navigate('/manageusers')
 }
 
 useEffect(() => {
