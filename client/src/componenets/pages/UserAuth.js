@@ -52,10 +52,15 @@ function UserAuth() {
             //   seterrE(true)
             seterror("CNIC must be 13")
             seterrQ(true)
-        } else if (NTN === "") {
+        } else if (NTN != "") {
 
             //   seterrE(true)
             seterror("NTN is Required")
+            seterrD(true)
+        }else if (NTN.length != 7) {
+
+            //   seterrE(true)
+            seterror("NTN Must be 7")
             seterrD(true)
         }
         else if (Images.length === 0) {
