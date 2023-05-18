@@ -96,7 +96,7 @@ const StoreHome = () => {
 
   /*Pagination: */
 
-  const itemsPerPage = 3; // Number of items to display per page
+  const itemsPerPage = 8; // Number of items to display per page
   const [currentPage, setCurrentPage] = useState(0);
 
   const handlePageChange = (event, value) => {
@@ -307,7 +307,7 @@ const StoreHome = () => {
                   ))}
               </Grid>
 
-              <Stack spacing={2} alignItems={"center"}>
+              <Stack spacing={2} alignItems={"center"} style={{ color: "white" }}>
                 <Pagination
                   count={Math.ceil(listofProducts.length / itemsPerPage)}
                   style={{ color: "white" }}

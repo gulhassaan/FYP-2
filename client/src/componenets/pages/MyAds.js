@@ -94,7 +94,7 @@ export const MyAds = () => {
 
   /*Pagination : */
 
-  const itemsPerPage = 2; // Number of items to display per page
+  const itemsPerPage = 8; // Number of items to display per page
   const [currentPage, setCurrentPage] = useState(1);
 
   const handlePageChange = (event, value) => {

@@ -10,7 +10,7 @@ app.use(cors());
 const db = mysql.createConnection({
     user: "root",
     host: "localhost",
-    password: "password",
+    password: "root1234",
     database: "gamingstan"
 });
 
@@ -263,7 +263,7 @@ app.get("/Get_AdPackages", (req, res) => {
 //Get All Products
 app.get("/Get_Product", (req, res) => {
     console.log("im a server")
-    db.query(`SELECT * FROM product Where Status=1`, (err, result) => {
+    db.query(`SELECT * FROM product Where Status=?`,[1], (err, result) => {
         res.send(result);
 
     })

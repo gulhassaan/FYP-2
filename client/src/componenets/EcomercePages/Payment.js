@@ -24,6 +24,14 @@ console.log("ID ISWAS",id)
   console.log(email);
   var days = localStorage.getItem("PackageDays");
 
+
+
+  const [errN, seterrN] = useState(false)
+  const [errD, seterrD] = useState(false)
+  const [errCN, seterrCN] = useState(false)
+  const [errCVC, seterrCVC] = useState(false)
+
+
   const cartCheck = localStorage.getItem("cart")
   const handleCardNumberChange = (event) => {
     setCardNumber(event.target.value);
@@ -49,22 +57,38 @@ console.log("ID ISWAS",id)
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Perform validation
-    if (!cardNumber || !cardHolderName || !expirationDate || !cvc) {
-      // Show error message if any field is missing
-      console.log("Please fill in all the required fields.");
-      return;
-    }
 
-    // Perform further actions, such as processing the payment
-    console.log("Card Number:", cardNumber);
-    console.log("Card Holder Name:", cardHolderName);
-    console.log("Expiration Date:", expirationDate);
-    console.log("Month:", month);
-    console.log("Year:", year);
-    console.log("Price:", Bill);
-    console.log("Email:", email);
-    // Send payment details to the server
+
+    if (cardHolderName === "") {
+
+      seterror("Name is Required")
+      seterrN(true)
+  }
+  else if (cardNumber === "") {
+
+ 
+      seterror("Card number is Required")
+      seterrCN(true)
+  } else if (cardNumber.length != 16) {
+
+      seterror("Card Number must be 16 digits")
+      seterrCN(true)
+  } else if (cvc === "") {
+
+      //   seterrE(true)
+      seterror("CVC is Required")
+      seterrCVC(true)
+  }else if (cvc.length != 3) {
+
+      //   seterrE(true)
+      seterror("CVC Must be 3 digits")
+      seterrCVC(true)
+  }else if (expirationDate ==="") {
+
+    //   seterrE(true)
+    seterror("Date is Required")
+    seterrD(true)
+  }else
     axios.post("http://localhost:3006/payment", {
       Email: email,
       Price: Bill,
@@ -98,7 +122,6 @@ console.log("THrought profiel chanfe")
         }
       })
       .catch((error) => {
-
         seterror(1)
         console.log("Payment Unsuccessfull, Please Enter accurate credentials")
         console.error("Error submitting payment:", error);
@@ -106,6 +129,71 @@ console.log("THrought profiel chanfe")
 
     // You can add your logic here to handle the payment
   };
+
+  const CardNumberHandle = (e) => {
+    const re = /^[0-9\b]+$/;
+  
+    if (e.target.value === "") {
+      seterrCN(true);
+    } else {
+      seterrCN(false);
+    }
+  
+    const inputValue = e.target.value.replace(/\D/g, ""); 
+  
+    if (inputValue.length <= 16) {
+      setCardNumber(inputValue.slice(0, 16));
+    }
+  };
+  
+  
+
+const NameHandle = (e) => {
+    if (e.target.value == "") {
+      seterrN(true);
+    } else {
+      seterrN(false);
+    }
+  
+    const nameRegex = /^[A-Za-z\s]+$/;
+    if (!nameRegex.test(e.target.value)) {
+        seterrN(true);
+    } else {
+      setCardHolderName(e.target.value);
+      seterrN(false);
+    }
+  };
+  
+  const CVCHandle = (e) => {
+    const re = /^[0-9\b]+$/;
+    const inputValue = e.target.value.replace(/\D/g, ""); 
+  
+    if (inputValue.length === 0) {
+      seterrCVC(true);
+    } else
+     {
+      seterrCVC(false);
+    }
+  
+    if (re.test(inputValue) && inputValue.length <= 3) {
+      setCvc(inputValue);
+    }
+  };
+  
+  const DateHandle = (e) => {
+    const dateRegex = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
+    const inputValue = e.target.value.replace(/\D/g, ""); 
+    if (inputValue.length === 0) {
+      seterrD(true);
+    } else {
+      seterrD(false);
+    }
+  
+    if (e.target.value.length <= 5) {
+      setExpirationDate(e.target.value);
+    }
+  };
+
 
   const cardLogos = [
     'https://t.ly/VBHJ',
@@ -129,9 +217,10 @@ console.log("THrought profiel chanfe")
                     type="text"
                     id="firstName"
                     value={cardHolderName}
-                    onChange={handleCardHolderNameChange}
-                    required
+                    onChange={NameHandle}
+                placeholder="Name"
                   />
+                  {errN ? <span style={{ color: "#00ffff" }}>Name Is Required</span> : ""}
                 </div>
 
               </div>
@@ -142,20 +231,22 @@ console.log("THrought profiel chanfe")
                     type="text"
                     id="cardNumber"
                     value={cardNumber}
-                    onChange={handleCardNumberChange}
-                    required
+                    onChange={CardNumberHandle}
+                    placeholder="****************"
                   />
-
+                  {errCN ? <span style={{ color: "#00ffff" }}>Valid Card Number Is Required</span> : ""}
                 </div>
                 <div className="form-group">
                   <label htmlFor="cvv">CVC</label>
                   <input
                     type="text"
                     id="cvv"
+                    placeholder="123"
                     value={cvc}
-                    onChange={handleCvcChange}
-                    required
+                    onChange={CVCHandle}
+              
                   />
+                  {errCVC ? <span style={{ color: "#00ffff" }}>Valid CVC Is Required</span> : ""}
                 </div>
               </div>
               <div className="form-row">
@@ -170,9 +261,10 @@ console.log("THrought profiel chanfe")
                     type="text"
                     id="expiryDate"
                     value={expirationDate}
-                    onChange={handleExpirationDateChange}
-                    required
+                    onChange={DateHandle}
+                 placeholder="MM/YY"
                   />
+                  {errD ? <span style={{ color: "#00ffff" }}>Valid Date Is Required</span> : ""}
                 </div>
               </div>
               {error==1&&
