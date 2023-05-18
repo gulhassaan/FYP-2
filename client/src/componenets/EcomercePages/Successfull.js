@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import NavbarS from '../EcomercePages/NavbarS';
 import '../EcomercePages/Successfull.css';
 import imag2 from '../images/login10.jpg';
-const Success = () => {
+const Successfull = () => {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(true);
 
@@ -37,4 +37,4 @@ const Success = () => {
   );
 };
 
-export default Success;
+export default Successfull;
