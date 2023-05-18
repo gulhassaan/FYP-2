@@ -86,7 +86,7 @@ function Managead() {
       navigate('/Adminlogin')
     }
   }, [])
-
+ 
 /*Pagination : */
 
 const itemsPerPage = 2; // Number of items to display per page

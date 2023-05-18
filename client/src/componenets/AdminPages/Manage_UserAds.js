@@ -158,7 +158,7 @@ console.log(email);
     const endIndex = startIndex + itemsPerPage;
     const displayedAds = listOfAds.slice(startIndex, endIndex);
     
-  
+   
   return (
 
     <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>

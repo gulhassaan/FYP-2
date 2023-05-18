@@ -596,7 +596,17 @@
   color: #FFFFFF;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
-
+.Adminbt {
+  border-radius: 30px;
+  padding: 9px 45px;
+  margin: 7px;
+  border: 2px solid #008083;
+  background-color: #008083;
+  margin-left: 400px;
+  margin-top: 20px;
+  color: #FFFFFF;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
 .BuyNow {
   border-radius: 30px;
   padding: 9px 45px;
@@ -820,6 +830,11 @@ border: 2px solid white;
   background-color: transparent;
   color: #fff;
   border: 2px solid #ffffff;
+}
+.Adminbt:hover {
+  background-color: transparent;
+  color: #008083;
+  border: 2px solid #008083;
 }
 .ManageEcommercebutton:hover{
   background-color: #fff;
@@ -2322,6 +2337,15 @@ video {
 }
 .customform {
   color: #ffffff;
+  border-radius: 80px;
+  border: 1px solid white;
+  width: 100%;
+  display: block;
+  max-width: 90%;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.Adminpages{
+  color: #000;
   border-radius: 80px;
   border: 1px solid white;
   width: 100%;

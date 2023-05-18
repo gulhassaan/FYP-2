@@ -190,7 +190,7 @@ export default function AddProduct() {
                                                         onChange={titleHandle}
                                                         name=""
                                                         id=""
-                                                        className="customform w-100"
+                                                        className="Adminpages w-100"
                                                         placeholder="Ad Title"
                                                         required
                                                     />
@@ -207,7 +207,7 @@ export default function AddProduct() {
                                                         type="text"
                                                         name=""
                                                         id=""
-                                                        className="customform w-100"
+                                                        className="Adminpages w-100"
                                                         placeholder="RS | "
                                                     />
 
@@ -222,7 +222,7 @@ export default function AddProduct() {
                                                         type="text"
                                                         name=""
                                                         id=""
-                                                        className="customform w-100"
+                                                        className="Adminpages w-100"
                                                         placeholder="Quantity"
                                                     />
 
@@ -239,7 +239,7 @@ export default function AddProduct() {
                                                     style={{ backgroundColor: '#FFFFFF', borderRadius:"10px", border:"2px solid #008083" }}
                                                     name=""
                                                     id=""
-                                                    className="customform1 w-100"
+                                                    className="Adminpages w-100"
                                                     rows="5"
                                                     onChange={DesHandle}
                                                 ></textarea>
@@ -257,7 +257,7 @@ export default function AddProduct() {
                                                 {errI ? <span style={{ color: "red" }}>Images Is Required</span> : ""}
                                             </div>
 
-                                            <button onClick={publish} className="PostNow">
+                                            <button onClick={publish} className="Adminbt">
                                                 Post Now
                                             </button>
 
