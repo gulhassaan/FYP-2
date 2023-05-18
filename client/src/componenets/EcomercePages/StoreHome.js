@@ -307,15 +307,16 @@ const StoreHome = () => {
                   ))}
               </Grid>
 
-              <Stack spacing={2} alignItems={"center"}>
-                <Pagination
-                  count={Math.ceil(listofProducts.length / itemsPerPage)}
-                  style={{ color: "white" }}
-                  onChange={handlePageChange}
-                  page={currentPage + 1}
-                />
+              <Stack spacing={2} alignItems="center">
+  <Pagination
+    count={Math.ceil(listofProducts.length / itemsPerPage)}
+    color="primary"
+    onChange={handlePageChange}
+    page={currentPage + 1}
+  />
+</Stack>
 
-              </Stack>
+
             </Container>:<h2 style={{color:"white"}}>No Product Available</h2>}
           </div>
 

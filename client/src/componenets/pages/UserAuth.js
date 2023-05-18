@@ -103,8 +103,7 @@ function UserAuth() {
         }
       };
       
-      
-
+    
     const NameHandle = (e) => {
         if (e.target.value == "") {
           seterrT(true);

@@ -240,16 +240,14 @@ const[uCheck,setucheck]=useState(0);
                 </Grid>
               ))}
             </Grid>
-            <Stack spacing={2} alignItems={"center"}>
-            <Pagination
-          count={Math.ceil(listOfUsers.length / itemsPerPage)}
-          sx={{ marginTop: 7 }}
-          variant="outlined"
-          color="primary"
-          onChange={handlePageChange}
-          page={currentPage}
-        />
-            </Stack>
+            <Stack spacing={2} alignItems="center">
+  <Pagination
+    count={Math.ceil(listOfUsers.length / itemsPerPage)}
+    color="primary"
+    onChange={handlePageChange}
+    page={currentPage + 1}
+  />
+</Stack>
           </Container>:<div>
           <h2 style={{ marginTop: 100, marginLeft: 600, marginBottom: 340 }}>No Users</h2>
           

@@ -178,16 +178,14 @@ export const MyAds = () => {
 
                 ))}
               </Grid>
-              <Stack spacing={2} alignItems={"center"}>
-              <Pagination
-          count={Math.ceil(Ads.length / itemsPerPage)}
-          sx={{ marginTop: 7 }}
-          variant="outlined"
-          color="primary"
-          onChange={handlePageChange}
-          page={currentPage}
-        />
-      </Stack>
+              <Stack spacing={2} alignItems="center">
+  <Pagination
+    count={Math.ceil(Ads.length / itemsPerPage)}
+    color="primary"
+    onChange={handlePageChange}
+    page={currentPage + 1}
+  />
+</Stack>
 
               
             </Container>:<div>
