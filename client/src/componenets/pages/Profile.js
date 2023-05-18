@@ -51,20 +51,20 @@ const UserProfile = () => {
 
 
   }, []);
-const Adfeature=(id)=>{
-  console.log("Id was",id);
-  localStorage.setItem("SetIDPKG",id)
-  navigate("/adfeaturing")
-  
-}
+  const Adfeature = (id) => {
+    console.log("Id was", id);
+    localStorage.setItem("SetIDPKG", id)
+    navigate("/adfeaturing")
+
+  }
   return (
     <div>    <Navbar />
       <div className='sell-banner'>
         <div className="overlaybg0"></div>
         <img className="img1" src={imag2}></img>
         <div className='ContentLanding'>
-          <Container maxWidth="md" style={{ paddingTop: "120px", paddingBottom: "120px",  }}>
-            <Paper elevation={3} style={{ padding: "30px", display: "flex", flexDirection: "column", backgroundColor: "rgba(255, 255, 255, 0.2)",  color: "#ffffff", boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)" }}>
+          <Container maxWidth="md" style={{ paddingTop: "120px", paddingBottom: "120px", }}>
+            <Paper elevation={3} style={{ padding: "30px", display: "flex", flexDirection: "column", backgroundColor: "rgba(255, 255, 255, 0.2)", color: "#ffffff", boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)" }}>
               <Grid container spacing={3} alignItems="center" justifyContent="center">
                 <Grid item>
                   <img src={avatarUser} alt="Profile Picture" style={{ width: "120px", height: "120px", marginBottom: "20px" }} />
@@ -83,10 +83,10 @@ const Adfeature=(id)=>{
                     <div>
                       {User.IsDealer == 0 ?
                         <Button class="myad-btn" onClick={() => { navigate("/userauth") }}>Authenticate as a Dealer</Button>
-                        : <Typography variant="body1" gutterBottom><img className="verify-icon" src={verifieduser}></img> Authenticated User</Typography> }
-                        
+                        : <Typography variant="body1" gutterBottom><img className="verify-icon" src={verifieduser}></img> Authenticated User</Typography>}
+
                     </div>
-                    
+
                     : <div>{User.IsDealer == 0 ?
                       <Typography variant="body1" gutterBottom>Type: Not Verified User</Typography>
                       : <Typography variant="body1" gutterBottom>Type: Authenticated User</Typography>}
@@ -100,65 +100,65 @@ const Adfeature=(id)=>{
             <div style={{ textAlign: "center", color: "#ffffff" }}>
               <h1><b>User Ads</b></h1>
             </div>
-{Ads!=""?
-            <Container sx={{ py: 8 }} to>
+            {Ads != "" ?
+              <Container sx={{ py: 8 }} to>
 
-              <Grid container spacing={4}>
-                {Ads.map((card) => (
-                  <Grid class="myad-card" item key={card} xs={12} sm={6} md={3}>
-                    <Card
-                      style={{ height: "480px", borderRadius: "20px", width: "350px", backgroundColor: "rgba(255, 255, 255, 0.2)",  color: "#ffffff", boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)" }}
-                      sx={{
-                        maxWidth: 480,
-                        maxHeight: 450
-                      }}
-                    >
-                      <CardMedia
-                        component="img"
-                        height={200}
+                <Grid container spacing={4}>
+                  {Ads.map((card) => (
+                    <Grid class="myad-card" item key={card} xs={12} sm={6} md={3}>
+                      <Card
+                        style={{ height: "480px", borderRadius: "20px", width: "350px", backgroundColor: "rgba(255, 255, 255, 0.2)", color: "#ffffff", boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)" }}
+                        sx={{
+                          maxWidth: 480,
+                          maxHeight: 450
+                        }}
+                      >
+                        <CardMedia
+                          component="img"
+                          height={200}
 
-                        sx={{ padding: "1em 1em 0 1em" }}
-                        image={card.Images[0]}
-                        alt="random"
+                          sx={{ padding: "1em 1em 0 1em" }}
+                          image={card.Images[0]}
+                          alt="random"
 
-                      />
-                      <CardContent sx={{ flexGrow: 1 }}  >
-                        <Typography gutterBottom variant="h6" component="h6" sx={{ fontWeight: 'bold' }} style={{ color: "#ffffff" }}>
-                          {card.title}
-                        </Typography>
+                        />
+                        <CardContent sx={{ flexGrow: 1 }}  >
+                          <Typography gutterBottom variant="h6" component="h6" sx={{ fontWeight: 'bold' }} style={{ color: "#ffffff" }}>
+                            {card.title}
+                          </Typography>
 
-                        <Typography variant="p">
-                          {card.Description}
-                        </Typography>
-                        <br></br>
-                        <Typography variant="p" style={{ topmargin: "5px", color: "#ffffff" }}>
-                          {card.Location}
-                        </Typography>
-                        <br></br>
-                        <Typography variant="p" style={{ color: "#ffffff" }}>
-                          {card.date}
-                        </Typography>
-                        <br></br>
-                        <Typography variant="p" sx={{ fontWeight: 'bold' }} style={{ color: "#ffffff" }}>
-                          Rs.{card.Cost}/-
-                        </Typography>
-{
-  profileCheck == 0?
-  <Button class="feature-btn" onClick={() => { Adfeature(card.Ad_id) }}>Feature Ad</Button>:<p></p>
-                      } 
-                      </CardContent>
-                    </Card>
-                  </Grid>
+                          <Typography variant="p">
+                            {card.Description}
+                          </Typography>
+                          <br></br>
+                          <Typography variant="p" style={{ topmargin: "5px", color: "#ffffff" }}>
+                            {card.Location}
+                          </Typography>
+                          <br></br>
+                          <Typography variant="p" style={{ color: "#ffffff" }}>
+                            {card.date}
+                          </Typography>
+                          <br></br>
+                          <Typography variant="p" sx={{ fontWeight: 'bold' }} style={{ color: "#ffffff" }}>
+                            Rs.{card.Cost}/-
+                          </Typography>
+                          {
+                            profileCheck == 0 ?
+                              <Button class="feature-btn" onClick={() => { Adfeature(card.Ad_id) }}>Feature Ad</Button> : <p></p>
+                          }
+                        </CardContent>
+                      </Card>
+                    </Grid>
 
-                ))}
-              </Grid>
-              <Stack spacing={2} alignItems={"center"}>
-                <Pagination count={10} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
-              </Stack>
-            </Container>:<div>
-            <h2 style={{ marginTop: 100, marginLeft: 600, marginBottom: 340,color:"white" }}>No Ads</h2>
-            
-          </div>}
+                  ))}
+                </Grid>
+                <Stack spacing={2} alignItems={"center"}>
+                  <Pagination count={10} sx={{ marginTop: 7 }} variant="outlined" color="secondary" onChange={(e, v) => setpage(v - 1)} />
+                </Stack>
+              </Container> : <div>
+                <h2 style={{ marginTop: 100, marginLeft: 600, marginBottom: 340, color: "white" }}>No Ads</h2>
+
+              </div>}
           </main>
         </div>
       </div>

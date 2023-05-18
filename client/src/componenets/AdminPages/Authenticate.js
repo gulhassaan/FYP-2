@@ -80,7 +80,7 @@ useEffect(() => {
   return (
     <div>    
     <Navbar />
-    <Container maxWidth="md" style={{ paddingTop: "120px", paddingBottom: "120px" }}>
+    <Container maxWidth="md" style={{ paddingTop: "120px", paddingBottom: "120px", width:"1200px" }}>
     <h1 style={{marginLeft:350}}>Verify User</h1>
       <Paper elevation={3} style={{ padding: "30px", display: "flex", flexDirection: "column" }}>
       <Grid item>
@@ -111,7 +111,7 @@ useEffect(() => {
                 <img
                   src={image}
                   alt={image.alt}
-                  style={{ maxWidth: '100%', height: '15%',marginTop:10,marginLeft:100 }}
+                  style={{ maxWidth: '80%', height: '15%',marginTop:10,marginLeft:100 }}
                 />
               </div>
             ))}
@@ -119,7 +119,7 @@ useEffect(() => {
           </div>
 
           <div>
-          <Button class="verify-btn" style={{marginLeft:150,marginTop:30}} onClick={()=>{verify(User.user)}}>Verify User</Button>
+          <Button class="verify-btn" style={{marginLeft:300,marginTop:30}} onClick={()=>{verify(User.user)}}>Verify User</Button>
           <Button class="verify-btn" style={{marginLeft:5,marginTop:30}} onClick={()=>{del(User.user)}}>Reject Request</Button>
           </div>
           </Grid>
