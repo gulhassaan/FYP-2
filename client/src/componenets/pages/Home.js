@@ -358,16 +358,14 @@ export const Home = () => {
                   ))}
               </Grid>
 
-              <Stack spacing={2} alignItems={"center"}>
-                <Pagination
-                  count={Math.ceil(listOfAds.length / itemsPerPage)}
-                  sx={{ marginTop: 7 }}
-                  variant="outlined"
-                  color="primary"
-                  onChange={handlePageChange}
-                  page={currentPage}
-                />
-              </Stack>
+                   <Stack spacing={2} alignItems="center">
+  <Pagination
+    count={Math.ceil(listOfAds.length / itemsPerPage)}
+    color="primary"
+    onChange={handlePageChange}
+    page={currentPage + 1}
+  />
+</Stack>
             </Container>
           </Fade>
 
