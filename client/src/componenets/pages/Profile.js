@@ -143,7 +143,7 @@ const Adfeature=(id)=>{
                         </Typography>
 {
   profileCheck == 0?
-  <Button class="myad-btn" onClick={() => { Adfeature(card.Ad_id) }}>Buy Package</Button>:<p></p>
+  <Button class="feature-btn" onClick={() => { Adfeature(card.Ad_id) }}>Feature Ad</Button>:<p></p>
                       } 
                       </CardContent>
                     </Card>

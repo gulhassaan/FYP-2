@@ -13,23 +13,28 @@ const Success = () => {
 
   const closePopup = () => {
     setShowPopup(false);
-    navigate('/profile');
+    navigate('/home');
   };
 
   return (
     <div>
       <NavbarS />
-      <div className="successfull-container">
-        {showPopup && (
-          <div className="popup">
-            <div className="popup-content">
-              <h2>Thank You for Your Purchase!</h2>
-              <p>We appreciate your business and hope your Product Sold as soon as Possible.</p>
-              <button className="close-button" onClick={closePopup}>Close</button>
-            </div>
+      <div className='Login-banner'>
+        <div className="overlaybg1"></div>
+        <img className="img1" src={imag2}></img>
+        <div className='ContentLanding'>
+          <div className="successfull-container">
+            {showPopup && (
+              <div className="popup">
+                <div className="popup-content">
+                  <h2>Thank You for Your Purchase!</h2>
+                  <p>We appreciate your business and hope your Product Sold as soon as Possible.</p>
+                  <button className="close-button" onClick={closePopup}>Back to Home Page</button>
+                </div>
+              </div>
+            )}
           </div>
-        )}
-        <button className="back-button" onClick={handleBackButton}>Back</button>
+        </div>
       </div>
     </div>
   );
