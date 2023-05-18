@@ -22,6 +22,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { EmailContext } from "../../App";
 import { AdDContext } from "../../App";
 import "@fontsource/montserrat";
+
 import NavbarStore from "./Navbarstore";
 import storebanner from "../images/gamingstanstore.png";
 
@@ -307,7 +308,7 @@ const StoreHome = () => {
                   ))}
               </Grid>
 
-              <Stack spacing={2} alignItems="center">
+              <Stack spacing={2} alignItems="center" style={{marginTop:30}}>
   <Pagination
     count={Math.ceil(listofProducts.length / itemsPerPage)}
     color="primary"

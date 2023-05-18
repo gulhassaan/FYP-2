@@ -358,14 +358,14 @@ export const Home = () => {
                   ))}
               </Grid>
 
-                   <Stack spacing={2} alignItems="center">
-  <Pagination
-    count={Math.ceil(listOfAds.length / itemsPerPage)}
-    color="primary"
-    onChange={handlePageChange}
-    page={currentPage + 1}
-  />
-</Stack>
+              <Stack spacing={2} alignItems="center" style={{marginTop:30,color:"orange"}}>
+              <Pagination
+                count={Math.ceil(listOfAds.length / itemsPerPage)}
+                color="primary"
+                onChange={handlePageChange}
+                page={currentPage + 1}
+              />
+              </Stack>
             </Container>
           </Fade>
 
