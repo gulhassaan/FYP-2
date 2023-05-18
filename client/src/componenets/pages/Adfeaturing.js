@@ -10,7 +10,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import imag2 from '../images/login11.jpg';
-import NavbarS from './Navbar';
+import NavbarS from './NavbarHome';
 import "./Adfeaturing.css";
 
 const Adfeaturing = () => {

@@ -103,7 +103,7 @@ function ForgotPassword() {
         <div className='Forget-banner'>
           <div className="overlaybg2">
             <img className="img1" src={imag2}></img>
-            <div className='ContentLanding'></div>
+            <div className='ContentLanding'>
             <section className="Forgot">
               <div className="conatiner mt-5">
                 <div className="Forgot-content">
@@ -189,6 +189,7 @@ function ForgotPassword() {
               </div>
             </section>
           </div>
+        </div>
         </div>
       </div>
     </div>

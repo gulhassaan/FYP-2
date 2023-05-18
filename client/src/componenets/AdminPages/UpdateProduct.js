@@ -203,7 +203,7 @@ console.log("THIS IS ID : ",ProID)
                                                     onChange={titleHandle}
                                                     name=""
                                                     id=""
-                                                    className="customform w-100"
+                                                    className="Adminpages w-100"
                                                     placeholder="Ad Title"
                                                     required
                                                 />
@@ -220,7 +220,7 @@ console.log("THIS IS ID : ",ProID)
                                                     type="text"
                                                     name=""
                                                     id=""
-                                                    className="customform w-100"
+                                                    className="Adminpages w-100"
                                                     placeholder="RS | "
                                                 />
 
@@ -235,7 +235,7 @@ console.log("THIS IS ID : ",ProID)
                                                     type="text"
                                                     name=""
                                                     id=""
-                                                    className="customform w-100"
+                                                    className="Adminpages w-100"
                                                     placeholder="Quantity"
                                                 />
 
@@ -252,7 +252,7 @@ console.log("THIS IS ID : ",ProID)
                                                 style={{ backgroundColor: '#FFFFFF', borderRadius:"10px", border:"2px solid #008083" }}
                                                 name=""
                                                 id=""
-                                                className="customform1 w-100"
+                                                className="Adminpages w-100"
                                                 rows="5"
                                                 onChange={DesHandle}
                                             ></textarea>
@@ -270,7 +270,7 @@ console.log("THIS IS ID : ",ProID)
                                             {errI ? <span style={{ color: "red" }}>Images Is Required</span> : ""}
                                         </div>
 
-                                        <button onClick={publish} className="PostNow">
+                                        <button onClick={publish} className="Adminbt">
                                             Update
                                         </button>
 

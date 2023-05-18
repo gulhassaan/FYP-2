@@ -127,7 +127,7 @@ function Managead() {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const displayedAds = product.slice(startIndex, endIndex);
-
+ 
   return (
 
     <div style={{ backgroundColor: "rgba(227, 229, 232, 0.32)" }}>
