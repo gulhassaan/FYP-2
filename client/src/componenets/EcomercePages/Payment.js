@@ -88,8 +88,10 @@ console.log("ID ISWAS",id)
     //   seterrE(true)
     seterror("Date is Required")
     seterrD(true)
-  }else
+  }else{
+  console.log(email,Bill,month,year,cvc,cardNumber);
     axios.post("http://localhost:3006/payment", {
+     
       Email: email,
       Price: Bill,
       ExpiryMonth: month,
@@ -126,7 +128,7 @@ console.log("THrought profiel chanfe")
         console.log("Payment Unsuccessfull, Please Enter accurate credentials")
         console.error("Error submitting payment:", error);
       });
-
+    }
     // You can add your logic here to handle the payment
   };
 
@@ -175,7 +177,7 @@ const NameHandle = (e) => {
       seterrCVC(false);
     }
   
-    if (re.test(inputValue) && inputValue.length <= 3) {
+    if (inputValue.length <= 3) {
       setCvc(inputValue);
     }
   };
@@ -261,7 +263,7 @@ const NameHandle = (e) => {
                     type="text"
                     id="expiryDate"
                     value={expirationDate}
-                    onChange={DateHandle}
+                    onChange={handleExpirationDateChange}
                  placeholder="MM/YY"
                   />
                   {errD ? <span style={{ color: "#00ffff" }}>Valid Date Is Required</span> : ""}
@@ -270,9 +272,7 @@ const NameHandle = (e) => {
               {error==1&&
               
                   <span style={{ color: "#00ffff" }}>Invalid Credentials</span> 
-                
-                
-              }
+                }
               <div className="form-row" style={{ display: 'flex', justifyContent: 'center' }}>
   <button type="submit" style={{ marginBottom: 200, marginTop: 20, marginRight: 250 }}>Pay Now</button>
   

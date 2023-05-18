@@ -233,7 +233,7 @@ const ProductDetail = () => {
                   borderRadius: "20px",
                   color: "#ffffff",
                   boxShadow: "4px 4px 4px rgba(0, 0, 0, 0.25)",
-                  marginTop: "60px",
+                  marginTop: "75px",
                 }}
               >
                 <Grid item xs={12} sm={7}>
@@ -426,7 +426,7 @@ const ProductDetail = () => {
 
                     <CardActions
                       sx={{
-                        marginBottom: "70px",
+                        marginBottom: "50px",
                         marginLeft: "335px",
                         textDecorationLine: "underline",
                       }}
