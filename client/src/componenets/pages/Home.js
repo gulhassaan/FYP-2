@@ -155,9 +155,6 @@ export const Home = () => {
 
       <main>
         <div className='Home-banner'>
-
-
-
           <video src={homevideo} autoPlay loop muted />
           <div class="overlaybg2"></div>
           <Fade top distance="20%" duration={1500}>
